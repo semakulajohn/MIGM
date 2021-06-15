@@ -1,0 +1,306 @@
+﻿
+<div id="header" ng-include="'/app/views/_common/header.html'"></div>
+
+<aside id="menu" ng-include="'/app/views/_common/navigation.html'"></aside>
+
+<div id="wrapper">
+
+    <div ng-include="'/app/views/_common/Breadcrumb.html'"></div>
+
+    <div class="content" ng-controller="RequistionEditController">
+
+        <span us-spinner="{radius:30, width:16, length: 16}" spinner-key="global-spinner"></span>
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="hpanel">
+                    <div>
+                        <form name="form" class="form-horizontal ng-pristine ng-valid col-md-12" novalidate unsaved-warning-form>
+                            <tabset>
+                                <tab>
+                                    <tab-heading>
+                                        <i class="fa fa-laptop"></i> Requistion Detail
+                                    </tab-heading>
+
+                                    <div class="panel-body">
+
+
+                                        <div class="row">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5> Branch </h5>
+                                                    <p>{{requistion.BranchName}}</p>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Requistion No.</h5>
+                                                    <p>{{requistion.RequistionNumber}}</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-sm-6" ng-show="requistion.RequistionId > 0">
+                                                <div class="col-sm-12">
+                                                    <label>Response</label>
+
+                                                    <textarea ng-readonly="readOnly" name="response" rows="6" class="form-control" ng-model="requistion.Response"></textarea>
+                                                    <span ng-show="form.response.$invalid">
+                                                        <span ng-show="form.response.$error.required" class="help-block error"><i class="fa fa-warning"></i> This is a required field.</span>
+
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Category</h5>
+                                                    <p>{{requistion.RequistionCategoryName}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Description</h5>
+                                                    <p>{{requistion.Description}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row" ng-show="requistion.RequistionCategoryId == 4">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Repairer Name</h5>
+                                                    <p>{{requistion.RepairerName}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Date Repaired</h5>
+                                                    <p>{{requistion.RepairDate}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Amount</h5>
+                                                    <p>{{requistion.Amount}} shs</p>
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Amount in Words</h5>
+                                                    <p>{{requistion.AmountInWords}}</p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row" ng-show="requistion.OutSourcerId != null">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>OutSourcer</h5>
+                                                    <p>{{requistion.OutSourcerName}} </p>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row" ng-show="requistion.FinancialAccountId >0">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Financial Account</h5>
+                                                    <p>{{requistion.FinancialAccountName}} </p>
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="row" ng-show="requistion.SupplyId >0">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Part Payment</h5>
+                                                    <p>{{requistion.PartPayment}} </p>
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Weight Note Number</h5>
+                                                    <p>{{requistion.WeightNoteNumber}}</p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row" ng-show="requistion.CasualWorkerId >0">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Worker</h5>
+                                                    <p>{{requistion.CasualWorkerName}} </p>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="form-group col-sm-6" ng-show="requistion.BatchId >0">
+                                                <div class="col-sm-12">
+                                                    <h5>Batch</h5>
+                                                    <p>{{requistion.BatchName}} </p>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-sm-6" ng-show="requistion.ActivityId >0">
+                                                <div class="col-sm-12">
+                                                    <h5>Activity</h5>
+                                                    <p>{{requistion.ActivityName}}</p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row" ng-show="requistion.UtilityCategoryId >0">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Utility Name</h5>
+                                                    <p>{{requistion.UtilityCategoryName}} </p>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Invoice Number</h5>
+                                                    <p>{{requistion.RepairerName}}</p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row" ng-show="hideAcceptReject">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Reject</h5>
+                                                    <p>{{requistion.Reject}}</p>
+                                                    <p>
+
+                                                        <button ng-really-click="Reject(requistion)" ng-really-message='Are you sure you want to reject this requistion' class="btn btn-danger">Reject</button>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Approve</h5>
+                                                    <p>{{requistion.Approve}}</p>
+                                                    <p>
+
+                                                        <button ng-really-click="Approve(requistion)" ng-really-message='Are you sure you want to approve this requistion' class="btn btn-success">Accept</button>
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <div class="col-md-2">
+                                            </div>
+                                            <div class="col-md-10">
+                                                <div class="check-element sample-show-hide alert alert-success animate-show" ng-show="showMessageApprove" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i><span>Requistion has been Approved</span>
+                                                </div>
+                                                <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageSameApprove" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i><span>You can not Approve a requistion you created</span>
+                                                </div>
+                                                <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageReject" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i><span>Requistion has been rejected</span>
+                                                </div>
+
+                                                <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageActivityDont" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i><span>Account ActivityFailed to Save </span>
+                                                </div>
+
+                                                <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageCasual" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i><span>Cash Transaction Failed to Save </span>
+                                                </div>
+
+                                                <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageCashNotEnough" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i><span>Branch doesn't have enough Funds </span>
+                                                </div>
+
+                                                <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessagePayingMore" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i><span>Seems you paying More than Expected for this Supply </span>
+                                                </div>
+                                                <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageSupplyAlreadyPaid" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i><span>Supply With This WNN is already Paid</span>
+                                                </div>
+                                                <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageSupplyDoesntExist" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i><span>Supply with this WNN doesn't Exist in System</span>
+                                                </div>
+                                                <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageLabourCostHasNoQuantity" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i><span>Labour Cost has missing component i.e quantity,batch or activity</span>
+                                                </div>
+                                                <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageFactoryExpense" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i><span>factory expense misses batch</span>
+                                                </div>
+                                                <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageMachine" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i><span>Machine Repair Misses details</span>
+                                                </div>
+                                                <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageAllowance" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i><span>Allowance is not attached to anyone</span>
+                                                </div>
+                                                <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageUtility" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i><span>Transaction not attached to any utility Account or missing invoice number</span>
+                                                </div>
+                                                <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageAdvance" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i><span>No Worker attached </span>
+                                                </div>
+                                                <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageFinancial" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i><span>Financial Account is not liable for payment </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+
+
+                                            <div class="col-sm-12" style="padding-left: 0px">
+
+
+                                                <div class="hr-line-dashed"></div>
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </tab>
+
+
+                            </tabset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+      
+    </div>
+</div>
+
+

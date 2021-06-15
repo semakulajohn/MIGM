@@ -1,0 +1,241 @@
+﻿@*@{var = @ViewBag.}*@
+<html>
+<head>
+    <title>  </title>
+    <style>
+        #main {
+            width: 210mm;
+            height: 297mm;
+            border: 1px solid white;
+            padding-left: 30px;
+            margin-top: 50px;
+            margin: 0 auto !important;
+        }
+
+        .description-capture {
+            width: 65%;
+            background: #EEE;
+            float: left;
+        }
+
+        .date-capture {
+            width: 35%;
+            float: left;
+            padding: 1.5REM;
+        }
+
+        p {
+            font-size: 1.6rem;
+        }
+
+        .darkened {
+            background: #EEE;
+            padding-left: 2rem;
+        }
+
+        .first {
+            float: left;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            width: 40%;
+        }
+
+        .second {
+            margin-top: 0px;
+            float: left;
+            padding: 0 1rem 0 1rem;
+            width: 20%;
+        }
+
+        .third {
+            float: left;
+            margin-top: 70px;
+            padding-left: 20px;
+            width: 40%;
+        }
+
+        .receipt {
+            /*border: 2px solid red;
+            border-radius: 20px;*/
+            margin-top: 15px;
+            padding: 10px;
+            font-size: 19px;
+            font-weight: bold;
+            width: 90px;
+            margin-left: 21px;
+        }
+
+        .head {
+            padding: 10px;
+            border: 1px solid white;
+            width: 780px;
+            height: 220px;
+        }
+
+        .num em {
+            color: red;
+        }
+
+        .num {
+            margin-top: -40px;
+            margin-left: 60px;
+        }
+
+        .date {
+            font-weight: bold;
+        }
+
+        .amount {
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .sum {
+            padding: 10px;
+        }
+
+        #foot {
+            border: 2px solid white;
+            height: 200px;
+            padding: 20px;
+            padding: 5px;
+        }
+
+        .one {
+            float: left;
+            border: 1px solid white;
+            width: 50%;
+        }
+
+        .two {
+            float: right;
+            border: 1px solid white;
+            width: 50%;
+            margin-top: -135px;
+        }
+
+        .twe {
+            margin-left: 80px;
+        }
+
+        #paid {
+            font-size: 20px;
+            margin-left: 80px;
+            margin-top: -15px;
+        }
+
+        #bot {
+            min-height: 20px;
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+
+        .service {
+            border-bottom: 1px solid #EEE;
+        }
+
+        .item {
+            width: 50mm;
+            padding-left: 2rem;
+        }
+
+        p {
+            margin: 10px 0 10px;
+        }
+
+        .itemtext {
+            font-size: .3em;
+        }
+
+        .font-capital {
+            text-transform: capitalize;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div class="head">
+
+            <div class="first">
+                <h3>Mbale Investment and Grain Millers Ltd </h3>
+                <h6>Millers and Suppliers of Maize flour, brand, beans, rice, sugar, cassava flour, gnuts etc. </h6>
+            </div>
+
+            <div class="second">
+                <img src="~/images/mbale_logo.jpg" alt="logo" width="150px" />
+
+
+
+                <a href="/Excel/ExportRequistionAsPDF?requistionId=@ViewBag.requistionPdf.RequistionId">
+                    <p class="receipt">
+
+                        Requistion
+                    </p>
+                </a>
+            </div>
+
+            <div class="third">
+                <p class="num"> <em> No. @ViewBag.requistionPdf.RequistionNumber  </em> </p>
+                <h5> MENGO - KISENYI </h5>
+                <h5> P.O BOX 1272, MENGO KISENYI </h5>
+                <h5>
+                    Tel  :  0772922273 / 0757729242
+                </h5>
+
+            </div>
+
+
+
+        </div>
+        <div class="description-capture">
+            <p class="amount">
+                Description :<br />@ViewBag.requistionPdf.Description
+            </p>
+        </div>
+        <div class="date-capture"><p class="date"> Date : @ViewBag.requistionPdf.CreatedOn.</p></div>
+        <div class="clear15"></div>
+
+        <p class="sum"> Amount  :  @ViewBag.requistionPdf.Amount shs.</p>
+
+
+        <p class="amount">Amount in words :@ViewBag.requistionPdf.AmountInWords</p>
+
+
+        <p class="amount">
+            Requested By :@ViewBag.requistionPdf.CreatedBy
+        </p>
+
+
+        <p class="amount">
+            signature ................................................................
+        </p>
+
+
+
+
+
+        <div id="foot">
+            <div class="clear15"></div>
+            <div class="two">
+                &nbsp;
+                &nbsp;
+                <p id="amount"> Email : info@mbaleinvestments.com</p>
+            </div>
+        </div>
+</body>
+</html>
+
+
+
+
+
+
+
+

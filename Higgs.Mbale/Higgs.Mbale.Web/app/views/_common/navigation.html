@@ -1,0 +1,257 @@
+<div id="navigation" ng-controller="NavController">
+    <div class="profile-picture" >       
+        <div ng-if="user.UserPhoto == null">
+            <img src="/images/mbale_logo.jpg" width="200" height="200" class="img-circle m-b" />
+        </div>
+        <div class="stats-label text-color">
+            <span class="font-extra-bold font-uppercase">{{user.UserName}}</span>
+          
+            <div class="dropdown">
+                <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+        <small class="text-muted" >{{user.RoleName}} <b class="caret"></b></small>
+    </a>
+
+                <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                   <!-- <li><a ui-sref="profile">Profile</a></li>-->
+                    <li class="divider"></li>
+                    <li><a data-toggle="modal" data-target="#logoutModal">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+   
+    <ul side-navigation class="nav" id="side-menu">
+
+
+        <li ui-sref-active="active">
+            <a ui-sref="dashboard"> <span class="nav-label">Dashboard</span></a>
+        </li>
+
+        <li ng-class="{active: $state.includes('branches')}" ng-show="isSuperSuperAdmin ">
+            <a href="#"><span class="nav-label">Branches</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{in: $state.includes('branches')}">
+                <li ui-sref-active="active"><a ui-sref="branches.list">All Branches</a></li>
+            </ul>
+        </li>
+
+        <li ng-class="{active: $state.includes('batches')}" ng-show="isAdmin || isSuperAdmin ||isSuperSuperAdmin||isSuper">
+            <a href="#"><span class="nav-label">Batches</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{in: $state.includes('batches')}">
+                <!--  <li ui-sref-active="active"><a ui-sref="batches.list">All Batches</a></li>-->
+                <li ui-sref-active="active"><a ui-sref="admin-batches-list">Batch view</a></li>
+            </ul>
+        </li>
+
+        <li ng-class="{active: $state.includes('cash')}" ng-show="isAdmin || isSuperAdmin ||isSuperSuperAdmin||isSuper">
+            <a href="#"><span class="nav-label">Cash</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{in: $state.includes('cash')}">
+                <!-- <li ui-sref-active="active"><a ui-sref="cash.list">Cash</a></li>-->
+                <li ui-sref-active="active"><a ui-sref="admin-cash-list">cash view</a></li>
+            </ul>
+        </li>
+
+        <li ng-class="{active: $state.includes('cashs')}" ng-show="isAdmin || isSuperAdmin ||isSuperSuperAdmin||isSuper">
+            <a href="#"><span class="nav-label">Cash Transfers</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{in: $state.includes('cashs')}">
+
+                <li ui-sref-active="active"><a ui-sref="admin-cashtransfer-list">CashTransfer view</a></li>
+            </ul>
+        </li>
+        <li ng-class="{active: $state.includes('cashsale')}" ng-show="isAdmin || isSuperAdmin ||isSuperSuperAdmin||isSuper">
+            <a href="#"><span class="nav-label">Cash Sales</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{in: $state.includes('cashsale')}">
+
+                <li ui-sref-active="active"><a ui-sref="admin-cashsale-list">CashSale view</a></li>
+            </ul>
+        </li>
+        <!--<li ng-class="{active: $state.includes('transactions')}" ng-show="isAdmin">
+        <a href="#"><span class="nav-label">Transactions</span><span class="fa arrow"></span> </a>
+        <ul class="nav nav-second-level" ng-class="{in: $state.includes('transactions')}">
+            <li ui-sref-active="active"><a ui-sref="transactions.list">All Transactions</a></li>
+        </ul>
+    </li>-->
+        <!--  <li ng-class="{active: $state.includes('banks')}" ng-show="isAdmin || isSuperAdmin">
+        <a href="#"><span class="nav-label">Banks</span><span class="fa arrow"></span> </a>
+        <ul class="nav nav-second-level" ng-class="{in: $state.includes('banks')}">
+            <li ui-sref-active="active"><a ui-sref="banks.list">All Banks</a></li>
+        </ul>
+    </li>
+    <li ng-class="{active: $state.includes('bankTransactions')}" ng-show="isAdmin || isSuperAdmin">
+        <a href="#"><span class="nav-label">BankTransactions</span><span class="fa arrow"></span> </a>
+        <ul class="nav nav-second-level" ng-class="{in: $state.includes('bankTransaction')}">
+            <li ui-sref-active="active"><a ui-sref="admin-bankTransaction-list">All Bank Transactions</a></li>
+        </ul>
+    </li>-->
+        <li ng-class="{active: $state.includes('financialAccounts')}" ng-show="isSuperSuperAdmin">
+            <a href="#"><span class="nav-label">FinancialAccounts</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{in: $state.includes('financialAccounts')}">
+                <li ui-sref-active="active"><a ui-sref="financialAccounts.list">All FinancialAccounts</a></li>
+            </ul>
+        </li>
+        <li ng-class="{active: $state.includes('financialAccountTransactions')}" ng-show="isSuper || isSuperSuperAdmin">
+            <a href="#"><span class="nav-label">Financial Acccount Transactions</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{in: $state.includes('financialAccountTransaction')}">
+                <li ui-sref-active="active"><a ui-sref="index-financialAccountTransactions-list">All Financials</a></li>
+            </ul>
+        </li>
+        <!--<li ng-class="{active: $state.includes('deposits')}" ng-show="isAdmin || isSuperAdmin ||isSuperSuperAdmin ||isSuper">
+        <a href="#"><span class="nav-label">Transactions</span><span class="fa arrow"></span> </a>
+        <ul class="nav nav-second-level" ng-class="{in: $state.includes('deposits')}">
+            <li ui-sref-active="active"><a ui-sref="deposits.list">Account Transactions</a></li>
+        </ul>
+    </li>-->
+        <li ng-class="{active: $state.includes('supplies')}" ng-show="isAdmin || isSuperAdmin ||isSuperSuperAdmin||isSuper">
+            <a href="#"><span class="nav-label">UnApproved</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{in: $state.includes('supplies')}">
+                <li ng-show="isSuperAdmin || isSuperSuperAdmin ||isAdmin || isSuper" ui-sref-active="active"><a ui-sref="unapprovedsupplies-list">Un Approved Supplies</a></ling-show="isSuperAdmin>
+                <li ng-show="isSuperAdmin || isSuperSuperAdmin ||isAdmin || isSuper" ui-sref-active="active"><a ui-sref="unapproveddeliveries-list">UnApproved Deliveries</a></li>
+                <li ng-show="isSuperAdmin || isSuperSuperAdmin ||isAdmin || isSuper" ui-sref-active="active"><a ui-sref="unapprovedoutSourcerOutputs-list">UnApproved outSoucer OutPuts</a></li>
+                <li ng-show="isSuperAdmin || isSuperSuperAdmin ||isAdmin || isSuper" ui-sref-active="active"><a ui-sref="deposits.list">Account Transactions</a></li>
+                <li ng-show="isSuperAdmin || isSuperSuperAdmin ||isAdmin || isSuper" ui-sref-active="active"><a ui-sref="unapprovedRiceInputs-list">Un Approved Rice Inputs</a></li>
+
+            </ul>
+        </li>
+        <!--<li ng-class="{active: $state.includes('millingCharges')}" ng-show="isAdmin || isSuperAdmin">
+        <a href="#"><span class="nav-label">Milling Charges</span><span class="fa arrow"></span> </a>
+        <ul class="nav nav-second-level" ng-class="{in: $state.includes('millingCharges')}">
+            <li ui-sref-active="active"><a ui-sref="millingCharges.list">All MillingCharges</a></li>
+        </ul>
+    </li>
+    <li ng-class="{active: $state.includes('maizeOffloadings')}" ng-show="isAdmin || isSuperAdmin">
+        <a href="#"><span class="nav-label">Maize Offloadings</span><span class="fa arrow"></span> </a>
+        <ul class="nav nav-second-level" ng-class="{in: $state.includes('maizeOffloadings')}">
+            <li ui-sref-active="active"><a ui-sref="maizeOffloadings.list">All MaizeOffloadings</a></li>
+        </ul>
+    </li>-->
+        <li ng-class="{active: $state.includes('branchmanagers')}" ng-show="isSuperAdmin ||isSuperSuperAdmin||isSuper">
+            <a href="#"><span class="nav-label">Branch managers</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{in: $state.includes('branchmanagers')}">
+                <li ui-sref-active="active"><a ui-sref="branchmanagers.list">All Branch Managers</a></li>
+            </ul>
+        </li>
+        <li ng-class="{active: $state.includes('casualWorkers')}" ng-show="isAdmin || isSuperAdmin ||isSuperSuperAdmin||isSuper">
+            <a href="#"><span class="nav-label">Workers</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{in: $state.includes('casualWorkers')}">
+                <!--<li ui-sref-active="active"><a ui-sref="casualWorkers.list">All CasualWorkers</a></li>-->
+                <li ui-sref-active="active"><a ui-sref="admin-casualworkers-list">worker view</a></li>
+            </ul>
+        </li>
+        <!--<li ng-class="{active: $state.includes('activities')}" ng-show="isAdmin">
+        <a href="#"><span class="nav-label">Activities</span><span class="fa arrow"></span> </a>
+        <ul class="nav nav-second-level" ng-class="{in: $state.includes('activities')}">
+            <li ui-sref-active="active"><a ui-sref="activities.list">All Activities</a></li>
+        </ul>
+    </li>-->
+        <!--<li ng-class="{active: $state.includes('stocks')}" ng-show="isAdmin">
+        <a href="#"><span class="nav-label">Stock</span><span class="fa arrow"></span> </a>
+        <ul class="nav nav-second-level" ng-class="{in: $state.includes('stocks')}">
+            <li ui-sref-active="active"><a ui-sref="stocks.list">All Stock</a></li>
+        </ul>
+    </li>-->
+        <!--<li ng-class="{active: $state.includes('transactionSubTypes')}" ng-show="isAdmin">
+        <a href="#"><span class="nav-label">TransactionSubTypes</span><span class="fa arrow"></span> </a>
+        <ul class="nav nav-second-level" ng-class="{in: $state.includes('transactionSubTypes')}">
+            <li ui-sref-active="active"><a ui-sref="transactionSubTypes.list">All TransactionSubTypes</a></li>
+        </ul>
+    </li>-->
+        <li ng-class="{active: $state.includes('utilityaccount')}" ng-show="isAdmin || isSuperAdmin ||isSuperSuperAdmin||isSuper">
+            <a href="#"><span class="nav-label">Utility Accounts</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{in: $state.includes('utilityaccount')}">
+
+                <li ui-sref-active="active"><a ui-sref="admin-utility-list">Utility view</a></li>
+            </ul>
+        </li>
+        <li ng-class="{active: $state.includes('requistions')}" ng-show="isAdmin || isSuperAdmin ||isSuperSuperAdmin||isSuper">
+            <a href="#"><span class="nav-label">Requistions</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{in: $state.includes('requistions')}">
+                <!--<li ui-sref-active="active"><a ui-sref="requistions.list">All Requistions</a></li>-->
+                <li ui-sref-active="active"><a ui-sref="admin-requistions-list">Requistion view</a></li>
+                <!--<li ui-sref-active="active"><a href="#/requistions/{{status.StatusId}}">Status Requistions</a></li>-->
+            </ul>
+        </li>
+
+        <li ng-class="{active: $state.includes('creditors')}" ng-show="isAdmin || isSuperAdmin ||isSuperSuperAdmin||isSuper">
+            <a href="#"><span class="nav-label">Creditors</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{in: $state.includes('creditors')}">
+                <li ui-sref-active="active"><a ui-sref="creditors.list">All Creditors</a></li>
+            </ul>
+        </li>
+
+        <li ng-class="{active: $state.includes('debtors')}" ng-show="isAdmin || isSuperAdmin ||isSuperSuperAdmin||isSuper">
+            <a href="#"><span class="nav-label">Debtors</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{in: $state.includes('debtors')}">
+                <li ui-sref-active="active"><a ui-sref="debtors.list">All Debtors</a></li>
+            </ul>
+        </li>
+
+        <!--Just hiding it for the sake of hiding but it has no errors-->
+        <!--<li ng-class="{active: $state.includes('products')}" ng-show="isAdmin">
+        <a href="#"><span class="nav-label">Products</span><span class="fa arrow"></span> </a>
+        <ul class="nav nav-second-level" ng-class="{in: $state.includes('products')}">
+            <li ui-sref-active="active"><a ui-sref="products.list">All Products</a></li>
+        </ul>
+    </li>-->
+        <li ng-class="{active: $state.includes('weightnoteranges')}" ng-show="isSuperSuperAdmin">
+            <a href="#"><span class="nav-label">Weight Note Ranges</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{in: $state.includes('weightnoteranges')}">
+                <li ui-sref-active="active"><a ui-sref="weightnoteranges.list">Weight Note Ranges</a></li>
+
+            </ul>
+        </li>
+
+        <li ng-class="{active: $state.includes('riceinputs')}" ng-show="isAdmin || isSuperAdmin ||isSuperSuperAdmin||isSuper">
+            <a href="#"><span class="nav-label">Rice</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{in: $state.includes('riceinputs')}">
+                <li ui-sref-active="active"><a ui-sref="rice-inputlist">Rice Inputs</a></li>
+
+            </ul>
+        </li>
+
+
+        <li ng-class="{active: $state.includes('stores')}" ng-show="isAdmin || isSuperAdmin ||isSuperSuperAdmin||isSuper">
+            <a href="#"><span class="nav-label">Stores</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{in: $state.includes('stores')}">
+                <li ui-sref-active="active"><a ui-sref="stores.list">All Stores</a></li>
+                <!--<li ui-sref-active="active"><a ui-sref="inventories.list">Inventory</a></li>-->
+            </ul>
+        </li>
+        <li ui-sref-active="active" ng-show="isAdmin || isSuperAdmin ||isSuperSuperAdmin">
+            <a ui-sref="suppliers.list"> <span class="nav-label">All Suppliers</span></a>
+        </li>
+
+        <li ui-sref-active="active" ng-show="isAdmin || isSuperAdmin ||isSuperSuperAdmin||isSuper">
+            <a ui-sref="district-list"> <span class="nav-label">All Customers</span></a>
+        </li>
+        <li ui-sref-active="active" ng-show="isAdmin || isSuperAdmin ||isSuperSuperAdmin||isSuper">
+            <a ui-sref="outSourcers.list"> <span class="nav-label">All OutSourcers</span></a>
+        </li>
+        <li ui-sref-active="active" ng-show="isAdmin || isSuperAdmin ||isSuperSuperAdmin||isSuper">
+            <a ui-sref="mechanics.list"> <span class="nav-label">All Mechanics</span></a>
+        </li>
+        <li ui-sref-active="active" ng-show="isAdmin || isSuperAdmin||isSuper ||isSuperSuperAdmin">
+            <a ui-sref="assets.list"> <span class="nav-label">All Assets</span></a>
+        </li>
+        <li ui-sref-active="active" ng-show="isSuperSuperAdmin">
+            <a ui-sref="assetCategories.list"> <span class="nav-label">Asset Categories</span></a>
+        </li>
+        <li ng-class="{active: $state.includes('reports')}" ng-show="isAdmin || isSuperAdmin ||isSuperSuperAdmin||isSuper">
+            <a href="#"><span class="nav-label">All Reports</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{in: $state.includes('reports')}">
+                <li ui-sref-active="active"><a ui-sref="reports.index">Reports</a></li>
+
+            </ul>
+        </li>
+
+        <li ui-sref-active="active" ng-show="isSuperSuperAdmin">
+            <a ui-sref="inventories.list"> <span class="nav-label">Inventory</span></a>
+        </li>
+       
+        <li ng-show="isSuperSuperAdmin">
+            <a href="/UsersAdmin/Index">Accounts</a>
+        </li>
+
+
+    </ul>
+
+</div>

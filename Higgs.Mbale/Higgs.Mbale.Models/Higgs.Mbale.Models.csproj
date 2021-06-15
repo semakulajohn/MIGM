@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DC41076A-9654-4CFB-AFAF-633FD6953A86}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Higgs.Mbale.Models</RootNamespace>
+    <AssemblyName>Higgs.Mbale.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountTransactionActivity.cs" />
+    <Compile Include="Activity.cs" />
+    <Compile Include="ActivityBatchCasual.cs" />
+    <Compile Include="Application.cs" />
+    <Compile Include="AspNetRole.cs" />
+    <Compile Include="AspNetUser.cs" />
+    <Compile Include="AspNetUserCode.cs" />
+    <Compile Include="AspNetUserProduct.cs" />
+    <Compile Include="Asset.cs" />
+    <Compile Include="AssetCategory.cs" />
+    <Compile Include="Bank.cs" />
+    <Compile Include="BankTransaction.cs" />
+    <Compile Include="Batch.cs" />
+    <Compile Include="BatchBranch.cs" />
+    <Compile Include="BatchDeliveryDetails.cs" />
+    <Compile Include="BatchDeliveryGradeSize.cs" />
+    <Compile Include="BatchFactoryExpense.cs" />
+    <Compile Include="BatchGrade.cs" />
+    <Compile Include="BatchGradeSize.cs" />
+    <Compile Include="BatchOutPut.cs" />
+    <Compile Include="BatchProduct.cs" />
+    <Compile Include="BatchProjection.cs" />
+    <Compile Include="BatchSupply.cs" />
+    <Compile Include="BatchToDeliverGrades.cs" />
+    <Compile Include="BatchTransferGradeSize.cs" />
+    <Compile Include="Branch.cs" />
+    <Compile Include="Buvera.cs" />
+    <Compile Include="BuveraGradeSize.cs" />
+    <Compile Include="BuveraTransfer.cs" />
+    <Compile Include="BuveraTransferGradeSize.cs" />
+    <Compile Include="Cash.cs" />
+    <Compile Include="CashSale.cs" />
+    <Compile Include="CashSaleBatch.cs" />
+    <Compile Include="CashSaleBatchGradeSize.cs" />
+    <Compile Include="CashSaleGradeSize.cs" />
+    <Compile Include="CashTransfer.cs" />
+    <Compile Include="CasualActivity.cs" />
+    <Compile Include="CasualWorker.cs" />
+    <Compile Include="Creditor.cs" />
+    <Compile Include="CreditorView.cs" />
+    <Compile Include="BuveraCategory.cs" />
+    <Compile Include="DailyReport.cs" />
+    <Compile Include="DashBoardNotification.cs" />
+    <Compile Include="Debtor.cs" />
+    <Compile Include="DebtorView.cs" />
+    <Compile Include="Delivery.cs" />
+    <Compile Include="DeliveryBatch.cs" />
+    <Compile Include="DeliveryGradeSize.cs" />
+    <Compile Include="DeliveryStock.cs" />
+    <Compile Include="Deposit.cs" />
+    <Compile Include="Document.cs" />
+    <Compile Include="DocumentCategory.cs" />
+    <Compile Include="DocumentGradeSize.cs" />
+    <Compile Include="ExcelData.cs" />
+    <Compile Include="Expense.cs" />
+    <Compile Include="ExtensionType.cs" />
+    <Compile Include="Factory.cs" />
+    <Compile Include="FactoryExpense.cs" />
+    <Compile Include="FinancialAccount.cs" />
+    <Compile Include="FinancialAccountTransaction.cs" />
+    <Compile Include="FlourTransfer.cs" />
+    <Compile Include="FlourTransferBatch.cs" />
+    <Compile Include="FlourTransferGradeSize.cs" />
+    <Compile Include="Grade.cs" />
+    <Compile Include="Income.cs" />
+    <Compile Include="Inventory.cs" />
+    <Compile Include="InventoryCategory.cs" />
+    <Compile Include="InventoryPurchase.cs" />
+    <Compile Include="LabourCost.cs" />
+    <Compile Include="Location.cs" />
+    <Compile Include="MachineRepair.cs" />
+    <Compile Include="MaizeBrandStore.cs" />
+    <Compile Include="MaizeOffloading.cs" />
+    <Compile Include="MakeDelivery.cs" />
+    <Compile Include="Media.cs" />
+    <Compile Include="MediaType.cs" />
+    <Compile Include="MillingCharge.cs" />
+    <Compile Include="MultipleSupplies.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="OrderGrade.cs" />
+    <Compile Include="OrderGradeSize.cs" />
+    <Compile Include="OtherExpense.cs" />
+    <Compile Include="OutSourcerOutPut.cs" />
+    <Compile Include="OutSourcerOutPutGradeSize.cs" />
+    <Compile Include="PaymentMode.cs" />
+    <Compile Include="Product.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Region.cs" />
+    <Compile Include="ReportSearch.cs" />
+    <Compile Include="Requistion.cs" />
+    <Compile Include="RequistionCategory.cs" />
+    <Compile Include="RiceInput.cs" />
+    <Compile Include="RiceInputGradeSize.cs" />
+    <Compile Include="RiceTransfer.cs" />
+    <Compile Include="RiceTransferGradeSize.cs" />
+    <Compile Include="Sector.cs" />
+    <Compile Include="Size.cs" />
+    <Compile Include="Status.cs" />
+    <Compile Include="Stock.cs" />
+    <Compile Include="StockGrade.cs" />
+    <Compile Include="StockGradeSize.cs" />
+    <Compile Include="StockProduct.cs" />
+    <Compile Include="Store.cs" />
+    <Compile Include="StoreBuveraGradeSize.cs" />
+    <Compile Include="StoreBuveraTransferGradeSize.cs" />
+    <Compile Include="StoreFlourTransferGradeSize.cs" />
+    <Compile Include="StoreGrade.cs" />
+    <Compile Include="StoreMaizeStock.cs" />
+    <Compile Include="StoreStock.cs" />
+    <Compile Include="StoreGradeSize.cs" />
+    <Compile Include="SupplierReport.cs" />
+    <Compile Include="Supply.cs" />
+    <Compile Include="SupplyBatch.cs" />
+    <Compile Include="Transaction.cs" />
+    <Compile Include="TransactionSubType.cs" />
+    <Compile Include="TransactionType.cs" />
+    <Compile Include="UserBranch.cs" />
+    <Compile Include="UserBranchManager.cs" />
+    <Compile Include="Utility.cs" />
+    <Compile Include="UtilityAccount.cs" />
+    <Compile Include="UtilityCategory.cs" />
+    <Compile Include="ViewModel\BatchReportViewModel.cs" />
+    <Compile Include="ViewModel\BuveraReportViewModel.cs" />
+    <Compile Include="ViewModel\BuveraTransferReportViewModel.cs" />
+    <Compile Include="ViewModel\CashReportViewModel.cs" />
+    <Compile Include="ViewModel\CashSaleReportViewModel.cs" />
+    <Compile Include="ViewModel\CashTransferReportViewModel.cs" />
+    <Compile Include="ViewModel\consolidated\ConsolidatedCashTransferViewModel.cs" />
+    <Compile Include="ViewModel\consolidated\ConsolidatedSupplyViewModel.cs" />
+    <Compile Include="ViewModel\CreditorReportViewModel.cs" />
+    <Compile Include="ViewModel\DebtorReportViewModel.cs" />
+    <Compile Include="ViewModel\DeliveryReportViewModel.cs" />
+    <Compile Include="ViewModel\DepositsReportViewModel.cs" />
+    <Compile Include="ViewModel\FactoryExpenseReportViewModel.cs" />
+    <Compile Include="ViewModel\FlourTransferReportTotalModel.cs" />
+    <Compile Include="ViewModel\FlourTransferReportViewModel.cs" />
+    <Compile Include="ViewModel\GradeSizeTotalsViewModel.cs" />
+    <Compile Include="ViewModel\LabourCostReportViewModel.cs" />
+    <Compile Include="ViewModel\consolidated\PeriodicConsolidatedReport.cs" />
+    <Compile Include="ViewModel\MachineRepairReportViewModel.cs" />
+    <Compile Include="ViewModel\OutSourcerOutPutReportViewModel.cs" />
+    <Compile Include="ViewModel\RecoveriesReportViewModel.cs" />
+    <Compile Include="ViewModel\RiceInputReportViewModel.cs" />
+    <Compile Include="ViewModel\SupplyReportViewModel.cs" />
+    <Compile Include="ViewModel\WeightLossesReportViewModel.cs" />
+    <Compile Include="WebViewModel\AspNetUserViewModel.cs" />
+    <Compile Include="WebViewModel\BatchViewModel.cs" />
+    <Compile Include="WebViewModel\CashSaleViewModel.cs" />
+    <Compile Include="WebViewModel\DeliveryViewModel.cs" />
+    <Compile Include="WebViewModel\RequistionViewModel.cs" />
+    <Compile Include="WebViewModel\WeightNoteNumberViewModel.cs" />
+    <Compile Include="WebViewModel\WeightNoteRangeViewModel.cs" />
+    <Compile Include="WeightLoss.cs" />
+    <Compile Include="WeightNote.cs" />
+    <Compile Include="WeightNoteNumber.cs" />
+    <Compile Include="WeightNoteRange.cs" />
+    <Compile Include="WeightNoteSupply.cs" />
+    <Compile Include="WeightNoteValue.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

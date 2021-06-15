@@ -1,0 +1,177 @@
+<!-- Header -->
+<div id="header" ng-include="'/app/views/_common/header.html?t=1'"></div>
+
+<!-- Navigation -->
+<aside id="menu" ng-include="'/app/views/_common/navigation.html?t=1d'"></aside>
+<!-- Main Wrapper -->
+<div id="wrapper">
+
+    <div id="dasboard" class="content" animate-panel effect="zoomIn" ng-controller="NavController">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="hpanel">
+                    <div class="panel-body">
+                        <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                            <h3 class="m-xs text-uppercase">
+                                Welcome to  MIGM  <span ng-if="loadingSpinner" class="loadingSpinner"><img src="/images/loading-bars.svg" /></span>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+           
+        
+              <div ng-show="isBranchManager" class="row" ng-controller="BranchDashBoardController">
+                <div class="col-lg-12">
+
+                    
+                    <div class="clear0"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="hpanel">
+                                <div class="panel-body">
+                                    <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                                        <h3 class="m-xs text-uppercase">
+                                            <a class="btn btn-info btn-sm center-block"> {{branch.Name}} <span ng-if="loadingSpinner" class="loadingSpinner"><img src="/images/loading-bars.svg" /></span></a>
+</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <span ng-if="loadingSpinner" class="loadingSpinner">
+                        <img src="/images/loading-bars.svg" width="45" height="45" /> Loading...
+                    </span>
+
+                    <div class="clear10"></div>
+                    <div class="clear10"></div>
+                    <div class="clear10"></div>
+
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="hpanel">
+                                <div class="panel-body">
+                                    <div class="text-center">
+                                        <h2 class="m-b-xs"> Suppliers</h2>
+
+                                        <div class="m">
+                                            <i class="pe-7s-science fa-5x"></i>
+                                        </div>
+
+                                        <a ui-sref="suppliers.list"><button class="btn btn-success btn-sm">All Suppliers</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
+
+                        <div class="col-md-6">
+                            <div class="hpanel">
+                                <div class="panel-body">
+                                    <div class="text-center">
+                                        <h2 class="m-b-xs"> CashSales</h2>
+
+                                        <div class="m">
+                                            <i class="pe-7s-science fa-5x"></i>
+                                        </div>
+
+
+                                        <a href="#/cashsale/branch/{{branch.BranchId}}"> <button class="btn btn-warning btn-sm">Branch CashSales</button></a>
+     </div>
+                                </div>
+                            </div>
+                        </div>
+                     
+                        <div class="col-md-6">
+                            <div class="hpanel">
+                                <div class="panel-body">
+                                    <div class="text-center">
+                                        <h2 class="m-b-xs"> Cash Transfers</h2>
+
+                                        <div class="m">
+                                            <i class="pe-7s-science fa-5x"></i>
+                                        </div>
+                                        <a href="#/cashs/branch/{{branch.BranchId}}">  <button class="btn btn-danger btn-sm">Cash Transfers</button></a>
+  </div>
+                                </div>
+                            </div>
+                        </div>
+                     
+                        <div class="col-md-6">
+                            <div class="hpanel">
+                                <div class="panel-body">
+                                    <div class="text-center">
+                                        <h2 class="m-b-xs"> Store</h2>
+
+                                        <div class="m">
+                                            <i class="pe-7s-science fa-5x"></i>
+                                        </div>
+
+                                        <a href="#/stores/branch/{{branch.BranchId}}"><button class="btn btn-info btn-sm">Branch Store</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                   
+                       
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="hpanel hbggreen">
+                                <div class="panel-body">
+                                    <div class="text-center">
+                                        <a style="color:white" href="#/requistions/branch/{{branch.BranchId}}">
+                                            <h3>Requistions</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="hpanel hbgblue">
+                                <div class="panel-body">
+                                    <div class="text-center">
+                                        <a style="color:white" href="#/orders/branch/{{branch.BranchId}}">
+                                            <h3>Orders</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="hpanel hbgyellow">
+                                <div class="panel-body">
+                                    <div class="text-center">
+                                        <a style="color:white" href="#/cash/branch/{{branch.BranchId}}">
+                                            <h3>Cash</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="hpanel hbgred">
+                                <div class="panel-body">
+                                    <div class="text-center">
+                                        <a style="color:white" ui-sref="customers.list"><h3>Customers</h3></a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+        
+
+</div>

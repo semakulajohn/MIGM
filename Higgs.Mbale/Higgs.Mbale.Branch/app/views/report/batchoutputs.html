@@ -1,0 +1,165 @@
+﻿
+
+<div id="header" ng-include="'/app/views/_common/header.html'"></div>
+
+<aside id="menu" ng-include="'/app/views/_common/navigation.html'"></aside>
+
+<div id="wrapper">
+
+    <div ng-include="'/app/views/_common/Breadcrumb.html'"></div>
+    <div ng-controller="ReportBatchOutPutController">
+
+
+        <div class="clear0"></div>
+        <hr>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">View BatchOutPuts</h3>
+                    </div>
+                    <div class="panel-body">
+                        <button class="btn btn-primary btn-rounded" ng-click="TodaysBatchOutPut()">Today</button>
+
+                        <button class="btn btn-mint btn-rounded" ng-click="WeeksBatchOutPut()">This Week</button>
+                        <button class="btn btn-success btn-rounded" ng-click="BatchOutPutForThisMonth()">This Month</button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button onclick="window.focus();window.print();" class="btn btn-primary2">Print</button>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                       
+
+                        <hr />
+
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Search  BatchOutPuts by date</h3>
+
+                                </div>
+                                <div class="panel-body">
+                                    <table id="search" width="900">
+                                        <tbody>
+                                            <tr>
+                                                <td width="20%">
+                                                    <span class="header-search">
+                                                        From: &nbsp;&nbsp;  <input placeholder="yyyy-mm-dd" name="fromDate" ng-disabled="readOnly" kendo-date-picker="" required ng-model="batchOutPut.FromDate" k-format="'yyyy-MM-dd'" ng-pattern="/^(199\d)|([2-9]\d{3})-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/">
+
+                                                        <span ng-show=" form.fromDate.$invalid">
+                                                            <span ng-show="form.fromDate.$error.required" class="help-block error margin-bottom-00 "><i class="fa fa-warning"></i> From date is required.</span>
+                                                            <span ng-show="form.fromDate.$error.pattern" class="help-block error margin-bottom-00 "><i class="fa fa-warning"></i> Invalid date format, should be yyyy-mm-dd.</span>
+                                                        </span>
+                                                    </span>
+                                                </td>
+                                                <td>&nbsp;&nbsp;&nbsp;</td>
+                                                <td width="20%">
+                                                    <span class="header-search">
+                                                        To: &nbsp;&nbsp;  <input placeholder="yyyy-mm-dd" name="toDate" ng-disabled="readOnly" kendo-date-picker="" ng-model="batchOutPut.ToDate" k-format="'yyyy-MM-dd'" required ng-pattern="/^(199\d)|([2-9]\d{3})-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/">
+
+                                                        <span ng-show=" form.toDate.$invalid">
+                                                            <span ng-show="form.toDate.$error.required" class="help-block error margin-bottom-00 "><i class="fa fa-warning"></i> To date is required.</span>
+                                                            <span ng-show="form.toDate.$error.pattern" class="help-block error margin-bottom-00 "><i class="fa fa-warning"></i> Invalid date format, should be yyyy-mm-dd.</span>
+                                                        </span>
+                                                    </span>
+                                                </td>
+                                                <td>&nbsp;&nbsp;&nbsp;</td>
+                                              
+                                            
+                                                <td>&nbsp;&nbsp;&nbsp;</td>
+                                                <td><button class="btn btn-primary" ng-click="SearchBatchOutPut(batchOutPut)">Search</button></td>
+                                            </tr>
+                                    </table>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <div ng-hide="data.length > 0">
+                        <div class="col-md-4">
+                            <div class="error">
+                                No BatchOutputs found for that period.
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="data.length > 0">
+
+                        <table ng-table="tableParams" id="reportTable">
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <div>Loss(kgs)</div>
+                                    </th>
+                                    <th>
+                                        <div>Loss(%)</div>
+                                    </th>
+                                    <th>
+                                        <div>Flour(kgs)</div>
+                                    </th>
+                                    <th>
+                                        <div>Flour(%)</div>
+                                    </th>
+
+                                    <th>
+                                        <div>Brand(kgs)</div>
+                                    </th>
+
+                                    <th>
+                                        <div>Brand(%)</div>
+                                    </th>
+
+
+                                    <th>
+                                        <div>Batch</div>
+                                    </th>
+
+                                    <th>
+                                        <div>Branch</div>
+                                    </th>
+                                    <th>
+                                        <div>Date</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="batchOutPut in data">
+                                    <td style="font-size: 18px !important;" width="10%">{{batchOutPut.Loss | number}}</td>
+                                    <td style="font-size: 18px !important;" width="10%">{{batchOutPut.LossPercentage | number:4}}</td>
+                                    <td style="font-size: 18px !important;" width="10%">{{batchOutPut.FlourOutPut | number}}</td>
+                                    <td style="font-size: 18px !important;" width="10%">{{batchOutPut.FlourPercentage |number:4}}</td>
+                                    
+                                    <td style="font-size: 18px !important;" width="10%">{{ batchOutPut.BrandOutPut | number }}</td>
+                                    <td style="font-size: 18px !important;" width="10%">{{batchOutPut.BrandPercentage |number :4}}</td>
+                                    <td style="font-size: 18px !important;" width="10%">{{ batchOutPut.Name }}</td>
+                                    <td style="font-size: 18px !important;" width="10%">{{batchOutPut.BranchName}}</td>
+                                    <td style="font-size: 18px !important;" width="10%">{{ batchOutPut.CreatedOn | date:"yyyy-MM-dd" }}</td>
+
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>
+</div>
+

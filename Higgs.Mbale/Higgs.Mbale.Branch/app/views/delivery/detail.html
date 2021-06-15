@@ -1,0 +1,238 @@
+﻿
+<div id="header" ng-include="'/app/views/_common/header.html'"></div>
+
+<aside id="menu" ng-include="'/app/views/_common/navigation.html'"></aside>
+
+<div id="wrapper">
+
+    <div ng-include="'/app/views/_common/Breadcrumb.html'"></div>
+
+    <div class="content" ng-controller="DeliveryDetailController">
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="hpanel">
+                    <div>
+                        <form name="form" class="form-horizontal ng-pristine ng-valid col-md-12" novalidate unsaved-warning-form>
+                               <tabset>
+                                <tab>
+                                    <tab-heading>
+                                        <i class="fa fa-laptop"></i> Delivery Detail
+                                    </tab-heading>
+
+                                    <div class="panel-body">
+
+
+                                        <div class="row">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Customer Name</h5>
+                                                    <p>{{delivery.CustomerName}}</p>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Order Number</h5>
+                                                    <p>{{delivery.OrderId}}</p>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Amount</h5>
+                                                    <p >{{delivery.Amount | number}} shs </p>
+                                                   
+                                                </div>
+                                            </div>
+
+                                          
+
+                                                <div class="form-group col-sm-6">
+                                                    <div class="col-sm-6">
+                                                        <h5>Used Batches</h5>
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered">
+                                                                <tbody>
+
+                                                                    <tr ng-repeat="batch in delivery.DeliveryBatches">
+                                                                        <td width="100%"><p> {{ batch.BatchNumber }}</p></td>
+
+
+                                                                    </tr>
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                         
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Vehichle Number</h5>
+                                                    <p>{{delivery.VehicleNumber}}</p>
+                                                    
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Mode Of Payment</h5>
+                                                    <p>{{delivery.PaymentModeName}}</p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Driver Name</h5>
+                                                    <p>{{delivery.DriverName}}</p>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Delivery NIN</h5>
+                                                    <p>{{delivery.DriverNIN}}</p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row" >
+                                            <div class="form-group col-sm-6" ng-show="delivery.ProductId !=1">
+                                                <div class="col-sm-12">
+                                                    <h5>Price</h5>
+                                                    <p>{{delivery.Price | number}} </p>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Delivery Cost</h5>
+                                                    <p>{{delivery.DeliveryCost |number}}</p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Product</h5>
+                                                    <p>{{delivery.ProductName}}</p>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>branch</h5>
+                                                    <p>{{delivery.BranchName}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-sm-6" >
+                                                <div class="col-sm-12">
+                                                    <h5>Store</h5>
+                                                    <p>{{delivery.StoreName}}</p>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Delivered To</h5>
+                                                    <p>{{delivery.Location}}</p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Total Quantity</h5>
+                                                    <!--<p ng-hide="delivery.ProductId==1">{{delivery.Amount}} Kgs</p>-->
+                                                    <p>{{delivery.Quantity}} Kgs</p>
+                                                    </div>
+                                                </div>
+
+                                         </div>
+                                                <div class="row" ng-hide="delivery.ProductId ==1">
+                                                    <div class="col-sm-12 col-md-12">
+                                                        <h5> Grade: </h5>
+                                                    </div>
+                                                    <div ng-repeat="grade in delivery.Grades" class="col-md-3 col-sm-12">
+                                                        <div class="col-sm-12 col-md-12">
+                                                            <h3> {{grade.Value}}</h3>
+                                                            <div class="table-responsive">
+                                                                <table class="table table-bordered">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <th width="25%">Value </th>
+                                                                            <th width="35%">Quantity</th>
+                                                                            <th width="25%">Price</th>
+                                                                        </tr>
+                                                                        <tr ng-repeat="x in grade.Denominations">
+                                                                            <td width="25%"><p> {{ x.Value }} Kg</p></td>
+                                                                            <td width="35%">
+                                                                                <p>{{x.Quantity}}</p>
+                                                                            </td>
+                                                                            <td width="25%"><p>{{x.Price}}</p></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <div class="hr-line-dashed"></div>
+
+                                                </div>
+
+
+
+                                                <div class="row">
+
+
+                                                    <div class="col-sm-12" style="padding-left: 0px">
+
+
+                                                        <div class="hr-line-dashed"></div>
+
+
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+</tab>
+
+
+                            </tabset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

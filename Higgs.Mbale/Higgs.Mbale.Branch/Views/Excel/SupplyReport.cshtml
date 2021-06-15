@@ -1,0 +1,161 @@
+﻿
+@{
+    ViewBag.Title = "Supply";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div id="wrapper">
+
+   
+    <div>
+
+
+        <div class="clear0"></div>
+        <hr>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">View Supplies</h3>
+                    </div>
+                    <div class="panel-body">
+                       
+                        <hr />
+
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Search  Supplies by date</h3>
+
+                                </div>
+                                <div class="panel-body">
+                                    <table id="search" width="900">
+                                        <tbody>
+                                            <tr>
+                                            
+                                            </tr>
+                                    </table>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <div >
+
+                        <table id="reportTable">
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <div>WNN @ViewBag.wwn</div>
+                                    </th>
+                                    <th>
+                                        <div>Quantity</div>
+                                    </th>
+                                    <th>
+                                        <div>Price</div>
+                                    </th>
+                                    <th>
+                                        <div>Amount</div>
+                                    </th>
+
+                                    <th>
+                                        <div>Branch</div>
+                                    </th>
+
+                                    <th>
+                                        <div>Date</div>
+                                    </th>
+
+
+                                    <th>
+                                        <div>SNo</div>
+                                    </th>
+
+                                    <th>
+                                        <div>SupplierName @ViewBag.supplier</div>
+                                    </th>
+                                    <th>
+                                        <div>NBags</div>
+                                    </th>
+                                    <th>
+                                        <div>SBags</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="supply in data">
+                                    <td style="font-size: 18px !important;" width="6%">{{supply.WeightNoteNumber}}</td>
+                                    <td style="font-size: 18px !important;" width="10%">{{supply.Quantity | number}}</td>
+                                    <td style="font-size: 18px !important;" width="10%">{{supply.Price}}</td>
+                                    <td style="font-size: 18px !important;" width="15%">{{supply.Amount |number}}</td>
+                                    <td width="8%"> {{supply.BranchName}}</td>
+                                    <td style="font-size: 18px !important;" width="12%">{{ supply.SupplyDate | date:"yyyy-MM-dd" }}</td>
+                                    <td style="font-size: 18px !important;" width="5%">{{supply.SupplierNumber}}</td>
+                                    <td style="font-size: 18px !important;" width="15%">{{ supply.SupplierName }}</td>
+                                    <td style="font-size: 18px !important;" width="5%">{{supply.NormalBags}}</td>
+                                    <td style="font-size: 18px !important;" width="5%">{{supply.BagsOfStones}}</td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <table id="reportTable">
+                            <tbody>
+                                <tr>
+                                    <td style="font-size: 18px !important;" width="25%">
+                                        <span class="header-search">
+                                            Total Maize :  {{totalMaize | number}} kgs
+                                        </span>
+                                    </td>
+                                    <td>&nbsp;&nbsp;&nbsp;</td>
+                                    <td style="font-size: 18px !important;" width="25%">
+                                        <span class="header-search">
+                                            Total Amount :  {{totalAmount |number}}
+                                        </span>
+                                    </td>
+                                    <td>&nbsp;&nbsp;&nbsp;</td>
+                                    <td style="font-size: 18px !important;" width="30%">
+                                        <span class="header-search">
+
+                                            Total Normal Bags : {{totalNormalBags |number}}
+                                        </span>
+                                    </td>
+                                    <td>&nbsp;&nbsp;&nbsp;</td>
+                                    <td style="font-size: 18px !important;" width="25%">
+
+                                        <span class="header-search">
+                                            Total Stone Bags : {{totalStoneBags |number}}
+                                        </span>
+
+                                    </td>
+
+                                </tr>
+                        </table>
+
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>
+</div>
+

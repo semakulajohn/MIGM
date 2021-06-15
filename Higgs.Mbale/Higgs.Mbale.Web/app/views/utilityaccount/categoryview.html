@@ -1,0 +1,111 @@
+﻿<div id="header" ng-include="'/app/views/_common/header.html'"></div>
+
+<aside id="menu" ng-include="'/app/views/_common/navigation.html'"></aside>
+
+<div id="wrapper">
+
+    <div ng-include="'/app/views/_common/Breadcrumb.html'"></div>
+
+    <div class="content">
+        <div class="row" ng-controller="UtilityAccountController">
+          
+            <div class="col-lg-12">
+
+                <div class="clear0"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="hpanel">
+                            <div class="panel-body">
+                                <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                                    <h3 class="m-xs text-uppercase">
+                                        Utilities<span ng-if="loadingSpinner" class="loadingSpinner"><img src="/images/loading-bars.svg" /></span>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <span ng-if="loadingSpinner" class="loadingSpinner">
+                    <img src="/images/loading-bars.svg" width="45" height="45" /> Loading...
+                </span>
+
+                <div class="clear10"></div>
+                <div class="clear10"></div>
+                <div class="clear10"></div>
+
+
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="hpanel hbgreddeep">
+                            <div class="panel-body">
+                                <div class="text-center">
+                                    <a style="color:white" href="#/utility/category/{{retrievedBranchId}}/4">
+                                        <h3>LUUKA PLASTICS</h3>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="hpanel hbgviolet">
+                            <div class="panel-body">
+                                <div class="text-center">
+                                    <a style="color:white" href="#/utility/category/{{retrievedBranchId}}/2">
+                                        <h3>MAMA VICKY</h3>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="hpanel hbggreen">
+                            <div class="panel-body">
+                                <div class="text-center">
+                                    <a style="color:white" href="#/utility/category/{{retrievedBranchId}}/3">
+                                        <h3>ELECTRICITY</h3>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="hpanel hbgblue">
+                            <div class="panel-body">
+                                <div class="text-center">
+                                    <a style="color:white" href="#/utility/category/{{retrievedBranchId}}/1">
+                                        <h3>WATER</h3>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                  
+                    <div class="col-md-6">
+                        <div class="hpanel hbgyellow">
+                            <div class="panel-body">
+                                <div class="text-center">
+                                    <a style="color:white" href="#/utility/category/{{retrievedBranchId}}/5">
+                                        <h3>RENT</h3>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>

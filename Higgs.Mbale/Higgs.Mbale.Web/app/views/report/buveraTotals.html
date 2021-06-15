@@ -1,0 +1,380 @@
+﻿
+<div id="header" ng-include="'/app/views/_common/header.html'"></div>
+
+<aside id="menu" ng-include="'/app/views/_common/navigation.html'"></aside>
+
+<div id="wrapper">
+
+    <div ng-include="'/app/views/_common/Breadcrumb.html'"></div>
+
+    <div class="content" ng-controller="BuveraTotalsController">
+
+
+        <div class="clear0"></div>
+        <hr>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">View Buveras</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Search  Buveras by date</h3>
+                                 
+
+                                </div>
+                                <div class="panel-body">
+                                    <table id="search" width="900">
+                                        <tbody>
+                                            <tr>
+                                                <td width="20%">
+                                                    <span class="header-search">
+                                                        From: &nbsp;&nbsp;  <input placeholder="yyyy-mm-dd" name="fromDate" ng-disabled="readOnly" kendo-date-picker="" required ng-model="buvera.FromDate" k-format="'yyyy-MM-dd'" ng-pattern="/^(199\d)|([2-9]\d{3})-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/">
+
+                                                        <span ng-show=" form.fromDate.$invalid">
+                                                            <span ng-show="form.fromDate.$error.required" class="help-block error margin-bottom-00 "><i class="fa fa-warning"></i> From date is required.</span>
+                                                            <span ng-show="form.fromDate.$error.pattern" class="help-block error margin-bottom-00 "><i class="fa fa-warning"></i> Invalid date format, should be yyyy-mm-dd.</span>
+                                                        </span>
+                                                    </span>
+                                                </td>
+                                                <td>&nbsp;&nbsp;&nbsp;</td>
+                                                <td width="20%">
+                                                    <span class="header-search">
+                                                        To: &nbsp;&nbsp;  <input placeholder="yyyy-mm-dd" name="toDate" ng-disabled="readOnly" kendo-date-picker="" ng-model="buvera.ToDate" k-format="'yyyy-MM-dd'" required ng-pattern="/^(199\d)|([2-9]\d{3})-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/">
+
+                                                        <span ng-show=" form.toDate.$invalid">
+                                                            <span ng-show="form.toDate.$error.required" class="help-block error margin-bottom-00 "><i class="fa fa-warning"></i> To date is required.</span>
+                                                            <span ng-show="form.toDate.$error.pattern" class="help-block error margin-bottom-00 "><i class="fa fa-warning"></i> Invalid date format, should be yyyy-mm-dd.</span>
+                                                        </span>
+                                                    </span>
+                                                </td>
+                                                <td>&nbsp;&nbsp;&nbsp;</td>
+                                                <td width="30%">
+                                                    <span class="header-search">
+                                                        Branch : &nbsp;&nbsp;
+                                                        <select style="border: none" name="branch" class="form-control col-sm-12" data-ng-model="buvera.BranchId"
+                                                                data-ng-options="i.BranchId as i.Name for i in branches">
+                                                            <option value="">Please select</option>
+                                                        </select>
+
+                                                    </span>
+                                                </td>
+                                               
+                                                <td>&nbsp;&nbsp;&nbsp;</td>
+                                                <td><button class="btn btn-primary" ng-click="SearchBuvera(buvera)">Search</button></td>
+                                            </tr>
+                                    </table>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel">
+                    <div>
+                        <div class="panel-body">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <!--<div class="row" ng-hide="order.ProductId !=1">-->
+                                        <div class="row">
+                                            <!--<div class="col-sm-12 col-md-12">
+                                                Grade:
+                                            </div>-->
+                                            <div class="col-md-3 col-sm-12">
+                                                <td>
+                                                    <div class="col-sm-12 col-md-12">
+                                                        <h3> Super</h3>
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th width="40%">Value </th>
+                                                                        <th width="35%">Quantity</th>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="40%"><p> 10 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{buvera.TotalSuperTenQuantity | number}}</p>
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="40%"><p> 25 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{buvera.TotalSuperTwoFiveQuantity | number}}</p>
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="40%"><p> 50 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{buvera.TotalSuperFiveZeroQuantity | number}}</p>
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="40%"><p> 100 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{buvera.TotalSuperHundredQuantity | number}}</p>
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="40%"><p> 5 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{buvera.TotalSuperFiveQuantity | number}}</p>
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="40%"><p> 1 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{buvera.TotalSuperOneQuantity | number}}</p>
+                                                                        </td>
+
+                                                                    </tr>
+
+
+                                                                </tbody>
+                                                            </table>
+
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="col-sm-12 col-md-12">
+                                                        <h3> Number 1</h3>
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th width="40%">Value </th>
+                                                                        <th width="35%">Quantity</th>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="40%"><p> 10 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{buvera.TotalNumberOneTenQuantity | number}}</p>
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="40%"><p> 25 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{buvera.TotalNumberOneTwoFiveQuantity | number}}</p>
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="40%"><p> 50 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{buvera.TotalNumberOneFiveZeroQuantity | number}}</p>
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="40%"><p> 100 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{buvera.TotalNumberOneHundredQuantity | number}}</p>
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="40%"><p> 5 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{buvera.TotalNumberOneFiveQuantity | number}}</p>
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="40%"><p> 1 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{buvera.TotalNumberOneOneQuantity | number}}</p>
+                                                                        </td>
+
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </div>
+                                            <div class="row">
+
+                                              
+
+                                                <td>
+                                                    <div class="col-sm-12 col-md-12">
+                                                        <h3> Kabale</h3>
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th width="40%">Value </th>
+                                                                        <th width="35%">Quantity</th>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="40%"><p> 10 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{buvera.TotalKabaleTenQuantity | number}}</p>
+                                                                           
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="40%"><p> 25 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{buvera.TotalKabaleTwoFiveQuantity | number}}</p>
+                                                                               </td>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="40%"><p> 50 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{buvera.TotalKabaleFiveZeroQuantity | number}}</p>
+                                                                           
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="40%"><p> 100 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{buvera.TotalKabaleHundredQuantity | number}}</p>
+                                                                           
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="40%"><p> 5 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{buvera.TotalKabaleFiveQuantity | number}}</p>
+                                                                           
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="40%"><p> 1 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{buvera.TotalKabaleOneQuantity | number}}</p>
+                                                                           
+                                                                        </td>
+
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="col-sm-12 col-md-12">
+                                                        <h3> Number 1.5</h3>
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th width="40%">Value </th>
+                                                                        <th width="35%">Quantity</th>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="40%"><p> 10 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{buvera.TotalNumberOneHalfTenQuantity | number}}</p>
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="40%"><p> 25 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{buvera.TotalNumberOneHalfTwoFiveQuantity | number}}</p>
+
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="40%"><p> 50 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{buvera.TotalNumberOneHalfFiveZeroQuantity | number}}</p>
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="40%"><p> 100 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{buvera.TotalNumberOneHalfHundredQuantity | number}}</p>
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="40%"><p> 5 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{buvera.TotalNumberOneHalfFiveQuantity | number}}</p>
+
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="40%"><p> 1 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{buvera.TotalNumberOneHalfOneQuantity | number}}</p>
+                                                                        </td>
+
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                               
+                                            </div>
+                                            <br />
+                                            <div class="hr-line-dashed"></div>
+
+                                        </div>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                            <div class="row">
+
+
+                                <div class="col-sm-12" style="padding-left: 0px">
+
+
+                                    <div class="hr-line-dashed"></div>
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

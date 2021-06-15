@@ -1,0 +1,122 @@
+﻿
+
+<div id="header" ng-include="'/app/views/_common/header.html'"></div>
+
+<aside id="menu" ng-include="'/app/views/_common/navigation.html'"></aside>
+
+<div id="wrapper">
+
+    <div ng-include="'/app/views/_common/Breadcrumb.html'"></div>
+    <div ng-controller="ReportCreditorController">
+
+
+        <div class="clear0"></div>
+        <hr>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">View Creditors</h3>
+                    </div>
+                    <div class="panel-body">
+                        <table id="search" width="900">
+                            <tbody>
+                                <tr>
+
+                                    <td>&nbsp;&nbsp;&nbsp;</td>
+                                    <td width="20%">
+                                        <span class="header-search">
+                                            Date: &nbsp;&nbsp;  <input placeholder="yyyy-mm-dd" name="toDate" ng-disabled="readOnly" kendo-date-picker="" ng-model="searchDate.ToDate" k-format="'yyyy-MM-dd'" required ng-pattern="/^(199\d)|([2-9]\d{3})-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/">
+
+                                            <span ng-show=" form.toDate.$invalid">
+                                                <span ng-show="form.toDate.$error.required" class="help-block error margin-bottom-00 "><i class="fa fa-warning"></i> To date is required.</span>
+                                                <span ng-show="form.toDate.$error.pattern" class="help-block error margin-bottom-00 "><i class="fa fa-warning"></i> Invalid date format, should be yyyy-mm-dd.</span>
+                                            </span>
+                                        </span>
+                                    </td>
+                                    <td>&nbsp;&nbsp;&nbsp;</td>
+                                    <td>
+                                        <button class="btn btn-primary btn-rounded" ng-click="GenerateCreditorList(searchDate)">GenerateList</button>
+                                    </td>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <td>
+                                        <button onclick="window.focus();window.print();" class="btn btn-primary2">Print</button>
+                                    </td>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </tr>
+                                </tbody>
+                            </table>
+                                    <!--<span ng-show="data.length > 0">
+                    <span class="fa-hover"><a href="" ng-click="DownloadExcelFile()"><i class="fa fa-download"></i> Download report</a></span>
+                </span>-->
+
+
+                                    <hr />
+
+
+                    </div>
+
+
+
+                    <div ng-show="data.length > 0">
+
+                        <table id="reportTable">
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <div>Creditor Number</div>
+                                    </th>
+                                    <th>
+                                        Branch
+                                    </th>
+                                    <th>
+                                        <div>Creditor Name</div>
+                                    </th>
+                                    
+                                    <th>
+                                        <div>Amount</div>
+                                    </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="creditor in data">
+                                    <td style="font-size: 18px !important;" width="5%">{{creditor.CreditorNumber}}</td>
+                                    <td style="font-size: 18px !important;" width="5%">{{creditor.BranchName}}</td>
+                                    <td style="font-size: 18px !important;" width="15%">{{ creditor.CreditorName }}</td>
+
+                                    <td style="font-size: 18px !important;" width="15%">{{creditor.Amount |number}}</td>
+
+
+
+                                </tr>
+                                <tr>
+                                    <td style="font-size: 18px !important;" width="10%">Total Amount</td>
+                                    <td style="font-size: 18px !important;" width="10%"></td>
+                                    <td style="font-size: 18px !important;" width="10%"></td>
+                                    <td style="font-size: 18px !important;" width="10%">{{totalAmount |number}}</td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                      
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>
+</div>
+

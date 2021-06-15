@@ -1,0 +1,141 @@
+﻿
+<div id="header" ng-include="'/app/views/_common/header.html'"></div>
+
+<aside id="menu" ng-include="'/app/views/_common/navigation.html'"></aside>
+
+<div id="wrapper">
+
+    <div ng-include="'/app/views/_common/Breadcrumb.html'"></div>
+
+    <div class="content" ng-controller="OutSourcerOutPutDetailController">
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="hpanel">
+                    <div>
+                        <form name="form" class="form-horizontal ng-pristine ng-valid col-md-12" novalidate unsaved-warning-form>
+                            <tabset>
+                                <tab>
+                                    <tab-heading>
+                                        <i class="fa fa-laptop"></i> OutPut Detail
+                                    </tab-heading>
+
+                                    <div class="panel-body">
+
+
+                                        <div class="row">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Store Name</h5>
+                                                    <p>{{outPut.StoreName}}</p>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Total Quantity</h5>
+                                                    <p>{{outPut.TotalQuantity}} kgs</p>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Price/kg</h5>
+                                                    <p>{{outPut.Price | number}} shs </p>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Total Amount</h5>
+                                                    <p>{{outPut.TotalAmount | number}} shs </p>
+
+                                                </div>
+                                            </div>
+
+
+
+
+
+
+                                        </div>
+
+
+
+
+
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-12">
+                                                <h5> Grade: </h5>
+                                            </div>
+                                            <div ng-repeat="grade in outPut.Grades" class="col-md-3 col-sm-12">
+                                                <div class="col-sm-12 col-md-12">
+                                                    <h3> {{grade.Value}}</h3>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th width="15%">Value </th>
+                                                                    <th width="25%">Quantity</th>
+                                                                    <th width="25%">Price</th>
+                                                                    <th width="35%">Amount</th>
+                                                                </tr>
+                                                                <tr ng-repeat="x in grade.Denominations">
+                                                                    <td width="15%"><p> {{ x.Value }} Kg</p></td>
+                                                                    <td width="25%">
+                                                                        <p>{{x.Quantity}}</p>
+                                                                    </td>
+                                                                    <td width="25%"><p>{{x.Price}}</p></td>
+                                                                    <td width="35%"><p>{{x.Amount}}</p></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="hr-line-dashed"></div>
+
+                                        </div>
+
+
+
+                                        <div class="row">
+
+
+                                            <div class="col-sm-12" style="padding-left: 0px">
+
+
+                                                <div class="hr-line-dashed"></div>
+
+
+
+
+                                            </div>
+                                        </div>
+
+                                       
+                                        
+                                    </div>
+
+                                </tab>
+
+
+                            </tabset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

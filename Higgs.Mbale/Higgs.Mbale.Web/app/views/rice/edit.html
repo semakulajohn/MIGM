@@ -1,0 +1,201 @@
+﻿
+<div id="header" ng-include="'/app/views/_common/header.html'"></div>
+
+<aside id="menu" ng-include="'/app/views/_common/navigation.html'"></aside>
+
+<div id="wrapper">
+
+    <div ng-include="'/app/views/_common/Breadcrumb.html'"></div>
+
+    <div class="content" ng-controller="RiceInPutEditController">
+
+        <span us-spinner="{radius:30, width:16, length: 16}" spinner-key="global-spinner"></span>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="hpanel">
+                    <div>
+                        <form name="form" class="form-horizontal ng-pristine ng-valid col-md-12" novalidate unsaved-warning-form>
+                            <input type="hidden" data-description="This field is used for intergration testing" name="itest-Id" value="{{batchOutPut.BatchOutPutId}}" />
+                            <tabset>
+                                <tab>
+                                    <tab-heading>
+                                        <i class="fa fa-laptop"></i> Edit Rice InPut
+                                    </tab-heading>
+
+                                    <div class="panel-body">
+
+
+
+                                        <div class="row">
+
+                                            <div class="form-group col-sm-6">
+
+                                                <div class="col-sm-6">
+                                                    <label>Price per Kg</label>
+                                                    <input ng-readonly="readOnly" name="price" class="form-control" ng-model="riceInput.Price" required ng-pattern="/^\-?\d+((\.)\d+)?$/" ng-maxlength="50" ng-class="{ errorinput: form.price.$invalid }">
+                                                    <span ng-show="form.price.$invalid">
+                                                        <span ng-show="form.price.$error.required" class="help-block error"><i class="fa fa-warning"></i>Price is required.</span>
+                                                        <span ng-show="form.price.$error.pattern" class="help-block error margin-bottom-00 ">
+                                                            <i class="fa fa-warning"></i> Invalid format, should be a number(remove any letters if any)
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                           
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <label>Branch</label>
+                                                    <select style="border: none" name="branch" class="form-control" data-ng-model="riceInput.BranchId" ng-change="OnBranchChange(riceInput)" required ng-class="{errorinput:form.branch.$invalid}"
+                                                            data-ng-options="i.BranchId as i.Name for i in xdata.branches">
+                                                        <option value="">Please select</option>
+                                                    </select>
+
+                                                    <span ng-show="form.branch.$invalid">
+                                                        <span ng-show="form.branch.$error.required" class="help-block error"><i class="fa fa-warning"></i>Branch is a required field.</span>
+                                                    </span>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <label>Store</label>
+                                                    <select style="border: none" name="store" class="form-control col-sm-12" data-ng-model="riceInput.StoreId" required ng-class="{errorinput:form.store.$invalid}"
+                                                            data-ng-options="i.StoreId as i.Name for i in stores">
+                                                        <option value="">Please select</option>
+                                                    </select>
+
+                                                    <span ng-show="form.store.$invalid">
+                                                        <span ng-show="form.store.$error.required" class="help-block error"><i class="fa fa-warning"></i>store is a required field.</span>
+                                                    </span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-12">
+                                                Grade:
+                                            </div>
+                                            <div ng-if="riceInPutId==0">
+
+                                                <div ng-repeat="grade in grades" class="checkbox col-md-3 col-sm-12">
+                                                    <div class="col-sm-12 col-md-12">
+                                                        <input id="grade_{{grade.GradeId}}" type="checkbox" name="grade_{{grade.GradeId}}"
+                                                               checklist-model="selectedGrades"
+                                                               checklist-value="grade">
+                                                        <label for="grade-{{grade.GradeId}}"> {{grade.Value}} </label>
+
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th width="20%">Value </th>
+                                                                        <th width="40%">Number Of Bags</th>
+                                                                        <!-- <th width="40%">Price</th>-->
+                                                                    </tr>
+                                                                    <tr ng-repeat="x in grade.Denominations">
+                                                                        <td width="20%"><p> {{ x.Value }} Kg</p></td>
+                                                                        <td width="40%">
+                                                                            <input name="amount{{x.DenominationId}}" class="form-controlx" ng-model="x.Quantity" ng-pattern="/^\-?\d+((\.)\d+)?$/" ng-class="{ errorinput: form.amount{{x.DenominationId}}.$invalid }" ng-disabled="">
+                                                                            <span ng-show="form.amount{{x.DenominationId}}.$invalid">
+                                                                                <span ng-show="form.amount{{x.DenominationId}}.$error.pattern" class="help-block error"><i class="fa fa-warning"></i> Invalid formart, quantity should be double or number</span>
+                                                                            </span>
+                                                                        </td>
+                                                                        
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!--<div class="hr-line-dashed"></div>-->
+
+                                    <div class="form-group">
+                                        <div class="col-md-2">
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="check-element sample-show-hide alert alert-success animate-show" ng-show="showMessageSave" style="clear:both;">
+                                                <i class="fa-fw fa fa-check"></i>
+                                                <span>Rice input has been saved</span>
+                                            </div>
+                                            <div class="check-element sample-show-hide alert alert-success animate-show" ng-show="showMessageFailedSave" style="clear:both;">
+                                                <i class="fa-fw fa fa-check"></i><span>Rice input has not  been saved</span>
+                                            </div>
+                                            <div class="check-element sample-show-hide alert alert-success animate-show" ng-show="showMessageDeleted" style="clear:both;">
+                                                <i class="fa-fw fa fa-check"></i><span>Rice input has been deleted</span>
+                                            </div>
+                                            <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageDeleteFailed" style="clear:both;">
+                                                <i class="fa-fw fa fa-check"></i><span>Rice input has failed to be deleted</span>
+                                            </div>
+
+                                            <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageFlourOutPut" style="clear:both;">
+                                                <i class="fa-fw fa fa-check"></i><span>Input of Rice doesn't Match with input in Grade Section</span>
+                                            </div>
+
+                                            <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageNoGradeSelected" style="clear:both;">
+                                                <i class="fa-fw fa fa-check"></i><span>You have not Selected Any Grade</span>
+                                            </div>
+                                            <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageNotEnoughBuvera" style="clear:both;">
+                                                <i class="fa-fw fa fa-check"></i><span>There is no Enough buvera in Store</span>
+                                            </div>
+                                            <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageNoGradeBuvera" style="clear:both;">
+                                                <i class="fa-fw fa fa-check"></i><span>There are no Buveras For Selected Grade</span>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <div class="col-sm-8 col-sm-offset-2">
+
+                                            <button class="btn btn-default" type="submit" ng-click="Cancel()">
+                                                Back
+                                            </button>
+
+                                            <div class="btn-group" ng-hide="riceInPut.RiceInputId > 0">
+
+                                                <button class="btn btn-info dropdown-toggle" ng-really-click="Save(riceInput)" ng-disabled="!form.$valid" ng-really-message='Are you sure you want to save this input'>
+                                                    Save
+                                                </button>
+                                               
+                                                <ul class="dropdown-menu">
+
+                                                    <li ng-show="riceInput.RiceInputId > 0">
+                                                        <a ng-really-message='Are you sure you want to delete this Rice input' ng-disabled="!form.$valid" class="btn text-align-left" href="" ng-really-click="Delete(riceInput.RiceInputId)" data-original-title="Delete">Delete</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                </tab>
+
+
+
+
+
+                            </tabset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+

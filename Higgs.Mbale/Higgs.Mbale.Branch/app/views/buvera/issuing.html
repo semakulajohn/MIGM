@@ -1,0 +1,264 @@
+﻿
+<div id="header" ng-include="'/app/views/_common/header.html'"></div>
+
+<aside id="menu" ng-include="'/app/views/_common/navigation.html'"></aside>
+
+<div id="wrapper">
+
+    <div ng-include="'/app/views/_common/Breadcrumb.html'"></div>
+
+    <div class="content" ng-controller="BuveraTransferIssueController">
+
+        <div class="text-center">
+            <a class="btn btn-danger btn-sm">  {{store.Name | uppercase}} </a>
+        </div>
+        <span us-spinner="{radius:30, width:16, length: 16}" spinner-key="global-spinner"></span>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="hpanel">
+                    <div>
+                        <form name="form" class="form-horizontal ng-pristine ng-valid col-md-12" novalidate unsaved-warning-form>
+                            <input type="hidden" data-description="This field is used for intergration testing" name="itest-Id" value="{{buveraTransfer.buveraTransferId}}" />
+                            <tabset>
+                                <tab>
+                                    <tab-heading>
+                                        <i class="fa fa-laptop"></i> Transfer Buvera
+                                    </tab-heading>
+
+                                    <div class="panel-body">
+
+
+
+                                        <div class="row">
+
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <label>To Branch</label>
+                                                    <select style="border: none" name="branch" class="form-control col-sm-12" data-ng-model="buveraTransfer.BranchId" ng-change="OnBranchChange(buveraTransfer)" required ng-class="{errorinput:form.branch.$invalid}"
+                                                            data-ng-options="i.BranchId as i.Name for i in bdata.branches">
+                                                        <option value="">Please select</option>
+                                                    </select>
+
+                                                    <span ng-show="form.branch.$invalid">
+                                                        <span ng-show="form.branch.$error.required" class="help-block error"><i class="fa fa-warning"></i>Branch is a required field.</span>
+                                                    </span>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <label>To Store</label>
+                                                    <select style="border: none" name="store" class="form-control col-sm-12" data-ng-model="buveraTransfer.StoreId" required ng-class="{errorinput:form.store.$invalid}"
+                                                            data-ng-options="i.StoreId as i.Name for i in stores">
+                                                        <option value="">Please select</option>
+                                                    </select>
+
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                      
+
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-12">
+                                                Grade:
+                                            </div>
+                                            <div ng-if="buveraTransferId==0 ||buveraTransfer.Grades.length==0 ">
+                                                <div ng-repeat="grade in grades" class="checkbox col-md-3 col-sm-12">
+                                                    <div class="col-sm-12 col-md-12">
+                                                        <input id="grade_{{grade.GradeId}}" type="checkbox" name="grade_{{grade.GradeId}}"
+                                                               checklist-model="selectedGrades"
+                                                               checklist-value="grade">
+                                                        <label for="grade-{{grade.GradeId}}"> {{grade.Value}} </label>
+
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th width="40%">Value </th>
+                                                                        <th width="60%">Number Of Bags</th>
+                                                                    </tr>
+                                                                    <tr ng-repeat="x in grade.Denominations">
+                                                                        <td width="40%"><p> {{ x.Value }} Kg</p></td>
+                                                                        <td width="60%">
+                                                                            <input name="amount{{x.DenominationId}}" class="form-controlx" ng-model="x.Quantity" ng-pattern="/^\-?\d+((\.)\d+)?$/" ng-class="{ errorinput: form.amount{{x.DenominationId}}.$invalid }" ng-disabled="">
+                                                                            <span ng-show="form.amount{{x.DenominationId}}.$invalid">
+                                                                                <span ng-show="form.amount{{x.DenominationId}}.$error.pattern" class="help-block error"><i class="fa fa-warning"></i> Invalid formart, amount should be double or number</span>
+                                                                            </span>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div ng-if="buveraTransfer.buveraTransferId!=0">
+                                                <div ng-repeat="grade in buveraTransfer.Grades" class="checkbox col-md-3 col-sm-12">
+                                                    <div class="col-sm-12 col-md-12">
+                                                        <input id="grade_{{grade.GradeId}}" type="checkbox" name="grade_{{grade.GradeId}}"
+                                                               checklist-model="buveraTransfer.Grades"
+                                                               checklist-value="grade">
+                                                        <label for="grade-{{grade.GradeId}}"> {{grade.Value}} </label>
+
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th width="40%">Value </th>
+                                                                        <th width="60%">Number Of Bags</th>
+                                                                    </tr>
+                                                                    <tr ng-repeat="x in grade.Denominations">
+                                                                        <td width="40%"><p> {{ x.Value }} Kg</p></td>
+                                                                        <td width="60%">
+                                                                            <input name="amount{{x.DenominationId}}" class="form-controlx" ng-model="x.Quantity" ng-pattern="/^\-?\d+((\.)\d+)?$/" ng-class="{ errorinput: form.amount{{x.DenominationId}}.$invalid }" ng-disabled="">
+                                                                            <span ng-show="form.amount{{x.DenominationId}}.$invalid">
+                                                                                <span ng-show="form.amount{{x.DenominationId}}.$error.pattern" class="help-block error"><i class="fa fa-warning"></i> Invalid formart, amount should be double or number</span>
+                                                                            </span>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="hr-line-dashed"></div>
+
+                                        </div>
+
+
+
+                                        <div class="row">
+
+
+                                            <div class="col-sm-12" style="padding-left: 0px">
+
+
+                                                <div class="hr-line-dashed"></div>
+
+
+                                                <div class="form-group">
+                                                    <div class="col-md-2">
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        <div class="check-element sample-show-hide alert alert-success animate-show" ng-show="showMessageSave" style="clear:both;">
+                                                            <i class="fa-fw fa fa-check"></i>
+                                                            <span>buveraTransfers have been Added to store</span>
+                                                        </div>
+                                                        <div class="check-element sample-show-hide alert alert-success animate-show" ng-show="showMessageFailedSave" style="clear:both;">
+                                                            <i class="fa-fw fa fa-check"></i><span> buveraTransfer has not  been saved</span>
+                                                        </div>
+                                                        <div class="check-element sample-show-hide alert alert-success animate-show" ng-show="showMessageDeleted" style="clear:both;">
+                                                            <i class="fa-fw fa fa-check"></i><span>buveraTransfer have been deleted</span>
+                                                        </div>
+                                                        <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageDeleteFailed" style="clear:both;">
+                                                            <i class="fa-fw fa fa-check"></i><span>buveraTransfer have failed to be deleted</span>
+                                                        </div>
+
+
+
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <div class="col-sm-8 col-sm-offset-2">
+
+                                                        <button class="btn btn-default" type="submit" ng-click="Cancel()">
+                                                            Back
+                                                        </button>
+
+                                                        <div class="btn-group">
+                                                            
+                                                            <button ng-really-click="Save(buveraTransfer)" class="btn btn-primary dropdown-toggle" ng-really-message='Are you sure you want to transfer these buvera' ng-disabled=" !form.$valid">
+                                                                Issue Out
+                                                            </button>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </tab>
+
+                                <tab>
+                                    <tab-heading>
+                                        <i class="fa fa-desktop"></i> Properties
+                                    </tab-heading>
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td width="30%">
+                                                    <span class="font-bold">Id</span>
+                                                    <br />
+                                                    <span class="font-trans">Id of buveraTransfer</span>
+                                                </td>
+                                                <td>
+                                                    <span class="font-normal">{{buveraTransfer.buveraTransferId}}</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span class="font-bold"> Created By</span>
+                                                    <br />
+                                                    <span class="font-trans">Original author</span>
+                                                </td>
+                                                <td>
+                                                    <span class="font-normal">{{buveraTransfer.CreatedBy}} </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span class="font-bold"> Created on</span>
+                                                    <br />
+                                                    <span class="font-trans">Date Time buveraTransfer created</span>
+                                                </td>
+                                                <td>
+                                                    <span class="font-normal">{{buveraTransfer.CreatedOn|date:"yyyy-MM-dd hh:mm" }}</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span class="font-bold">Last edited by</span>
+                                                    <br />
+                                                    <span class="font-trans">Editor who last edited  this buveraTransfer </span>
+                                                </td>
+                                                <td>
+                                                    <span class="font-normal">{{buveraTransfer.UpdatedBy}}  </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span class="font-bold"> Last edited</span>
+                                                    <br />
+                                                    <span class="font-trans">Date Time this buveraTransfer was last edited</span>
+                                                </td>
+                                                <td>
+                                                    <span class="font-normal">{{buveraTransfer.Timestamp | date:"yyyy-MM-dd hh:mm"}}</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </tab>
+                            </tabset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

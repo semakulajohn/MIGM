@@ -1,0 +1,129 @@
+<div id="navigation" ng-controller="NavController">
+    <div class="profile-picture" >       
+        <div ng-if="user.UserPhoto == null">
+            <img src="/images/mbale_logo.jpg" width="200" height="200" class="img-circle m-b" />
+        </div>
+        <div class="stats-label text-color">
+            <span class="font-extra-bold font-uppercase">{{user.UserName}}</span>
+          
+            <div class="dropdown">
+                <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+        <small class="text-muted" >{{user.RoleName}} <b class="caret"></b></small>
+    </a>
+
+                <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                   <!-- <li><a ui-sref="profile">Profile</a></li>-->
+                    <li class="divider"></li>
+                    <li><a data-toggle="modal" data-target="#logoutModal">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+   
+    <ul side-navigation class="nav" id="side-menu">
+
+
+        <li ui-sref-active="active">
+            <a ui-sref="dashboard"> <span class="nav-label">Dashboard</span></a>
+        </li>
+
+
+        <li ng-class="{active: $state.includes('batches')}">
+            <a href="#"><span class="nav-label">Batches</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{in: $state.includes('batches')}">
+                <li ui-sref-active="active"><a ui-sref="batches.list">All Batches</a></li>
+
+            </ul>
+        </li>
+
+        <li ng-class="{active: $state.includes('cash')}">
+            <a href="#"><span class="nav-label">Cash</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{in: $state.includes('cash')}">
+                <li ui-sref-active="active"><a ui-sref="cash.list">Cash</a></li>
+
+            </ul>
+        </li>
+        <!--<li ng-class="{active: $state.includes('supplies')}">
+        <a href="#"><span class="nav-label">UnApproved</span><span class="fa arrow"></span> </a>
+        <ul class="nav nav-second-level" ng-class="{in: $state.includes('supplies')}">
+            <li ui-sref-active="active"><a ui-sref="unapprovedsupplies-list">Supplies</a></li>
+            <li ui-sref-active="active"><a ui-sref="deposits-list">Account Transactions</a></li>
+            <li ui-sref-active="active"><a ui-sref="unapproveddeliveries-list">Deliveries</a></li>
+
+        </ul>
+    </li>-->
+        <!--<li ng-class="{active: $state.includes('cashs')}">
+        <a href="#"><span class="nav-label">Cash Transfers</span><span class="fa arrow"></span> </a>
+        <ul class="nav nav-second-level" ng-class="{in: $state.includes('cashs')}">
+            <li ui-sref-active="active"><a ui-sref="cashtransfer-list">Cash Transfers</a></li>
+
+        </ul>
+    </li>-->
+        <!--<li ng-class="{active: $state.includes('cashsale')}">
+        <a href="#"><span class="nav-label">Cash Sales</span><span class="fa arrow"></span> </a>
+        <ul class="nav nav-second-level" ng-class="{in: $state.includes('cashsale')}">
+
+            <li ui-sref-active="active"><a ui-sref="cashsale-list">CashSale </a></li>
+        </ul>
+    </li>-->
+
+
+
+        <li ng-class="{active: $state.includes('casualWorkers')}">
+            <a href="#"><span class="nav-label">Workers</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{in: $state.includes('casualWorkers')}">
+                <li ui-sref-active="active"><a ui-sref="branch-casualWorker-list">All CasualWorkers</a></li>
+
+            </ul>
+        </li>
+
+        <li ng-class="{active: $state.includes('utilityaccounts')}">
+            <a href="#"><span class="nav-label">Utility Accounts</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{in: $state.includes('utilityaccounts')}">
+                <li ui-sref-active="active"><a ui-sref="branchcategory-utility-list">All Utilities</a></li>
+
+            </ul>
+        </li>
+        <li ng-class="{active: $state.includes('requistions')}">
+            <a href="#"><span class="nav-label">Requistions</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{in: $state.includes('requistions')}">
+                <li ui-sref-active="active"><a ui-sref="requistions.list">All Requistions</a></li>
+
+
+            </ul>
+        </li>
+
+
+
+
+
+        <li ng-class="{active: $state.includes('stores')}">
+            <a href="#"><span class="nav-label">Stores</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{in: $state.includes('stores')}">
+                <li ui-sref-active="active"><a ui-sref="stores.list">All Stores</a></li>
+            </ul>
+        </li>
+        <li ui-sref-active="active">
+            <a ui-sref="suppliers.list"> <span class="nav-label">All Suppliers</span></a>
+        </li>
+
+        <li ui-sref-active="active">
+            <a ui-sref="customers.list"> <span class="nav-label">All Customers</span></a>
+        </li>
+        <li ui-sref-active="active">
+            <a ui-sref="mechanics.list"> <span class="nav-label">All Mechanics</span></a>
+        </li>
+        <li ng-class="{active: $state.includes('reports')}">
+            <a href="#"><span class="nav-label">All Reports</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{in: $state.includes('reports')}">
+                <li ui-sref-active="active"><a ui-sref="reports.index">Reports</a></li>
+
+            </ul>
+        </li>
+
+
+
+    </ul>
+
+</div>

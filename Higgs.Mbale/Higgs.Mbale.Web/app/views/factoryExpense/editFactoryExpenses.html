@@ -1,0 +1,331 @@
+﻿
+<div id="header" ng-include="'/app/views/_common/header.html'"></div>
+
+<aside id="menu" ng-include="'/app/views/_common/navigation.html'"></aside>
+
+<div id="wrapper">
+
+    <div ng-include="'/app/views/_common/Breadcrumb.html'"></div>
+
+    <div class="content" ng-controller="FactoryExpenseEditController">
+
+        <span us-spinner="{radius:30, width:16, length: 16}" spinner-key="global-spinner"></span>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="hpanel">
+                    <div>
+                        <form name="form" class="form-horizontal ng-pristine ng-valid col-md-12" novalidate unsaved-warning-form>
+                            <input type="hidden" data-description="This field is used for intergration testing" name="itest-Id" value="{{factoryExpense.FactoryExpenseId}}" />
+                            <tabset>
+                                <tab>
+                                    <tab-heading>
+                                        <i class="fa fa-laptop"></i> Edit Factory Expense
+                                    </tab-heading>
+
+                                    <div class="panel-body">
+
+
+
+                                        <div class="row">
+
+
+                                            <div class="row">
+
+
+                                                <div class="form-group col-sm-6">
+                                                    <div class="col-sm-12">
+                                                        <label>Branch</label>
+                                                        <select style="border: none" name="branch" class="form-control col-sm-12" data-ng-model="factoryExpenses.BranchId" required ng-class="{errorinput:form.branch.$invalid}"
+                                                                data-ng-options="i.BranchId as i.Name for i in branches">
+                                                            <option value="">Please select</option>
+                                                        </select>
+
+                                                        <span ng-show="form.branch.$invalid">
+                                                            <span ng-show="form.branch.$error.required" class="help-block error"><i class="fa fa-warning"></i>Branch is a required field.</span>
+                                                        </span>
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    <div class="col-sm-12">
+                                                        <label>Department</label>
+                                                        <select style="border: none" name="sector" class="form-control col-sm-12" data-ng-model="factoryExpenses.SectorId" required ng-class="{errorinput:form.sector.$invalid}"
+                                                                data-ng-options="i.SectorId as i.Name for i in sectors">
+                                                            <option value="">Please select</option>
+                                                        </select>
+
+                                                        <span ng-show="form.sector.$invalid">
+                                                            <span ng-show="form.sector.$error.required" class="help-block error"><i class="fa fa-warning"></i>This is a required field.</span>
+                                                        </span>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div>
+
+                                                <div class="checkbox col-md-12 col-sm-12">
+                                                    <div class="col-sm-12 col-md-12">
+
+
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th width="75%">Description </th>
+                                                                        <th width="25%">Amount</th>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="75%">
+                                                                            <input size="90" name="description" class="form-controlx" ng-model="factoryExpenses1.Description" ng-class="{ errorinput: form.amount.$invalid }" ng-disabled="">                                                                           <span ng-show="form.Description.$invalid">
+
+
+                                                                        </td>
+                                                                        <td width="25%">
+                                                                            <input size="20" name="amount" class="form-controlx" ng-model="factoryExpenses1.Amount" ng-pattern="/^\-?\d+((\.)\d+)?$/" ng-class="{ errorinput: form.amount.$invalid }" ng-disabled="">
+                                                                            <span ng-show="form.amount.$invalid">
+                                                                                <span ng-show="form.amount.$error.pattern" class="help-block error">
+                                                                                    <i class="fa fa-warning">
+                                                                                    </i> Invalid formart, amount should be double or number
+                                                                                </span>
+                                                                            </span>
+                                                                        </td>
+
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="75%">
+                                                                            <input size="90" name="description2" class="form-controlx" ng-model="factoryExpenses2.Description" ng-class="{ errorinput: form.amount2.$invalid }" ng-disabled="">                                                                           <span ng-show="form.Description.$invalid">
+
+
+                                                                        </td>
+                                                                        <td width="25%">
+                                                                            <input size="20" name="amount2" class="form-controlx" ng-model="factoryExpenses2.Amount" ng-pattern="/^\-?\d+((\.)\d+)?$/" ng-class="{ errorinput: form.amount2.$invalid }" ng-disabled="">
+                                                                            <span ng-show="form.amount2.$invalid">
+                                                                                <span ng-show="form.amount2.$error.pattern" class="help-block error">
+                                                                                    <i class="fa fa-warning">
+                                                                                    </i> Invalid formart, amount should be double or number
+                                                                                </span>
+                                                                            </span>
+                                                                        </td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td width="75%">
+                                                                            <input size="90" name="description" class="form-controlx" ng-model="factoryExpenses3.Description" ng-class="{ errorinput: form.amount.$invalid }" ng-disabled="">                                                                           <span ng-show="form.Description.$invalid">
+
+
+                                                                        </td>
+                                                                        <td width="25%">
+                                                                            <input size="20" name="amount" class="form-controlx" ng-model="factoryExpenses3.Amount" ng-pattern="/^\-?\d+((\.)\d+)?$/" ng-class="{ errorinput: form.amount.$invalid }" ng-disabled="">
+                                                                            <span ng-show="form.amount.$invalid">
+                                                                                <span ng-show="form.amount.$error.pattern" class="help-block error">
+                                                                                    <i class="fa fa-warning">
+                                                                                    </i> Invalid formart, amount should be double or number
+                                                                                </span>
+                                                                            </span>
+                                                                        </td>
+
+
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td width="75%">
+                                                                            <input size="90" name="description" class="form-controlx" ng-model="factoryExpenses4.Description" ng-class="{ errorinput: form.amount.$invalid }" ng-disabled="">                                                                           <span ng-show="form.Description.$invalid">
+
+
+                                                                        </td>
+                                                                        <td width="25%">
+                                                                            <input size="20" name="amount" class="form-controlx" ng-model="factoryExpenses4.Amount" ng-pattern="/^\-?\d+((\.)\d+)?$/" ng-class="{ errorinput: form.amount.$invalid }" ng-disabled="">
+                                                                            <span ng-show="form.amount.$invalid">
+                                                                                <span ng-show="form.amount.$error.pattern" class="help-block error">
+                                                                                    <i class="fa fa-warning">
+                                                                                    </i> Invalid formart, amount should be double or number
+                                                                                </span>
+                                                                            </span>
+                                                                        </td>
+
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="75%">
+                                                                            <input size="90" name="description" class="form-controlx" ng-model="factoryExpenses5.Description" ng-class="{ errorinput: form.amount.$invalid }" ng-disabled="">                                                                           <span ng-show="form.Description.$invalid">
+
+
+                                                                        </td>
+                                                                        <td width="25%">
+                                                                            <input size="20" name="amount" class="form-controlx" ng-model="factoryExpenses5.Amount" ng-pattern="/^\-?\d+((\.)\d+)?$/" ng-class="{ errorinput: form.amount.$invalid }" ng-disabled="">
+                                                                            <span ng-show="form.amount.$invalid">
+                                                                                <span ng-show="form.amount.$error.pattern" class="help-block error">
+                                                                                    <i class="fa fa-warning">
+                                                                                    </i> Invalid formart, amount should be double or number
+                                                                                </span>
+                                                                            </span>
+                                                                        </td>
+
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="75%">
+                                                                            <input size="90" name="description" class="form-controlx" ng-model="factoryExpenses6.Description" ng-class="{ errorinput: form.amount.$invalid }" ng-disabled="">                                                                           <span ng-show="form.Description.$invalid">
+
+
+                                                                        </td>
+                                                                        <td width="25%">
+                                                                            <input size="20" name="amount" class="form-controlx" ng-model="factoryExpenses6.Amount" ng-pattern="/^\-?\d+((\.)\d+)?$/" ng-class="{ errorinput: form.amount.$invalid }" ng-disabled="">
+                                                                            <span ng-show="form.amount.$invalid">
+                                                                                <span ng-show="form.amount.$error.pattern" class="help-block error">
+                                                                                    <i class="fa fa-warning">
+                                                                                    </i> Invalid formart, amount should be double or number
+                                                                                </span>
+                                                                            </span>
+                                                                        </td>
+
+
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td width="75%">
+                                                                            <input size="90" name="description" class="form-controlx" ng-model="factoryExpenses7.Description" ng-class="{ errorinput: form.amount.$invalid }" ng-disabled="">                                                                           <span ng-show="form.Description.$invalid">
+
+
+                                                                        </td>
+                                                                        <td width="25%">
+                                                                            <input size="20" name="amount" class="form-controlx" ng-model="factoryExpenses7.Amount" ng-pattern="/^\-?\d+((\.)\d+)?$/" ng-class="{ errorinput: form.amount.$invalid }" ng-disabled="">
+                                                                            <span ng-show="form.amount.$invalid">
+                                                                                <span ng-show="form.amount.$error.pattern" class="help-block error">
+                                                                                    <i class="fa fa-warning">
+                                                                                    </i> Invalid formart, amount should be double or number
+                                                                                </span>
+                                                                            </span>
+                                                                        </td>
+
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="75%">
+                                                                            <input size="90" name="description" class="form-controlx" ng-model="factoryExpenses8.Description" ng-class="{ errorinput: form.amount.$invalid }" ng-disabled="">                                                                           <span ng-show="form.Description.$invalid">
+
+
+                                                                        </td>
+                                                                        <td width="25%">
+                                                                            <input size="20" name="amount" class="form-controlx" ng-model="factoryExpenses8.Amount" ng-pattern="/^\-?\d+((\.)\d+)?$/" ng-class="{ errorinput: form.amount.$invalid }" ng-disabled="">
+                                                                            <span ng-show="form.amount.$invalid">
+                                                                                <span ng-show="form.amount.$error.pattern" class="help-block error">
+                                                                                    <i class="fa fa-warning">
+                                                                                    </i> Invalid formart, amount should be double or number
+                                                                                </span>
+                                                                            </span>
+                                                                        </td>
+
+
+                                                                    </tr>
+                                                                 
+                                                                    <tr>
+                                                                        <td width="75%">
+                                                                            <input size="90" name="description" class="form-controlx" ng-model="factoryExpenses9.Description" ng-class="{ errorinput: form.amount.$invalid }" ng-disabled="">                                                                           <span ng-show="form.Description.$invalid">
+
+
+                                                                        </td>
+                                                                        <td width="25%">
+                                                                            <input size="20" name="amount" class="form-controlx" ng-model="factoryExpenses9.Amount" ng-pattern="/^\-?\d+((\.)\d+)?$/" ng-class="{ errorinput: form.amount.$invalid }" ng-disabled="">
+                                                                            <span ng-show="form.amount.$invalid">
+                                                                                <span ng-show="form.amount.$error.pattern" class="help-block error">
+                                                                                    <i class="fa fa-warning">
+                                                                                    </i> Invalid formart, amount should be double or number
+                                                                                </span>
+                                                                            </span>
+                                                                        </td>
+
+
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <br />
+                                            <div class="hr-line-dashed"></div>
+
+                                        </div>
+
+
+                                        <div class="hr-line-dashed"></div>
+
+
+                                        <div class="form-group">
+                                            <div class="col-md-2">
+                                            </div>
+                                            <div class="col-md-10">
+                                                <div class="check-element sample-show-hide alert alert-success animate-show" ng-show="showMessageSave" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i>
+                                                    <span>Factory Expense has been saved</span>
+                                                </div>
+                                                <div class="check-element sample-show-hide alert alert-success animate-show" ng-show="showMessageFailedSave" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i><span>Factory Expense has not  been saved</span>
+                                                </div>
+                                                <div class="check-element sample-show-hide alert alert-success animate-show" ng-show="showMessageDeleted" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i><span>Factory Expense has been deleted</span>
+                                                </div>
+                                                <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageDeleteFailed" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i><span>Factory Expense has failed to be deleted</span>
+                                                </div>
+
+
+
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <div class="col-sm-8 col-sm-offset-2">
+
+                                                <button class="btn btn-default" type="submit" ng-click="Cancel()">
+                                                    Back
+                                                </button>
+
+                                                <div class="btn-group">
+                                                    <button ng-really-click="SaveFactoryExpenses(factoryExpenses,factoryExpenses1,factoryExpenses2,factoryExpenses3,factoryExpenses4,factoryExpenses5,factoryExpenses6,factoryExpenses7,factoryExpenses8,factoryExpenses9)" ng-really-message='Are you sure you want to add  these factory expenses' class="btn btn-info dropdown-toggle" ng-disabled="!form.$valid">
+                                                        Save
+                                                    </button>
+
+                                                    <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                                                        <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+
+                                                        <li ng-show="factoryExpense.FactoryExpenseId > 0">
+                                                            <a ng-really-message='Are you sure you want to delete this Factory Expense' ng-disabled="!form.$valid" class="btn text-align-left" href="" ng-really-click="Delete(factoryExpense.FactoryExpenseId)" data-original-title="Delete">Delete</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+
+
+                                    </div>
+
+
+                                </tab>
+
+
+
+                               
+                            </tabset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

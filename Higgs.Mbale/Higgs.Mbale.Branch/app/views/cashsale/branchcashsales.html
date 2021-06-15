@@ -1,0 +1,38 @@
+﻿
+<div id="header" ng-include="'/app/views/_common/header.html'"></div>
+
+<aside id="menu" ng-include="'/app/views/_common/navigation.html'"></aside>
+
+<div id="wrapper">
+
+    <div ng-include="'/app/views/_common/Breadcrumb.html'"></div>
+
+    <div class="content">
+        <div class="row" ng-controller="BranchCashSaleController">
+            <div class="col-lg-12">
+                <div class="text-center">
+                    <a class="btn btn-danger btn-sm">  {{branch.Name | uppercase}} </a>
+                </div>
+                <div class="clear0"></div>
+                <a ui-sref="cashsale-branch-sale({ action: 'create',cashSaleId: 0,branchId : branch.BranchId })" class="btn btn-info btn-sm"><i class="fa fa-plus"></i>Add Cash Sale</a>
+
+
+                <span ng-if="loadingSpinner" class="loadingSpinner">
+                    <img src="/images/loading-bars.svg" width="45" height="45" /> Loading...
+                </span>
+                <a ng-if="showLoadMore" ng-click="LoadMore()" class="btn btn-success btn-sm">
+                    <span ng-if="!loading" class="show-more">Show more</span>
+                    <span ng-if="loading" class="show-load"><i style="font-size: 14px;" class="fa fa-spinner fa-spin"></i> Loading...</span>
+                </a>
+                <div class="clear10"></div>
+
+                <div style="height: 520px" class="grid" ui-grid="gridData" ui-grid-selection></div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+

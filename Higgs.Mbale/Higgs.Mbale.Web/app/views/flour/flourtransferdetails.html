@@ -1,0 +1,173 @@
+﻿
+<div id="header" ng-include="'/app/views/_common/header.html'"></div>
+
+<aside id="menu" ng-include="'/app/views/_common/navigation.html'"></aside>
+
+<div id="wrapper">
+
+    <div ng-include="'/app/views/_common/Breadcrumb.html'"></div>
+
+    <div class="content" ng-controller="FlourTransferDetailController">
+
+        <div class="text-center">
+            <a class="btn btn-danger btn-sm">  {{flourTransfer.StoreName | uppercase}} </a>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="hpanel">
+                    <div>
+                        <form name="form" class="form-horizontal ng-pristine ng-valid col-md-12" novalidate unsaved-warning-form>
+                            <tabset>
+                                <tab>
+                                    <tab-heading>
+                                        <i class="fa fa-laptop"></i> Flour Transfer Detail
+                                    </tab-heading>
+
+                                    <div class="panel-body">
+
+
+                                        <div class="row">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5> From Store </h5>
+                                                    <p>{{flourTransfer.StoreName}}</p>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>To Store</h5>
+                                                    <p>{{flourTransfer.ReceiverStoreName}}</p>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Quantity</h5>
+                                                    <p>{{flourTransfer.TotalQuantity}} kgs</p>
+
+                                                </div>
+                                            </div>
+                                                <div class="form-group col-sm-6">
+                                                    <div class="col-sm-12">
+                                                        <h5>To Branch</h5>
+                                                        <p>{{flourTransfer.BranchName}}</p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        <div class="row">
+                                           
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-6">
+                                                    <h5>Selected Batches</h5>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered">
+                                                            <tbody>
+                                                                
+                                                                <tr ng-repeat="batch in flourTransfer.FlourTransferBatches">
+                                                                    <td width="100%"><p> {{ batch.BatchNumber }}</p></td>
+
+
+                                                                </tr>
+                                                               
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row" ng-show="hideAcceptReject">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Rejected</h5>
+                                                    <p>{{flourTransfer.Reject}}</p>
+                                                    <p>
+                                                        
+                                                        <button ng-really-click="Reject(flourTransfer)" ng-really-message='Are you sure you want to reject this transfer' class="btn btn-danger">Reject</button>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Accepted</h5>
+                                                    <p>{{flourTransfer.Accept}}</p>
+                                                    <p >
+                                                        
+                                                        <button ng-really-click="Accept(flourTransfer)" ng-really-message='Are you sure you want to accept this transfer' class="btn btn-success">Accept</button>
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                            <div class="row">
+                                                <div class="col-sm-12 col-md-12">
+                                                    Grade:
+                                                </div>
+                                                <div ng-repeat="grade in flourTransfer.Grades" class="col-md-3 col-sm-12">
+                                                    <div class="col-sm-12 col-md-12">
+                                                        <h3> {{grade.Value}}</h3>
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th width="40%">Value </th>
+                                                                        <th width="60%">Quantity</th>
+                                                                    </tr>
+                                                                    <tr ng-repeat="x in grade.Denominations">
+                                                                        <td width="40%"><p> {{ x.Value }} Kg</p></td>
+                                                                        <td width="60%">
+                                                                            <p>{{x.Quantity}}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br />
+                                                <div class="hr-line-dashed"></div>
+
+                                            </div>
+
+
+
+                                            <div class="row">
+
+
+                                                <div class="col-sm-12" style="padding-left: 0px">
+
+
+                                                    <div class="hr-line-dashed"></div>
+
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                </tab>
+
+
+                            </tabset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

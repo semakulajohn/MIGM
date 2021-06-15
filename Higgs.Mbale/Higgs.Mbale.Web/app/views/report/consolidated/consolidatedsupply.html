@@ -1,0 +1,242 @@
+﻿
+
+<div id="header" ng-include="'/app/views/_common/header.html'"></div>
+
+<aside id="menu" ng-include="'/app/views/_common/navigation.html'"></aside>
+
+<div id="wrapper">
+
+    <div ng-include="'/app/views/_common/Breadcrumb.html'"></div>
+    <div ng-controller="ReportSupplyController">
+
+
+        <div class="clear0"></div>
+        <hr>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">View Supplies</h3>
+                    </div>
+                    <div class="panel-body">
+                        <button class="btn btn-primary btn-rounded" ng-click="TodaysSupplies()">Today</button>
+
+                        <button class="btn btn-mint btn-rounded" ng-click="WeeksSupplies()">This Week</button>
+                        <button class="btn btn-success btn-rounded" ng-click="SuppliesForThisMonth()">This Month</button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button onclick="window.focus();window.print();" class="btn btn-primary2">Print</button>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                        <span ng-show="data.length > 0">
+                            <span class="fa-hover"><a href="" ng-click="DownloadExcelFile()"><i class="fa fa-download"></i> Download report</a></span>
+                        </span>
+
+
+                        <hr />
+
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Search  Supplies by date</h3>
+
+                                </div>
+                                <div class="panel-body">
+                                    <table id="search" width="900">
+                                        <tbody>
+                                            <tr>
+                                                <td width="20%">
+                                                    <span class="header-search">
+                                                        From: &nbsp;&nbsp;  <input placeholder="yyyy-mm-dd" name="fromDate" ng-disabled="readOnly" kendo-date-picker="" required ng-model="supply.FromDate" k-format="'yyyy-MM-dd'" ng-pattern="/^(199\d)|([2-9]\d{3})-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/">
+
+                                                        <span ng-show=" form.fromDate.$invalid">
+                                                            <span ng-show="form.fromDate.$error.required" class="help-block error margin-bottom-00 "><i class="fa fa-warning"></i> From date is required.</span>
+                                                            <span ng-show="form.fromDate.$error.pattern" class="help-block error margin-bottom-00 "><i class="fa fa-warning"></i> Invalid date format, should be yyyy-mm-dd.</span>
+                                                        </span>
+                                                    </span>
+                                                </td>
+                                                <td>&nbsp;&nbsp;&nbsp;</td>
+                                                <td width="20%">
+                                                    <span class="header-search">
+                                                        To: &nbsp;&nbsp;  <input placeholder="yyyy-mm-dd" name="toDate" ng-disabled="readOnly" kendo-date-picker="" ng-model="supply.ToDate" k-format="'yyyy-MM-dd'" required ng-pattern="/^(199\d)|([2-9]\d{3})-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/">
+
+                                                        <span ng-show=" form.toDate.$invalid">
+                                                            <span ng-show="form.toDate.$error.required" class="help-block error margin-bottom-00 "><i class="fa fa-warning"></i> To date is required.</span>
+                                                            <span ng-show="form.toDate.$error.pattern" class="help-block error margin-bottom-00 "><i class="fa fa-warning"></i> Invalid date format, should be yyyy-mm-dd.</span>
+                                                        </span>
+                                                    </span>
+                                                </td>
+                                                <td>&nbsp;&nbsp;&nbsp;</td>
+                                                <td width="30%">
+                                                    <span class="header-search">
+                                                        Branch : &nbsp;&nbsp;
+                                                        <select style="border: none" name="branch" class="form-control col-sm-12" data-ng-model="supply.BranchId"
+                                                                data-ng-options="i.BranchId as i.Name for i in branches">
+                                                            <option value="">Please select</option>
+                                                        </select>
+
+                                                    </span>
+                                                </td>
+                                                <td>&nbsp;&nbsp;&nbsp;</td>
+                                                <td width="30%">
+
+                                                    <span class="header-search">
+                                                        Supplier : &nbsp;&nbsp;
+                                                        <select style="border: none" name="supplier" class="form-control col-sm-12" data-ng-model="supply.Id"
+                                                                data-ng-options="i.Id as i.UniqueNumber for i in suppliers">
+                                                            <option value="">Please select</option>
+                                                        </select>
+
+                                                    </span>
+
+                                                </td>
+                                                <td>&nbsp;&nbsp;&nbsp;</td>
+                                                <td><button class="btn btn-primary" ng-click="SearchSupplies(supply)">Search</button></td>
+                                            </tr>
+                                    </table>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <div ng-hide="data.length > 0">
+                        <div class="col-md-4">
+                            <div class="error">
+                                No Supplies found for that period.
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="data.length > 0">
+
+                        <table id="reportTable">
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <div>Date</div>
+                                    </th>
+                                    <th>
+                                        <div>WNN</div>
+                                    </th>
+                                    <th>
+                                        <div>supplier</div>
+                                    </th>
+                                    <th>
+                                        <div>Quantity</div>
+                                    </th>
+
+
+                                    <th>
+                                        <div>Price</div>
+                                    </th>
+                                   
+
+                                    <th>
+                                        <div>KW</div>
+                                    </th>
+                                    <th>
+                                        <div>WK</div>
+                                    </th>
+                                    <th>
+                                        <div>NT</div>
+                                    </th>
+                                    <th>
+                                        <div>Total</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="supply in data">
+                                    <td style="font-size: 18px !important;" width="12%">{{ supply.SupplyDate | date:"yyyy-MM-dd" }}</td>
+                                    <td style="font-size: 18px !important;" width="10%">{{supply.WeightNoteNumber}}</td>
+                                    <td style="font-size: 18px !important;" width="15%">{{ supply.SupplierName }}</td>
+                                    <td style="font-size: 18px !important;" width="10%">{{supply.Quantity | number}}</td>
+                                    <td style="font-size: 18px !important;" width="6%">{{supply.Price}}</td>
+                                   
+                                    <td style="font-size: 18px !important;" width="10%" ng-if="supply.BranchName =='kawempe'">{{supply.Amount |number}}</td>
+                                    <td style="font-size: 18px !important;" width="10%" ng-if="supply.BranchName =='wakasanke'"></td>
+                                    <td style="font-size: 18px !important;" width="10%" ng-if="supply.BranchName =='Natete'">{{accountTransaction.Amount |number}}</td>
+                                    <!--<td style="font-size: 18px !important;" width="10%" ng-if="accountTransaction.Action !='+'"></td>-->
+
+                                  
+                                   
+                                    <!--<td style="font-size: 18px !important;" width="5%">{{supply.NormalBags}}</td>
+                                    <td style="font-size: 18px !important;" width="5%">{{supply.BagsOfStones}}</td>-->
+
+
+                                </tr>
+                                <tr>
+                                    <td style="font-size: 18px !important;" width="10%"></td>
+                                    <td style="font-size: 18px !important;" width="10%"> {{totalMaize | number}} kgs</td>
+                                    <td style="font-size: 18px !important;" width="6%"></td>
+                                    <td style="font-size: 18px !important;" width="15">{{totalAmount |number}} shs</td>
+
+                                    <td style="font-size: 18px !important;" width="8%"></td>
+                                    <td style="font-size: 18px !important;" width="12%"></td>
+
+                                    <td style="font-size: 18px !important;" width="5%"></td>
+                                    <td style="font-size: 18px !important;" width="15%"></td>
+
+                                    <td style="font-size: 18px !important;" width="5%">{{totalNormalBags |number}}</td>
+                                    <td style="font-size: 18px !important;" width="5%">{{totalStoneBags |number}}</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <!--<table  id="reportTable">
+                            <tbody>
+                                <tr>
+                                    <td style="font-size: 18px !important;" width="25%">
+                                        <span class="header-search">
+                                            Total Maize :  {{totalMaize | number}} kgs
+                                        </span>
+                                    </td>
+                                    <td>&nbsp;&nbsp;&nbsp;</td>
+                                    <td style="font-size: 18px !important;" width="25%">
+                                        <span class="header-search">
+                                            Total Amount :  {{totalAmount |number}}
+                                        </span>
+                                    </td>
+                                    <td>&nbsp;&nbsp;&nbsp;</td>
+                                    <td style="font-size: 18px !important;" width="30%">
+                                        <span class="header-search">
+
+                                            Total Normal Bags : {{totalNormalBags |number}}
+                                        </span>
+                                    </td>
+                                    <td>&nbsp;&nbsp;&nbsp;</td>
+                                    <td style="font-size: 18px !important;" width="25%">
+
+                                        <span class="header-search">
+                                            Total Stone Bags : {{totalStoneBags |number}}
+                                        </span>
+
+                                    </td>
+
+                                </tr>
+                        </table>-->
+
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>
+
+

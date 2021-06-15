@@ -1,0 +1,123 @@
+﻿<div id="header" ng-include="'/app/views/_common/header.html'"></div>
+
+<aside id="menu" ng-include="'/app/views/_common/navigation.html'"></aside>
+
+<div id="wrapper">
+
+    <div ng-include="'/app/views/_common/Breadcrumb.html'"></div>
+
+    <div class="content">
+        <div class="row" ng-controller="MaizeOffloadingDashBoardController">
+            <div class="col-lg-12">
+
+                <div class="clear0"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="hpanel">
+                            <div class="panel-body">
+                                <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                                    <h3 class="m-xs text-uppercase">
+                                        Maize Offloading Transactions <span ng-if="loadingSpinner" class="loadingSpinner"><img src="/images/loading-bars.svg" /></span>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <span ng-if="loadingSpinner" class="loadingSpinner">
+                    <img src="/images/loading-bars.svg" width="45" height="45" /> Loading...
+                </span>
+
+                <div class="clear10"></div>
+                <div class="clear10"></div>
+                <div class="clear10"></div>
+
+
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="hpanel hbggreen">
+                            <div class="panel-body">
+                                <div class="text-center">
+                                    <a style="color:white" href="#/maizeOffloadings/branch/2">
+                                        <h3>KAWEMPE</h3>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="hpanel hbgorange">
+                            <div class="panel-body">
+                                <div class="text-center">
+                                    <a style="color:white" href="#/maizeOffloadings/branch/20009">
+                                        <h3>NATEETE</h3>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="hpanel hbgblue">
+                            <div class="panel-body">
+                                <div class="text-center">
+                                    <a style="color:white" href="#/maizeOffloadings/branch/3">
+                                        <h3>WAKASANKE</h3>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="hpanel hbgviolet">
+                            <div class="panel-body">
+                                <div class="text-center">
+                                    <a style="color:white" href="#/maizeOffloadings/branch/20005">
+                                        <h3>WAKASANKE MWASE</h3>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="hpanel hbgyellow">
+                            <div class="panel-body">
+                                <div class="text-center">
+                                    <a style="color:white" href="#/maizeOffloadings/branch/10003">
+                                        <h3>BIRA</h3>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="hpanel hbgred">
+                            <div class="panel-body">
+                                <div class="text-center">
+                                    <a style="color:white" href="#/maizeOffloadings/branch/20006">
+                                        <h3>SALES OFFICE</h3>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>

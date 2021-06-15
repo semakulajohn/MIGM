@@ -1,0 +1,280 @@
+﻿
+<div id="header" ng-include="'/app/views/_common/header.html'"></div>
+
+<aside id="menu" ng-include="'/app/views/_common/navigation.html'"></aside>
+
+<div id="wrapper">
+
+    <div ng-include="'/app/views/_common/Breadcrumb.html'"></div>
+
+    <div class="content" ng-controller="BatchProjectionDetailController">
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="hpanel">
+                    <div>
+                        <form name="form" class="form-horizontal ng-pristine ng-valid col-md-12" novalidate unsaved-warning-form>
+                            <input type="hidden" data-description="This field is used for intergration testing" name="itest-Id" value="{{batch.BatchId}}" />
+                            <tabset>
+                                <tab>
+                                    <tab-heading>
+                                        <span>
+                                            <i class="fa fa-laptop"></i> Batch Projection Details
+                                        </span>
+                                    </tab-heading>
+
+                                    <div class="panel-body" id="batchProjectionDetails">
+
+
+                                        <div class="row">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Batch Number</h5>
+                                                    <p>{{batchProjection.BatchNumber}}</p>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-6">
+                                                    <h5>branch</h5>
+                                                    <p>{{batchProjection.BranchName}}</p>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                    <h5>Date Created</h5>
+                                                    <p>{{batchProjection.CreatedOn}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Maize</h5>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th width="33%">Supplier Details </th>
+                                                                    <th width="10%">WNN</th>
+                                                                    <th width="20%">KGs</th>
+                                                                    <th width="20%">Rate</th>
+                                                                    <th width="27%">Amount</th>
+                                                                </tr>
+                                                                <tr ng-repeat="supply in batchProjection.Supplies">
+                                                                    <td width="33%"><p> {{ supply.SupplierName }}</p></td>
+                                                                    <td width="10%"><p>{{supply.WeightNoteNumber}}</p></td>
+                                                                    <td width="20%">
+                                                                        <p>{{supply.Quantity |number}}</p>
+                                                                    </td>
+                                                                    <td width="20%"><p>{{supply.Price}}</p></td>
+                                                                    <td width="27%"><p>{{supply.Amount | number}}</p></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Total</th>
+                                                                    <th></th>
+                                                                    <th>{{batchProjection.MaizeQuantity | number}}</th>
+
+                                                                    <th></th>
+                                                                    <th>{{batchProjection.TotalSupplyAmount | number}}</th>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Production OutPut</h5>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th width="33%">Product </th>
+                                                                    <th width="33%">KGs</th>
+                                                                    <th width="33%">Percentage</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width="33%"><p>Maize Flour</p></td>
+                                                                    <td width="33%">
+                                                                        <p>{{batchProjection.FlourOutPut | number}}</p>
+                                                                    </td>
+                                                                    <td width="33%">
+                                                                        <p>{{batchProjection.FlourPercentage|number:0}}%</p>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width="33%"><p>Maize Brand</p></td>
+                                                                    <td width="33%">
+                                                                        <p>{{batchProjection.BrandOutPut |number}}</p>
+                                                                    </td>
+                                                                    <td width="33%">
+                                                                        <p>{{batchProjection.BrandPercentage |number : 0}}%</p>
+                                                                    </td>
+                                                                </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td><h5>INPUT COSTS</h5></td>
+                                                                    <td><h5>Unit Cost</h5></td>
+                                                                    <td><h5>Maize Flour OutPut</h5></td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><h5> Production Cost</h5></td>
+                                                                    <td>{{batchProjection.UnitCost}}</td>
+                                                                    <td>{{batchProjection.FlourOutPut |number}}</td>
+                                                                    <td>{{batchProjection.ProductionCost | number}}</td>
+
+                                                                </tr>
+                                                                <tr>
+
+                                                                    <td width="10%"><h5>Maize Costs</h5></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>{{batchProjection.TotalSupplyAmount | number}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width="20%">
+                                                                        <h5>Total Costs</h5>
+                                                                    </td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>{{batchProjection.TotalProductionCost | number}}</td>
+                                                                </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Expected Sales</h5>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td width="30%"><h5> Maize Flour</h5></td>
+                                                                    <td>{{batchProjection.FlourPrice |number}}</td>
+                                                                    <td>{{batchProjection.FlourOutPut | number}}</td>
+                                                                    <td>{{batchProjection.FlourSales | number}}</td>
+                                                                </tr>
+                                                                <tr>
+
+                                                                    <td width="30%"><h5>Maize Brand</h5></td>
+                                                                    <td>{{batchProjection.BrandPrice | number}}</td>
+                                                                    <td>{{batchProjection.BrandOutPut | number}}</td>
+                                                                    <td>{{batchProjection.BrandSales |number}}</td>
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width="30%">
+                                                                        <h5>Total Expected Sales</h5>
+
+                                                                    </td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>{{batchProjection.TotalExpectedSales | number}}</td>
+                                                                </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+
+
+                                        <div class="row">
+
+
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered">
+                                                            <tbody>
+                                                                <tr>
+
+                                                                    <th width="33%"><h5>Expected Contribution</h5></th>
+                                                                    <th width="33%">{{batchProjection.ExpectedContribution | number}}</th>
+                                                                </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+
+
+
+
+                                        <div class="row">
+
+
+                                            <div class="col-sm-12" style="padding-left: 0px">
+
+
+                                                <div class="hr-line-dashed"></div>
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </tab>
+                                <tab>
+                                    <tab-heading>
+                                        <button class="btn btn-primary" type="submit" ng-click="Cancel()">
+                                            Back
+                                        </button>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <!-- <button ng-click="printBatch('batchDetails')" class="btn btn-primary2">Print</button>-->
+                                        <button onclick="window.focus();window.print();" class="btn btn-primary2">Print</button>
+                                    </tab-heading>
+                                </tab>
+
+                            </tabset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

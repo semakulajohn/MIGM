@@ -1,0 +1,106 @@
+﻿<!-- Header -->
+<div id="header" ng-include="'/app/views/_common/header.html?t=1'"></div>
+
+<!-- Navigation -->
+<aside id="menu" ng-include="'/app/views/_common/navigation.html?t=1d'"></aside>
+<!-- Main Wrapper -->
+<div id="wrapper">
+
+    <div id="dasboard" class="content" animate-panel effect="zoomIn" ng-controller="NavController">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="hpanel">
+                    <div class="panel-body">
+                        <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                            <h3 class="m-xs text-uppercase">
+                                Reports <span ng-if="loadingSpinner" class="loadingSpinner"><img src="/images/loading-bars.svg" /></span>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content" animate-panel>
+
+            <div class="row">
+
+
+                <div class="col-lg-3">
+                    <div class="hpanel stats">
+                        <div class="panel-body h-200">
+                            <div class="stats-title pull-left">
+                                <h4>Supply</h4>
+                            </div>
+                            <div class="stats-icon pull-right">
+                                <i class="pe-7s-shuffle fa-4x"></i>
+
+                            </div>
+                            <div class="m-t-xl">
+                                <a ui-sref="reports.supplylist">
+                                    <h3 class="m-b-xs">Supplies</h3>
+                                </a>
+
+                                <div class="m-t-xs  full progress-small progress ng-isolate-scope" value="60" type="success">
+                                    <div class="progress-bar progress-bar-success" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" ng-style="{width: percent + '%'}" aria-valuetext="55%" ng-transclude="" style="width: 55%;"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 animated-panel" style="animation-delay: 0.2s;">
+                                        <small class="stats-label">find monthly supplies</small>
+
+                                    </div>
+
+                                    <div class="col-xs-6 animated-panel" style="animation-delay: 0.3s;">
+                                        <small class="stats-label">find daily supplies</small>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+              
+            </div>
+
+           
+            <div class="row">
+
+
+              
+
+                
+
+
+                <div class="col-lg-3 ng-scope animated-panel" ng-controller="charts_flotCtrl">
+                    <div class="hpanel stats">
+                        <div class="panel-body h-200">
+                            <div class="stats-title pull-left">
+                                <a style="color:black" ui-sref="reports.accountTransactionlist"><h5>Suppliers</h5></a>
+                            </div>
+                            <div class="stats-icon pull-right">
+                                <i class="pe-7s-gleam fa-4x"></i>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="flot-chart">
+                                <div flot="" class="flot-chart-content ng-isolate-scope" dataset="lineChartData" options="lineChartOptionsDas" style="height: 125px"><div style="width: 100%; height: 100%; padding: 0px; position: relative;"><canvas class="flot-base" width="189" height="125" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 189px; height: 125px;"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 31px; top: 110px; left: 35px; text-align: center;">2</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 31px; top: 110px; left: 76px; text-align: center;">4</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 31px; top: 110px; left: 117px; text-align: center;">6</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 31px; top: 110px; left: 158px; text-align: center;">8</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 98px; left: 6px; text-align: right;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 79px; left: 1px; text-align: right;">10</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 59px; left: 1px; text-align: right;">20</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 40px; left: 1px; text-align: right;">30</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 20px; left: 1px; text-align: right;">40</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 1px; left: 1px; text-align: right;">50</div></div></div><canvas class="flot-overlay" width="189" height="125" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 189px; height: 125px;"></canvas></div></div>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <a style="color:black" ui-sref="reports.accountTransactionlist"><h5>Supplier Transactions</h5></a>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+          
+        </div>
+    </div>
+</div>

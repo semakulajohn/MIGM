@@ -1,0 +1,38 @@
+﻿
+<div id="header" ng-include="'/app/views/_common/header.html'"></div>
+
+<aside id="menu" ng-include="'/app/views/_common/navigation.html'"></aside>
+
+<div id="wrapper">
+
+    <div ng-include="'/app/views/_common/Breadcrumb.html'"></div>
+
+    <div class="content">
+        <div class="row" ng-controller="BranchCashController">
+            <div class="col-lg-12">
+
+                <div class="clear0"></div>
+                <div ng-controller="NavController">
+                    <!--<a ng-show="isAdmin || isBranchManager" ui-sref="branch-cash-edit({ action: 'create', accountId:retrievedbranchId,cashId: 0})" class="btn btn-info btn-sm"><i class="fa fa-plus"></i> Cash Transaction Activities</a>-->
+                    <a ui-sref="cash-edit({ action: 'create',cashId: 0})" class="btn btn-info btn-sm"><i class="fa fa-plus"></i>Add Cash Transaction</a>
+
+                     <!-- <a class="btn btn-success btn-sm pull-right" ng-hide="{{accountBalance > 0 }}">Debt  : {{accountBalance}}</a>-->
+                    <a class="btn btn-danger btn-sm pull-right">Account Balance  : {{accountBalance | number}}</a>
+
+                 </div>
+                     <span ng-if="loadingSpinner" class="loadingSpinner">
+                        <img src="/images/loading-bars.svg" width="45" height="45" /> Loading...
+                    </span>
+               
+                   
+                    <div class="clear10"></div>
+
+                    <div style="height: 520px" class="grid" ui-grid="gridData" ui-grid-selection></div>
+
+
+
+                </div>
+
+        </div>
+    </div>
+</div>

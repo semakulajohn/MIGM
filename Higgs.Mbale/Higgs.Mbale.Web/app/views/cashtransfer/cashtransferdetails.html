@@ -1,0 +1,168 @@
+﻿
+<div id="header" ng-include="'/app/views/_common/header.html'"></div>
+
+<aside id="menu" ng-include="'/app/views/_common/navigation.html'"></aside>
+
+<div id="wrapper">
+
+    <div ng-include="'/app/views/_common/Breadcrumb.html'"></div>
+
+    <div class="content" ng-controller="CashTransferDetailController">
+
+        <div class="text-center">
+            <a class="btn btn-danger btn-sm">  {{branch.Name | uppercase}} </a>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="hpanel">
+                    <div>
+                        <form name="form" class="form-horizontal ng-pristine ng-valid col-md-12" novalidate unsaved-warning-form>
+                            <tabset>
+                                <tab>
+                                    <tab-heading>
+                                        <i class="fa fa-laptop"></i> Cash Transfer Detail
+                                    </tab-heading>
+
+                                    <div class="panel-body">
+
+
+                                        <div class="row">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5> From Branch </h5>
+                                                    <p>{{cashTransfer.FromBranch}}</p>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>To Branch</h5>
+                                                    <p>{{cashTransfer.ReceiverBranch}}</p>ReceiverBranch
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Amount</h5>
+                                                    <p>{{cashTransfer.Amount}} shs</p>
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Amount In Words</h5>
+                                                    <p>{{cashTransfer.AmountInWords}}</p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <label>Response</label>
+
+                                                    <textarea ng-readonly="readOnly" name="description" rows="6" class="form-control" ng-model="cashTransfer.Response" required ng-class="{errorinput:form.description.$invalid}"></textarea>
+                                                    <span ng-show="form.description.$invalid">
+                                                        <span ng-show="form.description.$error.required" class="help-block error"><i class="fa fa-warning"></i> This is a required field.</span>
+
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5>Department</h5>
+                                                    <p>{{cashTransfer.Department}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <h5> Notes</h5>
+                                                    <p>{{cashTransfer.Notes}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div ng-controller="NavController">
+                                            <div class="row" ng-show="isSuperAdmin||isSuper||isSuperSuperAdmin">
+                                                <div class="row" ng-show="hideAcceptReject">
+                                                    <div class="form-group col-sm-6">
+                                                        <div class="col-sm-12">
+                                                            <h5>Rejected</h5>
+                                                            <p>{{cashTransfer.Reject}}</p>
+                                                            <p>
+
+                                                                <button ng-really-click="Reject(cashTransfer)" ng-really-message='Are you sure you want to reject this transfer' class="btn btn-danger">Reject</button>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-6">
+                                                        <div class="col-sm-12">
+                                                            <h5>Accepted</h5>
+                                                            <p>{{cashTransfer.Accept}}</p>
+                                                            <p>
+
+                                                                <button ng-really-click="Accept(cashTransfer)" ng-really-message='Are you sure you want to accept this transfer' class="btn btn-success">Accept</button>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-2">
+                                            </div>
+                                            <div class="col-md-10">
+
+                                                <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageSameBranch" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i><span>Cash Transfer Failed,You are Transfering to the Same Branch </span>
+                                                </div>
+
+                                                <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageCashNotEnough" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i><span>Branch doesn't have enough Funds </span>
+                                                </div>
+                                                <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageSameUser" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i><span>Can not Approve Cash Transfer you Initiated </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+
+
+                                            <div class="col-sm-12" style="padding-left: 0px">
+
+
+                                                <div class="hr-line-dashed"></div>
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </tab>
+
+
+                            </tabset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

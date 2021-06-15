@@ -1,0 +1,420 @@
+﻿
+<div id="header" ng-include="'/app/views/_common/header.html'"></div>
+
+<aside id="menu" ng-include="'/app/views/_common/navigation.html'"></aside>
+
+<div id="wrapper">
+
+    <div ng-include="'/app/views/_common/Breadcrumb.html'"></div>
+
+    <div class="content" ng-controller="DeliveryTotalsController">
+
+
+        <div class="clear0"></div>
+        <hr>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">View Deliveries</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Search  Delivery by date</h3>
+
+                                </div>
+                                <div class="panel-body">
+                                    <table id="search" width="900">
+                                        <tbody>
+                                            <tr>
+                                                <td width="20%">
+                                                    <span class="header-search">
+                                                        From: &nbsp;&nbsp;  <input placeholder="yyyy-mm-dd" name="fromDate" ng-disabled="readOnly" kendo-date-picker="" required ng-model="delivery.FromDate" k-format="'yyyy-MM-dd'" ng-pattern="/^(199\d)|([2-9]\d{3})-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/">
+
+                                                        <span ng-show=" form.fromDate.$invalid">
+                                                            <span ng-show="form.fromDate.$error.required" class="help-block error margin-bottom-00 "><i class="fa fa-warning"></i> From date is required.</span>
+                                                            <span ng-show="form.fromDate.$error.pattern" class="help-block error margin-bottom-00 "><i class="fa fa-warning"></i> Invalid date format, should be yyyy-mm-dd.</span>
+                                                        </span>
+                                                    </span>
+                                                </td>
+                                                <td>&nbsp;&nbsp;&nbsp;</td>
+                                                <td width="20%">
+                                                    <span class="header-search">
+                                                        To: &nbsp;&nbsp;  <input placeholder="yyyy-mm-dd" name="toDate" ng-disabled="readOnly" kendo-date-picker="" ng-model="delivery.ToDate" k-format="'yyyy-MM-dd'" required ng-pattern="/^(199\d)|([2-9]\d{3})-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/">
+
+                                                        <span ng-show=" form.toDate.$invalid">
+                                                            <span ng-show="form.toDate.$error.required" class="help-block error margin-bottom-00 "><i class="fa fa-warning"></i> To date is required.</span>
+                                                            <span ng-show="form.toDate.$error.pattern" class="help-block error margin-bottom-00 "><i class="fa fa-warning"></i> Invalid date format, should be yyyy-mm-dd.</span>
+                                                        </span>
+                                                    </span>
+                                                </td>
+                                                <td>&nbsp;&nbsp;&nbsp;</td>
+                                                <td width="30%">
+                                                    <span class="header-search">
+                                                        Branch : &nbsp;&nbsp;
+                                                        <select style="border: none" name="branch" class="form-control col-sm-12" data-ng-model="delivery.BranchId"
+                                                                data-ng-options="i.BranchId as i.Name for i in branches">
+                                                            <option value="">Please select</option>
+                                                        </select>
+
+                                                    </span>
+                                                </td>
+                                               
+                                                <td>&nbsp;&nbsp;&nbsp;</td>
+                                                <td><button class="btn btn-primary" ng-click="SearchDelivery(delivery)">Search</button></td>
+                                            </tr>
+                                    </table>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel">
+                    <div>
+                        <div class="panel-body">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+
+                                        <div class="row">
+
+                                            <div class="col-md-3 col-sm-12">
+                                                <td>
+                                                    <div class="col-sm-12 col-md-12">
+                                                        <h3> Super</h3>
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th width="20%">Value </th>
+                                                                        <th width="35%">Quantity</th>
+                                                                        <th width="35%">Amount</th>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="25%"><p> 10 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalSuperTenQuantity | number}}</p>
+                                                                        </td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalSuperTenAmount | number}}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="20%"><p> 25 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalSuperTwoFiveQuantity | number}}</p>
+                                                                        </td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalSuperTwoFiveAmount | number}}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="20%"><p> 50 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalSuperFiveZeroQuantity | number}}</p>
+                                                                        </td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalSuperFiveZeroAmount | number}}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="20%"><p> 100 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalSuperHundredQuantity | number}}</p>
+                                                                        </td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalSuperHundredAmount | number}}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="20%"><p> 5 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalSuperFiveQuantity | number}}</p>
+                                                                        </td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalSuperFiveAmount | number}}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="20%"><p> 1 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalSuperOneQuantity | number}}</p>
+                                                                        </td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalSuperOneAmount | number}}</p>
+                                                                        </td>
+                                                                    </tr>
+
+
+                                                                </tbody>
+                                                            </table>
+
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="col-sm-12 col-md-12">
+                                                        <h3> Number 1</h3>
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th width="20%">Value </th>
+                                                                        <th width="35%">Quantity</th>
+                                                                        <th width="35%">Amount</th>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="20%"><p> 10 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalNumberOneTenQuantity | number}}</p>
+                                                                        </td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalNumberOneTenAmount | number}}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="20%"><p> 25 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalNumberOneTwoFiveQuantity | number}}</p>
+                                                                        </td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalNumberOneTwoFiveAmount | number}}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="20%"><p> 50 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalNumberOneFiveZeroQuantity | number}}</p>
+                                                                        </td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalNumberOneFiveZeroAmount | number}}</p>
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="20%"><p> 100 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalNumberOneHundredQuantity | number}}</p>
+                                                                        </td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalNumberOneHundredAmount | number}}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="20%"><p> 5 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalNumberOneFiveQuantity | number}}</p>
+                                                                        </td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalNumberOneFiveAmount | number}}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="20%"><p> 1 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalNumberOneOneQuantity | number}}</p>
+                                                                        </td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalNumberOneOneAmount | number}}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </div>
+                                            <div class="row">
+
+
+                                                <td>
+                                                    <div class="col-sm-12 col-md-12">
+                                                        <h3> Kabale</h3>
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th width="20%">Value </th>
+                                                                        <th width="35%">Quantity</th>
+                                                                        <th width="35%">Amount</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="20%"><p> 10 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalKabaleTenQuantity | number}}</p>
+                                                                        </td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalKabaleTenAmount | number}}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="20%"><p> 25 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalKabaleTwoFiveQuantity | number}}</p>
+                                                                        </td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalKabaleTwoFiveAmount | number}}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="20%"><p> 50 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalKabaleFiveZeroQuantity | number}}</p>
+                                                                        </td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalKabaleFiveZeroAmount | number}}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="20%"><p> 100 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalKabaleHundredQuantity | number}}</p>
+                                                                        </td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalKabaleHundredAmount | number}}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="20%"><p> 5 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalKabaleFiveQuantity | number}}</p>
+                                                                        </td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalKabaleFiveAmount | number}}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="20%"><p> 1 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalKabaleOneQuantity | number}}</p>
+                                                                        </td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalKabaleOneAmount | number}}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="col-sm-12 col-md-12">
+                                                        <h3> Number 1.5</h3>
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th width="20%">Value </th>
+                                                                        <th width="35%">Quantity</th>
+                                                                        <th width="35%">Amount</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="20%"><p> 10 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalNumberOneHalfTenQuantity | number}}</p>
+                                                                        </td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalNumberOneHalfTenAmount | number}}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="20%"><p> 25 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalNumberOneHalfTwoFiveQuantity | number}}</p>
+                                                                        </td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalNumberOneHalfTwoFiveAmount | number}}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="20%"><p> 50 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalNumberOneHalfFiveZeroQuantity | number}}</p>
+                                                                        </td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalNumberOneHalfFiveZeroAmount | number}}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="20%"><p> 100 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalNumberOneHalfHundredQuantity | number}}</p>
+                                                                        </td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalNumberOneHalfHundredAmount | number}}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="20%"><p> 5 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalNumberOneHalfFiveQuantity | number}}</p>
+                                                                        </td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalNumberOneHalfFiveAmount | number}}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="20%"><p> 1 Kg</p></td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalNumberOneHalfOneQuantity | number}}</p>
+                                                                        </td>
+                                                                        <td width="35%">
+                                                                            <p>{{delivery.TotalNumberOneHalfOneAmount | number}}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+                                            </div>
+                                            <br />
+                                            <div class="hr-line-dashed"></div>
+
+                                        </div>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                            <div class="row">
+
+
+                                <div class="col-sm-12" style="padding-left: 0px">
+
+
+                                    <div class="hr-line-dashed"></div>
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

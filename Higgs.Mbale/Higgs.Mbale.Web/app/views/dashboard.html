@@ -1,0 +1,238 @@
+<!-- Header -->
+<div id="header" ng-include="'/app/views/_common/header.html?t=1'"></div>
+
+<!-- Navigation -->
+<aside id="menu" ng-include="'/app/views/_common/navigation.html?t=1d'"></aside>
+<!-- Main Wrapper -->
+<div id="wrapper">
+
+    <div id="dasboard" class="content" animate-panel effect="zoomIn" ng-controller="NavController">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="hpanel">
+                    <div class="panel-body">
+                        <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                            <h3 class="m-xs text-uppercase">
+                                Welcome to  MIGM  <span ng-if="loadingSpinner" class="loadingSpinner"><img src="/images/loading-bars.svg" /></span>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" ng-show="isAdmin || isSuperAdmin ||isSuperSuperAdmin || isSuper">
+           
+            <div class="col-md-6">
+                <div class="hpanel">
+                    <div class="panel-body">
+                        <div class="text-center">
+                            <h2 class="m-b-xs"> Stores</h2>
+                           
+                            <div class="m">
+                                <i class="pe-7s-global fa-5x"></i>
+                            </div>
+                           
+                            <a ui-sref="stores.list"><button class="btn btn-info btn-sm">All Stores</button></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="hpanel">
+                    <div class="panel-body">
+                        <div class="text-center">
+                            <h2 class="m-b-xs">Casual Workers</h2>
+                            
+                            <div class="m">
+                                <i class="pe-7s-display1 fa-5x"></i>
+                            </div>
+                          
+                            <a ui-sref="admin-casualworkers-list"><button class="btn btn-warning btn-sm">All Casual Workers</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+            <div class="col-md-6">
+                <div class="hpanel">
+                    <div class="panel-body">
+                        <div class="text-center">
+                            <h2 class="m-b-xs"> Suppliers</h2>
+                            <!--<p class="font-bold text-success">Lorem ipsum</p>-->
+                            <div class="m">
+                                <i class="pe-7s-science fa-5x"></i>
+                            </div>
+                            <p class="small">
+                                <!--rem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.-->
+                            </p>
+                            <a ui-sref="suppliers.list"><button class="btn btn-success btn-sm">All Suppliers</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="hpanel">
+                    <div class="panel-body">
+                        <div class="text-center">
+                            <h2 class="m-b-xs"> Batches</h2>
+                            <!-- <p class="font-bold text-info">Lorem ipsum</p>-->
+                            <div class="m">
+                                <i class="pe-7s-global fa-5x"></i>
+                            </div>
+
+                            <a ui-sref="admin-batches-list"><button class="btn btn-success btn-sm">All Batches</button></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+
+        <div class="row" ng-show="isAdmin || isSuperAdmin ||isSuperSuperAdmin || isSuper">
+
+            <div class="col-md-3">
+                <div class="hpanel hbgblue">
+                    <div class="panel-body">
+                        <div class="text-center">
+                            <a style="color:white" ui-sref="creditors.list">  <h3>Creditors</h3></a>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="hpanel hbgyellow">
+                    <div class="panel-body">
+                        <div class="text-center">
+                            <a style="color:white" ui-sref="debtors.list"> <h3>Debtors</h3> </a>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="hpanel hbgred">
+                    <div class="panel-body">
+                        <div class="text-center">
+                            <a style="color:white" ui-sref="customers.list"><h3>Customers</h3></a>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="hpanel hbgblue">
+                    <div class="panel-body">
+                        <div class="text-center">
+                            <a style="color:white" ui-sref="admin-requistions-list">  <h3>Requistions</h3></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+       
+
+        <div class="row" ng-show="isSupplier">
+            <div class="col-md-6">
+                <div class="hpanel">
+                    <div class="panel-body">
+                        <div class="text-center">
+                            <h2 class="m-b-xs"> Supplies</h2>
+                            <!--<p class="font-bold text-success">Lorem ipsum</p>-->
+                            <div class="m">
+                                <i class="pe-7s-science fa-5x"></i>
+                            </div>
+                            <p class="small">
+                               
+                            </p>
+                            <a href="#/supplies/supplier/{{user.Id}}"><button class="btn btn-success btn-sm">All Supplies</button></>
+</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="hpanel">
+                    <div class="panel-body">
+                        <div class="text-center">
+                            <h2 class="m-b-xs"> My Account</h2>
+                           
+                            <div class="m">
+                                <i class="pe-7s-global fa-5x"></i>
+                            </div>
+                           
+                            <a href="#/accounttransactionactivities/account/{{user.Id}} "><button class=" btn btn-info btn-sm">All Transaction Activities</button></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="col-md-6">
+                <div class="hpanel">
+                    <div class="panel-body">
+                        <div class="text-center">
+                            <h2 class="m-b-xs">Supply Reports</h2>
+                            
+                            <div class="m">
+                                <i class="pe-7s-airplay fa-5x"></i>
+                            </div>
+                            <p class="small">
+                               
+                            </p>
+                          <a href="#/reports/supplier/{{user.Id}}" > <button class="btn btn-danger btn-sm">Supplies</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" ng-show="isCustomer">
+            <div class="col-md-6">
+                <div class="hpanel">
+                    <div class="panel-body">
+                        <div class="text-center">
+                            <h2 class="m-b-xs"> Orders</h2>
+                           
+                            <div class="m">
+                                <i class="pe-7s-science fa-5x"></i>
+                            </div>
+                           
+                            <a href="#/orders/view/{{user.Id}}"><button class="btn btn-success btn-sm">My Orders</button></>
+</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="hpanel">
+                    <div class="panel-body">
+                        <div class="text-center">
+                            <h2 class="m-b-xs"> My Account</h2>
+                            
+                            <div class="m">
+                                <i class="pe-7s-global fa-5x"></i>
+                            </div>
+                            <p class="small">
+                                
+                            </p>
+                            <a href="#/accounttransactionactivities/account/{{user.Id}} "><button class=" btn btn-info btn-sm">All Transaction Activities</button></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+         
+        </div>
+
+       
+        
+            
+    </div>
+        
+
+</div>

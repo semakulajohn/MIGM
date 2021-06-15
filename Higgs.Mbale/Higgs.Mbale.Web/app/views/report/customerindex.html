@@ -1,0 +1,110 @@
+﻿<!-- Header -->
+<div id="header" ng-include="'/app/views/_common/header.html?t=1'"></div>
+
+<!-- Navigation -->
+<aside id="menu" ng-include="'/app/views/_common/navigation.html?t=1d'"></aside>
+<!-- Main Wrapper -->
+<div id="wrapper">
+
+    <div id="dasboard" class="content" animate-panel effect="zoomIn" ng-controller="NavController">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="hpanel">
+                    <div class="panel-body">
+                        <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                            <h3 class="m-xs text-uppercase">
+                                Reports <span ng-if="loadingSpinner" class="loadingSpinner"><img src="/images/loading-bars.svg" /></span>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content" animate-panel>
+
+            <div class="row">
+
+
+              
+
+
+                <div class="col-lg-3">
+                    <div class="hpanel">
+                        <div class="panel-body text-center h-200">
+                            <i class="pe-7s-graph2 fa-4x"></i>
+                            <a ui-sref="reports.deliverylist">
+                                <h1 class="m-xs"> Deliveries</h1>
+                            </a>
+                            <small>
+                                find a list of deliveries <strong>click </strong>.deliveries on different branches and different customers.
+                            </small>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+           
+
+            <div class="row">
+
+
+
+
+
+                <div class="col-lg-3 ">
+                    <div class="hpanel stats">
+                        <div class="panel-body h-200">
+                            <div class="stats-title pull-left">
+                                <a style="color:black" ui-sref="reports.orderlist">    <h4>Order Views</h4></a>
+                            </div>
+                            <div class="stats-icon pull-right">
+                                <i class="pe-7s-credit fa-4x"></i>
+                            </div>
+                            <div class="m-t-xl">
+                                <a ui-sref="reports.orderlist"><h1 class="text-success"> Orders</h1></a>
+
+                                <span class="font-bold no-margins">
+                                    Orders
+                                </span>
+                                <br>
+                                <small>
+                                    find a list of orders <strong>click </strong>.order at different branches and for different customers.
+                                </small>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+               
+            </div>
+
+           
+
+
+            <div class="row">
+
+               
+
+                <div class="col-lg-3">
+                    <div class="hpanel">
+                        <div class="panel-body text-center h-200">
+                            <i class="pe-7s-global fa-4x"></i>
+                            <a ui-sref="reports.customerTransactionlist">
+                                <h2 class="m-xs"> Customer Transactions</h2>
+                            </a>
+                            <small>
+                                find a list of  <strong>customer transactions </strong>.at different branches.
+                            </small>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

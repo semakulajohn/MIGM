@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+
+<div id="header" ng-include="'/app/views/_common/header.html'"></div>
+
+<aside id="menu" ng-include="'/app/views/_common/navigation.html'"></aside>
+
+<div id="wrapper">
+
+    <div ng-include="'/app/views/_common/Breadcrumb.html'"></div>
+
+    <div class="content" ng-controller="SupplyDetailsController">
+        <div class="text-center">
+            <a class="btn btn-danger btn-sm">  {{SupplierName | uppercase}} </a>
+        </div>
+        <span us-spinner="{radius:30, width:16, length: 16}" spinner-key="global-spinner"></span>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="hpanel">
+                    <div>
+                        <form name="form" class="form-horizontal ng-pristine ng-valid col-md-12" novalidate unsaved-warning-form>
+                            <input type="hidden" data-description="This field is used for intergration testing" name="itest-Id" value="{{supply.SupplyId}}" />
+                            <tabset>
+                                <tab>
+                                    <tab-heading>
+                                        <i class="fa fa-laptop"></i> Supply Details
+                                    </tab-heading>
+
+                                    <div class="panel-body">
+
+                                      
+                                        <div class="row">
+                                            <div class="form-group col-sm-12">
+                                                <div class="col-sm-12">
+                                                    <h5>Details</h5>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered">
+                                                            <tbody>
+
+                                                                <tr>
+                                                                    <th width="33%">Date</th>
+                                                                    <td width="10%"><p>{{supply.SupplyDate}}</p></td>
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="33%">Branch</th>
+                                                                    <td width="10%"><p>{{supply.BranchName}}</p></td>
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="33%">Truck Number</th>
+                                                                    <td width="10%"><p>{{supply.TruckNumber}}</p></td>
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="33%">Weight Note Number</th>
+                                                                    <td width="10%"><p>{{supply.WeightNoteNumber}}</p></td>
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="33%">Price</th>
+                                                                    <td width="20%"><p>{{supply.Price}}</p></td>
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="33%">Quantity</th>
+                                                                    <td width="20%"><p>{{supply.Quantity}}</p></td>
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="33%">No.of Normal Bags</th>
+                                                                    <td width="20%"><p>{{supply.NormalBags}}</p></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="33%">Stone Bags</th>
+                                                                    <td width="20%"><p>{{supply.BagsOfStones}}</p></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="33%">Yellow Bags</th>
+                                                                    <td width="20%"><p>{{supply.YellowBags}}</p></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="33%">Paid Offloading</th>
+                                                                    <td width="10%"><p>{{supply.Offloading}}</p></td>
+
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+
+
+                                    </div>
+
+
+                                </tab>
+
+                                <tab>
+                                    <tab-heading>
+                                        <button class="btn btn-primary" type="submit" ng-click="Cancel()">
+                                            Back
+                                        </button>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+
+                                        <button onclick="window.focus();window.print();" class="btn btn-primary2">Print</button>
+                                    </tab-heading>
+                                </tab>
+
+
+                            </tabset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
