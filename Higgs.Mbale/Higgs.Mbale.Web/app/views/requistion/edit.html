@@ -274,6 +274,69 @@
 
 
                                             <div class="row" ng-show="requistion.RequistionCategoryId ==2">
+                                                <div id="Content2">
+                                                    <div class="row">
+                                                        <div class="form-group col-sm-12">
+                                                            <div class="col-sm-12">
+                                                                <label>Batch</label>
+                                                                <select style="border: none" name="batch" class="form-control col-sm-12" data-ng-model="delivery.Batches" multiple ng-class="{errorinput:form.batch.$invalid}"
+                                                                         data-ng-options="i.SupplyId as i.WeightNoteNumber for i in weightNotes" ng-value="i.SupplyId">
+                                                                    <option value="">Please select</option>
+                                                                </select>
+
+                                                                <div class="form-group col-sm-12">
+                                                                    <div class="col-sm-12">
+
+                                                                        <h4>Selected Supplies</h4>
+                                                                        <div class="table-responsive">
+
+                                                                            <table class="table table-bordered" >
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <th>WNN</th>
+
+                                                                                        <th>Amount to Pay</th>
+                                                                                    </tr>
+                                                                                    <tr ng-repeat="n in requistion.supp.Batches">
+                                                                                        <td width="20%"><pre>{{n.Name}}</pre></td>
+
+                                                                                        <td width="30%">
+
+                                                                                            <input name="quantityToRemove" class="form-control" ng-model="n.QuantityToRemove" ng-pattern="/^\-?\d+((\.)\d+)?$/" ng-class="{ errorinput: form.quantityToRemove.$invalid }" ng-disabled="">
+                                                                                            <span ng-show="form.quantityToRemove.$invalid">
+                                                                                                <span ng-show="form.quantityToRemove.$error.pattern" class="help-block error"><i class="fa fa-warning"></i> Invalid formart, quantity should be double or number</span>
+                                                                                            </span>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+
+                                                                        </div>
+                                                                        <div class="table-responsive" ng-hide="order.ProductId !=1">
+                                                                            <table class="table table-bordered">
+                                                                                <tbody>
+
+                                                                                    <!--<tr ng-repeat="n in delivery.Batches | batchFilter :'BatchId'">-->
+                                                                                    <tr ng-repeat="n in delivery.Batches">
+                                                                                        <td width="10%"><pre> {{ n.Name }}</pre></td>
+                                                                                        <td width="5%"></td>
+                                                                                        <td width="85%">
+
+                                                                                           
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+
+
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="form-group col-sm-6">
                                                     <div class="col-sm-12">
                                                         <label>WNN</label>
