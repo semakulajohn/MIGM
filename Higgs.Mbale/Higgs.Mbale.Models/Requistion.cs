@@ -38,6 +38,7 @@ namespace Higgs.Mbale.Models
         public Nullable<long> SupplyId { get; set; }
         public Nullable<long> ActivityId { get; set; }
         public Nullable<bool> PartPayment { get; set; }
+        public List<Supply> Supplies { get; set; }
         public long RequistionCategoryId { get; set; }
         public Nullable<double> Quantity { get; set; }
         public string RepairerName { get; set; }

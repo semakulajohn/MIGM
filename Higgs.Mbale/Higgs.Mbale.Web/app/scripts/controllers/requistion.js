@@ -17,13 +17,15 @@
         var action = $scope.action;
         var statusId = "10002";
         var approvedStatusId = "2";
+        $scope.SupplyActions = ["Full Payment", "Partial Payment"];
+
 
 
         $http.get('/webapi/InventoryApi/GetAllInventoryCategories').success(function (data, status) {
             $scope.inventorycategories = data;
         });
 
- $http.get('/webapi/FinancialAccountApi/GetAllFinancialAccounts').success(function (data, status) {
+        $http.get('/webapi/FinancialAccountApi/GetAllFinancialAccounts').success(function (data, status) {
             $scope.financialAccounts = data;
         });
         $http.get('/webapi/RequistionApi/GetAllRequistionCategories').success(function (data, status) {
@@ -176,7 +178,9 @@
                         FinancialAccountId: b.FinancialAccountId,
                         CreatedBy: b.CreatedBy,
                         CreatedById: b.CreatedById,
-                        OutSourcerId : b.OutSourcerId,
+                        OutSourcerId: b.OutSourcerId,
+
+                        Supplies: b.Supplies,
 
 
                     };
@@ -218,7 +222,8 @@
                     BankId: requistion.BankId,
                     FinancialAccountId: requistion.FinancialAccountId,
                     OutSourcerId : requistion.OutSourcerId,
-                    
+
+                    Supplies : requistion.Supplies,
 
                 });
 

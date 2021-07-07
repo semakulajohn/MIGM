@@ -274,13 +274,41 @@
 
 
                                             <div class="row" ng-show="requistion.RequistionCategoryId ==2">
-                                                <div id="Content2">
-                                                    <div class="row">
+                                                <div class="row">
+                                                    <div class="form-group col-sm-6">
+                                                        <div class="col-sm-12">
+                                                            <label>Supplier </label>
+
+                                                            <select style="border: none" name="supplierName" class="form-control col-sm-12" data-ng-model="requistion.Id" ng-change="OnSupplierChange(requistion)"
+                                                                    data-ng-options="i.Id as i.FirstName for i in suppliers">
+                                                                <option value="">Please select</option>
+                                                            </select>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group col-sm-6">
+                                                        <div class="col-sm-12">
+                                                            <label>Actions</label>
+                                                            <select style="border: none" name="action" class="form-control col-sm-12" data-ng-model="requistion.SupplyAction" required ng-class="{errorinput:form.action.$invalid}"
+                                                                    data-ng-options="i for i in SupplyActions">
+                                                                <option value="">Please select</option>
+                                                            </select>
+
+                                                           
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                              
+                                                <div class="row" ng-show="requistion.SupplyAction =='Full Payment'">
+
+                                                    <div class="form-group col-sm-6">
                                                         <div class="form-group col-sm-12">
                                                             <div class="col-sm-12">
-                                                                <label>Batch</label>
-                                                                <select style="border: none" name="batch" class="form-control col-sm-12" data-ng-model="delivery.Batches" multiple ng-class="{errorinput:form.batch.$invalid}"
-                                                                         data-ng-options="i.SupplyId as i.WeightNoteNumber for i in weightNotes" ng-value="i.SupplyId">
+                                                                <label>Supply</label>
+                                                                <select style="border: none" name="multisupply" class="form-control col-sm-12" data-ng-model="requistion.Supplies" multiple ng-class="{errorinput:form.multisupply.$invalid}"
+                                                                        data-ng-options="i as i.WeightNoteNumber for i in weightNotes" ng-value="i">
                                                                     <option value="">Please select</option>
                                                                 </select>
 
@@ -290,44 +318,25 @@
                                                                         <h4>Selected Supplies</h4>
                                                                         <div class="table-responsive">
 
-                                                                            <table class="table table-bordered" >
+                                                                            <table class="table table-bordered">
                                                                                 <tbody>
                                                                                     <tr>
                                                                                         <th>WNN</th>
 
                                                                                         <th>Amount to Pay</th>
                                                                                     </tr>
-                                                                                    <tr ng-repeat="n in requistion.supp.Batches">
-                                                                                        <td width="20%"><pre>{{n.Name}}</pre></td>
+                                                                                    <tr ng-repeat="m in requistion.Supplies">
 
-                                                                                        <td width="30%">
+                                                                                        <td width="20%"><pre>{{ m.WeightNoteNumber }}</pre></td>
+                                                                                        <td width="30%"><pre>{{ m.AmountToPay }}</pre></td>
 
-                                                                                            <input name="quantityToRemove" class="form-control" ng-model="n.QuantityToRemove" ng-pattern="/^\-?\d+((\.)\d+)?$/" ng-class="{ errorinput: form.quantityToRemove.$invalid }" ng-disabled="">
-                                                                                            <span ng-show="form.quantityToRemove.$invalid">
-                                                                                                <span ng-show="form.quantityToRemove.$error.pattern" class="help-block error"><i class="fa fa-warning"></i> Invalid formart, quantity should be double or number</span>
-                                                                                            </span>
-                                                                                        </td>
+
                                                                                     </tr>
                                                                                 </tbody>
                                                                             </table>
 
                                                                         </div>
-                                                                        <div class="table-responsive" ng-hide="order.ProductId !=1">
-                                                                            <table class="table table-bordered">
-                                                                                <tbody>
 
-                                                                                    <!--<tr ng-repeat="n in delivery.Batches | batchFilter :'BatchId'">-->
-                                                                                    <tr ng-repeat="n in delivery.Batches">
-                                                                                        <td width="10%"><pre> {{ n.Name }}</pre></td>
-                                                                                        <td width="5%"></td>
-                                                                                        <td width="85%">
-
-                                                                                           
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
-                                                                        </div>
 
 
 
@@ -337,86 +346,73 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-group col-sm-6">
-                                                    <div class="col-sm-12">
-                                                        <label>WNN</label>
-                                                        <select style="border: none" name="wnn" class="form-control col-sm-12" data-ng-model="requistion.SupplyId"
-                                                                data-ng-options="i.SupplyId as i.WeightNoteNumber for i in weightNotes">
-                                                            <option value="">Please select</option>
-                                                        </select>
+                                                <div class="row" ng-show="requistion.SupplyAction =='Partial Payment'">
+                                                    <div class="form-group col-sm-6">
+                                                        <div class="col-sm-12">
+                                                            <label>WNN</label>
+                                                            <select style="border: none" name="wnn" class="form-control col-sm-12" data-ng-model="requistion.SupplyId"
+                                                                    data-ng-options="i.SupplyId as i.WeightNoteNumber for i in weightNotes">
+                                                                <option value="">Please select</option>
+                                                            </select>
 
 
 
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-6">
+                                                        <div class="col-sm-12 col-md-12">
+
+                                                            <label>Part Payment </label>
+
+                                                            <input type="checkbox" ng-model="requistion.PartPayment"
+                                                                   name="partial" ng-true-value="'true'" ng-false-value="'false'"
+                                                                   id="partial" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group col-sm-6">
+                                                        <div class="col-sm-12">
+                                                            <label>Balance on WNN</label>
+                                                            <select style="border: none" name="wnn" class="form-control col-sm-12" data-ng-model="requistion.SupplyId" ng-class="{errorinput:form.wnn.$invalid}"
+                                                                    data-ng-options="i.SupplyId as i.AmountToPay for i in weightNotes"></select>
+
+
+
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-group col-sm-6">
-                                                    <div class="col-sm-12 col-md-12">
-
-                                                        <label>Part Payment </label>
-
-                                                        <input type="checkbox" ng-model="requistion.PartPayment"
-                                                               name="partial" ng-true-value="'true'" ng-false-value="'false'"
-                                                               id="partial" />
-                                                    </div>
-                                                </div>
-
-
-
-
-                                                <div class="form-group col-sm-6">
-                                                    <div class="col-sm-12">
-                                                        <label>Supplier </label>
-
-                                                        <select style="border: none" name="supplierName" class="form-control col-sm-12" data-ng-model="requistion.Id" ng-change="OnSupplierChange(requistion)"
-                                                                data-ng-options="i.Id as i.FirstName for i in suppliers">
-                                                            <option value="">Please select</option>
-                                                        </select>
-
-                                                    </div>
-                                                </div>
-                                                <div class="form-group col-sm-6">
-                                                    <div class="col-sm-12">
-                                                        <label>Balance on WNN</label>
-                                                        <select style="border: none" name="wnn" class="form-control col-sm-12" data-ng-model="requistion.SupplyId" ng-class="{errorinput:form.wnn.$invalid}"
-                                                                data-ng-options="i.SupplyId as i.AmountToPay for i in weightNotes"></select>
-
-
-
-                                                    </div>
-                                                </div>
-
                                             </div>
 
 
 
-                                            <div class="row" ng-show="requistion.RequistionCategoryId ==10">
-                                                <div class="form-group col-sm-6">
-                                                    <div class="col-sm-12">
-                                                        <label>Utility Category</label>
-                                                        <select style="border: none" name="utility" class="form-control col-sm-12" data-ng-model="requistion.UtilityCategoryId"
-                                                                data-ng-options="i.UtilityCategoryId as i.Name for i in utilityCategories">
-                                                            <option value="">Please select</option>
-                                                        </select>
+                                                <div class="row" ng-show="requistion.RequistionCategoryId ==10">
+                                                    <div class="form-group col-sm-6">
+                                                        <div class="col-sm-12">
+                                                            <label>Utility Category</label>
+                                                            <select style="border: none" name="utility" class="form-control col-sm-12" data-ng-model="requistion.UtilityCategoryId"
+                                                                    data-ng-options="i.UtilityCategoryId as i.Name for i in utilityCategories">
+                                                                <option value="">Please select</option>
+                                                            </select>
 
 
 
+                                                        </div>
                                                     </div>
-                                                </div>
 
 
 
-                                                <div class="form-group col-sm-6">
-                                                    <div class="col-sm-12">
-                                                        <label>Invoice Number</label>
-                                                        <input ng-readonly="readOnly" name="inv" class="form-control" ng-model="requistion.RepairerName">
+                                                    <div class="form-group col-sm-6">
+                                                        <div class="col-sm-12">
+                                                            <label>Invoice Number</label>
+                                                            <input ng-readonly="readOnly" name="inv" class="form-control" ng-model="requistion.RepairerName">
 
+                                                        </div>
                                                     </div>
-                                                </div>
 
+
+                                                </div>
 
                                             </div>
-
-                                        </div>
                                         <div class="row" ng-show="requistion.RequistionCategoryId ==34">
                                           <!--  <div class="row" ng-show="requistion.RequistionCategoryId ==30013">-->
                                                 <div class="form-group col-sm-6">
