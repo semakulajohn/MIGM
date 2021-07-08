@@ -396,6 +396,9 @@ angular
                 $scope.totalNormalBags = 0;
                 $scope.totalStoneBags = 0;
                 $scope.totalYellowBags = 0;
+
+                $scope.fromDate = supply.FromDate;
+                $scope.toDate = supply.ToDate;
                 var promise = $http.post('/webapi/ReportApi/GetAllSuppliesBetweenTheSpecifiedDates',
                         {
                             FromDate: supply.FromDate,
@@ -412,7 +415,8 @@ angular
                      $scope.totalAmount = payload.data.TotalAmount;
                      $scope.totalNormalBags = payload.data.TotalNormalBags;
                      $scope.totalStoneBags = payload.data.TotalStoneBags;
-                     $scope.totalYellowBags = payload.data.TotalYellowBags;
+                        $scope.totalYellowBags = payload.data.TotalYellowBags;
+                        
                      $scope.reportType = 4;
                     
                      $scope.tableParams = new ngTableParams({
@@ -436,106 +440,129 @@ angular
 
              
             }
-            //var items = $scope.data;
-            //function buildTableBody(items, columns) {
-            //    var body = [];
-
-            //    body.push(columns);
-
-            //    data.forEach(function (row) {
-            //        var dataRow = [];
-
-            //        columns.forEach(function (column) {
-            //            dataRow.push(row[column].toString());
-            //        })
-
-            //        body.push(dataRow);
-            //    });
-
-            //    return body;
-            //}
-            //function table(data, columns) {
-            //    return {
-            //        table: {
-            //            headerRows: 1,
-            //            body: buildTableBody(data, columns)
-            //        }
-            //    };
-            //}
-
-            //var dd = {
-            //    content: [
-            //        { text: 'Dynamic parts', style: 'header' },
-            //        table(items, [{ text: 'WNN', style: 'header' }, { text: 'Quantity', style: 'header' },
-            //                   { text: 'Price', style: 'header' }, { text: 'Amount', style: 'header' },
-            //                    { text: 'Branch', style: 'header' }, { text: 'Date', style: 'header' },
-            //                   { text: 'SNo', style: 'header' }, { text: 'Supplier', style: 'header' },
-            //                    { text: 'NBags', style: 'header' }, { text: 'SBags', style: 'header' },
-            //                    { text: 'YBags', style: 'header' }
-            //        ],
-            //        )
-            //    ]
-            //}
-
-            //var docDefinition = {
+            $scope.downloadPDF = function () {
+                var supplyData = [];
                 
-            //    content: [
-            //        {
-            //            text: 'Supplies'
-            //        },
-            //        {
-            //            style: 'demoTable',
-            //            table: {
-            //                widths: ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
-            //                body: items
-            //                //[
-            //                //    [{ text: 'WNN', style: 'header' }, { text: 'Quantity', style: 'header' },
-            //                //    { text: 'Price', style: 'header' }, { text: 'Amount', style: 'header' },
-            //                //    { text: 'Branch', style: 'header' }, { text: 'Date', style: 'header' },
-            //                //    { text: 'SNo', style: 'header' }, { text: 'Supplier', style: 'header' },
-            //                //    { text: 'NBags', style: 'header' }, { text: 'SBags', style: 'header' },
-            //                //    { text: 'YBags', style: 'header' }
-            //                //    ],
-            //                //    //angular.forEach(denominations, function (denominations) {
-            //                //    //    //$scope.DenominationAmount = ((price * denominations.Value) * denominations.Quantity) + $scope.DenominationAmount;
-            //                //    //    $scope.DenominationAmount = (denominations.Price * denominations.Quantity) + $scope.DenominationAmount;
-            //                //    //    $scope.DenominationQuantity = (denominations.Quantity * denominations.Value) + $scope.DenominationQuantity;
-            //                //    //});
-            //                //    [';pikh', '344', '52', '344', '52', '344', '52', '344', '52', '344', '52'],
-            //                //    ['Sanga', '320', '89', '344', '52', '344', '52', '344', '52', '344', '52'],
-            //                //    ['Total', ' ', $scope.totalMaize, ' ', $scope.totalAmount, ' ', ' ', ' ', $scope.totalNormalBags, $scope.totalStoneBags, $scope.totalYellowBags]
-            //                //]
-            //            }
-            //        }
-            //    ],
-            //    styles: {
-            //        header: {
-            //            bold: true,
-            //            color: '#000',
-            //            fontSize: 11
-            //        },
-            //        demoTable: {
-            //            color: '#666',
-            //            fontSize: 10
-            //        }
-            //    }
-            //};
+              angular.forEach($scope.data, function (value, key) {
+                    supplyData.push({
+                        WeightNoteNumber: value.WeightNoteNumber, Quantity: value.Quantity, Price: value.Price,
+                        Amount: value.Amount, BranchName: value.BranchName, SupplyDate: value.SupplyDate,
+                        SupplierName: value.SupplierName, NormalBags: value.NormalBags, BagsOfStones: value.BagsOfStones,
+                        YellowBags : value.YellowBags
+                    });
+                });
 
-            //$scope.openPdf = function () {
-            //    pdfMake.createPdf(docDefinition).open();
-            //};
-            //$scope.downloadPdf = function () {
-            //    pdfMake.createPdf(dd).download();
-            //    //pdfMake.createPdf(docDefinition).download();
-            //};
-           
-            $scope.DownloadExcelFile = function () {
-                $window.open("/Excel/Supply/" + $scope.reportType);
-                //$window.open("/Excel/ExportSupplyAsPDF/" + $scope.reportType);
-                // $window.open("/Excel/ExportSupplyAsPDF/"+$scope.reportType);
+                //var items = supplyData.map(function (item) {
+                //    return [(100 + supplyData.indexOf(item) + 1).toString().slice(-2) + '.', item.Title, item.Chords, item.WhoStarts];
+                //});
+                var items = supplyData.map(function (item) {
+                    return [item.WeightNoteNumber, item.Quantity.toString(), item.Price.toString(),
+                        item.Amount.toString(), item.BranchName, item.SupplyDate.toString(), item.SupplierName, item.NormalBags.toString()
+                    ,item.BagsOfStones.toString(),item.YellowBags.toString()];
+                });
 
-                //href = "/Report/ExportMarriageAsPDF?marriageId=@ViewBag.marriageId"
+                var docDefinition = {
+                    pageOrientation: 'landscape',
+                    header: function () {
+                        return [
+                            {
+                                style: 'table',
+                                margin: [62, 35, 62, 35],
+                                table: {
+                                    widths: ['*'],
+                                    headerRows: 0,
+                                    body: [
+                                        [
+                                            { text: 'Mbale Investments Supplies Report From ' + $scope.fromDate.toString() + ' To ' + $scope.toDate.toString(), style: 'topHeader', alignment: 'center' },
+
+
+                                        ]
+                                    ]
+                                },
+                                layout: 'noBorders'
+                            }
+                        ]
+                    },
+                    footer: function (currentPage, pageCount) {
+                        return [
+                            { text: currentPage.toString() + ' of ' + pageCount, alignment: 'center', style: 'footer' }
+                        ]
+                    },
+                    content: [
+                        {
+                            style: 'topTable',
+                            table: {
+                                widths: ['*', '*', '*', '*', '*', '*', '*', '*','*', '*'],
+                                heights: [18],
+                                headerRows: 1,
+                                body: [
+                                   
+                                    [
+                                        { text: 'WNN', style: 'tableLabel' }, { text: 'Qty',style: 'tableLabel' },
+                                        { text: 'Price', style: 'tableLabel' }, { text: 'Amount', style: 'tableLabel' },
+                                        { text: 'Branch', style: 'tableLabel' }, { text: 'Date', style: 'tableLabel' },
+                                        //{ text: 'SNO', style: 'tableLabel' },
+                                        { text: 'Supplier', style: 'tableLabel' }, { text: 'NBags', style: 'tableLabel' },
+                                        { text: 'SBags', style: 'tableLabel' }, { text: 'YBags', style: 'tableLabel' },
+                                    ],
+                                    [
+                                        { text: '', style: 'tableLabel' }, { text: $scope.totalMaize.toString(), style: 'tableLabel' },
+                                        { text: '', style: 'tableLabel' }, { text: $scope.totalAmount.toString(), style: 'tableLabel' },
+                                        { text: ' ', style: 'tableLabel' }, { text: ' ', style: 'tableLabel' },
+                                        { text: ' ', style: 'tableLabel' }, { text: $scope.totalNormalBags.toString(), style: 'tableLabel' },
+                                        { text: $scope.totalStoneBags.toString(), style: 'tableLabel' },
+                                        { text: $scope.totalYellowBags.toString(), style: 'tableLabel' },
+                                    ],
+                                   
+                                  
+                                ].concat(items)
+                            },
+                            layout: {
+                                paddingLeft: function (i, node) { return 6; },
+                                paddingRight: function (i, node) { return 6; },
+                                paddingTop: function (i, node) { return 6; },
+                                paddingBottom: function (i, node) { return 6; },
+                                fillColor: function (i, node) {
+                                    return (i % 2 === 0) ? '#F5F5F5' : null;
+                                }
+                            }
+                        }
+                    ],
+                    pageSize: 'A4',
+                    pageMargins: [62, 80, 62, 80],
+                    styles: {
+                        topHeader: {
+                            fontSize: 15,
+                            bold: true,
+                            margin: [0, 6, 0, 30],
+                            alignment: 'center'
+                        },
+                        table: {
+                            fontSize: 4,
+                            alignment: 'center',
+                            color: 'black',
+                            margin: [0, 5, 0, 15]
+                        },
+                        header: {
+                            fontSize: 12,
+                            bold: true,
+                            margin: [0, 10, 0, 15],
+                            alignment: 'center'
+                        },
+                        footer: {
+                            fontSize: 8,
+                            margin: [0, 25, 0, 17],
+                            alignment: 'center'
+                        }
+                    }
+                };
+                pdfMake.createPdf(docDefinition).download("supplies.pdf");
             };
+           
+            //$scope.DownloadExcelFile = function () {
+            //    $window.open("/Excel/Supply/" + $scope.reportType);
+               
+            //};
 
         }]);
 
