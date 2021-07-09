@@ -132,8 +132,9 @@
             <label>Amount in Words</label>-->
                                                 <!-- <input ng-readonly="readOnly" uistion.Am="{ errorinput: form.amountWords.$invalid }"-->
                                                 <!--<input type="text" ng-model="requistion.AmountInWords" ng-init="requistion.AmountInWords={{requistion.Amount | convertToWord}}" /> {{requistion.Amount |convertToWord}}
-        </div>-->
+            </div>-->
                                             </div>
+                                            
                                             <div class="row">
                                                 <div class="form-group col-sm-6">
                                                     <div class="col-sm-12">
@@ -241,7 +242,7 @@
                                                     </div>
                                                 </div>
 
-                                              
+
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-sm-6" ng-show="requistion.RequistionCategoryId ==3 || requistion.RequistionCategoryId ==4 || requistion.RequistionCategoryId ==1">
@@ -274,75 +275,71 @@
 
 
                                             <div class="row" ng-show="requistion.RequistionCategoryId ==2">
-                                                <div class="row">
-                                                    <div class="form-group col-sm-6">
-                                                        <div class="col-sm-12">
-                                                            <label>Supplier </label>
 
-                                                            <select style="border: none" name="supplierName" class="form-control col-sm-12" data-ng-model="requistion.Id" ng-change="OnSupplierChange(requistion)"
-                                                                    data-ng-options="i.Id as i.FirstName for i in suppliers">
-                                                                <option value="">Please select</option>
-                                                            </select>
+                                                <div class="form-group col-sm-6">
+                                                    <div class="col-sm-12">
+                                                        <label>Supplier </label>
 
-                                                        </div>
-                                                    </div>
+                                                        <select style="border: none" name="supplierName" class="form-control col-sm-12" data-ng-model="requistion.Id" ng-change="OnSupplierChange(requistion)"
+                                                                data-ng-options="i.Id as i.FirstName for i in suppliers">
+                                                            <option value="">Please select</option>
+                                                        </select>
 
-                                                    <div class="form-group col-sm-6">
-                                                        <div class="col-sm-12">
-                                                            <label>Actions</label>
-                                                            <select style="border: none" name="action" class="form-control col-sm-12" data-ng-model="requistion.SupplyAction" required ng-class="{errorinput:form.action.$invalid}"
-                                                                    data-ng-options="i for i in SupplyActions">
-                                                                <option value="">Please select</option>
-                                                            </select>
-
-                                                           
-
-                                                        </div>
                                                     </div>
                                                 </div>
-                                              
+
+                                                <div class="form-group col-sm-6">
+                                                    <div class="col-sm-12">
+                                                        <label>Payment Terms</label>
+                                                        <select style="border: none" name="action" class="form-control col-sm-12" data-ng-model="requistion.SupplyAction" required ng-class="{errorinput:form.action.$invalid}"
+                                                                data-ng-options="i for i in SupplyActions">
+                                                            <option value="">Please select</option>
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+
+
                                                 <div class="row" ng-show="requistion.SupplyAction =='Full Payment'">
 
                                                     <div class="form-group col-sm-6">
-                                                        <div class="form-group col-sm-12">
-                                                            <div class="col-sm-12">
-                                                                <label>Supply</label>
-                                                                <select style="border: none" name="multisupply" class="form-control col-sm-12" data-ng-model="requistion.Supplies" multiple ng-class="{errorinput:form.multisupply.$invalid}"
-                                                                        data-ng-options="i as i.WeightNoteNumber for i in weightNotes" ng-value="i">
-                                                                    <option value="">Please select</option>
-                                                                </select>
 
-                                                                <div class="form-group col-sm-12">
-                                                                    <div class="col-sm-12">
-
-                                                                        <h4>Selected Supplies</h4>
-                                                                        <div class="table-responsive">
-
-                                                                            <table class="table table-bordered">
-                                                                                <tbody>
-                                                                                    <tr>
-                                                                                        <th>WNN</th>
-
-                                                                                        <th>Amount to Pay</th>
-                                                                                    </tr>
-                                                                                    <tr ng-repeat="m in requistion.Supplies">
-
-                                                                                        <td width="20%"><pre>{{ m.WeightNoteNumber }}</pre></td>
-                                                                                        <td width="30%"><pre>{{ m.AmountToPay }}</pre></td>
+                                                        <div class="col-sm-12">
+                                                            <label>Supply</label>
+                                                            <select style="border: none" name="multisupply" class="form-control col-sm-12" data-ng-model="requistion.Supplies" multiple ng-class="{errorinput:form.multisupply.$invalid}"
+                                                                    data-ng-options="i as i.WeightNoteNumber for i in weightNotes" ng-value="i">
+                                                                <option value="">Please select</option>
+                                                            </select>
 
 
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
+                                                        </div>
 
-                                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-6">
+                                                        <div class="col-sm-12">
+
+                                                            <h4>Selected Supplies</h4>
+                                                            <div class="table-responsive">
+
+                                                                <table class="table table-bordered">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <th>WNN</th>
+
+                                                                            <th>Amount to Pay</th>
+                                                                        </tr>
+                                                                        <tr ng-repeat="m in requistion.Supplies">
+
+                                                                            <td width="20%"><pre>{{ m.WeightNoteNumber }}</pre></td>
+                                                                            <td width="30%"><pre>{{ m.AmountToPay }}</pre></td>
 
 
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
 
-
-                                                                    </div>
-                                                                </div>
                                                             </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -385,41 +382,12 @@
 
 
 
-                                                <div class="row" ng-show="requistion.RequistionCategoryId ==10">
-                                                    <div class="form-group col-sm-6">
-                                                        <div class="col-sm-12">
-                                                            <label>Utility Category</label>
-                                                            <select style="border: none" name="utility" class="form-control col-sm-12" data-ng-model="requistion.UtilityCategoryId"
-                                                                    data-ng-options="i.UtilityCategoryId as i.Name for i in utilityCategories">
-                                                                <option value="">Please select</option>
-                                                            </select>
-
-
-
-                                                        </div>
-                                                    </div>
-
-
-
-                                                    <div class="form-group col-sm-6">
-                                                        <div class="col-sm-12">
-                                                            <label>Invoice Number</label>
-                                                            <input ng-readonly="readOnly" name="inv" class="form-control" ng-model="requistion.RepairerName">
-
-                                                        </div>
-                                                    </div>
-
-
-                                                </div>
-
-                                            </div>
-                                        <div class="row" ng-show="requistion.RequistionCategoryId ==34">
-                                          <!--  <div class="row" ng-show="requistion.RequistionCategoryId ==30013">-->
+                                            <div class="row" ng-show="requistion.RequistionCategoryId ==10">
                                                 <div class="form-group col-sm-6">
                                                     <div class="col-sm-12">
-                                                        <label>Financial Account</label>
-                                                        <select style="border: none" name="financial" class="form-control col-sm-12" data-ng-model="requistion.FinancialAccountId"
-                                                                data-ng-options="i.FinancialAccountId as i.Name for i in financialAccounts">
+                                                        <label>Utility Category</label>
+                                                        <select style="border: none" name="utility" class="form-control col-sm-12" data-ng-model="requistion.UtilityCategoryId"
+                                                                data-ng-options="i.UtilityCategoryId as i.Name for i in utilityCategories">
                                                             <option value="">Please select</option>
                                                         </select>
 
@@ -430,82 +398,111 @@
 
 
 
+                                                <div class="form-group col-sm-6">
+                                                    <div class="col-sm-12">
+                                                        <label>Invoice Number</label>
+                                                        <input ng-readonly="readOnly" name="inv" class="form-control" ng-model="requistion.RepairerName">
+
+                                                    </div>
+                                                </div>
+
 
                                             </div>
 
                                         </div>
-                                    <div class="hr-line-dashed"></div>
+                                        <div class="row" ng-show="requistion.RequistionCategoryId ==34">
+                                            <!--  <div class="row" ng-show="requistion.RequistionCategoryId ==30013">-->
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <label>Financial Account</label>
+                                                    <select style="border: none" name="financial" class="form-control col-sm-12" data-ng-model="requistion.FinancialAccountId"
+                                                            data-ng-options="i.FinancialAccountId as i.Name for i in financialAccounts">
+                                                        <option value="">Please select</option>
+                                                    </select>
 
-                                    <div class="form-group">
-                                        <div class="col-md-2">
-                                        </div>
-                                        <div class="col-md-10">
-                                            <div class="check-element sample-show-hide alert alert-success animate-show" ng-show="showMessageSave" style="clear:both;">
-                                                <i class="fa-fw fa fa-check"></i>
-                                                <span>Requistion has been saved</span>
-                                            </div>
-                                            <div class="check-element sample-show-hide alert alert-success animate-show" ng-show="showMessageFailedSave" style="clear:both;">
-                                                <i class="fa-fw fa fa-check"></i><span>Requistion has not  been saved</span>
-                                            </div>
-                                            <div class="check-element sample-show-hide alert alert-success animate-show" ng-show="showMessageDeleted" style="clear:both;">
-                                                <i class="fa-fw fa fa-check"></i><span>Requistion has been deleted</span>
-                                            </div>
-                                            <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageDeleteFailed" style="clear:both;">
-                                                <i class="fa-fw fa fa-check"></i><span>Requistion has failed to be deleted</span>
+
+
+                                                </div>
                                             </div>
 
-                                            <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageCashNotEnough" style="clear:both;">
-                                                <i class="fa-fw fa fa-check"></i><span>Failed to Approve Money because you don't have enough Funds at Branch</span>
-                                            </div>
+
+
 
                                         </div>
-                                    </div>
 
 
-                                    <div class="form-group">
-                                        <div class="col-sm-8 col-sm-offset-2">
 
-                                            <button class="btn btn-default" type="submit" ng-click="Cancel()">
-                                                Back
-                                            </button>
+                                        <div class="form-group">
+                                            <div class="col-md-2">
+                                            </div>
+                                            <div class="col-md-10">
+                                                <div class="check-element sample-show-hide alert alert-success animate-show" ng-show="showMessageSave" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i>
+                                                    <span>Requistion has been saved</span>
+                                                </div>
+                                                <div class="check-element sample-show-hide alert alert-success animate-show" ng-show="showMessageFailedSave" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i><span>Requistion has not  been saved</span>
+                                                </div>
+                                                <div class="check-element sample-show-hide alert alert-success animate-show" ng-show="showMessageDeleted" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i><span>Requistion has been deleted</span>
+                                                </div>
+                                                <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageDeleteFailed" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i><span>Requistion has failed to be deleted</span>
+                                                </div>
 
-                                            <div class="btn-group">
+                                                <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageCashNotEnough" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i><span>Failed to Approve Money because you don't have enough Funds at Branch</span>
+                                                </div>
 
-                                                <button class="btn btn-info dropdown-toggle" ng-disabled="!form.$valid" ng-really-message='Are you sure you want to make this requistion' ng-really-click="Save(requistion)">
-                                                    Save
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <div class="col-sm-8 col-sm-offset-2">
+
+                                                <button class="btn btn-default" type="submit" ng-click="Cancel()">
+                                                    Back
                                                 </button>
-                                                <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                                                    <span class="caret"></span>
-                                                </button>
 
-                                                <ul class="dropdown-menu">
-                                                    <!--<li ng-show="requistion.RequistionId > 0 && !requistion.Approved">
+                                                <div class="btn-group">
+
+                                                    <button class="btn btn-info dropdown-toggle" ng-disabled="!form.$valid" ng-really-message='Are you sure you want to make this requistion' ng-really-click="Save(requistion)">
+                                                        Save
+                                                    </button>
+                                                    <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                                                        <span class="caret"></span>
+                                                    </button>
+
+                                                    <ul class="dropdown-menu">
+                                                        <!--<li ng-show="requistion.RequistionId > 0 && !requistion.Approved">
                         <a ng-really-message='Are you sure you want to approve this Requistion' ng-disabled="!form.$valid" class="btn text-align-left" href="" ng-really-click="Approve(requistion)" data-original-title="Approve">Approve</a>
                     </li>
                     <li ng-show="requistion.RequistionId > 0 &&(!requistion.Approved && !requistion.Rejected)">
                         <a ng-really-message='Are you sure you want to Reject this Requistion' ng-disabled="!form.$valid" class="btn text-align-left" href="" ng-really-click="Save(requistion)" data-original-title="Edit">Edit</a>
                     </li>-->
-                                                    <li ng-show="requistion.RequistionId > 0 && !requistion.Approved && !requistion.Rejected">
-                        <a ng-really-message='Are you sure you want to delete this Requistion' ng-disabled="!form.$valid" class="btn text-align-left" href="" ng-really-click="Delete(requistion.RequistionId)" data-original-title="Delete">Delete</a>
-                    </li>-->
-                                                </ul>
+                                                        <li ng-show="requistion.RequistionId > 0 && !requistion.Approved && !requistion.Rejected">
+                                                            <a ng-really-message='Are you sure you want to delete this Requistion' ng-disabled="!form.$valid" class="btn text-align-left" href="" ng-really-click="Delete(requistion.RequistionId)" data-original-title="Delete">Delete</a>
+                                                        </li>-->
+                                                    </ul>
+                                                </div>
+
                                             </div>
-
                                         </div>
-                                    </div>
 
-                                    <div class="form-group" ng-show="requistion.RequistionId > 0">
-                                        <div class="col-sm-8 col-sm-offset-2">
+                                        <div class="form-group" ng-show="requistion.RequistionId > 0">
+                                            <div class="col-sm-8 col-sm-offset-2">
 
-                                            <a class="btn btn-primary" href="/Excel/Requistion?requistionId={{requistion.RequistionId}}">Print</a>
+                                                <a class="btn btn-primary" href="/Excel/Requistion?requistionId={{requistion.RequistionId}}">Print</a>
+                                            </div>
                                         </div>
+                                        <div class="hr-line-dashed"></div>
                                     </div>
-
-                                    </div>
-
+                                    <!--</div>-->
 
 
-</tab>
+
+                                </tab>
 
                     
 
