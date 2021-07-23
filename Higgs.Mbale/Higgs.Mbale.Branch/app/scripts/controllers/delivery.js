@@ -41,9 +41,9 @@
         });
        
         
-        $http.get('/webapi/AccountTransactionActivityApi/GetAllPaymentModes').success(function (data, status) {
-            $scope.paymentModes = data;
-        });
+        //$http.get('/webapi/AccountTransactionActivityApi/GetAllPaymentModes').success(function (data, status) {
+        //    $scope.paymentModes = data;
+        //});
        
         if (action == 'create') {
             deliveryId = 0;
