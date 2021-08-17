@@ -801,7 +801,112 @@ angular
                     name: 'Receipt', cellTemplate: '<div class="ui-grid-cell-contents"><a  href="/Excel/CashReceipt?documentId={{row.entity.DocumentId}}">Print</a></div>'
                 },
 
+                { name: 'print', cellTemplate: '<div class="ui-grid-cell-contents"><button ng-click="grid.appScope.downloadPDF()">Click Here</button></div>' }
+
             ];
+
+            $scope.downloadPDF = function () {
+
+                var docDefinition = {
+
+                    header: function () {
+                        return [
+                            {
+                                style: 'table',
+                                margin: [62, 35, 62, 35],
+                                table: {
+                                    widths: ['*', '*'],
+                                    headerRows: 0,
+                                    body: [
+                                        [
+                                            { text: 'Mbale investments', style: 'topHeader', alignment: 'left' },
+
+
+                                        ]
+                                    ]
+                                },
+                                layout: 'noBorders'
+                            }
+                        ]
+                    },
+                    footer: function (currentPage, pageCount) {
+                        return [
+                            { text: currentPage.toString() + ' of ' + pageCount, alignment: 'center', style: 'footer' }
+                        ]
+                    },
+                    content: [
+                        {
+                            style: 'topTable',
+                            table: {
+                                widths: ['*', '*'],
+                                heights: [15],
+                                headerRows: 1,
+                                body: [
+                                    [
+                                        {
+                                            text: $scope.BranchName + ' ' + $scope.BranchName,
+                                            style: 'tableHeader', colSpan: 2},
+                                       {},
+                                    ],
+                                    [
+                                        {text: 'PRODUCT NAME', style: 'tableLabel', bold: true }, {text: $scope.ProductName}
+                                        //'ProductName', 'TotalQuantity', 'Price', 'TotalAmount', 'CreatedOn'
+                                    ],
+                                    [
+                                        {text: 'TOTAL QUANTITY', style: 'tableLabel', bold: true }, {text: $scope.TotalQuantity},
+                                        //'ProductName', 'TotalQuantity', 'Price', 'TotalAmount', 'CreatedOn'
+                                    ],
+                                     
+                                    //[
+                                    //    {text : $scope.ProductName }, { text : $scope.TotalQuantity },
+                                    //    { text: $scope.Price }, { text: $scope.TotalAmount }, { text: $scope.CreatedOn }
+                                    //],
+
+                                ]
+                            },
+                            layout: {
+                                paddingLeft: function (i, node) { return 8; },
+                                paddingRight: function (i, node) { return 8; },
+                                paddingTop: function (i, node) { return 6; },
+                                paddingBottom: function (i, node) { return 6; },
+                                fillColor: function (i, node) {
+                                    return (i % 2 === 0) ? '#F5F5F5' : null;
+                                }
+                            }
+                        }
+                    ],
+                    pageSize: 'A4',
+                    pageMargins: [62, 80, 62, 80],
+                    styles: {
+                        topHeader: {
+                            fontSize: 20,
+                            bold: true,
+                            margin: [0, 6, 0, 30],
+                            alignment: 'left'
+                        },
+                        table: {
+                            fontSize: 8,
+                            alignment: 'left',
+                            color: 'black',
+                            margin: [0, 5, 0, 15]
+                        },
+                        header: {
+                            fontSize: 16,
+                            bold: true,
+                            margin: [0, 10, 0, 15],
+                            alignment: 'left'
+                        },
+                        footer: {
+                            fontSize: 8,
+                            margin: [0, 25, 0, 17],
+                            alignment: 'center'
+                        }
+                    }
+                };
+                pdfMake.createPdf(docDefinition).download("cashviewsales.pdf");
+            };
+
+
 
 
             //var promise = $http.get('/webapi/CashSaleApi/GetAllCashSalesForAparticularBranch?branchId=' + branchId, {});

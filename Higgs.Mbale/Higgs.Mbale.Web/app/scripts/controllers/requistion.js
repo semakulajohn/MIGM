@@ -524,9 +524,142 @@
                 });
         }
 
+        
 
-    }
+            $scope.downloadPDF = function () {
+
+                var docDefinition = {
+
+                    header: function () {
+                        return [
+                            {
+                                style: 'table',
+                                margin: [62, 35, 62, 35],
+                                table: {
+                                    widths: ['*', '*'],
+                                    headerRows: 0,
+                                    body: [
+                                        [
+                                            { image: $scope.getBaseImage("/images/mbale_logo.jpg")},
+
+                                            { text: 'Mbale investments', style: 'topHeader', alignment: 'left' },
+
+
+                                        ]
+                                    ]
+                                },
+                                layout: 'noBorders'
+                            }
+                        ]
+                    },
+                    footer: function (currentPage, pageCount) {
+                        return [
+                            { text: currentPage.toString() + ' of ' + pageCount, alignment: 'center', style: 'footer' }
+                        ]
+                    },
+                    content: [
+                        {
+                            style: 'topTable',
+                            table: {
+                                widths: ['*', '*'],
+                                heights: [18],
+                                headerRows: 1,
+                                body: [
+                                    [
+                                        {
+                                            text: 'Requisition  Details  of ' + ' ' + $scope.requistion.BranchName + '  REQUISITION NUMBER  ' + $scope.requistion.RequistionNumber,
+                                            style: 'tableHeader', colSpan: 2, alignment: 'center'
+                                        },
+                                        {}
+                                    ],
+                                    [
+                                        { text: 'BRANCH NAME ', style: 'tableLabel', bold: true }, { text: $scope.requistion.BranchName },
+                                       
+                                    ],
+                                    [
+                                        { text: 'REQUISITION NUMBER ', style: 'tableLabel', bold: true }, { text: $scope.requistion.RequistionNumber},
+                                        
+                                    ],
+                                    [
+                                        { text: 'AMOUNT ', style: 'tableLabel', bold: true }, { text: $scope.requistion.Amount.toString() },
+                                        
+                                    ],
+                                    [
+                                        { text: 'AMOUNT IN WORDS ', style: 'tableLabel', bold: true }, { text: $scope.requistion.AmountInWords },
+
+                                    ],
+                                    [
+                                        { text: 'DESCRIPTION ', style: 'tableLabel', bold: true }, { text: $scope.requistion.Description },
+
+                                    ],
+                                    [
+                                        { text: ' BATCH NAME  ', style: 'tableLabel', bold: true }, { text: $scope.requistion.BatchName },
+
+                                    ],
+
+                                    
+                                ]
+                            },
+
+                            layout: {
+                                paddingLeft: function (i, node) { return 8; },
+                                paddingRight: function (i, node) { return 8; },
+                                paddingTop: function (i, node) { return 6; },
+                                paddingBottom: function (i, node) { return 6; },
+                                fillColor: function (i, node) {
+                                    return (i % 2 === 0) ? '#F5F5F5' : null;
+                                }
+                            }
+                        }
+                    ],
+                    pageSize: 'A4',
+                    pageMargins: [62, 80, 62, 80],
+                    styles: {
+                        topHeader: {
+                            fontSize: 20,
+                            bold: true,
+                            margin: [0, 6, 0, 30],
+                            alignment: 'left'
+                        },
+                        table: {
+                            fontSize: 8,
+                            alignment: 'left',
+                            color: 'black',
+                            margin: [0, 5, 0, 15]
+                        },
+                        header: {
+                            fontSize: 16,
+                            bold: true,
+                            margin: [0, 10, 0, 15],
+                            alignment: 'left'
+                        },
+                        footer: {
+                            fontSize: 8,
+                            margin: [0, 25, 0, 17],
+                            alignment: 'center'
+                        }
+                    }
+                };
+                pdfMake.createPdf(docDefinition).download("requisition.pdf");
+            };
+
+
+        $scope.getBaseImage() = function (img) {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = img.width;
+            canvas.height = img.height;
+
+            ctx.drawImage(img, 0, 0);
+            return canvas.toDataURL('image/jpeg');
+        }
+
+
+        }
     ]);
+
+
+
 
 
 angular

@@ -319,6 +319,7 @@ angular
             promise.then(
                 function (payload) {
                     $scope.gridData.data = payload.data;
+                    $scope.Supplies = payload.data;
                     $scope.loadingSpinner = false;
                 }
             );
@@ -380,106 +381,122 @@ angular
                   { name: 'Edit', cellTemplate: '<div class="ui-grid-cell-contents"><a href="#/supplies/edit/' + supplierId + '/{{row.entity.SupplyId}}">Edit</a></div>' },
                      { name: 'Action', cellTemplate: '<div class="ui-grid-cell-contents"> <a href="#/supplies/details/'+supplierId+'/{{row.entity.SupplyId}}">Details</a> </div>' },
                // { name: 'print', cellTemplate: '<div class="ui-grid-cell-contents"><a href="#/supplies/edit/' + supplierId + '/{{row.entity.SupplyId}}">Print</a></div>' },
-                { name: 'print', cellTemplate: '<div class="ui-grid-cell-contents"><button ng-click="grid.appScope.downloadPDF()">Click Here</button></div>'}
+               // { name: 'print', cellTemplate: '<div class="ui-grid-cell-contents"><button ng-click="grid.appScope.downloadPDF()">Click Here</button></div>'}
             ];
 
 
-            $scope.downloadPDF = function () {
+            //$scope.downloadPDF = function () {
 
-                var docDefinition = {
+            //    var docDefinition = {
 
-                    header: function () {
-                        return [
-                            {
-                                style: 'table',
-                                margin: [62, 35, 62, 35],
-                                table: {
-                                    widths: ['*', '*'],
-                                    headerRows: 0,
-                                    body: [
-                                        [
-                                            { text: 'Mbale investments', style: 'topHeader', alignment: 'left' },
+            //        header: function () {
+            //            return [
+            //                {
+            //                    style: 'table',
+            //                    margin: [62, 35, 62, 35],
+            //                    table: {
+            //                        widths: ['*', '*'],
+            //                        headerRows: 0,
+            //                        body: [
+            //                            [
+            //                                { text: 'Mbale investments', style: 'topHeader', alignment: 'left' },
 
 
-                                        ]
-                                    ]
-                                },
-                                layout: 'noBorders'
-                            }
-                        ]
-                    },
-                    footer: function (currentPage, pageCount) {
-                        return [
-                            { text: currentPage.toString() + ' of ' + pageCount, alignment: 'center', style: 'footer' }
-                        ]
-                    },
-                    content: [
-                        {
-                            style: 'topTable',
-                            table: {
-                                widths: ['*', '*', '*', '*'],
-                                heights: [18],
-                                headerRows: 1,
-                                body: [
-                                    [
-                                        {
-                                            text: $scope.SupplierName + ' ' + $scope.SupplierName + ' ' + $scope.SupplierName,
-                                            style: 'tableHeader', colSpan: 4
-                                        },
-                                        {}, {}, {}
-                                    ],
-                                    [
-                                        { text: 'Type:', style: 'tableLabel' }, { text: 'Flight' },
-                                        { text: 'Verified:', style: 'tableLabel' }, { text: 'Yes' }
-                                    ],
-                                    [
-                                        { text: 'Status ID:', style: 'tableLabel' }, { text: $scope.SupplierName },
-                                        { text: 'Supplier ID:', style: 'tableLabel' }, { text: $scope.SupplierName }
-                                    ],
+            //                            ]
+            //                        ]
+            //                    },
+            //                    layout: 'noBorders'
+            //                }
+            //            ]
+            //        },
+            //        footer: function (currentPage, pageCount) {
+            //            return [
+            //                { text: currentPage.toString() + ' of ' + pageCount, alignment: 'center', style: 'footer' }
+            //            ]
+            //        },
+            //        content: [
+            //            {
+            //                style: 'topTable',
+            //                table: {
+            //                    widths: ['*', '*'],
+            //                    heights: [18],
+            //                    headerRows: 1,
+            //                    body: [
+            //                        [
+            //                            {
+            //                                text: $scope.SupplierName + ' ' + $scope.SupplierName,
+            //                                style: 'tableHeader', colSpan: 2, alignment :'center'
+            //                            },
+            //                            {}
+            //                        ],
+            //                        [
+            //                            { text: 'Supply Name', style: 'tableLabel', bold: true }, { text: $scope.SupplierName  },
+            //                            //{ text: 'Verified:', style: 'tableLabel', bold: true }, { text: 'Yes'}
+            //                        ],
+            //                        [
+            //                            { text: 'Truck Number', style: 'tableLabel', bold: true }, { text: $scope.Supplies[0].TruckNumber   },
+            //                            //{ text: 'Supplier ID:', style: 'tableLabel' }, { text: $scope.SupplierName }
+            //                        ],
+            //                        [
+            //                            { text: 'Supply Date', style: 'tableLabel', bold: true }, { text: $scope.Supplies[0].CreatedOn },
+            //                            //{ text: 'Supplier ID:', style: 'tableLabel' }, { text: $scope.SupplierName }
+            //                        ],
+            //                        [
+            //                            { text: 'Branch Name', style: 'tableLabel', bold: true }, { text: $scope.Supplies[0].BranchName },
+            //                            //{ text: 'Supplier ID:', style: 'tableLabel' }, { text: $scope.SupplierName }
+            //                        ],
+            //                        [
+            //                            { text: 'Price', style: 'tableLabel', bold: true }, { text: $scope.Supplies[0].Price },
+            //                            //{ text: 'Supplier ID:', style: 'tableLabel' }, { text: $scope.SupplierName }
+            //                        ],
+            //                        [
+            //                            { text: 'Amount', style: 'tableLabel', bold: true }, { text: $scope.Supplies[0].Amount},
+            //                            //{ text: 'Supplier ID:', style: 'tableLabel' }, { text: $scope.SupplierName }
+            //                        ],
 
-                                ]
-                            },
-                            layout: {
-                                paddingLeft: function (i, node) { return 8; },
-                                paddingRight: function (i, node) { return 8; },
-                                paddingTop: function (i, node) { return 6; },
-                                paddingBottom: function (i, node) { return 6; },
-                                fillColor: function (i, node) {
-                                    return (i % 2 === 0) ? '#F5F5F5' : null;
-                                }
-                            }
-                        }
-                    ],
-                    pageSize: 'A4',
-                    pageMargins: [62, 80, 62, 80],
-                    styles: {
-                        topHeader: {
-                            fontSize: 20,
-                            bold: true,
-                            margin: [0, 6, 0, 30],
-                            alignment: 'left'
-                        },
-                        table: {
-                            fontSize: 8,
-                            alignment: 'left',
-                            color: 'black',
-                            margin: [0, 5, 0, 15]
-                        },
-                        header: {
-                            fontSize: 16,
-                            bold: true,
-                            margin: [0, 10, 0, 15],
-                            alignment: 'left'
-                        },
-                        footer: {
-                            fontSize: 8,
-                            margin: [0, 25, 0, 17],
-                            alignment: 'center'
-                        }
-                    }
-                };
-                pdfMake.createPdf(docDefinition).download("sample.pdf");
-            };
+            //                    ]
+            //                },
+            //                layout: {
+            //                    paddingLeft: function (i, node) { return 8; },
+            //                    paddingRight: function (i, node) { return 8; },
+            //                    paddingTop: function (i, node) { return 6; },
+            //                    paddingBottom: function (i, node) { return 6; },
+            //                    fillColor: function (i, node) {
+            //                        return (i % 2 === 0) ? '#F5F5F5' : null;
+            //                    }
+            //                }
+            //            }
+            //        ],
+            //        pageSize: 'A4',
+            //        pageMargins: [62, 80, 62, 80],
+            //        styles: {
+            //            topHeader: {
+            //                fontSize: 20,
+            //                bold: true,
+            //                margin: [0, 6, 0, 30],
+            //                alignment: 'left'
+            //            },
+            //            table: {
+            //                fontSize: 8,
+            //                alignment: 'left',
+            //                color: 'black',
+            //                margin: [0, 5, 0, 15]
+            //            },
+            //            header: {
+            //                fontSize: 16,
+            //                bold: true,
+            //                margin: [0, 10, 0, 15],
+            //                alignment: 'left'
+            //            },
+            //            footer: {
+            //                fontSize: 8,
+            //                margin: [0, 25, 0, 17],
+            //                alignment: 'center'
+            //            }
+            //        }
+            //    };
+            //    pdfMake.createPdf(docDefinition).download("sample.pdf");
+            //};
        
 
         }]);
@@ -1135,10 +1152,135 @@ angular
             $state.go('supplier-supply-list', { 'supplierId': supplierId });
             // $state.go('supplies.list');
         };
+
+        $scope.downloadPDF = function () {
+
+            var docDefinition = {
+
+                header: function () {
+                    return [
+                        {
+                            style: 'table',
+                            margin: [62, 35, 62, 35],
+                            table: {
+                                widths: ['*', '*'],
+                                headerRows: 0,
+                                body: [
+                                    [
+                                      
+                                        
+                                        { text: 'Mbale investments', style: 'topHeader', alignment: 'left' },
+
+
+                                    ]
+                                ]
+                            },
+                            layout: 'noBorders'
+                        }
+                    ]
+                },
+                footer: function (currentPage, pageCount) {
+                    return [
+                        { text: currentPage.toString() + ' of ' + pageCount, alignment: 'center', style: 'footer' }
+                    ]
+                },
+                content: [
+                    {
+                        style: 'topTable',
+                        table: {
+                            widths: ['*', '*'],
+                            heights: [18],
+                            headerRows: 1,
+                            body: [
+                                [
+                                    {
+                                        text: 'Supply Details  of ' + ' ' + $scope.SupplierName + ' on ' + $scope.supply.SupplyDate,
+                                        style: 'tableHeader', colSpan: 2, alignment: 'center'
+                                    },
+                                    {}
+                                ],
+                                [
+                                    { text: 'Supply Name', style: 'tableLabel', bold: true }, { text: $scope.SupplierName },
+                                    //{ text: 'Verified:', style: 'tableLabel', bold: true }, { text: 'Yes'}
+                                ],
+                                [
+                                    { text: 'Supply Date', style: 'tabLabel', bold: true }, { text : $scope.supply.SupplyDate},
+                                ],
+                                [
+                                    { text: 'Branch Name', style: 'tabLabel', bold: true }, { text: $scope.supply.BranchName },
+                                ],
+                                [
+                                    { text: 'Truck Number', style: 'tabLabel', bold: true }, { text: $scope.supply.TruckNumber},
+                                ],
+                                [
+                                    { text: 'WeightNote Number', style: 'tabLabel', bold: true }, { text: $scope.supply.WeightNoteNumber},
+                                ],
+                                [
+                                    { text: 'Price', style: 'tabLabel', bold: true }, { text : $scope.supply.Price.toString() },
+                                ],
+                                [
+                                    { text: 'Quantity', style: 'tabLabel', bold: true }, { text: $scope.supply.Quantity.toString() },
+                                ],
+                                [
+                                    { text: 'No. of Bags', style: 'tabLabel', bold: true }, { text: $scope.supply.NormalBags.toString() },
+                                ],
+                                [
+                                    { text: 'Stone Bags', style: 'tabLabel', bold: true }, { text: $scope.supply.BagsOfStones.toString() },
+                                ],
+                                [
+                                    { text: 'Paid Offloading', style: 'tabLabel', bold: true }, { text: $scope.supply.Offloading },
+                                ]
+                                
+                               
+
+                            ]
+                        },
+                        layout: {
+                            paddingLeft: function (i, node) { return 8; },
+                            paddingRight: function (i, node) { return 8; },
+                            paddingTop: function (i, node) { return 6; },
+                            paddingBottom: function (i, node) { return 6; },
+                            fillColor: function (i, node) {
+                                return (i % 2 === 0) ? '#F5F5F5' : null;
+                            }
+                        }
+                    }
+                ],
+                pageSize: 'A4',
+                pageMargins: [62, 80, 62, 80],
+                styles: {
+                    topHeader: {
+                        fontSize: 20,
+                        bold: true,
+                        margin: [0, 6, 0, 30],
+                        alignment: 'left'
+                    },
+                    table: {
+                        fontSize: 8,
+                        alignment: 'left',
+                        color: 'black',
+                        margin: [0, 5, 0, 15]
+                    },
+                    header: {
+                        fontSize: 16,
+                        bold: true,
+                        margin: [0, 10, 0, 15],
+                        alignment: 'left'
+                    },
+                    footer: {
+                        fontSize: 8,
+                        margin: [0, 25, 0, 17],
+                        alignment: 'center'
+                    }
+                }
+            };
+            pdfMake.createPdf(docDefinition).download("sample.pdf");
+        };
+
        
      
 
-    }
+        }
     ]);
 
 
