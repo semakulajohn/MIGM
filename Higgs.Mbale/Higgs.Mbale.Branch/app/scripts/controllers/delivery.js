@@ -22,6 +22,8 @@
         var action = $scope.action;
         var productId = 0;
         var departmentId = 10002;
+        $scope.paymentModes = [{ Name: "Credit", Id: 10003 }, { Name: "AdvancedPayment", Id: 10004 }];
+
                
         $http.get('webapi/ProductApi/GetAllproducts').success(function (data, status) {
             $scope.products = data;
@@ -39,9 +41,9 @@
         });
        
         
-        $http.get('/webapi/AccountTransactionActivityApi/GetAllPaymentModes').success(function (data, status) {
-            $scope.paymentModes = data;
-        });
+        //$http.get('/webapi/AccountTransactionActivityApi/GetAllPaymentModes').success(function (data, status) {
+        //    $scope.paymentModes = data;
+        //});
        
         if (action == 'create') {
             deliveryId = 0;
@@ -245,7 +247,7 @@
                     Quantity: $scope.TotalQuantity,
                     VehicleNumber :delivery.VehicleNumber,
                     BranchId: delivery.BranchId,
-                    PaymentModeId: delivery.PaymentModeId,
+                    PaymentModeId: delivery.PaymentModeId.Id,
                     ProductId : productId,
                     Location : delivery.Location,
                     SectorId: departmentId,
