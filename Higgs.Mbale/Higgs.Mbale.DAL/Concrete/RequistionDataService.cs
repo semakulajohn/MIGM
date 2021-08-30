@@ -116,7 +116,7 @@ public    class RequistionDataService : DataServiceBase,IRequistionDataService
                     FinancialAccountId = requistionDTO.FinancialAccountId,
                     RepairerName = requistionDTO.RepairerName,
                     OutSourcerId = requistionDTO.OutSourcerId,
-
+                    SupplyAction = requistionDTO.SupplyAction,
 
                 };
 
@@ -161,6 +161,7 @@ public    class RequistionDataService : DataServiceBase,IRequistionDataService
                     result.BankId = requistionDTO.BankId;
                     result.OutSourcerId = requistionDTO.OutSourcerId;
                     result.FinancialAccountId = requistionDTO.FinancialAccountId;
+                    result.SupplyAction = requistionDTO.SupplyAction;
 
                     this.UnitOfWork.Get<Requistion>().Update(result);
                     this.UnitOfWork.SaveChanges();

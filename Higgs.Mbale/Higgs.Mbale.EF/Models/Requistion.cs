@@ -45,6 +45,7 @@ namespace Higgs.Mbale.EF.Models
         public Nullable<long> UtilityCategoryId { get; set; }
         public Nullable<long> FinancialAccountId { get; set; }
         public string OutSourcerId { get; set; }
+        public string SupplyAction { get; set; }
     
         public virtual Activity Activity { get; set; }
         public virtual AspNetUser AspNetUser { get; set; }

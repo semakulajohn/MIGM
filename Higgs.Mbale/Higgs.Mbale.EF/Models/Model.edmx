@@ -1295,6 +1295,7 @@
           <Property Name="UtilityCategoryId" Type="bigint" />
           <Property Name="FinancialAccountId" Type="bigint" />
           <Property Name="OutSourcerId" Type="nvarchar" MaxLength="128" />
+          <Property Name="SupplyAction" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="RequistionCategory">
           <Key>
@@ -18313,6 +18314,7 @@
           <NavigationProperty Name="UtilityCategory" Relationship="Higgs.MbaleModel.FK_Requistion_UtilityCategoryId" FromRole="Requistion" ToRole="UtilityCategory" />
           <Property Name="OutSourcerId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AspNetUser31" Relationship="Higgs.MbaleModel.FK_Requistion_OutSourcer" FromRole="Requistion" ToRole="AspNetUser" />
+          <Property Name="SupplyAction" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Requistion_Activity">
           <End Type="Higgs.MbaleModel.Activity" Role="Activity" Multiplicity="0..1" />
@@ -20790,6 +20792,7 @@
           <EntitySetMapping Name="Requistions">
             <EntityTypeMapping TypeName="Higgs.MbaleModel.Requistion">
               <MappingFragment StoreEntitySet="Requistion">
+                <ScalarProperty Name="SupplyAction" ColumnName="SupplyAction" />
                 <ScalarProperty Name="OutSourcerId" ColumnName="OutSourcerId" />
                 <ScalarProperty Name="FinancialAccountId" ColumnName="FinancialAccountId" />
                 <ScalarProperty Name="UtilityCategoryId" ColumnName="UtilityCategoryId" />

@@ -228,39 +228,239 @@ namespace Higgs.Mbale.BAL.Concrete
                     //supply
                     else if (requistion.RequistionCategoryId == 2)
                     {
-                        Supply supply = new Supply();
-                        if (requistion.SupplyId != null)
+                        //Supply supply = new Supply();
+                        //if (requistion.SupplyId != null)
+                        //{
+                        //    supply = _supplyService.GetSupply(Convert.ToInt64(requistion.SupplyId));
+                        //    if (supply.IsPaid == true)
+                        //    {
+                        //        int paid = -6;
+                        //        //supply already paid
+                        //        return requistionId = paid;
+                        //    }
+                        //    else
+                        //    {
+                        //        if (requistion.PartPayment == true)
+                        //        {
+                        //            if (supply.AmountToPay < requistion.Amount)
+                        //            {
+                        //                int paid = -4;
+                        //                //paying more than the supply cost
+                        //                return requistionId = paid;
+                        //            }
+
+                        //            else
+                        //            {
+                        //                bool isPaid = false;
+                        //                var amountPaid = supply.AmountToPay - requistion.Amount;
+                        //                var partialAmount = (supply.PartialAmount == null ? 0 : supply.PartialAmount) + requistion.Amount;
+                        //                if (amountPaid == 0)
+                        //                {
+                        //                    isPaid = true;
+                        //                }
+                        //                var checkedCashId = _cashService.CheckIfBranchHasEnoughCash(requistion.BranchId, requistion.Amount, "-");
+                        //                if (checkedCashId > 0)
+                        //                {
+                        //                    var supplyObject = new Supply()
+                        //                    {
+                        //                        SupplyId = supply.SupplyId,
+                        //                        SupplierId = supply.SupplierId,
+
+                        //                        Price = supply.Price,
+                        //                        Amount = supply.Amount,
+                        //                        AmountToPay = amountPaid,
+                        //                        StoreId = supply.StoreId,
+                        //                        BranchId = supply.BranchId,
+                        //                        SupplyDate = supply.SupplyDate,
+                        //                        TruckNumber = supply.TruckNumber,
+                        //                        WeightNoteNumber = supply.WeightNoteNumber,
+                        //                        Used = supply.Used,
+                        //                        CreatedOn = supply.CreatedOn,
+                        //                        CreatedBy = supply.CreatedBy,
+                        //                        IsPaid = isPaid,
+                        //                        StatusId = supply.StatusId,
+                        //                        Deleted = supply.Deleted,
+                        //                        MoistureContent = supply.MoistureContent,
+                        //                        BagsOfStones = supply.BagsOfStones,
+                        //                        NormalBags = supply.NormalBags,
+                        //                        Quantity = supply.Quantity,
+                        //                        Offloading = supply.Offloading,
+                        //                        PartialAmount = partialAmount,
+                        //                        PartiallyPaid = true,
+                        //                        YellowBags = supply.YellowBags,
+                        //                        Approved = supply.Approved,
+                        //                    };
+                        //                    _supplyService.UpdateSupply(supplyObject, userId);
+                        //                    var accountActivityObject = new AccountTransactionActivity()
+                        //                    {
+                        //                        AspNetUserId = supply.SupplierId,
+                        //                        Amount = requistion.Amount,
+                        //                        Notes = requistion.Description,
+                        //                        Action = "-",
+                        //                        BranchId = requistion.BranchId,
+                        //                        TransactionSubTypeId = supplyTransactionSubTypeId,
+                        //                        SectorId = sectorId,
+                        //                        CreatedOn = DateTime.Now,
+                        //                    };
+                        //                    var accountActivityId = _accountTransactionActivityService.SaveAccountTransactionActivity(accountActivityObject, userId);
+
+                        //                    var cashSupply = new Cash()
+                        //                    {
+
+                        //                        Amount = requistion.Amount,
+                        //                        Notes = requistion.Description,
+                        //                        Action = "-",
+                        //                        BranchId = requistion.BranchId,
+                        //                        TransactionSubTypeId = debitId,
+                        //                        SectorId = sectorId,
+                        //                        RequistionCategoryId = requistion.RequistionCategoryId,
+                        //                        CreatedBy = requistion.ApprovedById,
+
+                        //                    };
+
+                        //                    cashId = _cashService.SaveCash(cashSupply, userId);
+
+                        //                }
+                        //                else
+                        //                {
+                        //                    requistionId = checkedCashId;
+                        //                    return requistionId;
+                        //                }
+
+                        //            }
+                        //        }
+                        //        else
+                        //        {
+                        //            if (supply.AmountToPay < requistion.Amount)
+                        //            {
+                        //                int paid = -4;
+                        //                //paying more than the supply cost
+                        //                return requistionId = paid;
+                        //            }
+
+                        //            else
+                        //            {
+                        //                bool isPaid = false;
+                        //                var amountPaid = supply.AmountToPay - requistion.Amount;
+                        //                var partialAmount = (supply.PartialAmount == null ? 0 : supply.PartialAmount) + requistion.Amount;
+                        //                if (amountPaid == 0)
+                        //                {
+                        //                    isPaid = true;
+                        //                }
+
+                        //                var checkedCashId = _cashService.CheckIfBranchHasEnoughCash(requistion.BranchId, requistion.Amount, "-");
+                        //                if (checkedCashId > 0)
+                        //                {
+                        //                    var supplyObject = new Supply()
+                        //                    {
+                        //                        SupplyId = supply.SupplyId,
+                        //                        SupplierId = supply.SupplierId,
+
+                        //                        Price = supply.Price,
+                        //                        Amount = supply.Amount,
+                        //                        AmountToPay = amountPaid,
+                        //                        StoreId = supply.StoreId,
+                        //                        BranchId = supply.BranchId,
+                        //                        SupplyDate = supply.SupplyDate,
+                        //                        TruckNumber = supply.TruckNumber,
+                        //                        WeightNoteNumber = supply.WeightNoteNumber,
+                        //                        Used = supply.Used,
+                        //                        IsPaid = isPaid,
+                        //                        CreatedOn = supply.CreatedOn,
+                        //                        CreatedBy = supply.CreatedBy,
+                        //                        StatusId = supply.StatusId,
+                        //                        Deleted = supply.Deleted,
+                        //                        MoistureContent = supply.MoistureContent,
+                        //                        BagsOfStones = supply.BagsOfStones,
+                        //                        NormalBags = supply.NormalBags,
+                        //                        Quantity = supply.Quantity,
+                        //                        Offloading = supply.Offloading,
+                        //                        PartialAmount = partialAmount,
+                        //                        PartiallyPaid = false,
+                        //                        YellowBags = supply.YellowBags,
+                        //                        Approved = supply.Approved,
+                        //                    };
+                        //                    var supplyId = _supplyService.UpdateSupply(supplyObject, userId);
+                        //                    var accountActivityObject = new AccountTransactionActivity()
+                        //                    {
+                        //                        AspNetUserId = supply.SupplierId,
+                        //                        Amount = requistion.Amount,
+                        //                        Notes = requistion.Description,
+                        //                        Action = "-",
+                        //                        BranchId = requistion.BranchId,
+                        //                        TransactionSubTypeId = supplyTransactionSubTypeId,
+                        //                        SectorId = sectorId,
+                        //                        CreatedOn = DateTime.Now,
+                        //                    };
+                        //                    var accountActivityId = _accountTransactionActivityService.SaveAccountTransactionActivity(accountActivityObject, userId);
+                        //                    var cashSupply = new Cash()
+                        //                    {
+
+                        //                        Amount = requistion.Amount,
+                        //                        Notes = requistion.Description,
+                        //                        Action = "-",
+                        //                        BranchId = requistion.BranchId,
+                        //                        TransactionSubTypeId = debitId,
+                        //                        SectorId = sectorId,
+                        //                        RequistionCategoryId = requistion.RequistionCategoryId,
+                        //                        CreatedBy = requistion.ApprovedById,
+
+                        //                    };
+
+                        //                    cashId = _cashService.SaveCash(cashSupply, userId);
+
+
+                        //                }
+                        //                else
+                        //                {
+                        //                    requistionId = checkedCashId;
+                        //                    return requistionId;
+                        //                }
+                        //            }
+                        //        }
+
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    int checkWithAdmin = -2;
+                        //    //supply doesn't exist.
+                        //    return requistionId = checkWithAdmin;
+                        //}
+
+                        var description = string.Empty;
+                        if(requistion.SupplyAction == "Full Payment")
                         {
-                            supply = _supplyService.GetSupply(Convert.ToInt64(requistion.SupplyId));
-                            if (supply.IsPaid == true)
+                            description = " Payment of Maize for the weightNote Numbers ";
+                            var checkedCashId = _cashService.CheckIfBranchHasEnoughCash(requistion.BranchId, requistion.Amount, "-");
+                            if (checkedCashId > 0)
                             {
-                                int paid = -6;
-                                //supply already paid
-                                return requistionId = paid;
-                            }
-                            else
-                            {
-                                if (requistion.PartPayment == true)
+                                string weightNotes = string.Empty;
+                                Supply supply = new Supply();
+
+                                if (requistion.Supplies != null)
                                 {
-                                    if (supply.AmountToPay < requistion.Amount)
+                                    foreach (var supp in requistion.Supplies)
                                     {
-                                        int paid = -4;
-                                        //paying more than the supply cost
-                                        return requistionId = paid;
+                                        supply = _supplyService.GetSupply(Convert.ToInt64(requistion.SupplyId));
+                                        if (supply.IsPaid == true)
+                                        {
+                                            int onePaid = -67;
+                                            //one of the supply is already paid
+                                            return requistionId = onePaid;
+                                        }
                                     }
 
-                                    else
+                                    foreach (var supp in requistion.Supplies)
                                     {
-                                        bool isPaid = false;
-                                        var amountPaid = supply.AmountToPay - requistion.Amount;
-                                        var partialAmount = (supply.PartialAmount == null ? 0 : supply.PartialAmount) + requistion.Amount;
-                                        if (amountPaid == 0)
-                                        {
-                                            isPaid = true;
-                                        }
-                                        var checkedCashId = _cashService.CheckIfBranchHasEnoughCash(requistion.BranchId, requistion.Amount, "-");
-                                        if (checkedCashId > 0)
-                                        {
+                                        supply = _supplyService.GetSupply(Convert.ToInt64(supp.SupplyId));
+                                        weightNotes = String.Join(" ", supply.WeightNoteNumber);
+
+
+                                        var amountPaid = supply.AmountToPay;
+                                        var partialAmount = (supply.PartialAmount == null ? 0 : supply.PartialAmount) + amountPaid;
+                                        
+                                        
                                             var supplyObject = new Supply()
                                             {
                                                 SupplyId = supply.SupplyId,
@@ -275,97 +475,7 @@ namespace Higgs.Mbale.BAL.Concrete
                                                 TruckNumber = supply.TruckNumber,
                                                 WeightNoteNumber = supply.WeightNoteNumber,
                                                 Used = supply.Used,
-                                                CreatedOn = supply.CreatedOn,
-                                                CreatedBy = supply.CreatedBy,
-                                                IsPaid = isPaid,
-                                                StatusId = supply.StatusId,
-                                                Deleted = supply.Deleted,
-                                                MoistureContent = supply.MoistureContent,
-                                                BagsOfStones = supply.BagsOfStones,
-                                                NormalBags = supply.NormalBags,
-                                                Quantity = supply.Quantity,
-                                                Offloading = supply.Offloading,
-                                                PartialAmount = partialAmount,
-                                                PartiallyPaid = true,
-                                                YellowBags = supply.YellowBags,
-                                                Approved = supply.Approved,
-                                            };
-                                            _supplyService.UpdateSupply(supplyObject, userId);
-                                            var accountActivityObject = new AccountTransactionActivity()
-                                            {
-                                                AspNetUserId = supply.SupplierId,
-                                                Amount = requistion.Amount,
-                                                Notes = requistion.Description,
-                                                Action = "-",
-                                                BranchId = requistion.BranchId,
-                                                TransactionSubTypeId = supplyTransactionSubTypeId,
-                                                SectorId = sectorId,
-                                                CreatedOn = DateTime.Now,
-                                            };
-                                            var accountActivityId = _accountTransactionActivityService.SaveAccountTransactionActivity(accountActivityObject, userId);
-
-                                            var cashSupply = new Cash()
-                                            {
-
-                                                Amount = requistion.Amount,
-                                                Notes = requistion.Description,
-                                                Action = "-",
-                                                BranchId = requistion.BranchId,
-                                                TransactionSubTypeId = debitId,
-                                                SectorId = sectorId,
-                                                RequistionCategoryId = requistion.RequistionCategoryId,
-                                                CreatedBy = requistion.ApprovedById,
-
-                                            };
-
-                                            cashId = _cashService.SaveCash(cashSupply, userId);
-
-                                        }
-                                        else
-                                        {
-                                            requistionId = checkedCashId;
-                                            return requistionId;
-                                        }
-
-                                    }
-                                }
-                                else
-                                {
-                                    if (supply.AmountToPay < requistion.Amount)
-                                    {
-                                        int paid = -4;
-                                        //paying more than the supply cost
-                                        return requistionId = paid;
-                                    }
-
-                                    else
-                                    {
-                                        bool isPaid = false;
-                                        var amountPaid = supply.AmountToPay - requistion.Amount;
-                                        var partialAmount = (supply.PartialAmount == null ? 0 : supply.PartialAmount) + requistion.Amount;
-                                        if (amountPaid == 0)
-                                        {
-                                            isPaid = true;
-                                        }
-
-                                        var checkedCashId = _cashService.CheckIfBranchHasEnoughCash(requistion.BranchId, requistion.Amount, "-");
-                                        if (checkedCashId > 0)
-                                        {
-                                            var supplyObject = new Supply()
-                                            {
-                                                SupplyId = supply.SupplyId,
-                                                SupplierId = supply.SupplierId,
-
-                                                Price = supply.Price,
-                                                Amount = supply.Amount,
-                                                AmountToPay = amountPaid,
-                                                StoreId = supply.StoreId,
-                                                BranchId = supply.BranchId,
-                                                SupplyDate = supply.SupplyDate,
-                                                TruckNumber = supply.TruckNumber,
-                                                WeightNoteNumber = supply.WeightNoteNumber,
-                                                Used = supply.Used,
-                                                IsPaid = isPaid,
+                                                IsPaid = true,
                                                 CreatedOn = supply.CreatedOn,
                                                 CreatedBy = supply.CreatedBy,
                                                 StatusId = supply.StatusId,
@@ -381,53 +491,165 @@ namespace Higgs.Mbale.BAL.Concrete
                                                 Approved = supply.Approved,
                                             };
                                             var supplyId = _supplyService.UpdateSupply(supplyObject, userId);
-                                            var accountActivityObject = new AccountTransactionActivity()
-                                            {
-                                                AspNetUserId = supply.SupplierId,
-                                                Amount = requistion.Amount,
-                                                Notes = requistion.Description,
-                                                Action = "-",
-                                                BranchId = requistion.BranchId,
-                                                TransactionSubTypeId = supplyTransactionSubTypeId,
-                                                SectorId = sectorId,
-                                                CreatedOn = DateTime.Now,
-                                            };
-                                            var accountActivityId = _accountTransactionActivityService.SaveAccountTransactionActivity(accountActivityObject, userId);
-                                            var cashSupply = new Cash()
-                                            {
-
-                                                Amount = requistion.Amount,
-                                                Notes = requistion.Description,
-                                                Action = "-",
-                                                BranchId = requistion.BranchId,
-                                                TransactionSubTypeId = debitId,
-                                                SectorId = sectorId,
-                                                RequistionCategoryId = requistion.RequistionCategoryId,
-                                                CreatedBy = requistion.ApprovedById,
-
-                                            };
-
-                                            cashId = _cashService.SaveCash(cashSupply, userId);
+                                                                                  
 
 
-                                        }
-                                        else
-                                        {
-                                            requistionId = checkedCashId;
-                                            return requistionId;
-                                        }
                                     }
-                                }
+                                    description = String.Join(" ", weightNotes);
+                                    var accountActivityObject = new AccountTransactionActivity()
+                                    {
+                                        AspNetUserId = supply.SupplierId,
+                                        Amount = requistion.Amount,
+                                        Notes = description,
+                                        Action = "-",
+                                        BranchId = requistion.BranchId,
+                                        TransactionSubTypeId = supplyTransactionSubTypeId,
+                                        SectorId = sectorId,
+                                        CreatedOn = DateTime.Now,
+                                    };
+                                    var accountActivityId = _accountTransactionActivityService.SaveAccountTransactionActivity(accountActivityObject, userId);
+                                    var cashSupply = new Cash()
+                                    {
 
+                                        Amount = requistion.Amount,
+                                        Notes = description,
+                                        Action = "-",
+                                        BranchId = requistion.BranchId,
+                                        TransactionSubTypeId = debitId,
+                                        SectorId = sectorId,
+                                        RequistionCategoryId = requistion.RequistionCategoryId,
+                                        CreatedBy = requistion.ApprovedById,
+
+                                    };
+
+                                    cashId = _cashService.SaveCash(cashSupply, userId);
+
+
+
+                                }
+                                else
+                                {
+                                    //no supply selected
+                                    int noSupplySelected = -66;
+                                    return noSupplySelected;
+                                }
+                            }
+                            else
+                            {
+                                requistionId = checkedCashId;
+                                return requistionId;
                             }
                         }
                         else
                         {
-                            int checkWithAdmin = -2;
-                            //supply doesn't exist.
-                            return requistionId = checkWithAdmin;
+                            Supply selectedSupply = new Supply();
+                            if (requistion.SupplyId != null)
+                            {
+                                selectedSupply = _supplyService.GetSupply(Convert.ToInt64(requistion.SupplyId));
+                                if (selectedSupply.IsPaid == true)
+                                {
+                                    int paid = -6;
+                                    //supply already paid
+                                    return requistionId = paid;
+                                }
+                                else
+                                {
+                                    if (requistion.PartPayment == true)
+                                    {
+                                        var descriptionPart = "Part Payment of maize for WNNo. ";
+                                        if (selectedSupply.AmountToPay < requistion.Amount)
+                                        {
+                                            int paid = -4;
+                                            //paying more than the supply cost
+                                            return requistionId = paid;
+                                        }
+
+                                        else
+                                        {
+                                            bool isPaid = false;
+                                            var amountPaid = selectedSupply.AmountToPay - requistion.Amount;
+                                            var partialAmount = (selectedSupply.PartialAmount == null ? 0 : selectedSupply.PartialAmount) + requistion.Amount;
+                                            if (amountPaid == 0)
+                                            {
+                                                isPaid = true;
+                                            }
+                                            var checkedCashId = _cashService.CheckIfBranchHasEnoughCash(requistion.BranchId, requistion.Amount, "-");
+                                            if (checkedCashId > 0)
+                                            {
+                                                var supplyObject = new Supply()
+                                                {
+                                                    SupplyId = selectedSupply.SupplyId,
+                                                    SupplierId = selectedSupply.SupplierId,
+
+                                                    Price = selectedSupply.Price,
+                                                    Amount = selectedSupply.Amount,
+                                                    AmountToPay = amountPaid,
+                                                    StoreId = selectedSupply.StoreId,
+                                                    BranchId = selectedSupply.BranchId,
+                                                    SupplyDate = selectedSupply.SupplyDate,
+                                                    TruckNumber = selectedSupply.TruckNumber,
+                                                    WeightNoteNumber = selectedSupply.WeightNoteNumber,
+                                                    Used = selectedSupply.Used,
+                                                    CreatedOn = selectedSupply.CreatedOn,
+                                                    CreatedBy = selectedSupply.CreatedBy,
+                                                    IsPaid = isPaid,
+                                                    StatusId = selectedSupply.StatusId,
+                                                    Deleted = selectedSupply.Deleted,
+                                                    MoistureContent = selectedSupply.MoistureContent,
+                                                    BagsOfStones = selectedSupply.BagsOfStones,
+                                                    NormalBags = selectedSupply.NormalBags,
+                                                    Quantity = selectedSupply.Quantity,
+                                                    Offloading = selectedSupply.Offloading,
+                                                    PartialAmount = partialAmount,
+                                                    PartiallyPaid = true,
+                                                    YellowBags = selectedSupply.YellowBags,
+                                                    Approved = selectedSupply.Approved,
+                                                };
+                                                _supplyService.UpdateSupply(supplyObject, userId);
+                                                var accountActivityObject = new AccountTransactionActivity()
+                                                {
+                                                    AspNetUserId = supplyObject.SupplierId,
+                                                    Amount = requistion.Amount,
+                                                    Notes =  String.Concat(" ", descriptionPart, supplyObject.WeightNoteNumber),
+                                                    Action = "-",
+                                                    BranchId = requistion.BranchId,
+                                                    TransactionSubTypeId = supplyTransactionSubTypeId,
+                                                    SectorId = sectorId,
+                                                    CreatedOn = DateTime.Now,
+                                                };
+                                                var accountActivityId = _accountTransactionActivityService.SaveAccountTransactionActivity(accountActivityObject, userId);
+
+                                                var cashSupply = new Cash()
+                                                {
+
+                                                    Amount = requistion.Amount,
+                                                    Notes = String.Concat(" ", descriptionPart,supplyObject.WeightNoteNumber),
+                                                    Action = "-",
+                                                    BranchId = requistion.BranchId,
+                                                    TransactionSubTypeId = debitId,
+                                                    SectorId = sectorId,
+                                                    RequistionCategoryId = requistion.RequistionCategoryId,
+                                                    CreatedBy = requistion.ApprovedById,
+
+                                                };
+
+                                                cashId = _cashService.SaveCash(cashSupply, userId);
+
+                                            }
+                                            else
+                                            {
+                                                requistionId = checkedCashId;
+                                                return requistionId;
+                                            }
+
+                                        }
+                                    }
+                                   
+                                }
+                            }
                         }
                     }
+
                     //labourcosts
                     else if (requistion.RequistionCategoryId == 3)
                     {
@@ -2703,7 +2925,7 @@ namespace Higgs.Mbale.BAL.Concrete
                      UtilityCategoryName = data.UtilityCategory != null ? data.UtilityCategory.Name : "",
                      OutSourcerId = data.OutSourcerId,
                      OutSourcerName = _userService.GetUserFullName(data.AspNetUser31),
-
+                     SupplyAction = data.SupplyAction,
                 };
                 return requistion;
             }

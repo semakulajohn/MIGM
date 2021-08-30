@@ -40,7 +40,7 @@ namespace Higgs.Mbale.DTO
         public Nullable<long> UtilityCategoryId { get; set; }
         public Nullable<long> FinancialAccountId { get; set; }
 
-
+        public string SupplyAction { get; set; }
 
 
 

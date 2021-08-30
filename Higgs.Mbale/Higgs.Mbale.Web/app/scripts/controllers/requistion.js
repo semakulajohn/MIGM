@@ -1,4 +1,4 @@
-﻿angular
+﻿ angular
     .module('homer')
     .controller('RequistionEditController', ['$scope', '$http', '$filter', '$location', '$log', '$timeout', '$modal', '$state', 'uiGridConstants', '$interval','usSpinnerService',
     function ($scope, $http, $filter, $location, $log, $timeout, $modal, $state, uiGridConstants, $interval, usSpinnerService) {
@@ -179,7 +179,7 @@
                         CreatedBy: b.CreatedBy,
                         CreatedById: b.CreatedById,
                         OutSourcerId: b.OutSourcerId,
-
+                        SupplyAction : b.SupplyAction,
                         Supplies: b.Supplies,
 
 
@@ -195,38 +195,109 @@
             $scope.showMessageSave = false;
             if ($scope.form.$valid) {
                 usSpinnerService.spin('global-spinner');
-                var promise = $http.post('/webapi/RequistionApi/Save', {
-                    RequistionId: requistionId,
-                    BranchId: requistion.BranchId,
-                    Description : requistion.Description,
-                    Response: requistion.Response,
-                    Amount: requistion.Amount,
-                    AmountInWords : requistion.AmountInWords,
-                    StatusId : statusId,
-                    ApprovedById: requistion.ApprovedById,
-                    RequistionNumber : requistion.RequistionNumber,
-                    CreatedBy: requistion.CreatedBy,
-                    CreatedOn: requistion.CreatedOn,
-                    Deleted: requistion.Deleted,
-                    ActivityId: requistion.ActivityId,
-                   RepairerName : requistion.RepairerName,
-                    BatchId: requistion.BatchId,
-                   RepairDate : requistion.RepairDate,
-                    SupplyId: requistion.SupplyId,
-                   CreatedById : requistion.CreatedById,
-                    CasualWorkerId: requistion.CasualWorkerId,
-                    Quantity : requistion.Quantity,
-                    PartPayment: requistion.PartPayment,
-                    RequistionCategoryId: requistion.RequistionCategoryId,
-                    UtilityCategoryId: requistion.UtilityCategoryId,
-                    BankId: requistion.BankId,
-                    FinancialAccountId: requistion.FinancialAccountId,
-                    OutSourcerId : requistion.OutSourcerId,
+                if (requistion.SupplyActions == "Full Payment") {
+                    var promise = $http.post('/webapi/RequistionApi/Save', {
+                        RequistionId: requistionId,
+                        BranchId: requistion.BranchId,
+                        Description: requistion.Description,
+                        Response: requistion.Response,
+                        Amount: requistion.Amount,
+                        AmountInWords: requistion.AmountInWords,
+                        StatusId: statusId,
+                        ApprovedById: requistion.ApprovedById,
+                        RequistionNumber: requistion.RequistionNumber,
+                        CreatedBy: requistion.CreatedBy,
+                        CreatedOn: requistion.CreatedOn,
+                        Deleted: requistion.Deleted,
+                        ActivityId: requistion.ActivityId,
+                        RepairerName: requistion.RepairerName,
+                        BatchId: requistion.BatchId,
+                        RepairDate: requistion.RepairDate,
+                       // SupplyId: requistion.SupplyId,
+                        CreatedById: requistion.CreatedById,
+                        CasualWorkerId: requistion.CasualWorkerId,
+                        Quantity: requistion.Quantity,
+                        //PartPayment: requistion.PartPayment,
+                        RequistionCategoryId: requistion.RequistionCategoryId,
+                        UtilityCategoryId: requistion.UtilityCategoryId,
+                        BankId: requistion.BankId,
+                        FinancialAccountId: requistion.FinancialAccountId,
+                        OutSourcerId: requistion.OutSourcerId,
+                        SupplyAction : "Full Payment",
+                        Supplies: requistion.Supplies,
 
-                    Supplies : requistion.Supplies,
+                    });
 
-                });
+                }
+                else if (requistion.SupplyActions == "Partial Payment") {
+                    var promise = $http.post('/webapi/RequistionApi/Save', {
+                        RequistionId: requistionId,
+                        BranchId: requistion.BranchId,
+                        Description: requistion.Description,
+                        Response: requistion.Response,
+                        Amount: requistion.Amount,
+                        AmountInWords: requistion.AmountInWords,
+                        StatusId: statusId,
+                        ApprovedById: requistion.ApprovedById,
+                        RequistionNumber: requistion.RequistionNumber,
+                        CreatedBy: requistion.CreatedBy,
+                        CreatedOn: requistion.CreatedOn,
+                        Deleted: requistion.Deleted,
+                        ActivityId: requistion.ActivityId,
+                        RepairerName: requistion.RepairerName,
+                        BatchId: requistion.BatchId,
+                        RepairDate: requistion.RepairDate,
+                        SupplyId: requistion.SupplyId,
+                        CreatedById: requistion.CreatedById,
+                        CasualWorkerId: requistion.CasualWorkerId,
+                        Quantity: requistion.Quantity,
+                        PartPayment: true,
+                        RequistionCategoryId: requistion.RequistionCategoryId,
+                        UtilityCategoryId: requistion.UtilityCategoryId,
+                        BankId: requistion.BankId,
+                        FinancialAccountId: requistion.FinancialAccountId,
+                        OutSourcerId: requistion.OutSourcerId,
+                        SupplyAction : "Partial Payment",
+                        Supplies: requistion.Supplies,
 
+                    });
+
+                }
+                else {
+                    var promise = $http.post('/webapi/RequistionApi/Save', {
+                        RequistionId: requistionId,
+                        BranchId: requistion.BranchId,
+                        Description: requistion.Description,
+                        Response: requistion.Response,
+                        Amount: requistion.Amount,
+                        AmountInWords: requistion.AmountInWords,
+                        StatusId: statusId,
+                        ApprovedById: requistion.ApprovedById,
+                        RequistionNumber: requistion.RequistionNumber,
+                        CreatedBy: requistion.CreatedBy,
+                        CreatedOn: requistion.CreatedOn,
+                        Deleted: requistion.Deleted,
+                        ActivityId: requistion.ActivityId,
+                        RepairerName: requistion.RepairerName,
+                        BatchId: requistion.BatchId,
+                        RepairDate: requistion.RepairDate,
+                        SupplyId: requistion.SupplyId,
+                        CreatedById: requistion.CreatedById,
+                        CasualWorkerId: requistion.CasualWorkerId,
+                        Quantity: requistion.Quantity,
+                        PartPayment: requistion.PartPayment,
+                        RequistionCategoryId: requistion.RequistionCategoryId,
+                        UtilityCategoryId: requistion.UtilityCategoryId,
+                        BankId: requistion.BankId,
+                        FinancialAccountId: requistion.FinancialAccountId,
+                        OutSourcerId: requistion.OutSourcerId,
+
+                        Supplies: requistion.Supplies,
+
+                    });
+
+                }
+                
                 promise.then(
                     function (payload) {
 
