@@ -540,7 +540,7 @@
                                     headerRows: 0,
                                     body: [
                                         [
-                                            { image: $scope.getBaseImage("/images/mbale_logo.jpg")},
+                                            
 
                                             { text: 'Mbale investments', style: 'topHeader', alignment: 'left' },
 
@@ -644,15 +644,6 @@
             };
 
 
-        $scope.getBaseImage() = function (img) {
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            canvas.width = img.width;
-            canvas.height = img.height;
-
-            ctx.drawImage(img, 0, 0);
-            return canvas.toDataURL('image/jpeg');
-        }
 
 
         }

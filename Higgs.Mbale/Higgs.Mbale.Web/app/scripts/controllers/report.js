@@ -442,6 +442,7 @@ angular
             }
             $scope.downloadPDF = function () {
                 var supplyData = [];
+               
                 
               angular.forEach($scope.data, function (value, key) {
                     supplyData.push({
@@ -450,14 +451,12 @@ angular
                         SupplierName: value.SupplierName, NormalBags: value.NormalBags, BagsOfStones: value.BagsOfStones,
                         YellowBags : value.YellowBags
                     });
-                });
 
-                //var items = supplyData.map(function (item) {
-                //    return [(100 + supplyData.indexOf(item) + 1).toString().slice(-2) + '.', item.Title, item.Chords, item.WhoStarts];
-                //});
+              });
+                
                 var items = supplyData.map(function (item) {
                     return [item.WeightNoteNumber, item.Quantity.toString(), item.Price.toString(),
-                        item.Amount.toString(), item.BranchName, item.SupplyDate.toString(), item.SupplierName, item.NormalBags.toString()
+                        item.Amount.toString(), item.BranchName, item.SupplyDate, item.SupplierName, item.NormalBags.toString()
                     ,item.BagsOfStones.toString(),item.YellowBags.toString()];
                 });
 
@@ -473,7 +472,7 @@ angular
                                     headerRows: 0,
                                     body: [
                                         [
-                                            { text: 'Mbale Investments Supplies Report From ' + $scope.fromDate.toString() + ' To ' + $scope.toDate.toString(), style: 'topHeader', alignment: 'center' },
+                                            { text: 'MBALE INVESTMENT SUPPLIES\' REPORT FROM ' +  $scope.fromDate.toString() + ' ' + ' T0   ' + $scope.toDate.toString(), style: 'topHeader', alignment: 'center' },
 
 
                                         ]
@@ -496,7 +495,7 @@ angular
                                 heights: [18],
                                 headerRows: 1,
                                 body: [
-                                   
+
                                     [
                                         { text: 'WNN', style: 'tableLabel' }, { text: 'Qty',style: 'tableLabel' },
                                         { text: 'Price', style: 'tableLabel' }, { text: 'Amount', style: 'tableLabel' },
@@ -505,17 +504,55 @@ angular
                                         { text: 'Supplier', style: 'tableLabel' }, { text: 'NBags', style: 'tableLabel' },
                                         { text: 'SBags', style: 'tableLabel' }, { text: 'YBags', style: 'tableLabel' },
                                     ],
-                                    [
-                                        { text: '', style: 'tableLabel' }, { text: $scope.totalMaize.toString(), style: 'tableLabel' },
-                                        { text: '', style: 'tableLabel' }, { text: $scope.totalAmount.toString(), style: 'tableLabel' },
-                                        { text: ' ', style: 'tableLabel' }, { text: ' ', style: 'tableLabel' },
-                                        { text: ' ', style: 'tableLabel' }, { text: $scope.totalNormalBags.toString(), style: 'tableLabel' },
-                                        { text: $scope.totalStoneBags.toString(), style: 'tableLabel' },
-                                        { text: $scope.totalYellowBags.toString(), style: 'tableLabel' },
-                                    ],
-                                   
+
+                                    
+
+                                  
                                   
                                 ].concat(items)
+                            },
+
+                           
+                            
+                            layout: {
+                                paddingLeft: function (i, node) { return 6; },
+                                paddingRight: function (i, node) { return 6; },
+                                paddingTop: function (i, node) { return 6; },
+                                paddingBottom: function (i, node) { return 6; },
+                                fillColor: function (i, node) {
+                                    return (i % 2 === 0) ? '#F5F5F5' : null;
+                                }
+                            }
+                        },
+
+                        {
+                            table: {
+                                widths: ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+                                heights: [18],
+                                headerRows: 1,
+                                body: [
+
+                                    //[
+                                    //    { text: 'WNN', style: 'tableLabel' }, { text: 'Qty', style: 'tableLabel' },
+                                    //    { text: 'Price', style: 'tableLabel' }, { text: 'Amount', style: 'tableLabel' },
+                                    //    { text: 'Branch', style: 'tableLabel' }, { text: 'Date', style: 'tableLabel' },
+                                    //    //{ text: 'SNO', style: 'tableLabel' },
+                                    //    { text: 'Supplier', style: 'tableLabel' }, { text: 'NBags', style: 'tableLabel' },
+                                    //    { text: 'SBags', style: 'tableLabel' }, { text: 'YBags', style: 'tableLabel' },
+                                    //],
+
+
+
+                                    [
+                                        { text: 'TOTAL', style: 'tableLabel', bold: true }, { text: $scope.totalMaize.toString(), style: 'tableLabel', bold: true },
+                                        { text: '', style: 'tableLabel' }, { text: $scope.totalAmount.toString(), style: 'tableLabel' , bold: true },
+                                        { text: ' ', style: 'tableLabel' }, { text: ' ', style: 'tableLabel' },
+                                        { text: ' ', style: 'tableLabel' }, { text: $scope.totalNormalBags.toString(), style: 'tableLabel', bold: true },
+                                        { text: $scope.totalStoneBags.toString(), style: 'tableLabel', bold: true },
+                                        { text: $scope.totalYellowBags.toString(), style: 'tableLabel', bold: true },
+                                    ],
+
+                                ]
                             },
                             layout: {
                                 paddingLeft: function (i, node) { return 6; },
@@ -527,6 +564,8 @@ angular
                                 }
                             }
                         }
+
+
                     ],
                     pageSize: 'A4',
                     pageMargins: [62, 80, 62, 80],
@@ -2723,7 +2762,147 @@ angular
                          }
                      });
                  });
-            }  
+            }
+
+            $scope.downloadPDF = function () {
+                var CreditorData = [];
+
+
+                angular.forEach($scope.data, function (value, key) {
+                    CreditorData.push({
+                         CreditorName: value.CreditorName, 
+                        Amount: value.Amount
+
+                    });
+
+                });
+
+                var items = CreditorData.map(function (item) {
+                    return [item.CreditorName, item.Amount.toString()];
+                });
+
+                var docDefinition = {
+                    pageOrientation: 'portrait',
+                    header: function () {
+                        return [
+                            {
+                                style: 'table',
+                                margin: [62, 35, 62, 35],
+                                table: {
+                                    widths: ['*'],
+                                    headerRows: 0,
+                                    body: [
+                                        [
+                                            { text: 'MBALE INVESTMENT CREDITORS\' REPORT ', style: 'topHeader', alignment: 'center' },
+
+
+                                        ]
+                                    ]
+                                },
+                                layout: 'noBorders'
+                            }
+                        ]
+                    },
+                    footer: function (currentPage, pageCount) {
+                        return [
+                            { text: currentPage.toString() + ' of ' + pageCount, alignment: 'center', style: 'footer' }
+                        ]
+                    },
+                    content: [
+                        {
+                            style: 'topTable',
+                            table: {
+                                widths: ['*', '*'],
+                                heights: [18],
+                                headerRows: 1,
+                                body: [
+
+                                    [
+                                        { text: 'CREDITOR NAME', style: 'tableLabel' },
+                                        { text: 'AMOUNT', style: 'tableLabel' }
+                                    ],
+
+                                ].concat(items)
+                            },
+
+
+
+                            layout: {
+                                paddingLeft: function (i, node) { return 6; },
+                                paddingRight: function (i, node) { return 6; },
+                                paddingTop: function (i, node) { return 6; },
+                                paddingBottom: function (i, node) { return 6; },
+                                fillColor: function (i, node) {
+                                    return (i % 2 === 0) ? '#F5F5F5' : null;
+                                }
+                            }
+                        },
+
+                        {
+                            table: {
+                                widths: ['*', '*'],
+                                heights: [18],
+                                headerRows: 1,
+                                body: [
+
+
+
+
+                                    [
+                                        { text: 'TOTAL', style: 'tableLabel', bold: true },
+                                        { text: $scope.totalAmount.toString(), style: 'tableLabel', bold: true },
+                                        
+                                    ],
+
+                                ]
+                            },
+                            layout: {
+                                paddingLeft: function (i, node) { return 6; },
+                                paddingRight: function (i, node) { return 6; },
+                                paddingTop: function (i, node) { return 6; },
+                                paddingBottom: function (i, node) { return 6; },
+                                fillColor: function (i, node) {
+                                    return (i % 2 === 0) ? '#F5F5F5' : null;
+                                }
+                            }
+                        }
+
+
+                    ],
+                    pageSize: 'A4',
+                    pageMargins: [62, 80, 62, 80],
+                    styles: {
+                        topHeader: {
+                            fontSize: 15,
+                            bold: true,
+                            margin: [0, 6, 0, 30],
+                            alignment: 'center'
+                        },
+                        table: {
+                            fontSize: 4,
+                            alignment: 'center',
+                            color: 'black',
+                            margin: [0, 5, 0, 15]
+                        },
+                        header: {
+                            fontSize: 12,
+                            bold: true,
+                            margin: [0, 10, 0, 15],
+                            alignment: 'center'
+                        },
+                        footer: {
+                            fontSize: 8,
+                            margin: [0, 25, 0, 17],
+                            alignment: 'center'
+                        }
+                    }
+                };
+                pdfMake.createPdf(docDefinition).download("creditors.pdf");
+            };
+
+
+
+
 
         }]);
 
@@ -2768,6 +2947,141 @@ angular
                  });
             }
 
+            $scope.downloadPDF = function () {
+                var DebtorsData = [];
+
+
+                angular.forEach($scope.data, function (value, key) {
+                    DebtorsData.push({
+                        DebtorName: value.DebtorName,
+                        Amount: value.Amount
+
+                    });
+
+                });
+
+                var items = DebtorsData.map(function (item) {
+                    return [item.DebtorName, item.Amount.toString()];
+                });
+
+                var docDefinition = {
+                    pageOrientation: 'portrait',
+                    header: function () {
+                        return [
+                            {
+                                style: 'table',
+                                margin: [62, 35, 62, 35],
+                                table: {
+                                    widths: ['*'],
+                                    headerRows: 0,
+                                    body: [
+                                        [
+                                            { text: 'MBALE INVESTMENT DEBTORS\' REPORT ', style: 'topHeader', alignment: 'center' },
+
+
+                                        ]
+                                    ]
+                                },
+                                layout: 'noBorders'
+                            }
+                        ]
+                    },
+                    footer: function (currentPage, pageCount) {
+                        return [
+                            { text: currentPage.toString() + ' of ' + pageCount, alignment: 'center', style: 'footer' }
+                        ]
+                    },
+                    content: [
+                        {
+                            style: 'topTable',
+                            table: {
+                                widths: ['*', '*'],
+                                heights: [18],
+                                headerRows: 1,
+                                body: [
+
+                                    [
+                                        { text: 'DEBTOR\'S NAME', style: 'tableLabel' },
+                                        { text: 'AMOUNT', style: 'tableLabel' }
+                                    ],
+
+                                ].concat(items)
+                            },
+
+
+
+                            layout: {
+                                paddingLeft: function (i, node) { return 6; },
+                                paddingRight: function (i, node) { return 6; },
+                                paddingTop: function (i, node) { return 6; },
+                                paddingBottom: function (i, node) { return 6; },
+                                fillColor: function (i, node) {
+                                    return (i % 2 === 0) ? '#F5F5F5' : null;
+                                }
+                            }
+                        },
+
+                        {
+                            table: {
+                                widths: ['*', '*'],
+                                heights: [18],
+                                headerRows: 1,
+                                body: [
+
+
+
+
+                                    [
+                                        { text: 'TOTAL', style: 'tableLabel', bold: true },
+                                        { text: $scope.totalAmount.toString(), style: 'tableLabel', bold: true },
+
+                                    ],
+
+                                ]
+                            },
+                            layout: {
+                                paddingLeft: function (i, node) { return 6; },
+                                paddingRight: function (i, node) { return 6; },
+                                paddingTop: function (i, node) { return 6; },
+                                paddingBottom: function (i, node) { return 6; },
+                                fillColor: function (i, node) {
+                                    return (i % 2 === 0) ? '#F5F5F5' : null;
+                                }
+                            }
+                        }
+
+
+                    ],
+                    pageSize: 'A4',
+                    pageMargins: [62, 80, 62, 80],
+                    styles: {
+                        topHeader: {
+                            fontSize: 15,
+                            bold: true,
+                            margin: [0, 6, 0, 30],
+                            alignment: 'center'
+                        },
+                        table: {
+                            fontSize: 4,
+                            alignment: 'center',
+                            color: 'black',
+                            margin: [0, 5, 0, 15]
+                        },
+                        header: {
+                            fontSize: 12,
+                            bold: true,
+                            margin: [0, 10, 0, 15],
+                            alignment: 'center'
+                        },
+                        footer: {
+                            fontSize: 8,
+                            margin: [0, 25, 0, 17],
+                            alignment: 'center'
+                        }
+                    }
+                };
+                pdfMake.createPdf(docDefinition).download("debtors.pdf");
+            };
 
 
           
@@ -3364,6 +3678,142 @@ angular
                             });
                     });
             }
+
+            $scope.downloadPDF = function () {
+                var expensesData = [];
+
+
+                angular.forEach($scope.data, function (value, key) {
+                    expensesData.push({
+                        Notes : value.Notes, 
+                        Amount: value.Amount, CreatedOn : value.CreatedOn
+
+                    });
+
+                });
+
+                var items = expensesData.map(function (item) {
+                    return [item.Notes, item.Amount.toString(), item.CreatedOn];
+                });
+
+                var docDefinition = {
+                    pageOrientation: 'landscape',
+                    header: function () {
+                        return [
+                            {
+                                style: 'table',
+                                margin: [62, 35, 62, 35],
+                                table: {
+                                    widths: ['*'],
+                                    headerRows: 0,
+                                    body: [
+                                        [
+                                            { text: 'MBALE INVESTMENT EXPENSES\'S REPORT  OF ' + $scope.data.BranchName, style: 'topHeader', alignment: 'center' },
+
+
+                                        ]
+                                    ]
+                                },
+                                layout: 'noBorders'
+                            }
+                        ]
+                    },
+                    footer: function (currentPage, pageCount) {
+                        return [
+                            { text: currentPage.toString() + ' of ' + pageCount, alignment: 'center', style: 'footer' }
+                        ]
+                    },
+                    content: [
+                        {
+                            style: 'topTable',
+                            table: {
+                                widths: ['*', '*','*'],
+                                heights: [18],
+                                headerRows: 1,
+                                body: [
+
+                                    [
+                                         { text: 'NOTES', style: 'tableLabel' },
+                                        { text: 'AMOUNT', style: 'tableLabel' }, { text: 'DATE', style: 'tableLabel' },
+                                    ],
+
+                                ].concat(items)
+                            },
+
+
+
+                            layout: {
+                                paddingLeft: function (i, node) { return 6; },
+                                paddingRight: function (i, node) { return 6; },
+                                paddingTop: function (i, node) { return 6; },
+                                paddingBottom: function (i, node) { return 6; },
+                                fillColor: function (i, node) {
+                                    return (i % 2 === 0) ? '#F5F5F5' : null;
+                                }
+                            }
+                        },
+
+                        {
+                            table: {
+                                widths: ['*', '*', '*'],
+                                heights: [18],
+                                headerRows: 1,
+                                body: [
+
+
+
+
+                                    [
+                                        { text: 'TOTAL', style: 'tableLabel', bold: true },
+                                        { text: $scope.totalAmount.toString() + 'Ugshs', style: 'tableLabel', bold: true }, { text: '', style: 'tableLabel' },
+
+                                    ],
+
+                                ]
+                            },
+                            layout: {
+                                paddingLeft: function (i, node) { return 6; },
+                                paddingRight: function (i, node) { return 6; },
+                                paddingTop: function (i, node) { return 6; },
+                                paddingBottom: function (i, node) { return 6; },
+                                fillColor: function (i, node) {
+                                    return (i % 2 === 0) ? '#F5F5F5' : null;
+                                }
+                            }
+                        }
+
+
+                    ],
+                    pageSize: 'A4',
+                    pageMargins: [62, 80, 62, 80],
+                    styles: {
+                        topHeader: {
+                            fontSize: 15,
+                            bold: true,
+                            margin: [0, 6, 0, 30],
+                            alignment: 'center'
+                        },
+                        table: {
+                            fontSize: 4,
+                            alignment: 'center',
+                            color: 'black',
+                            margin: [0, 5, 0, 15]
+                        },
+                        header: {
+                            fontSize: 12,
+                            bold: true,
+                            margin: [0, 10, 0, 15],
+                            alignment: 'center'
+                        },
+                        footer: {
+                            fontSize: 8,
+                            margin: [0, 25, 0, 17],
+                            alignment: 'center'
+                        }
+                    }
+                };
+                pdfMake.createPdf(docDefinition).download("expenses.pdf");
+            };
 
 
             $scope.DownloadExcelFile = function () {
