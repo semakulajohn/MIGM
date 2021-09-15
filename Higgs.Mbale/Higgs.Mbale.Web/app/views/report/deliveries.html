@@ -20,16 +20,19 @@
                         <h3 class="panel-title">View Deliveries</h3>
                     </div>
                     <div class="panel-body">
-                        <button class="btn btn-primary btn-rounded" ng-click="TodaysDeliveries()">Today</button>
+                        <!--<button class="btn btn-primary btn-rounded" ng-click="TodaysDeliveries()">Today</button>
 
-                        <button class="btn btn-mint btn-rounded" ng-click="WeeksDeliveries()">This Week</button>
-                        <button class="btn btn-success btn-rounded" ng-click="DeliveriesForThisMonth()">This Month</button>
+    <button class="btn btn-mint btn-rounded" ng-click="WeeksDeliveries()">This Week</button>
+    <button class="btn btn-success btn-rounded" ng-click="DeliveriesForThisMonth()">This Month</button>-->
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button onclick="window.focus();window.print();" class="btn btn-primary2">Print</button>
+                        <!--<button onclick="window.focus();window.print();" class="btn btn-primary2">Print</button>-->
+                        <span ng-show="data.length > 0">
+                            <button ng-click="downloadPDF()" class="btn btn-primary2">Download Pdf</button>
+                        </span>
 
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                       
+
 
                         <hr />
 
@@ -102,8 +105,8 @@
                                                 <td>&nbsp;</td>
                                                 <td><button class="btn btn-primary" ng-click="SearchDeliveries(delivery)">Search</button></td>
 
-                                                 </tr>
-                                           
+                                            </tr>
+
                                     </table>
 
                                 </div>

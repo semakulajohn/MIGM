@@ -41,7 +41,10 @@
 
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     <td>
-                                        <button onclick="window.focus();window.print();" class="btn btn-primary2">Print</button>
+                                        <span ng-show="data.length > 0">
+                                            <button ng-click="downloadPDF()" class="btn btn-primary2">Download Report</button>
+                                        </span>
+                                        <!--<button onclick="window.focus();window.print();" class="btn btn-primary2">Print</button>-->
                                     </td>
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 

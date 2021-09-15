@@ -20,15 +20,17 @@
                         <h3 class="panel-title">View Batches</h3>
                     </div>
                     <div class="panel-body">
-                        <button class="btn btn-primary btn-rounded" ng-click="TodaysBatches()">Today</button>
+                        <!--<button class="btn btn-primary btn-rounded" ng-click="TodaysBatches()">Today</button>
 
-                        <button class="btn btn-mint btn-rounded" ng-click="WeeksBatches()">This Week</button>
-                        <button class="btn btn-success btn-rounded" ng-click="BatchesForThisMonth()">This Month</button>
+    <button class="btn btn-mint btn-rounded" ng-click="WeeksBatches()">This Week</button>
+    <button class="btn btn-success btn-rounded" ng-click="BatchesForThisMonth()">This Month</button>-->
                         &nbsp;&nbsp;&nbsp;
-                        <button onclick="window.focus();window.print();" class="btn btn-primary2">Print</button>
-
+                        <!--<button onclick="window.focus();window.print();" class="btn btn-primary2">Print</button>-->
+                        <span ng-show="data.length > 0">
+                            <button ng-click="downloadPDF()" class="btn btn-primary2">Download Pdf</button>
+                        </span>
                         &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                       
+
 
 
                         <hr />
@@ -76,7 +78,7 @@
                                                     </span>
                                                 </td>
                                                 <td>&nbsp;&nbsp;&nbsp;</td>
-                             
+
                                                 <td>&nbsp;&nbsp;&nbsp;</td>
                                                 <td><button class="btn btn-primary" ng-click="SearchBatches(batch)">Search</button></td>
                                             </tr>

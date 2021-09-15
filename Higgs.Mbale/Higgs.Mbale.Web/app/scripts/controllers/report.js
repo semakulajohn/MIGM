@@ -447,7 +447,7 @@ angular
               angular.forEach($scope.data, function (value, key) {
                     supplyData.push({
                         WeightNoteNumber: value.WeightNoteNumber, Quantity: value.Quantity, Price: value.Price,
-                        Amount: value.Amount, BranchName: value.BranchName, SupplyDate: value.SupplyDate,
+                        Amount: value.Amount, BranchName: value.BranchName, SupplyDate: moment(value.SupplyDate).format('DD-MMM-YYYY'),
                         SupplierName: value.SupplierName, NormalBags: value.NormalBags, BagsOfStones: value.BagsOfStones,
                         YellowBags : value.YellowBags
                     });
@@ -924,6 +924,164 @@ angular
                  });
             }
 
+            $scope.downloadPDF = function () {
+                var batchesData = [];
+
+                var batches_branchName;
+                angular.forEach($scope.data, function (value, key) {
+                    batchesData.push({
+                        Name: value.Name, Quantity: value.Quantity.toString(), FlourOutPut: value.FlourOutPut.toString(), BrandOutPut: value.BrandOutPut.toString(),
+                        MillingCharge: value.MillingCharge.toString(), TotalFactoryExpenseCost: value.TotalFactoryExpenseCost.toString(), MillingChargeBalance: value.MillingChargeBalance.toString(),
+                        TotalBuveraCost: value.TotalBuveraCost.toString(), TotalLabourCosts: value.TotalLabourCosts.toString(),
+                        CreatedOn: moment(value.CreatedOn).format('DD-MMM-YYYY')
+
+                    });
+
+                });
+
+                batches_branchName = $filter('uppercase')($scope.data[0].BranchName);
+                var items = batchesData.map(function (item) {
+                    return [item.Name, item.Quantity, item.FlourOutPut, item.BrandOutPut, item.MillingCharge, item.TotalFactoryExpenseCost,
+                    item.MillingChargeBalance, item.TotalBuveraCost, item.TotalLabourCosts, item.CreatedOn];
+                });
+
+                var docDefinition = {
+                    pageOrientation: 'landscape',
+                    header: function () {
+                        return [
+                            {
+                                style: 'table',
+                                margin: [62, 35, 62, 35],
+                                table: {
+                                    widths: ['*'],
+                                    headerRows: 0,
+                                    body: [
+                                        [
+                                            { text: 'MBALE INVESTMENT BATCHES REPORT  OF ' + batches_branchName, style: 'topHeader', alignment: 'center' },
+
+
+                                        ]
+                                    ]
+                                },
+                                layout: 'noBorders'
+                            }
+                        ]
+                    },
+                    footer: function (currentPage, pageCount) {
+                        return [
+                            { text: currentPage.toString() + ' of ' + pageCount, alignment: 'center', style: 'footer' }
+                        ]
+                    },
+                    content: [
+                        {
+                            style: 'topTable',
+                            table: {
+                                widths: ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+                                heights: [18],
+                                headerRows: 1,
+                                body: [
+                                    
+
+                                    [{ text: 'BATCH No.', style: 'tableLabel' }, { text: 'MAIZE(kgs) ', style: 'tableLabel' },
+                                    { text: 'M/F(kgs)', style: 'tableLabel' }, { text: 'M/B(kgs)', style: 'tableLabel' },
+                                    { text: 'MCHARGE', style: 'tabLabel' }, { text: 'F/EXPENSES', style: 'tableLabel' },
+                                    { text: 'MBALANCE', style: 'tableLabel' }, { text: 'Buvera', style: 'tableLabel' },
+                                    { text: 'LABOUR', style: 'tableLabel' }, { text: 'DATE', style: 'tableLabel' },
+                                    ],
+
+                                ].concat(items)
+                            },
+
+
+
+                            layout: {
+                                paddingLeft: function (i, node) { return 6; },
+                                paddingRight: function (i, node) { return 6; },
+                                paddingTop: function (i, node) { return 6; },
+                                paddingBottom: function (i, node) { return 6; },
+                                fillColor: function (i, node) {
+                                    return (i % 2 === 0) ? '#F5F5F5' : null;
+                                }
+                            }
+                        },
+
+                        {
+                            table: {
+                                widths: ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+                                heights: [18],
+                                headerRows: 1,
+                                body: [
+
+                                    
+
+
+                                    [
+                                        { text: 'TOTAL', style: 'secondTable', bold: true },
+                                        { text: $scope.totalMaize.toString() + ' kgs', style: 'tableLabel', bold: true },
+                                        { text: $scope.totalFlourkgs.toString() + ' kgs', style: 'tableLabel', bold: true },
+                                        { text: $scope.totalBrandKgs.toString() + ' kgs', style: 'tableLabel', bold: true },
+                                        { text: $scope.totalMillingCharge.toString() + ' Ugx', style: 'tableLabel', bold: true },
+                                        { text: $scope.totalFactoryExpenses.toString() + ' Ugx', style: 'tableLabel', bold: true },
+                                        { text: $scope.totalMillingBalance.toString() + ' Ugx', style: 'tableLabel', bold: true },
+                                        { text: $scope.totalBuveraCosts.toString() + ' Ugx', style: 'tableLabel', bold: true },
+                                        { text: $scope.totalLabourCosts.toString() + ' Ugx', style: 'tableLabel', bold: true },
+                                        { text: ' ', style: 'tableLabel', bold: true },
+
+                                    ],
+
+                                ]
+                            },
+                            layout: {
+                                paddingLeft: function (i, node) { return 6; },
+                                paddingRight: function (i, node) { return 6; },
+                                paddingTop: function (i, node) { return 6; },
+                                paddingBottom: function (i, node) { return 6; },
+                                fillColor: function (i, node) {
+                                    return (i % 2 === 0) ? '#F5F5F5' : null;
+                                }
+                            }
+                        }
+
+
+                    ],
+                    pageSize: 'A4',
+                    pageMargins: [62, 80, 62, 80],
+                    styles: {
+                        topHeader: {
+                            fontSize: 15,
+                            bold: true,
+                            margin: [0, 6, 0, 30],
+                            alignment: 'center'
+                        },
+                        secondTable: {
+                            fontSize: 20.4,
+                            color: 'black'
+                        },
+                        table: {
+                            fontSize: 4,
+                            alignment: 'center',
+                            color: 'black',
+                            margin: [0, 5, 0, 15]
+                        },
+                        header: {
+                            fontSize: 12,
+                            bold: true,
+                            margin: [0, 10, 0, 15],
+                            alignment: 'center'
+                        },
+                        footer: {
+                            fontSize: 8,
+                            margin: [0, 25, 0, 17],
+                            alignment: 'center'
+                        }
+                    }
+                };
+                var date = new Date();
+                date = moment(date).format('DD_MMM_YYYY_HH_mm_ss');
+                pdfMake.createPdf(docDefinition).download('Batches_' + date + '.pdf');
+                //pdfMake.createPdf(docDefinition).download("income.pdf");
+            };
+
 
           
 
@@ -1069,6 +1227,161 @@ angular
                  });
             }
 
+            $scope.downloadPDF = function () {
+                var deliveriesData = [];
+
+                var deliveries_branchName;
+                var deliveries_productName;
+
+                angular.forEach($scope.data, function (value, key) {
+                    deliveriesData.push({
+                        Location: value.Location, VehicleNumber: value.VehicleNumber, OrderId: value.OrderId.toString(),
+                        Quantity: value.Quantity.toString(), Amount: value.Amount.toString(), CustomerName: value.CustomerName,
+                        CreatedOn: moment(value.CreatedOn).format('DD-MMM-YYYY')
+
+                    });
+
+                });
+
+                deliveries_branchName = $filter('uppercase')($scope.data[0].BranchName);
+                deliveries_productName = $filter('uppercase')($scope.data[0].ProductName);
+
+                var items = deliveriesData.map(function (item) {
+                    return [item.Location, item.VehicleNumber, item.OrderId, item.Quantity, item.Amount, item.CustomerName, item.CreatedOn];
+                });
+
+                var docDefinition = {
+                    pageOrientation: 'landscape',
+                    header: function () {
+                        return [
+                            {
+                                style: 'table',
+                                margin: [62, 35, 62, 35],
+                                table: {
+                                    widths: ['*'],
+                                    headerRows: 0,
+                                    body: [
+                                        [
+                                            { text: 'MBALE INVESTMENT DELIVERIES REPORT  OF ' + deliveries_productName + ' AT ' + deliveries_branchName , style: 'topHeader', alignment: 'center' },
+
+
+                                        ]
+                                    ]
+                                },
+                                layout: 'noBorders'
+                            }
+                        ]
+                    },
+                    footer: function (currentPage, pageCount) {
+                        return [
+                            { text: currentPage.toString() + ' of ' + pageCount, alignment: 'center', style: 'footer' }
+                        ]
+                    },
+                    content: [
+                        {
+                            style: 'topTable',
+                            table: {
+                                widths: ['*', '*', '*', '*', '*', '*', '*'],
+                                heights: [18],
+                                headerRows: 1,
+                                body: [
+                                    
+
+                                    [{ text: 'DESTINATION', style: 'tableLabel' }, { text: 'TRUCK NO.', style: 'tableLabel' },
+                                    { text: 'ORDER NO.', style: 'tableLabel' }, { text: 'QUANTITY', style: 'tableLabel' },
+                                    { text: 'AMOUNT', style: 'tabLabel' }, { text: 'CUSTOMER NAME', style: 'tableLabel' },
+                                    { text: 'DATE', style: 'tableLabel' }, 
+                                    ],
+
+                                ].concat(items)
+                            },
+
+
+
+                            layout: {
+                                paddingLeft: function (i, node) { return 6; },
+                                paddingRight: function (i, node) { return 6; },
+                                paddingTop: function (i, node) { return 6; },
+                                paddingBottom: function (i, node) { return 6; },
+                                fillColor: function (i, node) {
+                                    return (i % 2 === 0) ? '#F5F5F5' : null;
+                                }
+                            }
+                        },
+
+                        {
+                            table: {
+                                widths: ['*', '*', '*', '*', '*', '*', '*'],
+                                heights: [18],
+                                headerRows: 1,
+                                body: [
+
+
+
+
+                                    [
+                                        { text: 'TOTAL', style: 'tableLabel', bold: true },
+                                        { text: ' ', style: 'tableLabel', bold: true },
+                                        { text: ' ', style: 'tableLabel', bold: true },
+                                        { text: $scope.totalQuantity.toString() + ' kgs', style: 'tableLabel', bold: true },
+                                        { text: $scope.totalAmount.toString() + ' Ugx', style: 'tableLabel', bold: true },
+                                        { text: '', style: 'tableLabel', bold: true },
+                                        { text: ' ', style: 'tableLabel', bold: true },
+
+                                    ],
+
+                                ]
+                            },
+                            layout: {
+                                paddingLeft: function (i, node) { return 6; },
+                                paddingRight: function (i, node) { return 6; },
+                                paddingTop: function (i, node) { return 6; },
+                                paddingBottom: function (i, node) { return 6; },
+                                fillColor: function (i, node) {
+                                    return (i % 2 === 0) ? '#F5F5F5' : null;
+                                }
+                            }
+                        }
+
+
+                    ],
+                    pageSize: 'A4',
+                    pageMargins: [62, 80, 62, 80],
+                    styles: {
+                        topHeader: {
+                            fontSize: 15,
+                            bold: true,
+                            margin: [0, 6, 0, 30],
+                            alignment: 'center'
+                        },
+                        secondTable: {
+                            fontSize: 20.4,
+                            color: 'black'
+                        },
+                        table: {
+                            fontSize: 4,
+                            alignment: 'center',
+                            color: 'black',
+                            margin: [0, 5, 0, 15]
+                        },
+                        header: {
+                            fontSize: 12,
+                            bold: true,
+                            margin: [0, 10, 0, 15],
+                            alignment: 'center'
+                        },
+                        footer: {
+                            fontSize: 8,
+                            margin: [0, 25, 0, 17],
+                            alignment: 'center'
+                        }
+                    }
+                };
+                var date = new Date();
+                date = moment(date).format('DD_MMM_YYYY_HH_mm_ss');
+                pdfMake.createPdf(docDefinition).download('deliveries_' + date + '.pdf');
+                //pdfMake.createPdf(docDefinition).download("income.pdf");
+            };
 
            
 
@@ -1453,6 +1766,150 @@ angular
                             });
                     });
             }
+
+
+            $scope.downloadPDF = function () {
+                var weightLossData = [];
+
+                var weightloss_branchName;
+                angular.forEach($scope.data, function (value, key) {
+                    weightLossData.push({
+                        CustomerName: value.CustomerName,
+                        Quantity: value.Quantity.toString(), 
+                       CreatedOn: moment(value.CreatedOn).format('DD-MMM-YYYY')
+
+                    });
+
+                });
+
+                weightloss_branchName = $filter('uppercase')($scope.data[0].BranchName);
+                var items = weightLossData.map(function (item) {
+                    return [item.CustomerName, item.Quantity, item.CreatedOn];
+                });
+
+                var docDefinition = {
+                    pageOrientation: 'landscape',
+                    header: function () {
+                        return [
+                            {
+                                style: 'table',
+                                margin: [62, 35, 62, 35],
+                                table: {
+                                    widths: ['*'],
+                                    headerRows: 0,
+                                    body: [
+                                        [
+                                            { text: 'MBALE INVESTMENT WEIGHT LOSS REPORT  OF ' + weightloss_branchName, style: 'topHeader', alignment: 'center' },
+
+
+                                        ]
+                                    ]
+                                },
+                                layout: 'noBorders'
+                            }
+                        ]
+                    },
+                    footer: function (currentPage, pageCount) {
+                        return [
+                            { text: currentPage.toString() + ' of ' + pageCount, alignment: 'center', style: 'footer' }
+                        ]
+                    },
+                    content: [
+                        {
+                            style: 'topTable',
+                            table: {
+                                widths: ['*', '*', '*'],
+                                heights: [18],
+                                headerRows: 1,
+                                body: [
+
+                                    [
+                                        { text: 'CUSTOMER NAME', style: 'tableLabel' },
+                                        { text: 'QUANTITY', style: 'tabLabel' },
+                                        { text: 'DATE', style: 'tableLabel' },
+                                    ],
+
+                                ].concat(items)
+                            },
+
+
+
+                            layout: {
+                                paddingLeft: function (i, node) { return 6; },
+                                paddingRight: function (i, node) { return 6; },
+                                paddingTop: function (i, node) { return 6; },
+                                paddingBottom: function (i, node) { return 6; },
+                                fillColor: function (i, node) {
+                                    return (i % 2 === 0) ? '#F5F5F5' : null;
+                                }
+                            }
+                        },
+
+                        {
+                            table: {
+                                widths: ['*', '*', '*'],
+                                heights: [18],
+                                headerRows: 1,
+                                body: [
+
+
+
+
+                                    [
+                                        { text: 'TOTAL', style: 'tableLabel', bold: true },
+                                        { text: $scope.totalQuantity.toString() + ' kgs', style: 'tableLabel', bold: true },
+                                        { text: '', style: 'tableLabel' },
+                                       
+                                    ],
+
+                                ]
+                            },
+                            layout: {
+                                paddingLeft: function (i, node) { return 6; },
+                                paddingRight: function (i, node) { return 6; },
+                                paddingTop: function (i, node) { return 6; },
+                                paddingBottom: function (i, node) { return 6; },
+                                fillColor: function (i, node) {
+                                    return (i % 2 === 0) ? '#F5F5F5' : null;
+                                }
+                            }
+                        }
+
+
+                    ],
+                    pageSize: 'A4',
+                    pageMargins: [62, 80, 62, 80],
+                    styles: {
+                        topHeader: {
+                            fontSize: 15,
+                            bold: true,
+                            margin: [0, 6, 0, 30],
+                            alignment: 'center'
+                        },
+                        table: {
+                            fontSize: 4,
+                            alignment: 'center',
+                            color: 'black',
+                            margin: [0, 5, 0, 15]
+                        },
+                        header: {
+                            fontSize: 12,
+                            bold: true,
+                            margin: [0, 10, 0, 15],
+                            alignment: 'center'
+                        },
+                        footer: {
+                            fontSize: 8,
+                            margin: [0, 25, 0, 17],
+                            alignment: 'center'
+                        }
+                    }
+                };
+                var date = new Date();
+                date = moment(date).format('DD_MMM_YYYY_HH_mm_ss');
+                pdfMake.createPdf(docDefinition).download('WeightLoss_' + date + '.pdf');
+                //pdfMake.createPdf(docDefinition).download("income.pdf");
+            };
 
 
 
@@ -2409,6 +2866,9 @@ angular
             }
 
 
+           
+
+
             $scope.DownloadExcelFile = function () {
                 $window.open("/Excel/MachineRepair/" + $scope.reportType);
             };
@@ -2537,6 +2997,135 @@ angular
                      });
                  });
             }
+            $scope.downloadPDF = function () {
+                var batchOutputData = [];
+
+                var branch_Name;
+
+
+
+                angular.forEach($scope.data, function (value, key) {
+                    batchOutputData.push({
+                        Loss: value.Loss, LossPercentage: value.LossPercentage, FlourOutPut: value.FlourOutPut,
+                        FlourPercentage: value.FlourPercentage, BrandOutPut: value.BrandOutPut, BrandPercentage: value.BrandPercentage,
+                        Name: value.Name, BranchName: value.BranchName, CreatedOn: moment(value.CreatedOn).format('DD-MMM-YYYY')
+                    });
+                    
+
+                });
+
+                branch_Name = $filter('uppercase')(batchOutputData[0].BranchName);
+               
+                //angular.forEach(batchOutputData[0], function (value, key) {
+                //    branch_Name = value.BranchName;
+                //    //batchOutputData.push({
+                //    //    Loss: value.Loss, LossPercentage: value.LossPercentage, FlourOutPut: value.FlourOutPut,
+                //    //    FlourPercentage: value.FlourPercentage, BrandOutPut: value.BrandOutPut, BrandPercentage: value.BrandPercentage,
+                //    //    Name: value.Name, BranchName: value.BranchName, CreatedOn: moment(value.CreatedOn).format('DD-MMM-YYYY')
+                //    //});
+
+                //});
+                
+
+                var items = batchOutputData.map(function (item) {
+                    return [item.Loss.toString(), item.LossPercentage.toFixed(2).toString(), item.FlourOutPut.toString(), item.FlourPercentage.toFixed(2).toString(), item.BrandOutPut.toString(),
+                        item.BrandPercentage.toFixed(2).toString(), item.Name,item.CreatedOn
+                    ];
+                });
+
+                var docDefinition = {
+                    pageOrientation: 'landscape',
+                    header: function () {
+                        return [
+                            {
+                                style: 'table',
+                                margin: [62, 35, 62, 35],
+                                table: {
+                                    widths: ['*'],
+                                    headerRows: 0,
+                                    body: [
+                                        [
+                                            { text: 'MBALE INVESTMENT BATCHOUPUTS\' REPORT  OF ' + branch_Name + ' BRANCH', style: 'topHeader', alignment: 'center' , uppercase : true},
+
+
+                                        ]
+                                    ]
+                                },
+                                layout: 'noBorders'
+                            }
+                        ]
+                    },
+                    footer: function (currentPage, pageCount) {
+                        return [
+                            { text: currentPage.toString() + ' of ' + pageCount, alignment: 'center', style: 'footer' }
+                        ]
+                    },
+                    content: [
+                        {
+                            style: 'topTable',
+                            table: {
+                                widths: ['*', '*', '*', '*','*','*','*','*'],
+                                heights: [18],
+                                headerRows: 1,
+                                body: [
+
+                                    [
+                                        { text: 'LOSS' + '(kgs)', style: 'tabLabel', bold: true }, { text: 'LOSS' + '(%)', style: 'tabLabel',bold: true },
+                                        { text: 'FLOUR' + '(kgs)', style: 'tabLabel', bold: true }, { text: 'FLOUR' + '(%)', style: 'tabLabel', bold: true },
+                                        { text: 'BRAND' + '(kgs)', style: 'tabLabel', bold: true }, { text: 'BRAND' + '(%)', style: 'tabLabel', bold: true},
+                                        { text: 'BATCH', style: 'tabLabel', bold: true },
+                                        { text: 'DATE', style: 'tableLabel', bold: true},
+                                    ],
+
+                                ].concat(items)
+                            },
+
+
+
+                            layout: {
+                                paddingLeft: function (i, node) { return 6; },
+                                paddingRight: function (i, node) { return 6; },
+                                paddingTop: function (i, node) { return 6; },
+                                paddingBottom: function (i, node) { return 6; },
+                                fillColor: function (i, node) {
+                                    return (i % 2 === 0) ? '#F5F5F5' : null;
+                                }
+                            }
+                        },
+
+                    ],
+                    pageSize: 'A4',
+                    pageMargins: [62, 80, 62, 80],
+                    styles: {
+                        topHeader: {
+                            fontSize: 15,
+                            bold: true,
+                            margin: [0, 6, 0, 30],
+                            alignment: 'center'
+                        },
+                        table: {
+                            fontSize: 4,
+                            alignment: 'center',
+                            color: 'black',
+                            margin: [0, 5, 0, 15]
+                        },
+                        header: {
+                            fontSize: 12,
+                            bold: true,
+                            margin: [0, 10, 0, 15],
+                            alignment: 'center'
+                        },
+                        footer: {
+                            fontSize: 8,
+                            margin: [0, 25, 0, 17],
+                            alignment: 'center'
+                        }
+                    }
+                };
+                var date = new Date();
+                date = moment(date).format('DD_MMM_YYYY_HH_mm_ss');
+                pdfMake.createPdf(docDefinition).download('BATCHOUTPUT_' + date + '.pdf');
+            };
 
             //$scope.SearchBatches = function (batch) {
             //    $scope.data = [];
@@ -2767,7 +3356,7 @@ angular
             $scope.downloadPDF = function () {
                 var CreditorData = [];
 
-
+                var creditor_branchName;
                 angular.forEach($scope.data, function (value, key) {
                     CreditorData.push({
                          CreditorName: value.CreditorName, 
@@ -2777,8 +3366,10 @@ angular
 
                 });
 
+                creditor_branchName = $filter('uppercase')($scope.data[0].BranchName);
+
                 var items = CreditorData.map(function (item) {
-                    return [item.CreditorName, item.Amount.toString()];
+                    return[item.BranchName,item.CreditorName, item.Amount.toString()];
                 });
 
                 var docDefinition = {
@@ -2793,7 +3384,7 @@ angular
                                     headerRows: 0,
                                     body: [
                                         [
-                                            { text: 'MBALE INVESTMENT CREDITORS\' REPORT ', style: 'topHeader', alignment: 'center' },
+                                            { text: 'MBALE INVESTMENT CREDITORS\' REPORT ' + creditor_branchName , style: 'topHeader', alignment: 'center' },
 
 
                                         ]
@@ -2818,6 +3409,7 @@ angular
                                 body: [
 
                                     [
+                                        { text: 'BRANCH', style: 'tableLabel' },
                                         { text: 'CREDITOR NAME', style: 'tableLabel' },
                                         { text: 'AMOUNT', style: 'tableLabel' }
                                     ],
@@ -3033,7 +3625,7 @@ angular
 
                                     [
                                         { text: 'TOTAL', style: 'tableLabel', bold: true },
-                                        { text: $scope.totalAmount.toString(), style: 'tableLabel', bold: true },
+                                        { text: $scope.totalAmount.toString() + ' Ugx', style: 'tableLabel', bold: true },
 
                                     ],
 
@@ -3080,7 +3672,10 @@ angular
                         }
                     }
                 };
-                pdfMake.createPdf(docDefinition).download("debtors.pdf");
+                var date = new Date();
+                date = moment(date).format('DD_MMM_YYYY_HH_mm_ss');
+                pdfMake.createPdf(docDefinition).download('debtors_' + date + '.pdf');
+                //pdfMake.createPdf(docDefinition).download("debtors.pdf");
             };
 
 
@@ -3132,6 +3727,144 @@ angular
                  });
             }
 
+            $scope.downloadPDF = function () {
+                var advanceData = [];
+
+
+                angular.forEach($scope.data, function (value, key) {
+                    advanceData.push({
+                        DebtorName: value.DebtorName,
+                        Amount: value.Amount
+
+                    });
+
+                });
+
+                var items = advanceData.map(function (item) {
+                    return [item.DebtorName, item.Amount.toString()];
+                });
+
+                var docDefinition = {
+                    pageOrientation: 'portrait',
+                    header: function () {
+                        return [
+                            {
+                                style: 'table',
+                                margin: [62, 35, 62, 35],
+                                table: {
+                                    widths: ['*'],
+                                    headerRows: 0,
+                                    body: [
+                                        [
+                                            { text: 'MBALE INVESTMENT ADVANCE PAYMENTS REPORT ', style: 'topHeader', alignment: 'center' },
+
+
+                                        ]
+                                    ]
+                                },
+                                layout: 'noBorders'
+                            }
+                        ]
+                    },
+                    footer: function (currentPage, pageCount) {
+                        return [
+                            { text: currentPage.toString() + ' of ' + pageCount, alignment: 'center', style: 'footer' }
+                        ]
+                    },
+                    content: [
+                        {
+                            style: 'topTable',
+                            table: {
+                                widths: ['*', '*'],
+                                heights: [18],
+                                headerRows: 1,
+                                body: [
+
+                                    [
+                                        { text: 'CUSTOMER\'S NAME', style: 'tableLabel' },
+                                        { text: 'AMOUNT', style: 'tableLabel' }
+                                    ],
+
+                                ].concat(items)
+                            },
+
+
+
+                            layout: {
+                                paddingLeft: function (i, node) { return 6; },
+                                paddingRight: function (i, node) { return 6; },
+                                paddingTop: function (i, node) { return 6; },
+                                paddingBottom: function (i, node) { return 6; },
+                                fillColor: function (i, node) {
+                                    return (i % 2 === 0) ? '#F5F5F5' : null;
+                                }
+                            }
+                        },
+
+                        {
+                            table: {
+                                widths: ['*', '*'],
+                                heights: [18],
+                                headerRows: 1,
+                                body: [
+
+
+
+
+                                    [
+                                        { text: 'TOTAL', style: 'tableLabel', bold: true },
+                                        { text: $scope.totalAmount.toString() + ' Ugx', style: 'tableLabel', bold: true },
+
+                                    ],
+
+                                ]
+                            },
+                            layout: {
+                                paddingLeft: function (i, node) { return 6; },
+                                paddingRight: function (i, node) { return 6; },
+                                paddingTop: function (i, node) { return 6; },
+                                paddingBottom: function (i, node) { return 6; },
+                                fillColor: function (i, node) {
+                                    return (i % 2 === 0) ? '#F5F5F5' : null;
+                                }
+                            }
+                        }
+
+
+                    ],
+                    pageSize: 'A4',
+                    pageMargins: [62, 80, 62, 80],
+                    styles: {
+                        topHeader: {
+                            fontSize: 15,
+                            bold: true,
+                            margin: [0, 6, 0, 30],
+                            alignment: 'center'
+                        },
+                        table: {
+                            fontSize: 4,
+                            alignment: 'center',
+                            color: 'black',
+                            margin: [0, 5, 0, 15]
+                        },
+                        header: {
+                            fontSize: 12,
+                            bold: true,
+                            margin: [0, 10, 0, 15],
+                            alignment: 'center'
+                        },
+                        footer: {
+                            fontSize: 8,
+                            margin: [0, 25, 0, 17],
+                            alignment: 'center'
+                        }
+                    }
+                };
+                var date = new Date();
+                date = moment(date).format('DD_MMM_YYYY_HH_mm_ss');
+                pdfMake.createPdf(docDefinition).download('advancePayments_' + date + '.pdf');
+                //pdfMake.createPdf(docDefinition).download("debtors.pdf");
+            };
 
 
           
@@ -3470,6 +4203,159 @@ angular
                  });
             }
 
+            $scope.downloadPDF = function () {
+                var cashTransferData = [];
+
+                //var batches_branchName;
+                angular.forEach($scope.data, function (value, key) {
+                    cashTransferData.push({
+                        FromBranch: value.FromBranch, ReceiverBranch: value.ReceiverBranch, Amount: value.Amount,
+                        Notes: value.Notes, Accept: value.Accept, Reject: value.Reject,
+                        CreatedOn: moment(value.CreatedOn).format('DD-MMM-YYYY')
+
+                    });
+
+                });
+
+               // batches_branchName = $filter('uppercase')($scope.data[0].BranchName);
+                var items = cashTransferData.map(function (item) {
+                    return [item.FromBranch, item.ReceiverBranch, item.Amount.toString(), item.Notes, item.Accept.toString(), item.Reject.toString(), item.CreatedOn];
+                });
+
+                var docDefinition = {
+                    pageOrientation: 'landscape',
+                    header: function () {
+                        return [
+                            {
+                                style: 'table',
+                                margin: [62, 35, 62, 35],
+                                table: {
+                                    widths: ['*'],
+                                    headerRows: 0,
+                                    body: [
+                                        [
+                                            { text: 'MBALE INVESTMENT CASHTRANSFER  REPORT', style: 'topHeader', alignment: 'center' },
+
+
+                                        ]
+                                    ]
+                                },
+                                layout: 'noBorders'
+                            }
+                        ]
+                    },
+                    footer: function (currentPage, pageCount) {
+                        return [
+                            { text: currentPage.toString() + ' of ' + pageCount, alignment: 'center', style: 'footer' }
+                        ]
+                    },
+                    content: [
+                        {
+                            style: 'topTable',
+                            table: {
+                                widths: ['*', '*', '*', '*', '*', '*', '*'],
+                                heights: [18],
+                                headerRows: 1,
+                                body: [
+
+
+                                    [{ text: 'FROM', style: 'tableLabel' }, { text: 'RECIEVING', style: 'tableLabel' },
+                                    { text: 'AMOUNT', style: 'tableLabel' }, { text: 'NOTES', style: 'tableLabel' },
+                                    { text: 'ACCEPTED', style: 'tabLabel' }, { text: 'REJECTED', style: 'tableLabel' },
+                                    { text: 'DATE', style: 'tableLabel' },
+                                    ],
+
+                                ].concat(items)
+                            },
+
+
+
+                            layout: {
+                                paddingLeft: function (i, node) { return 6; },
+                                paddingRight: function (i, node) { return 6; },
+                                paddingTop: function (i, node) { return 6; },
+                                paddingBottom: function (i, node) { return 6; },
+                                fillColor: function (i, node) {
+                                    return (i % 2 === 0) ? '#F5F5F5' : null;
+                                }
+                            }
+                        },
+
+                        {
+                            table: {
+                                widths: ['*', '*', '*', '*', '*', '*', '*'],
+                                heights: [18],
+                                headerRows: 1,
+                                body: [
+
+
+
+
+                                    [
+                                        { text: 'TOTAL', style: 'secondTable', bold: true },
+                                        { text: ' ', style: 'tableLabel', bold: true },
+                                        { text: $scope.totalAmount.toString() + ' Ugx', style: 'tableLabel', bold: true },
+                                        { text: ' ' , style: 'tableLabel', bold: true },
+                                        { text: ' ', style: 'tableLabel', bold: true },
+                                        
+                                        { text:'' , style: 'tableLabel', bold: true },
+                                        { text: ' ', style: 'tableLabel', bold: true },
+
+                                    ],
+
+                                ]
+                            },
+                            layout: {
+                                paddingLeft: function (i, node) { return 6; },
+                                paddingRight: function (i, node) { return 6; },
+                                paddingTop: function (i, node) { return 6; },
+                                paddingBottom: function (i, node) { return 6; },
+                                fillColor: function (i, node) {
+                                    return (i % 2 === 0) ? '#F5F5F5' : null;
+                                }
+                            }
+                        }
+
+
+                    ],
+                    pageSize: 'A4',
+                    pageMargins: [62, 80, 62, 80],
+                    styles: {
+                        topHeader: {
+                            fontSize: 15,
+                            bold: true,
+                            margin: [0, 6, 0, 30],
+                            alignment: 'center'
+                        },
+                        secondTable: {
+                            fontSize: 20.4,
+                            color: 'black'
+                        },
+                        table: {
+                            fontSize: 4,
+                            alignment: 'center',
+                            color: 'black',
+                            margin: [0, 5, 0, 15]
+                        },
+                        header: {
+                            fontSize: 12,
+                            bold: true,
+                            margin: [0, 10, 0, 15],
+                            alignment: 'center'
+                        },
+                        footer: {
+                            fontSize: 8,
+                            margin: [0, 25, 0, 17],
+                            alignment: 'center'
+                        }
+                    }
+                };
+                var date = new Date();
+                date = moment(date).format('DD_MMM_YYYY_HH_mm_ss');
+                pdfMake.createPdf(docDefinition).download('CashTransfers_' + date + '.pdf');
+                //pdfMake.createPdf(docDefinition).download("income.pdf");
+            };
+
 
           
 
@@ -3682,15 +4568,18 @@ angular
             $scope.downloadPDF = function () {
                 var expensesData = [];
 
+                var branch_name;
 
                 angular.forEach($scope.data, function (value, key) {
                     expensesData.push({
                         Notes : value.Notes, 
-                        Amount: value.Amount, CreatedOn : value.CreatedOn
+                        Amount: value.Amount, CreatedOn: moment(value.CreatedOn).format('DD-MMM-YYYY')
 
                     });
 
                 });
+
+                branch_name = $filter('uppercase')($scope.data[0].BranchName)
 
                 var items = expensesData.map(function (item) {
                     return [item.Notes, item.Amount.toString(), item.CreatedOn];
@@ -3708,7 +4597,7 @@ angular
                                     headerRows: 0,
                                     body: [
                                         [
-                                            { text: 'MBALE INVESTMENT EXPENSES\'S REPORT  OF ' + $scope.data.BranchName, style: 'topHeader', alignment: 'center' },
+                                            { text: 'MBALE INVESTMENT EXPENSES\'S REPORT  OF ' + branch_name, style: 'topHeader', alignment: 'center' },
 
 
                                         ]
@@ -3812,7 +4701,10 @@ angular
                         }
                     }
                 };
-                pdfMake.createPdf(docDefinition).download("expenses.pdf");
+                var date = new Date();
+                date = moment(date).format('DD_MMM_YYYY_HH_mm_ss');
+                pdfMake.createPdf(docDefinition).download('expenses_' + date + '.pdf');
+                //pdfMake.createPdf(docDefinition).download("expenses.pdf");
             };
 
 
@@ -3957,6 +4849,147 @@ angular
                      });
                  });
             }
+
+            $scope.downloadPDF = function () {
+                var incomeData = [];
+
+                var income_branchName;
+                angular.forEach($scope.data, function (value, key) {
+                    incomeData.push({
+                        TransactionSubTypeName: value.TransactionSubTypeName, Notes: value.Notes,
+                        Amount: value.Amount, CreatedOn: moment(value.CreatedOn).format('DD-MMM-YYYY')
+
+                    });
+
+                });
+
+                income_branchName = $filter('uppercase')($scope.data[0].BranchName);
+                var items = incomeData.map(function (item) {
+                    return [item.TransactionSubTypeName, item.Notes, item.Amount.toString(), item.CreatedOn];
+                });
+
+                var docDefinition = {
+                    pageOrientation: 'landscape',
+                    header: function () {
+                        return [
+                            {
+                                style: 'table',
+                                margin: [62, 35, 62, 35],
+                                table: {
+                                    widths: ['*'],
+                                    headerRows: 0,
+                                    body: [
+                                        [
+                                            { text: 'MBALE INVESTMENT INCOMES\' REPORT  OF ' + income_branchName, style: 'topHeader', alignment: 'center' },
+
+
+                                        ]
+                                    ]
+                                },
+                                layout: 'noBorders'
+                            }
+                        ]
+                    },
+                    footer: function (currentPage, pageCount) {
+                        return [
+                            { text: currentPage.toString() + ' of ' + pageCount, alignment: 'center', style: 'footer' }
+                        ]
+                    },
+                    content: [
+                        {
+                            style: 'topTable',
+                            table: {
+                                widths: ['*', '*', '*','*'],
+                                heights: [18],
+                                headerRows: 1,
+                                body: [
+
+                                    [
+                                        {text : 'TRANSACTIONN NAME', style : 'tabLabel'},
+                                        { text: 'NOTES', style: 'tableLabel' },
+                                        { text: 'AMOUNT', style: 'tableLabel' }, { text: 'DATE', style: 'tableLabel' },
+                                    ],
+
+                                ].concat(items)
+                            },
+
+
+
+                            layout: {
+                                paddingLeft: function (i, node) { return 6; },
+                                paddingRight: function (i, node) { return 6; },
+                                paddingTop: function (i, node) { return 6; },
+                                paddingBottom: function (i, node) { return 6; },
+                                fillColor: function (i, node) {
+                                    return (i % 2 === 0) ? '#F5F5F5' : null;
+                                }
+                            }
+                        },
+
+                        {
+                            table: {
+                                widths: ['*', '*', '*','*'],
+                                heights: [18],
+                                headerRows: 1,
+                                body: [
+
+
+
+
+                                    [
+                                        { text: 'TOTAL', style: 'tableLabel', bold: true }, { text: '', style: 'tableLabel', bold: true },
+                                        { text: $scope.totalAmount.toString() + ' Ug shs', style: 'tableLabel', bold: true }, { text: '', style: 'tableLabel' },
+
+                                    ],
+
+                                ]
+                            },
+                            layout: {
+                                paddingLeft: function (i, node) { return 6; },
+                                paddingRight: function (i, node) { return 6; },
+                                paddingTop: function (i, node) { return 6; },
+                                paddingBottom: function (i, node) { return 6; },
+                                fillColor: function (i, node) {
+                                    return (i % 2 === 0) ? '#F5F5F5' : null;
+                                }
+                            }
+                        }
+
+
+                    ],
+                    pageSize: 'A4',
+                    pageMargins: [62, 80, 62, 80],
+                    styles: {
+                        topHeader: {
+                            fontSize: 15,
+                            bold: true,
+                            margin: [0, 6, 0, 30],
+                            alignment: 'center'
+                        },
+                        table: {
+                            fontSize: 4,
+                            alignment: 'center',
+                            color: 'black',
+                            margin: [0, 5, 0, 15]
+                        },
+                        header: {
+                            fontSize: 12,
+                            bold: true,
+                            margin: [0, 10, 0, 15],
+                            alignment: 'center'
+                        },
+                        footer: {
+                            fontSize: 8,
+                            margin: [0, 25, 0, 17],
+                            alignment: 'center'
+                        }
+                    }
+                };
+                var date = new Date();
+                date = moment(date).format('DD_MMM_YYYY_HH_mm_ss');
+                pdfMake.createPdf(docDefinition).download('incomes_' + date + '.pdf');
+                //pdfMake.createPdf(docDefinition).download("income.pdf");
+            };
 
 
             $scope.DownloadExcelFile = function () {

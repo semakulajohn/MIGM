@@ -22,12 +22,14 @@
                     <div class="panel-body">
                         &nbsp;&nbsp;&nbsp;
                         <!--<button onclick="window.focus();window.print();" class="btn btn-primary2">Print</button>-->
-                        <button ng-click="downloadPDF()" class="btn btn-primary2">Download Pdf</button>
+                        <span ng-show="data.length > 0">
+                            <button ng-click="downloadPDF()" class="btn btn-primary2">Download Pdf</button>
+                        </span>
 
                         &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                        <span ng-show="data.length > 0">
-                            <span class="fa-hover"><a href="" ng-click="DownloadExcelFile()"><i class="fa fa-download"></i> Download report</a></span>
-                        </span>
+                        <!--<span ng-show="data.length > 0">
+        <span class="fa-hover"><a href="" ng-click="DownloadExcelFile()"><i class="fa fa-download"></i> Download report</a></span>
+    </span>-->
 
 
                         <hr />
