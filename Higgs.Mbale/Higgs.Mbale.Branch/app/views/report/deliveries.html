@@ -20,19 +20,18 @@
                         <h3 class="panel-title">View Deliveries</h3>
                     </div>
                     <div class="panel-body">
-                        <button class="btn btn-primary btn-rounded" ng-click="TodaysDeliveries()">Today</button>
+                        <!--<button class="btn btn-primary btn-rounded" ng-click="TodaysDeliveries()">Today</button>
 
                         <button class="btn btn-mint btn-rounded" ng-click="WeeksDeliveries()">This Week</button>
                         <button class="btn btn-success btn-rounded" ng-click="DeliveriesForThisMonth()">This Month</button>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button onclick="window.focus();window.print();" class="btn btn-primary2">Print</button>
+                        <button onclick="window.focus();window.print();" class="btn btn-primary2">Print</button>-->
 
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                         <span ng-show="data.length > 0">
-                            <span class="fa-hover"><a href="" ng-click="DownloadExcelFile()"><i class="fa fa-download"></i> Download report</a></span>
+                            <button ng-click="downloadPDF()" class="btn btn-primary2">Download Report</button>
                         </span>
-
 
                         <hr />
 

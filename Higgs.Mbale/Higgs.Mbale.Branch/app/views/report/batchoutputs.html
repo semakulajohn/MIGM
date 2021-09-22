@@ -20,16 +20,19 @@
                         <h3 class="panel-title">View BatchOutPuts</h3>
                     </div>
                     <div class="panel-body">
-                        <button class="btn btn-primary btn-rounded" ng-click="TodaysBatchOutPut()">Today</button>
+                        <!--<button class="btn btn-primary btn-rounded" ng-click="TodaysBatchOutPut()">Today</button>
 
-                        <button class="btn btn-mint btn-rounded" ng-click="WeeksBatchOutPut()">This Week</button>
-                        <button class="btn btn-success btn-rounded" ng-click="BatchOutPutForThisMonth()">This Month</button>
+    <button class="btn btn-mint btn-rounded" ng-click="WeeksBatchOutPut()">This Week</button>
+    <button class="btn btn-success btn-rounded" ng-click="BatchOutPutForThisMonth()">This Month</button>-->
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button onclick="window.focus();window.print();" class="btn btn-primary2">Print</button>
+                        <!--<button onclick="window.focus();window.print();" class="btn btn-primary2">Print</button>-->
+                        <span ng-show="data.length > 0">
+                            <button ng-click="downloadPDF()" class="btn btn-primary2">Download Report</button>
+                        </span>
 
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                       
+
 
                         <hr />
 
@@ -65,8 +68,8 @@
                                                     </span>
                                                 </td>
                                                 <td>&nbsp;&nbsp;&nbsp;</td>
-                                              
-                                            
+
+
                                                 <td>&nbsp;&nbsp;&nbsp;</td>
                                                 <td><button class="btn btn-primary" ng-click="SearchBatchOutPut(batchOutPut)">Search</button></td>
                                             </tr>

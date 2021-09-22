@@ -20,21 +20,23 @@
                         <h3 class="panel-title">View Supplies</h3>
                     </div>
                     <div class="panel-body">
-                        <button class="btn btn-primary btn-rounded" ng-click="TodaysSupplies()">Today</button>
+                        <!--<button class="btn btn-primary btn-rounded" ng-click="TodaysSupplies()">Today</button>
 
-                        <button class="btn btn-mint btn-rounded" ng-click="WeeksSupplies()">This Week</button>
-                        <button class="btn btn-success btn-rounded" ng-click="SuppliesForThisMonth()">This Month</button>
+    <button class="btn btn-mint btn-rounded" ng-click="WeeksSupplies()">This Week</button>
+    <button class="btn btn-success btn-rounded" ng-click="SuppliesForThisMonth()">This Month</button>-->
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button onclick="window.focus();window.print();" class="btn btn-primary2">Print</button>
+                        <span ng-show="data.length > 0">
+                            <button ng-click="downloadPDF()" class="btn btn-primary2">Download Report</button>
+                        </span>
 
-                      
+
                         <hr />
 
                         <div class="col-md-6">
                             <div class="panel">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">Search  Supplies by date</h3>
-                                    
+
                                 </div>
                                 <div class="panel-body">
                                     <table id="search" width="900">
@@ -62,18 +64,18 @@
                                                     </span>
                                                 </td>
                                                 <td>&nbsp;&nbsp;&nbsp;</td>
-                                              
+
                                                 <td width="30%">
-                                                   
+
                                                     <span class="header-search">
                                                         Supplier : &nbsp;&nbsp;
-                                                        <select style="border: none" name="supplier" class="form-control col-sm-12" data-ng-model="supply.Id" 
+                                                        <select style="border: none" name="supplier" class="form-control col-sm-12" data-ng-model="supply.Id"
                                                                 data-ng-options="i.Id as i.UniqueNumber for i in suppliers">
                                                             <option value="">Please select</option>
                                                         </select>
 
                                                     </span>
-                                                    
+
                                                 </td>
                                                 <td>&nbsp;&nbsp;&nbsp;</td>
                                                 <td><button class="btn btn-primary" ng-click="SearchSupplies(supply)">Search</button></td>

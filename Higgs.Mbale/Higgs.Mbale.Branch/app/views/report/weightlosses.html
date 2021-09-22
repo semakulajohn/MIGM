@@ -21,11 +21,12 @@
                     </div>
                     <div class="panel-body">
 
-                        <button onclick="window.focus();window.print();" class="btn btn-primary2">Print</button>
-
+                        <!--<button onclick="window.focus();window.print();" class="btn btn-primary2">Print</button>-->
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-
+                        <span ng-show="data.length > 0">
+                            <button ng-click="downloadPDF()" class="btn btn-primary2">Download Report</button>
+                        </span>
 
                         <hr />
 
@@ -60,7 +61,7 @@
                                                         </span>
                                                     </span>
                                                 </td>
-                                               
+
                                                 <td>&nbsp;</td>
                                                 <td width="25%">
 

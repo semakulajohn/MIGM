@@ -2275,6 +2275,8 @@
     <Content Include="bower_components\ng-tags-input\ng-tags-input.min.css" />
     <Content Include="bower_components\ng-tags-input\ng-tags-input.min.js" />
     <Content Include="bower_components\ngStorage\ngStorage.min.js" />
+    <Content Include="bower_components\pdfmake\pdfmake.js" />
+    <Content Include="bower_components\pdfmake\vfs_fonts.js" />
     <Content Include="bower_components\peity\docs\style.css" />
     <Content Include="bower_components\peity\index.html" />
     <Content Include="bower_components\peity\jquery.peity.js" />
@@ -2628,6 +2630,8 @@
     <Content Include="Views\Excel\mbale_logo.gif" />
     <Content Include="Views\Excel\mbale_logo.jpg" />
     <Content Include="Web.config" />
+    <Content Include="[Config]\nico\AppSettings.config" />
+    <Content Include="[Config]\nico\ConnectionStrings.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
