@@ -40,7 +40,7 @@ namespace Higgs.Mbale.DAL.Concrete
 
         public IEnumerable<Supply> GetAllUnApprovedSuppliesForABranch(long branchId)
         {
-            return this.UnitOfWork.Get<Supply>().AsQueryable().Where(e => e.Deleted == false && e.Approved == null && e.BranchId == branchId);
+            return this.UnitOfWork.Get<Supply>().AsQueryable().Where(e => e.Deleted == false && e.Approved == null && e.BranchId == branchId).OrderByDescending(e => e.CreatedOn).Take(20);
         }
         public IEnumerable<Supply> GetAllSuppliesToBeUsed()
         {
