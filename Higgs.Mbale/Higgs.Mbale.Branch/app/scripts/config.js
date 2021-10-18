@@ -553,26 +553,26 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
          }
      })
 
-        //.state('deposits-list', {
-        //    url: "/deposits&reductions",
-        //    templateUrl: "/app/views/transactionactivity/depositlist.html",
-        //    data: {
-        //        pageTitle: 'Deposits & Reductions',
-        //    },
-        //    controller: function ($scope, $stateParams) {
+        .state('deposits-list', {
+            url: "/deposits&reductions",
+            templateUrl: "/app/views/transactionactivity/depositlist.html",
+            data: {
+                pageTitle: 'Deposits & Reductions',
+            },
+            controller: function ($scope, $stateParams) {
 
-        //    }
-        //})
-        //.state('unapprovedsupplies-list', {
-        //    url: "/supplies",
-        //    templateUrl: "/app/views/supply/unapprovedsupplies.html",
-        //    data: {
-        //        pageTitle: 'Supplies',
-        //    },
-        //    controller: function ($scope, $stateParams) {
+            }
+        })
+        .state('unapprovedsupplies-list', {
+            url: "/supplies",
+            templateUrl: "/app/views/supply/unapprovedsupplies.html",
+            data: {
+                pageTitle: 'Supplies',
+            },
+            controller: function ($scope, $stateParams) {
 
-        //    }
-        //})
+            }
+        })
           .state('supplier-supply-list', {
               url: "/supplies/:supplierId",
               templateUrl: "/app/views/supply/supplier-supply.html",

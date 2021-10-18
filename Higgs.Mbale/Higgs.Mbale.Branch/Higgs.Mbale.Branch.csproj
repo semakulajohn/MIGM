@@ -2628,6 +2628,8 @@
     <Content Include="Views\Excel\mbale_logo.gif" />
     <Content Include="Views\Excel\mbale_logo.jpg" />
     <Content Include="Web.config" />
+    <Content Include="[Config]\nico\AppSettings.config" />
+    <Content Include="[Config]\nico\ConnectionStrings.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
