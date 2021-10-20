@@ -44,16 +44,6 @@
 
             </ul>
         </li>
-
-        <li ng-class="{active: $state.includes('supplies')}">
-            <a href="#"><span class="nav-label">UnApproved</span><span class="fa arrow"></span> </a>
-            <ul class="nav nav-second-level" ng-class="{in: $state.includes('supplies')}">
-                <li ui-sref-active="active"><a ui-sref="unapprovedsupplies-list">UnApproved Supplies</a></li>
-                <li ui-sref-active="active"><a ui-sref="unapproveddeliveries-list">UnApproved Deliveries</a></li>
-                 <li ui-sref-active="active"><a ui-sref="deposits-list">Account Transactions</a></li>
-            </ul>
-        </li>
-
         <!--<li ng-class="{active: $state.includes('supplies')}">
         <a href="#"><span class="nav-label">UnApproved</span><span class="fa arrow"></span> </a>
         <ul class="nav nav-second-level" ng-class="{in: $state.includes('supplies')}">
