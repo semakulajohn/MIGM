@@ -227,6 +227,7 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\RiceInputGradeSize.sql" />
     <Build Include="Schema Objects\Schemas\dbo\Tables\RiceTransferGradeSize.sql" />
     <Build Include="Schema Objects\Schemas\dbo\Tables\StoreProduct.sql" />
+    <Build Include="Schema Objects\Schemas\dbo\Programmability\GetBranchDashboardNotifications.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Higgs.Mbale.Database.publish.xml" />

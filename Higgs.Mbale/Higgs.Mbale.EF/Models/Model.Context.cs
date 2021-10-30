@@ -675,5 +675,14 @@ namespace Higgs.Mbale.EF.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Update_RiceInPut_WithApprovedOrRejected", inPutIdParameter, approvedParameter, userIdParameter);
         }
+    
+        public virtual ObjectResult<GetBranchDashboardNotifications_Result> GetBranchDashboardNotifications(Nullable<long> branchId)
+        {
+            var branchIdParameter = branchId.HasValue ?
+                new ObjectParameter("branchId", branchId) :
+                new ObjectParameter("branchId", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetBranchDashboardNotifications_Result>("GetBranchDashboardNotifications", branchIdParameter);
+        }
     }
 }

@@ -40,6 +40,13 @@ namespace Higgs.Mbale.DAL.Concrete
             return this.UnitOfWork.Get<Order>().AsQueryable().Where(e => e.Deleted == false && e.CustomerId == customerId).OrderByDescending(e => e.CreatedOn).Take(20);
         }
 
+        public IEnumerable<Order> GetAllOpenOrdersForAParticularBranch(long branchId, long statusId)
+        {
+            return this.UnitOfWork.Get<Order>().AsQueryable()
+                .Where(e => e.Deleted == false && e.BranchId == branchId && e.StatusId == statusId)
+                .OrderByDescending(e => e.CreatedOn).Take(30);
+        }
+
         public IEnumerable<Order> GetAllCompletedOrdersForAParticularCustomer(string customerId,long statusId)
         {
             return this.UnitOfWork.Get<Order>().AsQueryable().Where(e => e.Deleted == false && e.CustomerId == customerId && e.StatusId == statusId).OrderByDescending(e => e.CreatedOn).Take(20);

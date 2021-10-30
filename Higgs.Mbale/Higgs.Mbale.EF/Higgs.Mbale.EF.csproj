@@ -221,6 +221,9 @@
     <Compile Include="Models\FlourTransferGradeSize.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GetBranchDashboardNotifications_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GetDashBoardNotifications_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

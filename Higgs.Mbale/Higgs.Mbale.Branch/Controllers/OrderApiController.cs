@@ -74,6 +74,14 @@ namespace Higgs.Mbale.Branch.Controllers
             {
                 return _orderService.GetAllOpenOrdersForAParticularCustomer(customerId, orderStatusIdOpen);
             }
+
+            [HttpGet]
+            [ActionName("GetAllOpenOrdersForAParticularBranch")]
+            public IEnumerable<Order> GetAllOpenOrdersForAParticularBranch()
+            {
+                return _orderService.GetAllOpenOrdersForAParticularBranch(branchId, orderStatusIdOpen);
+            }
+
             [HttpGet]
             [ActionName("Delete")]
             public void DeleteOrder(long orderId)

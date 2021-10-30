@@ -11,6 +11,8 @@ namespace Higgs.Mbale.DAL.Interface
         
         GetDashBoardNotifications_Result GetDashBoardNotifications();
 
+        GetBranchDashboardNotifications_Result GetBranchDashboardNotifications(long branchId);
+
 
     }
 }

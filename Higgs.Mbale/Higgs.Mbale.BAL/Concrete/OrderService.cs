@@ -64,6 +64,14 @@ namespace Higgs.Mbale.BAL.Concrete
             var results = this._dataService.GetAllCompletedOrdersForAParticularCustomer(customerId, statusId);
             return MapEFToModel(results);
         }
+
+        public IEnumerable<Order> GetAllOpenOrdersForAParticularBranch(long branchId, long statusId)
+        {
+            var results = this._dataService.GetAllOpenOrdersForAParticularBranch(branchId, statusId);
+            return MapEFToModel(results);
+        }
+
+
         public IEnumerable<Order> GetAllOpenOrdersForAParticularCustomer(string customerId, long statusId)
         {
             var results = this._dataService.GetAllOpenOrdersForAParticularCustomer(customerId, statusId);

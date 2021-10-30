@@ -516,3 +516,46 @@ angular
 
         }]);
 
+
+angular
+    .module('homer').controller('BranchViewOpenOrderController', ['$scope', 'ngTableParams', '$http', '$filter', '$location', 'Utils', 'uiGridConstants',
+        function ($scope, ngTableParams, $http, $filter, $location, Utils, uiGridConstants) {
+            $scope.loadingSpinner = true;
+            //var branchId = $scope.branchId;
+            var promise = $http.get('/webapi/OrderApi/GetAllOpenOrdersForAParticularBranch', {});
+            promise.then(
+                function (payload) {
+                    $scope.gridData.data = payload.data;
+                    $scope.loadingSpinner = false;
+                }
+            );
+
+            $scope.gridData = {
+                enableFiltering: true,
+                columnDefs: $scope.columns,
+                enableRowSelection: true
+            };
+            
+            $scope.gridData.multiSelect = true;
+
+            $scope.gridData.columnDefs = [
+
+                {
+                    name: 'Product Name', field: 'ProductName'
+
+                },
+                { name: 'Customer Name', field: 'CustomerName' },
+                { name: 'Order Number', field: 'OrderId' },
+                { name: 'Status', field: 'StatusName' },
+
+                { name: 'Quantity', cellTemplate: '<div ng-if="row.entity.ProductId == 1 || row.entity.Amount == null">{{row.entity.TotalQuantity}}</div><div ng-if="row.entity.Amount != 0 && row.entity.Amount != null">{{row.entity.Amount}}</div>' },
+                { name: 'Price', field: 'Price' },
+               
+                { name: 'Order Details', cellTemplate: '<div class="ui-grid-cell-contents"> <a href="#/order/detail/{{row.entity.OrderId}}"> Order Detail</a> </div>' },
+
+            ];
+
+
+
+
+        }]);
