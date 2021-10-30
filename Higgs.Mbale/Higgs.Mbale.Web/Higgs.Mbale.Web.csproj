@@ -3393,6 +3393,8 @@
     <Content Include="Views\Excel\CashReceipt.cshtml" />
     <Content Include="[Config]\test\AppSettings.config" />
     <Content Include="[Config]\test\ConnectionStrings.config" />
+    <Content Include="[Config]\nico\AppSettings.config" />
+    <Content Include="[Config]\nico\ConnectionStrings.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\downloads\" />
