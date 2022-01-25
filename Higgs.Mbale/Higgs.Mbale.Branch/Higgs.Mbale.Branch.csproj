@@ -382,6 +382,7 @@
     <Content Include="app\views\order\detail.html" />
     <Content Include="app\views\order\edit.html" />
     <Content Include="app\views\order\list.html" />
+    <Content Include="app\views\order\openOrders.html" />
     <Content Include="app\views\otherExpense\batch-otherExpense-list.html" />
     <Content Include="app\views\otherExpense\edit.html" />
     <Content Include="app\views\product\edit.html" />
@@ -2644,6 +2645,7 @@
     <Compile Include="Controllers\BatchOutPutApiController.cs" />
     <Compile Include="Controllers\BatchProjectionApiController.cs" />
     <Compile Include="Controllers\BranchApiController.cs" />
+    <Compile Include="Controllers\BranchDashboardNotificationApiController.cs" />
     <Compile Include="Controllers\BuveraApiController.cs" />
     <Compile Include="Controllers\BuveraTransferApiController.cs" />
     <Compile Include="Controllers\CashApiController.cs" />

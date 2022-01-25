@@ -38,5 +38,24 @@ namespace Higgs.Mbale.BAL.Concrete
             }
             return dashBoardData;
         }
+
+
+        public DashBoardNotification GetBranchDashBoardNotification(long branchId)
+        {
+            DashBoardNotification dashBoardData = new DashBoardNotification();
+            var result = _dataService.GetBranchDashboardNotifications(branchId);
+            if (result != null)
+            {
+                dashBoardData = new DashBoardNotification()
+                {
+                    cashtransfers = result.cashtransfers,
+                    orders = result.orders,
+                    requistions = result.requistions
+
+                };
+            }
+            return dashBoardData;
+        }
+
     }
 }

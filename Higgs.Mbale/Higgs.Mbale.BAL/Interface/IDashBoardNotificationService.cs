@@ -6,5 +6,9 @@ namespace Higgs.Mbale.BAL.Interface
   public  interface IDashBoardNotificationService
     {
         DashBoardNotification GetDashBoardNotifications();
+
+        DashBoardNotification GetBranchDashBoardNotification(long branchId);
+
+
     }
 }

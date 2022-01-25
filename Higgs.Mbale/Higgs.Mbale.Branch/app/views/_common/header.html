@@ -13,7 +13,54 @@
     </div>
 </nav>
 
+<div class="navbar-right" ng-controller="BranchDashBoardNotificationController">
+    <ul class="nav navbar-nav no-borders">
+        
+        <li class="dropdown" dropdown>
+            <a class="dropdown-toggle label-menu-corner" href="#" dropdown-toggle>
+                <i class="pe-7s-file"></i>
+                <span class="label label-danger">{{countOfCashTransfers}}</span>
+            </a>
+            <ul class="dropdown-menu hdropdown animated flipInX">
+                <div class="title">
+                    You have {{countOfCashTransfers}} un approved cash transfers
+                </div>
 
+            </ul>
+        </li>
+        
+        <li class="dropdown" dropdown>
+            <a class="dropdown-toggle label-menu-corner" href="#" dropdown-toggle>
+                <i class="pe-7s-paper-plane"></i>
+                <span class="label label-danger">{{countOfRequistions}}</span>
+            </a>
+            <ul class="dropdown-menu hdropdown animated flipInX">
+                <div class="title">
+                    You have {{countOfRequistions}} un approved requistions
+                </div>
+
+            </ul>
+        </li>
+        
+        
+        <li class="dropdown" dropdown>
+            <a class="dropdown-toggle label-menu-corner" href="#" dropdown-toggle>
+                <i class="pe-7s-cash"></i>
+                <span class="label label-danger">{{countOfOrders}}</span>
+            </a>
+            <ul class="dropdown-menu hdropdown animated flipInX">
+                <div class="title">
+                    You have {{countOfOrders}} un approved  Orders
+                </div>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a>
+                <i class="pe-7s-upload pe-rotate-90"></i>
+            </a>
+        </li>
+    </ul>
+</div>
 
 
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-hidden="true">

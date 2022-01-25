@@ -47,9 +47,9 @@
         <li ng-class="{active: $state.includes('supplies')}">
             <a href="#"><span class="nav-label">Unapproved</span><span class="fa arrow"></span></a>
             <ul class="nav nav-second-level" ng-class="{in: $state.includes('supplies')}">
-                <li ui-sref-active="active"><a ui-sref="unapprovedsupplies-list"> Unapproved Supplies</a></li>
-                <li ui-sref-active="active"><a ui-sref="unapproveddeliveries-list"> Unapproved Deliveries</a></li>
-                <li ui-sref-active="active"><a ui-sref="deposits-list"> Account Transactions</a></li>
+                <li ui-sref-active="active"><a ui-sref="unapprovedsupplies-list">UnApproved Supplies</a></li>
+                <li ui-sref-active="active"><a ui-sref="unapproveddeliveries-list">UnApproved Deliveries</a></li>
+                <li ui-sref-active="active"><a ui-sref="deposits-list">Account Transactions</a></li>
             </ul>
         </li>
         <!--<li ng-class="{active: $state.includes('supplies')}">
@@ -72,7 +72,7 @@
         <a href="#"><span class="nav-label">Cash Sales</span><span class="fa arrow"></span> </a>
         <ul class="nav nav-second-level" ng-class="{in: $state.includes('cashsale')}">
 
-            <li ui-sref-active="active"><a ui-sref="cashsale-list">CashSale </a></li>
+            <li ui-sref-active="active"><a ui-sref="cashsale-list">Open Orders </a></li>
         </ul>
     </li>-->
 
@@ -111,6 +111,9 @@
             <ul class="nav nav-second-level" ng-class="{in: $state.includes('stores')}">
                 <li ui-sref-active="active"><a ui-sref="stores.list">All Stores</a></li>
             </ul>
+        </li>
+        <li ui-sref-active="active">
+            <a ui-sref="branch-Open-order-list"> <span class="nav-label">Open Orders</span></a>
         </li>
         <li ui-sref-active="active">
             <a ui-sref="suppliers.list"> <span class="nav-label">All Suppliers</span></a>

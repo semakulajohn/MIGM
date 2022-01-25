@@ -7099,6 +7099,9 @@
         <Function Name="CheckIfWeightNoteExists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="inPutWeightNoteNumber" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="GetBranchDashboardNotifications" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="branchId" Type="bigint" Mode="In" />
+        </Function>
         <Function Name="GetDashBoardNotifications" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetOrderToDeliver" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="orderId" Type="bigint" Mode="In" />
@@ -11334,6 +11337,9 @@
             <End Role="Size" EntitySet="Sizes" />
             <End Role="RiceInputGradeSize" EntitySet="RiceInputGradeSizes" />
           </AssociationSet>
+          <FunctionImport Name="GetBranchDashboardNotifications" ReturnType="Collection(Higgs.MbaleModel.GetBranchDashboardNotifications_Result)">
+            <Parameter Name="branchId" Mode="In" Type="Int64" />
+          </FunctionImport>
           </EntityContainer>
         <EntityType Name="Media">
           <Key>
@@ -19091,6 +19097,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="GetBranchDashboardNotifications_Result">
+          <Property Type="Int32" Name="cashtransfers" Nullable="true" />
+          <Property Type="Int32" Name="requistions" Nullable="true" />
+          <Property Type="Int32" Name="orders" Nullable="true" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -20970,6 +20981,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetBranchDashboardNotifications" FunctionName="Higgs.MbaleModel.Store.GetBranchDashboardNotifications">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Higgs.MbaleModel.GetBranchDashboardNotifications_Result">
+                <ScalarProperty Name="cashtransfers" ColumnName="cashtransfers" />
+                <ScalarProperty Name="requistions" ColumnName="requistions" />
+                <ScalarProperty Name="orders" ColumnName="orders" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

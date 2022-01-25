@@ -31,5 +31,15 @@ namespace Higgs.Mbale.DAL.Concrete
             }
             
         }
+
+
+        public GetBranchDashboardNotifications_Result GetBranchDashboardNotifications(long branchId)
+        {
+            using (var dbContext = new MbaleEntities())
+            {
+                var branchDashboardNotification = dbContext.GetBranchDashboardNotifications(branchId).ToList();
+                return branchDashboardNotification.FirstOrDefault();
+            } 
+        }
     }
 }

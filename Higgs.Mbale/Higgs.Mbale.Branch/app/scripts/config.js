@@ -1159,6 +1159,16 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
          }
      })
 
+        .state('branch-Open-order-list', {
+            url: "/orders/branch/:branchId",
+            templateUrl: "/app/views/order/openOrders.html",
+            data: {
+                pageTitle: 'Branch Open Orders',
+            },
+            controller: function ($scope, $stateParams) {
+                $scope.branchId = $stateParams.branchId;
+            }
+        })
    
 
           .state('branch-order-list', {
