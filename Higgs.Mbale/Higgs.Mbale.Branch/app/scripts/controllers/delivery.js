@@ -550,8 +550,7 @@ angular
                 { name: 'Vehicle Number', field: 'VehicleNumber' },
                 { name: 'Quantity', field: 'Quantity' },
                 { name: 'Amount', field: 'Amount' },
-                { name: 'Branch ', field: 'BranchName' },
-                { name: 'Delivery Details', cellTemplate: '<div class="ui-grid-cell-contents"> <a href="#/unapproveddetail/delivery/{{row.entity.DeliveryId}}">Details</a> </div>' },
+                { name: 'Delivery Details', cellTemplate: '<div class="ui-grid-cell-contents"> <a href="#/deliveries/detail/{{row.entity.DeliveryId}}">Details</a> </div>' },
 
             ];
 
