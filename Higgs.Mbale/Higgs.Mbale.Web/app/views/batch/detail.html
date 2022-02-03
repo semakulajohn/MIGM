@@ -271,6 +271,7 @@
         <div class="hr-line-dashed"></div>
 
     </div>-->
+                                        
 
 
                                         <div class="row">
@@ -334,32 +335,56 @@
                                         <div class="row">
                                             <div class="form-group col-sm-6">
                                                 <div class="col-sm-12">
-                                                    <h5>Other Expenses</h5>
+                                                    <h5>Savings</h5>
                                                     <div class="table-responsive">
                                                         <table class="table table-bordered">
                                                             <tbody>
                                                                 <tr>
-                                                                    <th width="65%">Description </th>
 
-                                                                    <th width="25%">Amount</th>
-                                                                </tr>
-                                                                <tr ng-repeat="otherExpense in batch.OtherExpenses">
-                                                                    <td width="70%"><p> {{otherExpense.Description }}</p></td>
-                                                                    <td width="30%">
-                                                                        <p>{{otherExpense.Amount | number}}</p>
-                                                                    </td>
-
+                                                                    <th width="33%">Machine Savings</th>
+                                                                    <th width="33%">{{batch.MachineSavings | number}}</th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th width="10%">Total</th>
-                                                                    <th width="10%">{{batch.TotalOtherExpenseCost |number}}</th>
+
+                                                                    <th width="33%">Offloading Savings</th>
+                                                                    <th width="33%">{{batch.OffloadingSavings | number}}</th>
                                                                 </tr>
+
                                                             </tbody>
                                                         </table>
                                                     </div>
 
                                                 </div>
                                             </div>
+
+                                            <!--<div class="form-group col-sm-6">
+        <div class="col-sm-12">
+            <h5>Other Expenses</h5>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th width="65%">Description </th>
+
+                            <th width="25%">Amount</th>
+                        </tr>
+                        <tr ng-repeat="otherExpense in batch.OtherExpenses">
+                            <td width="70%"><p> {{otherExpense.Description }}</p></td>
+                            <td width="30%">
+                                <p>{{otherExpense.Amount | number}}</p>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th width="10%">Total</th>
+                            <th width="10%">{{batch.TotalOtherExpenseCost |number}}</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>-->
 
                                             <div class="form-group col-sm-6">
                                                 <div class="col-sm-12">
@@ -449,7 +474,7 @@
                                         <div class="row">
                                             <h5>Performance</h5>
 
-                                        
+
                                             <div class="form-group col-sm-6">
                                                 <div class="col-sm-12">
                                                     <h5>Flour Deliveries</h5>
@@ -538,20 +563,20 @@
 
                                                                     <th width="25%">Quantity(kgs)</th>
 
-                                                                   
+
                                                                 </tr>
                                                                 <tr ng-repeat="transfer in batch.BatchFlourTransfers">
                                                                     <td width="25%"><p> {{transfer.BranchName }}</p></td>
                                                                     <td width="25%">
                                                                         <p>{{transfer.BatchQuantity | number}}</p>
                                                                     </td>
-                                
+
                                                                 </tr>
                                                                 <tr>
                                                                     <th width="25%">Total</th>
                                                                     <th width="25%">{{batch.TotalFlourKgsTransfered |number}} kgs</th>
 
-                                                                    
+
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -567,9 +592,9 @@
                                                         <table class="table table-bordered">
                                                             <tbody>
                                                                 <tr>
-                                                                   <th width="25%">Flour</th>
+                                                                    <th width="25%">Flour</th>
                                                                     <th width="25%">Quantity</th>
-                                                                    
+
                                                                     <th width="25%">Amount</th>
                                                                 </tr>
                                                                 <tr ng-repeat="cashSale in batch.BatchFlourCashSales">
@@ -587,7 +612,7 @@
                                                                 <tr>
                                                                     <th width="25%">Total</th>
                                                                     <th width="25%">{{batch.TotalCashSaleFlour |number}}</th>
-                                                                    
+
                                                                     <th width="25%">{{batch.TotalCashSaleFlourAmount |number}}</th>
                                                                 </tr>
                                                             </tbody>
@@ -601,7 +626,7 @@
                                                         <table class="table table-bordered">
                                                             <tbody>
                                                                 <tr>
-                                                                   <th width="25%">Brand</th>
+                                                                    <th width="25%">Brand</th>
                                                                     <th width="25%">Quantity</th>
                                                                     <th width="25%">Price</th>
                                                                     <th width="25%">Amount</th>
@@ -643,155 +668,155 @@
                                                         <div class="row">
 
                                                             <div class="col-md-3 col-sm-12">
-                                                                <td>
-                                                                    <div class="col-sm-12 col-md-12">
-                                                                        <h3> Super</h3>
-                                                                        <div class="table-responsive">
-                                                                            <table class="table table-bordered">
-                                                                                <tbody>
-                                                                                    <tr>
-                                                                                        <th width="25%">Value </th>
-                                                                                        <th width="35%">Quantity</th>
-                                                                                        <th width="40%">Amount</th>
+                                                        <td>
+                                                            <div class="col-sm-12 col-md-12">
+                                                                <h3> Super</h3>
+                                                                <div class="table-responsive">
+                                                                    <table class="table table-bordered">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <th width="25%">Value </th>
+                                                                                <th width="35%">Quantity</th>
+                                                                                <th width="40%">Amount</th>
 
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td width="25%"><p> 10 Kg</p></td>
-                                                                                        <td width="35%">
-                                                                                            <p>{{batch.BatchFlourGradesValues.TotalSuperTenQuantity | number}}</p>
-                                                                                        </td>
-                                                                                        <td width="40%">
-                                                                                            <p>{{batch.BatchFlourGradesValues.TotalSuperTenAmount | number}}</p>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td width="25%"><p> 25 Kg</p></td>
-                                                                                        <td width="35%">
-                                                                                            <p>{{batch.BatchFlourGradesValues.TotalSuperTwoFiveQuantity | number}}</p>
-                                                                                        </td>
-                                                                                        <td width="40%">
-                                                                                            <p>{{batch.BatchFlourGradesValues.TotalSuperTwoFiveAmount | number}}</p>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td width="25%"><p> 50 Kg</p></td>
-                                                                                        <td width="35%">
-                                                                                            <p>{{batch.BatchFlourGradesValues.TotalSuperFiveZeroQuantity | number}}</p>
-                                                                                        </td>
-                                                                                        <td width="40%">
-                                                                                            <p>{{batch.BatchFlourGradesValues.TotalSuperFiveZeroAmount | number}}</p>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td width="25%"><p> 100 Kg</p></td>
-                                                                                        <td width="35%">
-                                                                                            <p>{{batch.BatchFlourGradesValues.TotalSuperHundredQuantity | number}}</p>
-                                                                                        </td>
-                                                                                        <td width="35%">
-                                                                                            <p>{{batch.BatchFlourGradesValues.TotalSuperHundredAmount | number}}</p>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td width="25%"><p> 5 Kg</p></td>
-                                                                                        <td width="35%">
-                                                                                            <p>{{batch.BatchFlourGradesValues.TotalSuperFiveQuantity | number}}</p>
-                                                                                        </td>
-                                                                                        <td width="35%">
-                                                                                            <p>{{batch.BatchFlourGradesValues.TotalSuperFiveAmount | number}}</p>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td width="25%"><p> 1 Kg</p></td>
-                                                                                        <td width="35%">
-                                                                                            <p>{{batch.BatchFlourGradesValues.TotalSuperOneQuantity | number}}</p>
-                                                                                        </td>
-                                                                                        <td width="40%">
-                                                                                            <p>{{batch.BatchFlourGradesValues.TotalSuperOneAmount | number}}</p>
-                                                                                        </td>
-                                                                                    </tr>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td width="25%"><p> 10 Kg</p></td>
+                                                                                <td width="35%">
+                                                                                    <p>{{batch.BatchFlourGradesValues.TotalSuperTenQuantity | number}}</p>
+                                                                                </td>
+                                                                                <td width="40%">
+                                                                                    <p>{{batch.BatchFlourGradesValues.TotalSuperTenAmount | number}}</p>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td width="25%"><p> 25 Kg</p></td>
+                                                                                <td width="35%">
+                                                                                    <p>{{batch.BatchFlourGradesValues.TotalSuperTwoFiveQuantity | number}}</p>
+                                                                                </td>
+                                                                                <td width="40%">
+                                                                                    <p>{{batch.BatchFlourGradesValues.TotalSuperTwoFiveAmount | number}}</p>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td width="25%"><p> 50 Kg</p></td>
+                                                                                <td width="35%">
+                                                                                    <p>{{batch.BatchFlourGradesValues.TotalSuperFiveZeroQuantity | number}}</p>
+                                                                                </td>
+                                                                                <td width="40%">
+                                                                                    <p>{{batch.BatchFlourGradesValues.TotalSuperFiveZeroAmount | number}}</p>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td width="25%"><p> 100 Kg</p></td>
+                                                                                <td width="35%">
+                                                                                    <p>{{batch.BatchFlourGradesValues.TotalSuperHundredQuantity | number}}</p>
+                                                                                </td>
+                                                                                <td width="35%">
+                                                                                    <p>{{batch.BatchFlourGradesValues.TotalSuperHundredAmount | number}}</p>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td width="25%"><p> 5 Kg</p></td>
+                                                                                <td width="35%">
+                                                                                    <p>{{batch.BatchFlourGradesValues.TotalSuperFiveQuantity | number}}</p>
+                                                                                </td>
+                                                                                <td width="35%">
+                                                                                    <p>{{batch.BatchFlourGradesValues.TotalSuperFiveAmount | number}}</p>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td width="25%"><p> 1 Kg</p></td>
+                                                                                <td width="35%">
+                                                                                    <p>{{batch.BatchFlourGradesValues.TotalSuperOneQuantity | number}}</p>
+                                                                                </td>
+                                                                                <td width="40%">
+                                                                                    <p>{{batch.BatchFlourGradesValues.TotalSuperOneAmount | number}}</p>
+                                                                                </td>
+                                                                            </tr>
 
 
-                                                                                </tbody>
-                                                                            </table>
+                                                                        </tbody>
+                                                                    </table>
 
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="col-sm-12 col-md-12">
-                                                                        <h3> Number 1</h3>
-                                                                        <div class="table-responsive">
-                                                                            <table class="table table-bordered">
-                                                                                <tbody>
-                                                                                    <tr>
-                                                                                        <th width="25%">Value </th>
-                                                                                        <th width="35%">Quantity</th>
-                                                                                        <th width="40%">Amount</th>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td width="25%"><p> 10 Kg</p></td>
-                                                                                        <td width="35%">
-                                                                                            <p>{{batch.BatchFlourGradesValues.TotalNumberOneTenQuantity | number}}</p>
-                                                                                        </td>
-                                                                                        <td width="40%">
-                                                                                            <p>{{batch.BatchFlourGradesValues.TotalNumberOneTenAmount | number}}</p>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td width="25%"><p> 25 Kg</p></td>
-                                                                                        <td width="35%">
-                                                                                            <p>{{batch.BatchFlourGradesValues.TotalNumberOneTwoFiveQuantity | number}}</p>
-                                                                                        </td>
-                                                                                        <td width="40%">
-                                                                                            <p>{{batch.BatchFlourGradesValues.TotalNumberOneTwoFiveAmount | number}}</p>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td width="25%"><p> 50 Kg</p></td>
-                                                                                        <td width="35%">
-                                                                                            <p>{{batch.BatchFlourGradesValues.TotalNumberOneFiveZeroQuantity | number}}</p>
-                                                                                        </td>
-                                                                                        <td width="40%">
-                                                                                            <p>{{batch.BatchFlourGradesValues.TotalNumberOneFiveZeroAmount | number}}</p>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td width="25%"><p> 100 Kg</p></td>
-                                                                                        <td width="35%">
-                                                                                            <p>{{batch.BatchFlourGradesValues.TotalNumberOneHundredQuantity | number}}</p>
-                                                                                        </td>
-                                                                                        <td width="40%">
-                                                                                            <p>{{batch.BatchFlourGradesValues.TotalNumberOneHundredAmount | number}}</p>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td width="25%"><p> 5 Kg</p></td>
-                                                                                        <td width="35%">
-                                                                                            <p>{{batch.BatchFlourGradesValues.TotalNumberOneFiveQuantity | number}}</p>
-                                                                                        </td>
-                                                                                        <td width="40%">
-                                                                                            <p>{{batch.BatchFlourGradesValues.TotalNumberOneFiveAmount | number}}</p>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td width="25%"><p> 1 Kg</p></td>
-                                                                                        <td width="35%">
-                                                                                            <p>{{batch.BatchFlourGradesValues.TotalNumberOneOneQuantity | number}}</p>
-                                                                                        </td>
-                                                                                        <td width="40%">
-                                                                                            <p>{{batch.BatchFlourGradesValues.TotalNumberOneOneAmount | number}}</p>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
+                                                                </div>
                                                             </div>
-                                                            <div class="row">
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-sm-12 col-md-12">
+                                                                <h3> Number 1</h3>
+                                                                <div class="table-responsive">
+                                                                    <table class="table table-bordered">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <th width="25%">Value </th>
+                                                                                <th width="35%">Quantity</th>
+                                                                                <th width="40%">Amount</th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td width="25%"><p> 10 Kg</p></td>
+                                                                                <td width="35%">
+                                                                                    <p>{{batch.BatchFlourGradesValues.TotalNumberOneTenQuantity | number}}</p>
+                                                                                </td>
+                                                                                <td width="40%">
+                                                                                    <p>{{batch.BatchFlourGradesValues.TotalNumberOneTenAmount | number}}</p>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td width="25%"><p> 25 Kg</p></td>
+                                                                                <td width="35%">
+                                                                                    <p>{{batch.BatchFlourGradesValues.TotalNumberOneTwoFiveQuantity | number}}</p>
+                                                                                </td>
+                                                                                <td width="40%">
+                                                                                    <p>{{batch.BatchFlourGradesValues.TotalNumberOneTwoFiveAmount | number}}</p>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td width="25%"><p> 50 Kg</p></td>
+                                                                                <td width="35%">
+                                                                                    <p>{{batch.BatchFlourGradesValues.TotalNumberOneFiveZeroQuantity | number}}</p>
+                                                                                </td>
+                                                                                <td width="40%">
+                                                                                    <p>{{batch.BatchFlourGradesValues.TotalNumberOneFiveZeroAmount | number}}</p>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td width="25%"><p> 100 Kg</p></td>
+                                                                                <td width="35%">
+                                                                                    <p>{{batch.BatchFlourGradesValues.TotalNumberOneHundredQuantity | number}}</p>
+                                                                                </td>
+                                                                                <td width="40%">
+                                                                                    <p>{{batch.BatchFlourGradesValues.TotalNumberOneHundredAmount | number}}</p>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td width="25%"><p> 5 Kg</p></td>
+                                                                                <td width="35%">
+                                                                                    <p>{{batch.BatchFlourGradesValues.TotalNumberOneFiveQuantity | number}}</p>
+                                                                                </td>
+                                                                                <td width="40%">
+                                                                                    <p>{{batch.BatchFlourGradesValues.TotalNumberOneFiveAmount | number}}</p>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td width="25%"><p> 1 Kg</p></td>
+                                                                                <td width="35%">
+                                                                                    <p>{{batch.BatchFlourGradesValues.TotalNumberOneOneQuantity | number}}</p>
+                                                                                </td>
+                                                                                <td width="40%">
+                                                                                    <p>{{batch.BatchFlourGradesValues.TotalNumberOneOneAmount | number}}</p>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                        </div>
+                                        <div class="row">
 
 
-                                                                <td>
+<td>
                                                                     <div class="col-sm-12 col-md-12">
                                                                         <h3> Kabale</h3>
                                                                         <div class="table-responsive">

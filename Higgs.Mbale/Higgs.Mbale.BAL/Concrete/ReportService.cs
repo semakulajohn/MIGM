@@ -391,6 +391,8 @@ namespace Higgs.Mbale.BAL.Concrete
             var totalUtilityCosts = Convert.ToDecimal(batchList.Sum(d => d.TotalUtilityCost));
             var totalProductionCosts = Convert.ToDecimal(batchList.Sum(d => d.TotalProductionCost));
             var totalMachineCosts = Convert.ToDecimal(batchList.Sum(d => d.TotalMachineCost));
+            var totalMachineSavings = Convert.ToDecimal(batchList.Sum(d => d.MachineSavings));
+            var totalOffloadingSavings = Convert.ToDecimal(batchList.Sum(d => d.OffloadingSavings));
 
 
 
@@ -403,6 +405,8 @@ namespace Higgs.Mbale.BAL.Concrete
                 TotalFactoryExpenses = totalFactoryExpenses,
                 TotalFlourKgs = totalFlourKgs,
                 TotalMaize = totalMaize,
+                TotalOffloadingSavings = totalOffloadingSavings,
+                TotalMachineSavings = totalMachineSavings,
                 TotalLabourCosts = totalLabourCosts,
                 TotalMillingBalance = totalMillingBalance,
                 TotalMillingCharge = totalMillingCharge,

@@ -455,7 +455,25 @@ namespace Higgs.Mbale.BAL.Concrete
 
         }
 
+        private double ComputeBatchOffloadingSavings(List<Supply> supplies)
+        {
+            double ratePerTruck = 10000,savingsAmount = 0,totalNumberOfBags = 0,counter = 0;
+            if(supplies != null)
+            {
+                foreach (var batchSupply in supplies)
+                {
+                    totalNumberOfBags = Convert.ToDouble(batchSupply.NormalBags) + Convert.ToDouble(batchSupply.BagsOfStones) + Convert.ToDouble(batchSupply.YellowBags);
+                   if(totalNumberOfBags > 50)
+                    {
+                        counter = counter + 1;
+                    }
+                   
+                }
+                savingsAmount = ratePerTruck * counter;
+            }
+            return savingsAmount;
 
+        }
         #endregion
 
         public IEnumerable<DeliveryBatch> GetAllBatchesForADelivery(long deliveryId)
@@ -490,7 +508,7 @@ namespace Higgs.Mbale.BAL.Concrete
         /// <returns>Batch Model Object.</returns>
         public Batch MapEFToModel(EF.Models.Batch data)
         {
-            double totalBuvera = 0, totalFlour = 0, totalBrand = 0,totalLoss=0, totalQuantity = 0; ;
+            double totalBuvera = 0, totalFlour = 0, totalBrand = 0,totalLoss=0, totalQuantity = 0; 
             if (data != null)
             {
                 var batch = new Batch()
@@ -740,6 +758,7 @@ namespace Higgs.Mbale.BAL.Concrete
                     if (data.BatchSupplies.Any())
                     {
                         double totalSupplyAmount = 0;
+                        
                         List<Supply> supplies = new List<Supply>();
                         var batchSupplies = data.BatchSupplies.AsQueryable().Where(m => m.BatchId == data.BatchId);
                         foreach (var batchSupply in batchSupplies)
@@ -752,6 +771,7 @@ namespace Higgs.Mbale.BAL.Concrete
                                 Price = batchSupply.Supply.Price,
                                 WeightNoteNumber = batchSupply.Supply.WeightNoteNumber,
                                 NormalBags = batchSupply.Supply.NormalBags,
+                                YellowBags = batchSupply.Supply.YellowBags,
                                 BagsOfStones = batchSupply.Supply.BagsOfStones,
                                 Amount = batchSupply.Supply.Amount,
                                 SupplierName = _userService.GetUserFullName(batchSupply.Supply.AspNetUser2),
@@ -759,12 +779,13 @@ namespace Higgs.Mbale.BAL.Concrete
                             supplies.Add(supply);
                             totalSupplyAmount = totalSupplyAmount + supply.Amount;
                             totalQuantity = totalQuantity + supply.Quantity;
+                            
                         }
                         batch.Supplies = supplies;
                         batch.TotalSupplyAmount = totalSupplyAmount;
                     }
 
-
+                    batch.OffloadingSavings = ComputeBatchOffloadingSavings(batch.Supplies);
               }
 
                 GradeSizeTotalsViewModel batchFlourGradesValues = new GradeSizeTotalsViewModel();
@@ -842,6 +863,8 @@ namespace Higgs.Mbale.BAL.Concrete
                 }
                 batch.AvailabeBatchGrades = gradeList;
                 batch.MillingCharge = batch.BranchMillingChargeRate * batch.FlourOutPut;
+                batch.MachineSavings = (batch.Quantity * 10);
+
                 batch.BatchFlourGradesValues = batchFlourGradesValues;
                 batch.MillingChargeBalance = ComputeMillingChargeBalance(batch.MillingCharge, batch.TotalFactoryExpenseCost);
 

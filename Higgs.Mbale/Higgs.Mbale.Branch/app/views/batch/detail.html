@@ -300,32 +300,56 @@
                                         <div class="row">
                                             <div class="form-group col-sm-6">
                                                 <div class="col-sm-12">
-                                                    <h5>Other Expenses</h5>
+                                                    <h5>Savings</h5>
                                                     <div class="table-responsive">
                                                         <table class="table table-bordered">
                                                             <tbody>
                                                                 <tr>
-                                                                    <th width="65%">Description </th>
 
-                                                                    <th width="25%">Amount</th>
-                                                                </tr>
-                                                                <tr ng-repeat="otherExpense in batch.OtherExpenses">
-                                                                    <td width="70%"><p> {{otherExpense.Description }}</p></td>
-                                                                    <td width="30%">
-                                                                        <p>{{otherExpense.Amount | number}}</p>
-                                                                    </td>
-
+                                                                    <th width="33%">Machine Savings</th>
+                                                                    <th width="33%">{{batch.MachineSavings | number}}</th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th width="10%">Total</th>
-                                                                    <th width="10%">{{batch.TotalOtherExpenseCost |number}}</th>
+
+                                                                    <th width="33%">Offloading Savings</th>
+                                                                    <th width="33%">{{batch.OffloadingSavings | number}}</th>
                                                                 </tr>
+
                                                             </tbody>
                                                         </table>
                                                     </div>
 
                                                 </div>
                                             </div>
+
+                                            <!--<div class="form-group col-sm-6">
+        <div class="col-sm-12">
+            <h5>Other Expenses</h5>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th width="65%">Description </th>
+
+                            <th width="25%">Amount</th>
+                        </tr>
+                        <tr ng-repeat="otherExpense in batch.OtherExpenses">
+                            <td width="70%"><p> {{otherExpense.Description }}</p></td>
+                            <td width="30%">
+                                <p>{{otherExpense.Amount | number}}</p>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th width="10%">Total</th>
+                            <th width="10%">{{batch.TotalOtherExpenseCost |number}}</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>-->
 
                                             <div class="form-group col-sm-6">
                                                 <div class="col-sm-12">

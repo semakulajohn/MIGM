@@ -20,10 +20,10 @@
                         <h3 class="panel-title">View Batches</h3>
                     </div>
                     <div class="panel-body">
-                        <button class="btn btn-primary btn-rounded" ng-click="TodaysBatches()">Today</button>
+                        <!--<button class="btn btn-primary btn-rounded" ng-click="TodaysBatches()">Today</button>
 
                         <button class="btn btn-mint btn-rounded" ng-click="WeeksBatches()">This Week</button>
-                        <button class="btn btn-success btn-rounded" ng-click="BatchesForThisMonth()">This Month</button>
+                        <button class="btn btn-success btn-rounded" ng-click="BatchesForThisMonth()">This Month</button>-->
                         &nbsp;&nbsp;&nbsp;
                         <button onclick="window.focus();window.print();" class="btn btn-primary2">Print</button>
 
@@ -101,7 +101,12 @@
                                     <th>
                                         <div>M/Brand(kgs)</div>
                                     </th>
-
+                                    <th>
+                                        <div>OffLoadingSaving</div>
+                                    </th>
+                                    <th>
+                                        <div>MachineSaving</div>
+                                    </th>
                                     <th>
                                         <div>MillingCharge</div>
                                     </th>
@@ -136,20 +141,24 @@
                                     <td style="font-size: 18px !important;" width="10%">{{batch.Quantity | number}}</td>
                                     <td style="font-size: 18px !important;" width="10%">{{batch.FlourOutPut | number}}</td>
                                     <td style="font-size: 18px !important;" width="10%">{{batch.BrandOutPut | number}}</td>
+                                    <td style="font-size: 18px !important;" width="10%">{{batch.OffloadingSavings | number}}</td>
+                                    <td style="font-size: 18px !important;" width="10%">{{batch.MachineSavings | number}}</td>
                                     <td style="font-size: 18px !important;" width="10%">{{batch.MillingCharge | number}}</td>
                                     <td style="font-size: 18px !important;" width="10%">{{batch.TotalFactoryExpenseCost | number}}</td>
                                     <td style="font-size: 18px !important;" width="10%">{{batch.MillingChargeBalance | number}}</td>
                                     <td style="font-size: 18px !important;" width="10%">{{batch.TotalBuveraCost | number}}</td>
                                     <td style="font-size: 18px !important;" width="10%">{{batch.TotalLabourCosts | number}}</td>
-                                     <td style="font-size: 18px !important;" width="10%">{{batch.BranchName}}</td>
+                                    <td style="font-size: 18px !important;" width="10%">{{batch.BranchName}}</td>
                                     <td style="font-size: 18px !important;" width="10%">{{ batch.CreatedOn | date:"yy-MM-dd" }}</td>
-                                   
+
                                 </tr>
                                 <tr>
                                     <td style="font-size: 18px !important;" width="10%"></td>
                                     <td style="font-size: 18px !important;" width="10%">{{totalMaize | number}} kgs</td>
                                     <td style="font-size: 18px !important;" width="10%"> {{totalFlourkgs |number}}</td>
                                     <td style="font-size: 18px !important;" width="10%">{{totalBrandKgs |number}}</td>
+                                    <td style="font-size: 18px !important;" width="10%">{{totalOffloadingSavings |number}}</td>
+                                    <td style="font-size: 18px !important;" width="10%">{{totalMachineSavings |number}}</td>
                                     <td style="font-size: 18px !important;" width="10%">{{totalMillingCharge |number}}</td>
                                     <td style="font-size: 18px !important;" width="10%">{{totalFactoryExpenses |number}}</td>
                                     <td style="font-size: 18px !important;" width="10%">{{totalMillingBalance |number}}</td>

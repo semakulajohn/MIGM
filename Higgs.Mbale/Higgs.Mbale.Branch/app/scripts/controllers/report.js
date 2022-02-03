@@ -619,6 +619,8 @@ angular
                 $scope.totalMillingBalance = 0;
                 $scope.totalMillingCharge = 0;
                 $scope.totalBuveraCosts = 0;
+                $scope.totalOffloadingSavings = 0;
+                $scope.totalMachineSavings = 0;
                 var promise = $http.post('/webapi/ReportApi/GetAllBatchesBetweenTheSpecifiedDatesForBranch',
                         {
                             FromDate: batch.FromDate,
@@ -639,7 +641,8 @@ angular
                      $scope.totalMillingBalance = payload.data.TotalMillingBalance;
                      $scope.totalMillingCharge = payload.data.TotalMillingCharge;
                      $scope.totalBuveraCosts = payload.data.TotalBuveraCosts;
-
+                        $scope.totalOffloadingSavings = payload.data.TotalOffloadingSavings;
+                        $scope.totalMachineSavings = payload.data.TotalMachineSavings;
                      $scope.reportType = 4;
                 
                      $scope.tableParams = new ngTableParams({

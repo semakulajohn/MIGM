@@ -60,7 +60,8 @@ namespace Higgs.Mbale.Models
         public double TotalCashSaleFlour { get; set; }
         public double TotalCashSaleBrandAmount { get; set; }
 
-
+        public double OffloadingSavings { get; set; }
+        public double MachineSavings { get; set; }
         public List<Supply> Supplies { get; set; }
         public List<long> SupplyIds { get; set; }
         public List<Grade> Grades { get; set; }
