@@ -58,6 +58,11 @@
 
         }
 
+        //geting all mechanic
+        $http.get('/webapi/MechanicApi/GetAllMechanics').success(function (data, status) {
+            $scope.mechanics = data;
+        });
+
 
         $http.get('/webapi/StatusApi/GetAllStatuses').success(function (data, status) {
             $scope.statuses = data;

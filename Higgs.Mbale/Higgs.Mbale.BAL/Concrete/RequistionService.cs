@@ -514,6 +514,16 @@ namespace Higgs.Mbale.BAL.Concrete
                     {
                         if (requistion.RepairerName != null && requistion.BatchId != null && requistion.RepairDate != null)
                         {
+                            var mechanicName = "";
+
+                            var aspnetUser = _userService.GetAspNetUser(requistion.RepairerName);
+                            if (aspnetUser != null)
+                            {
+
+                                mechanicName = aspnetUser.FirstName + " " + aspnetUser.LastName;
+
+                            }
+
                             var checkedCashId = _cashService.CheckIfBranchHasEnoughCash(requistion.BranchId, requistion.Amount, "-");
                             if (checkedCashId > 0)
                             {
@@ -521,7 +531,7 @@ namespace Higgs.Mbale.BAL.Concrete
                                 {
 
                                     Amount = requistion.Amount,
-                                    NameOfRepair = requistion.RepairerName,
+                                    NameOfRepair = mechanicName,
                                     DateRepaired = requistion.RepairDate,
                                     BranchId = requistion.BranchId,
                                     BatchId = Convert.ToInt64(requistion.BatchId),
@@ -534,6 +544,18 @@ namespace Higgs.Mbale.BAL.Concrete
                                     CreatedOn = Convert.ToDateTime(requistion.CreatedOn)
                                 };
                                 var machineRepairId = _machineRepairService.SaveMachineRepair(machineRepairObject, userId);
+                                var accountActivityObject = new AccountTransactionActivity()
+                                {
+                                    AspNetUserId = requistion.RepairerName,
+                                    Amount = requistion.Amount,
+                                    Notes = requistion.Description,
+                                    Action = "-",
+                                    BranchId = requistion.BranchId,
+                                    TransactionSubTypeId = 3,
+                                    SectorId = sectorId,
+                                    CreatedOn = DateTime.Now,
+                                };
+                                var accountActivityId = _accountTransactionActivityService.SaveAccountTransactionActivity(accountActivityObject, userId);
 
                                 var cashMachine = new Cash()
                                 {

@@ -79,18 +79,28 @@
                                                     </span>
                                                 </td>
                                                 <td>&nbsp;&nbsp;&nbsp;</td>
-                                                <!--<td width="30%">
-
+                                                <td width="30%">
                                                     <span class="header-search">
-                                                        Supplier : &nbsp;&nbsp;
-                                                        <select style="border: none" name="supplier" class="form-control col-sm-12" data-ng-model="supply.Id"
-                                                                data-ng-options="i.Id as i.UniqueNumber for i in suppliers">
+                                                        Mechanic : &nbsp;&nbsp;
+                                                        <select style="border: none" name="mechanic" class="form-control col-sm-12" data-ng-model="machineRepair.Id"
+                                                                data-ng-options="i.Id as i.FirstName for i in mechanics">
                                                             <option value="">Please select</option>
                                                         </select>
 
                                                     </span>
+                                                </td>
+                                                <!--<td width="30%">
 
-                                                </td>-->
+        <span class="header-search">
+            Supplier : &nbsp;&nbsp;
+            <select style="border: none" name="supplier" class="form-control col-sm-12" data-ng-model="supply.Id"
+                    data-ng-options="i.Id as i.UniqueNumber for i in suppliers">
+                <option value="">Please select</option>
+            </select>
+
+        </span>
+
+    </td>-->
                                                 <td>&nbsp;&nbsp;&nbsp;</td>
                                                 <td><button class="btn btn-primary" ng-click="SearchMachineRepair(machineRepair)">Search</button></td>
                                             </tr>
@@ -121,7 +131,7 @@
                                     <th>
                                         <div>Description</div>
                                     </th>
-                                  
+
                                     <th>
                                         <div>Amount</div>
                                     </th>
@@ -129,24 +139,27 @@
                                     <th>
                                         <div>Branch</div>
                                     </th>
+                                    <th>
+                                        <div>Name</div>
+                                    </th>
 
                                     <th>
                                         <div>Date</div>
                                     </th>
 
 
-                                   
+
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="machineRepair in data">
                                     <td style="font-size: 18px !important;" width="25%">{{machineRepair.Description}}</td>
                                     <td style="font-size: 18px !important;" width="10%">{{machineRepair.Amount | number}}</td>
-                                    
+
                                     <td style="font-size: 18px !important;" width="15%">{{machineRepair.BranchName }}</td>
-                                   
+                                    <td style="font-size: 18px !important;" width="15%">{{machineRepair.Id }}</td>
                                     <td style="font-size: 18px !important;" width="10%">{{ machineRepair.CreatedOn | date:"yyyy-MM-dd" }}</td>
-                                   
+
 
 
                                 </tr>
