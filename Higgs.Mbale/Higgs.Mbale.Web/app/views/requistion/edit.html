@@ -322,7 +322,7 @@
                                                             <div class="table-responsive">
 
                                                                 <table class="table table-bordered">
-                                                                    <tbody>
+                                                                    <tbody >
                                                                         <tr>
                                                                             <th>WNN</th>
 
@@ -332,12 +332,13 @@
 
                                                                             <td width="20%"><pre>{{ m.WeightNoteNumber }}</pre></td>
                                                                             <td width="30%"><pre>{{ m.AmountToPay }}</pre></td>
-
-
+                                                                            
+                                                                            <!--<td ng-init="totalamounttopay = totalamounttopay  + {{m.AmountToPay}}">{{totalamounttopay}}</td>
+                                                                            <td ng-init="totalamounttopay.AmountToPay = totalamounttopay + {{m.AmountToPay}}">{{m.amount}}</td>-->
                                                                         </tr>
                                                                         <tr>
                                                                             <th>Total</th>
-                                                                            <th>totalamounttopay</th>
+                                                                            <th>{{totalamounttopay}}</th>
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>
