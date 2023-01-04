@@ -326,19 +326,22 @@
                                                                         <tr>
                                                                             <th>WNN</th>
 
+
                                                                             <th>Amount to Pay</th>
                                                                         </tr>
                                                                         <tr ng-repeat="m in requistion.Supplies">
 
                                                                             <td width="20%"><pre>{{ m.WeightNoteNumber }}</pre></td>
                                                                             <td width="30%"><pre>{{ m.AmountToPay }}</pre></td>
-                                                                            
+
                                                                             <!--<td ng-init="totalamounttopay = totalamounttopay  + {{m.AmountToPay}}">{{totalamounttopay}}</td>
                                                                             <td ng-init="totalamounttopay.AmountToPay = totalamounttopay + {{m.AmountToPay}}">{{m.amount}}</td>-->
                                                                         </tr>
                                                                         <tr>
                                                                             <th>Total</th>
-                                                                            <th>{{totalamounttopay}}</th>
+                                                                            <!--<th ng-init="totalamounttopay = totalamounttopay  + {{m.AmountToPay}}">{{totalamounttopay}}</th>-->
+                                                                            <!--<th ng-init="totalamounttopay.AmountToPay = totalamounttopay + {{m.AmountToPay}}">{{m.amount}}</th>-->
+                                                                            <th ng-init="totalamounttopay = totalamounttopay  + {{m.AmountToPay}}">{{totalamounttopay}}</th>
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>
