@@ -22,8 +22,8 @@ namespace Higgs.Mbale.EF.Models
         public double Amount { get; set; }
         public System.DateTime TimeStamp { get; set; }
     
+        public virtual CashSale CashSale { get; set; }
         public virtual Grade Grade { get; set; }
         public virtual Size Size { get; set; }
-        public virtual CashSale CashSale { get; set; }
     }
 }

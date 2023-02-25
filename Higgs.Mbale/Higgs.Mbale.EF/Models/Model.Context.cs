@@ -28,114 +28,114 @@ namespace Higgs.Mbale.EF.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<AccountTransactionActivity> AccountTransactionActivities { get; set; }
+        public virtual DbSet<Activity> Activities { get; set; }
+        public virtual DbSet<ActivityBatchCasual> ActivityBatchCasuals { get; set; }
+        public virtual DbSet<ActivityBranch> ActivityBranches { get; set; }
+        public virtual DbSet<Application> Applications { get; set; }
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
-        public virtual DbSet<ExtensionType> ExtensionTypes { get; set; }
-        public virtual DbSet<Factory> Factories { get; set; }
-        public virtual DbSet<MediaType> MediaTypes { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<Size> Sizes { get; set; }
-        public virtual DbSet<Status> Status { get; set; }
-        public virtual DbSet<Store> Stores { get; set; }
-        public virtual DbSet<Media> Media { get; set; }
-        public virtual DbSet<BatchProduct> BatchProducts { get; set; }
-        public virtual DbSet<TransactionSubType> TransactionSubTypes { get; set; }
-        public virtual DbSet<TransactionType> TransactionTypes { get; set; }
-        public virtual DbSet<BranchSector> BranchSectors { get; set; }
-        public virtual DbSet<Sector> Sectors { get; set; }
-        public virtual DbSet<Grade> Grades { get; set; }
-        public virtual DbSet<UserBranchManager> UserBranchManagers { get; set; }
-        public virtual DbSet<ActivityBatchCasual> ActivityBatchCasuals { get; set; }
-        public virtual DbSet<Activity> Activities { get; set; }
-        public virtual DbSet<ActivityBranch> ActivityBranches { get; set; }
-        public virtual DbSet<OrderGradeSize> OrderGradeSizes { get; set; }
-        public virtual DbSet<Stock> Stocks { get; set; }
-        public virtual DbSet<StockGradeSize> StockGradeSizes { get; set; }
-        public virtual DbSet<CasualActivity> CasualActivities { get; set; }
-        public virtual DbSet<StockProduct> StockProducts { get; set; }
-        public virtual DbSet<StoreStock> StoreStocks { get; set; }
-        public virtual DbSet<StoreMaizeStock> StoreMaizeStocks { get; set; }
-        public virtual DbSet<StoreGradeSize> StoreGradeSizes { get; set; }
-        public virtual DbSet<DeliveryStock> DeliveryStocks { get; set; }
-        public virtual DbSet<BuveraGradeSize> BuveraGradeSizes { get; set; }
-        public virtual DbSet<StoreBuveraGradeSize> StoreBuveraGradeSizes { get; set; }
-        public virtual DbSet<InventoryCategory> InventoryCategories { get; set; }
-        public virtual DbSet<DeliveryGradeSize> DeliveryGradeSizes { get; set; }
-        public virtual DbSet<Creditor> Creditors { get; set; }
-        public virtual DbSet<Debtor> Debtors { get; set; }
-        public virtual DbSet<Application> Applications { get; set; }
-        public virtual DbSet<DocumentCategory> DocumentCategories { get; set; }
-        public virtual DbSet<AccountTransactionActivity> AccountTransactionActivities { get; set; }
-        public virtual DbSet<Transaction> Transactions { get; set; }
-        public virtual DbSet<Batch> Batches { get; set; }
-        public virtual DbSet<BatchSupply> BatchSupplies { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
-        public virtual DbSet<FlourTransferGradeSize> FlourTransferGradeSizes { get; set; }
-        public virtual DbSet<Region> Regions { get; set; }
-        public virtual DbSet<BatchOutPut> BatchOutPuts { get; set; }
-        public virtual DbSet<FactoryExpense> FactoryExpenses { get; set; }
-        public virtual DbSet<LabourCost> LabourCosts { get; set; }
-        public virtual DbSet<MachineRepair> MachineRepairs { get; set; }
-        public virtual DbSet<OtherExpense> OtherExpenses { get; set; }
-        public virtual DbSet<Utility> Utilities { get; set; }
-        public virtual DbSet<Buvera> Buveras { get; set; }
-        public virtual DbSet<BuveraTransfer> BuveraTransfers { get; set; }
-        public virtual DbSet<BuveraTransferGradeSize> BuveraTransferGradeSizes { get; set; }
-        public virtual DbSet<StoreBuveraTransferGradeSize> StoreBuveraTransferGradeSizes { get; set; }
-        public virtual DbSet<StoreFlourTransferGradeSize> StoreFlourTransferGradeSizes { get; set; }
-        public virtual DbSet<DeliveryBatch> DeliveryBatches { get; set; }
-        public virtual DbSet<FlourTransfer> FlourTransfers { get; set; }
-        public virtual DbSet<FlourTransferBatch> FlourTransferBatches { get; set; }
-        public virtual DbSet<Document> Documents { get; set; }
-        public virtual DbSet<CasualWorker> CasualWorkers { get; set; }
-        public virtual DbSet<BatchGradeSize> BatchGradeSizes { get; set; }
-        public virtual DbSet<CashTransfer> CashTransfers { get; set; }
-        public virtual DbSet<CashSaleBatch> CashSaleBatches { get; set; }
-        public virtual DbSet<CashSaleGradeSize> CashSaleGradeSizes { get; set; }
-        public virtual DbSet<DocumentGradeSize> DocumentGradeSizes { get; set; }
-        public virtual DbSet<MaizeBrandStore> MaizeBrandStores { get; set; }
-        public virtual DbSet<CashSale> CashSales { get; set; }
-        public virtual DbSet<UtilityCategory> UtilityCategories { get; set; }
-        public virtual DbSet<UtilityAccount> UtilityAccounts { get; set; }
-        public virtual DbSet<UserBranch> UserBranches { get; set; }
-        public virtual DbSet<PaymentMode> PaymentModes { get; set; }
-        public virtual DbSet<Delivery> Deliveries { get; set; }
+        public virtual DbSet<Asset> Assets { get; set; }
+        public virtual DbSet<AssetCategory> AssetCategories { get; set; }
         public virtual DbSet<Bank> Banks { get; set; }
         public virtual DbSet<BankTransaction> BankTransactions { get; set; }
-        public virtual DbSet<BatchProjection> BatchProjections { get; set; }
-        public virtual DbSet<RequistionCategory> RequistionCategories { get; set; }
-        public virtual DbSet<MillingCharge> MillingCharges { get; set; }
-        public virtual DbSet<MaizeOffloading> MaizeOffloadings { get; set; }
-        public virtual DbSet<Supply> Supplies { get; set; }
-        public virtual DbSet<Deposit> Deposits { get; set; }
-        public virtual DbSet<Inventory> Inventories { get; set; }
-        public virtual DbSet<InventoryPurchase> InventoryPurchases { get; set; }
-        public virtual DbSet<Cash> Cashes { get; set; }
-        public virtual DbSet<AssetCategory> AssetCategories { get; set; }
-        public virtual DbSet<Asset> Assets { get; set; }
-        public virtual DbSet<FinancialAccount> FinancialAccounts { get; set; }
-        public virtual DbSet<FinancialAccountTransaction> FinancialAccountTransactions { get; set; }
-        public virtual DbSet<WeightLoss> WeightLosses { get; set; }
+        public virtual DbSet<Batch> Batches { get; set; }
         public virtual DbSet<BatchDeliveryGradeSize> BatchDeliveryGradeSizes { get; set; }
+        public virtual DbSet<BatchGradeSize> BatchGradeSizes { get; set; }
+        public virtual DbSet<BatchOutPut> BatchOutPuts { get; set; }
+        public virtual DbSet<BatchProduct> BatchProducts { get; set; }
+        public virtual DbSet<BatchProjection> BatchProjections { get; set; }
+        public virtual DbSet<BatchSupply> BatchSupplies { get; set; }
         public virtual DbSet<BatchTransferGradeSize> BatchTransferGradeSizes { get; set; }
         public virtual DbSet<Branch> Branches { get; set; }
-        public virtual DbSet<CashSaleBatchGradeSize> CashSaleBatchGradeSizes { get; set; }
+        public virtual DbSet<BranchSector> BranchSectors { get; set; }
+        public virtual DbSet<Buvera> Buveras { get; set; }
         public virtual DbSet<BuveraCategory> BuveraCategories { get; set; }
-        public virtual DbSet<WeightNoteSupply> WeightNoteSupplies { get; set; }
-        public virtual DbSet<WeightNoteRange> WeightNoteRanges { get; set; }
-        public virtual DbSet<WeightNoteNumber> WeightNoteNumbers { get; set; }
-        public virtual DbSet<Requistion> Requistions { get; set; }
+        public virtual DbSet<BuveraGradeSize> BuveraGradeSizes { get; set; }
+        public virtual DbSet<BuveraTransfer> BuveraTransfers { get; set; }
+        public virtual DbSet<BuveraTransferGradeSize> BuveraTransferGradeSizes { get; set; }
+        public virtual DbSet<Cash> Cashes { get; set; }
+        public virtual DbSet<CashSale> CashSales { get; set; }
+        public virtual DbSet<CashSaleBatch> CashSaleBatches { get; set; }
+        public virtual DbSet<CashSaleBatchGradeSize> CashSaleBatchGradeSizes { get; set; }
+        public virtual DbSet<CashSaleGradeSize> CashSaleGradeSizes { get; set; }
+        public virtual DbSet<CashTransfer> CashTransfers { get; set; }
+        public virtual DbSet<CasualActivity> CasualActivities { get; set; }
+        public virtual DbSet<CasualWorker> CasualWorkers { get; set; }
+        public virtual DbSet<Creditor> Creditors { get; set; }
+        public virtual DbSet<Debtor> Debtors { get; set; }
+        public virtual DbSet<Delivery> Deliveries { get; set; }
+        public virtual DbSet<DeliveryBatch> DeliveryBatches { get; set; }
+        public virtual DbSet<DeliveryGradeSize> DeliveryGradeSizes { get; set; }
+        public virtual DbSet<DeliveryStock> DeliveryStocks { get; set; }
+        public virtual DbSet<Deposit> Deposits { get; set; }
+        public virtual DbSet<Document> Documents { get; set; }
+        public virtual DbSet<DocumentCategory> DocumentCategories { get; set; }
+        public virtual DbSet<DocumentGradeSize> DocumentGradeSizes { get; set; }
+        public virtual DbSet<ExtensionType> ExtensionTypes { get; set; }
+        public virtual DbSet<Factory> Factories { get; set; }
+        public virtual DbSet<FactoryExpense> FactoryExpenses { get; set; }
+        public virtual DbSet<FinancialAccount> FinancialAccounts { get; set; }
+        public virtual DbSet<FinancialAccountTransaction> FinancialAccountTransactions { get; set; }
+        public virtual DbSet<FlourTransfer> FlourTransfers { get; set; }
+        public virtual DbSet<FlourTransferBatch> FlourTransferBatches { get; set; }
+        public virtual DbSet<FlourTransferBatchGradeSize> FlourTransferBatchGradeSizes { get; set; }
+        public virtual DbSet<FlourTransferGradeSize> FlourTransferGradeSizes { get; set; }
+        public virtual DbSet<Grade> Grades { get; set; }
+        public virtual DbSet<Inventory> Inventories { get; set; }
+        public virtual DbSet<InventoryCategory> InventoryCategories { get; set; }
+        public virtual DbSet<InventoryPurchase> InventoryPurchases { get; set; }
+        public virtual DbSet<LabourCost> LabourCosts { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
+        public virtual DbSet<MachineRepair> MachineRepairs { get; set; }
+        public virtual DbSet<MaizeBrandStore> MaizeBrandStores { get; set; }
+        public virtual DbSet<MaizeOffloading> MaizeOffloadings { get; set; }
+        public virtual DbSet<Medium> Media { get; set; }
+        public virtual DbSet<MediaType> MediaTypes { get; set; }
+        public virtual DbSet<MillingCharge> MillingCharges { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<OrderGradeSize> OrderGradeSizes { get; set; }
+        public virtual DbSet<OtherExpense> OtherExpenses { get; set; }
         public virtual DbSet<OutSourcerOutPut> OutSourcerOutPuts { get; set; }
         public virtual DbSet<OutSourcerOutPutGradeSize> OutSourcerOutPutGradeSizes { get; set; }
-        public virtual DbSet<AspNetUserCode> AspNetUserCodes { get; set; }
-        public virtual DbSet<AspNetUserProduct> AspNetUserProducts { get; set; }
+        public virtual DbSet<PaymentMode> PaymentModes { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Region> Regions { get; set; }
+        public virtual DbSet<Requistion> Requistions { get; set; }
+        public virtual DbSet<RequistionCategory> RequistionCategories { get; set; }
         public virtual DbSet<RiceInput> RiceInputs { get; set; }
+        public virtual DbSet<RiceInputGradeSize> RiceInputGradeSizes { get; set; }
         public virtual DbSet<RiceTransfer> RiceTransfers { get; set; }
         public virtual DbSet<RiceTransferGradeSize> RiceTransferGradeSizes { get; set; }
-        public virtual DbSet<RiceInputGradeSize> RiceInputGradeSizes { get; set; }
+        public virtual DbSet<Sector> Sectors { get; set; }
+        public virtual DbSet<Size> Sizes { get; set; }
+        public virtual DbSet<Status> Status { get; set; }
+        public virtual DbSet<Stock> Stocks { get; set; }
+        public virtual DbSet<StockGradeSize> StockGradeSizes { get; set; }
+        public virtual DbSet<StockProduct> StockProducts { get; set; }
+        public virtual DbSet<Store> Stores { get; set; }
+        public virtual DbSet<StoreBuveraGradeSize> StoreBuveraGradeSizes { get; set; }
+        public virtual DbSet<StoreBuveraTransferGradeSize> StoreBuveraTransferGradeSizes { get; set; }
+        public virtual DbSet<StoreFlourTransferGradeSize> StoreFlourTransferGradeSizes { get; set; }
+        public virtual DbSet<StoreGradeSize> StoreGradeSizes { get; set; }
+        public virtual DbSet<StoreMaizeStock> StoreMaizeStocks { get; set; }
+        public virtual DbSet<StoreStock> StoreStocks { get; set; }
+        public virtual DbSet<Supply> Supplies { get; set; }
+        public virtual DbSet<Transaction> Transactions { get; set; }
+        public virtual DbSet<TransactionSubType> TransactionSubTypes { get; set; }
+        public virtual DbSet<TransactionType> TransactionTypes { get; set; }
+        public virtual DbSet<UserBranch> UserBranches { get; set; }
+        public virtual DbSet<UserBranchManager> UserBranchManagers { get; set; }
+        public virtual DbSet<Utility> Utilities { get; set; }
+        public virtual DbSet<UtilityAccount> UtilityAccounts { get; set; }
+        public virtual DbSet<UtilityCategory> UtilityCategories { get; set; }
+        public virtual DbSet<WeightLoss> WeightLosses { get; set; }
+        public virtual DbSet<WeightNoteNumber> WeightNoteNumbers { get; set; }
+        public virtual DbSet<WeightNoteRange> WeightNoteRanges { get; set; }
+        public virtual DbSet<WeightNoteSupply> WeightNoteSupplies { get; set; }
+        public virtual DbSet<AspNetUserProduct> AspNetUserProducts { get; set; }
     
         public virtual int Mark_FactoryExpense_AsDeleted(Nullable<long> inPutFactoryExpenseId, string userId)
         {

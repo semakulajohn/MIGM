@@ -162,26 +162,26 @@ namespace Higgs.Mbale.Branch.Controllers
                 return _reportService.GetAllDeliveriesBetweenTheSpecifiedDatesForAParticularProductForBranch(searchDates.FromDate, searchDates.ToDate, branchId, searchDates.CustomerId,searchDates.ProductId);
             }
 
-            [HttpGet]
-            [ActionName("GenerateDeliveryCurrentMonthReportForBranch")]
-            public DeliveryReportViewModel GenerateDeliveryCurrentMonthReportForBranch()
-            {
-                return _reportService.GenerateDeliveryCurrentMonthReportForBranch(branchId);
-            }
+            //[HttpGet]
+            //[ActionName("GenerateDeliveryCurrentMonthReportForBranch")]
+            //public DeliveryReportViewModel GenerateDeliveryCurrentMonthReportForBranch()
+            //{
+            //    return _reportService.GenerateDeliveryCurrentMonthReportForBranch(branchId);
+            //}
 
-            [HttpGet]
-            [ActionName("GenerateDeliveryTodaysReportForBranch")]
-            public DeliveryReportViewModel GenerateDeliveryTodaysReportForBranch()
-            {
-                return _reportService.GenerateDeliveryTodaysReportForBranch(branchId);
-            }
+            //[HttpGet]
+            //[ActionName("GenerateDeliveryTodaysReportForBranch")]
+            //public DeliveryReportViewModel GenerateDeliveryTodaysReportForBranch()
+            //{
+            //    return _reportService.GenerateDeliveryTodaysReportForBranch(branchId);
+            //}
 
-            [HttpGet]
-            [ActionName("GenerateDeliveryCurrentWeekReportForBranch")]
-            public DeliveryReportViewModel GenerateDeliveryCurrentWeekReportForBranch()
-            {
-                return _reportService.GenerateDeliveryCurrentWeekReportForBranch(branchId);
-            }
+            //[HttpGet]
+            //[ActionName("GenerateDeliveryCurrentWeekReportForBranch")]
+            //public DeliveryReportViewModel GenerateDeliveryCurrentWeekReportForBranch()
+            //{
+            //    return _reportService.GenerateDeliveryCurrentWeekReportForBranch(branchId);
+            //}
 
             [HttpPost]
             [ActionName("GetAllDeliveryTotalsBetweenTheSpecifiedDatesForAParticularProduct")]
@@ -229,26 +229,26 @@ namespace Higgs.Mbale.Branch.Controllers
                 return _reportService.GetAllOrdersBetweenTheSpecifiedDatesForBranch(searchDates.FromDate, searchDates.ToDate, branchId, searchDates.CustomerId);
             }
 
-            [HttpGet]
-            [ActionName("GenerateOrderCurrentMonthReportForBranch")]
-            public IEnumerable<Order> GenerateOrderCurrentMonthReportForBranch()
-            {
-                return _reportService.GenerateOrderCurrentMonthReportForBranch(branchId);
-            }
+            //[HttpGet]
+            //[ActionName("GenerateOrderCurrentMonthReportForBranch")]
+            //public IEnumerable<Order> GenerateOrderCurrentMonthReportForBranch()
+            //{
+            //    return _reportService.GenerateOrderCurrentMonthReportForBranch(branchId);
+            //}
 
-            [HttpGet]
-            [ActionName("GenerateOrderTodaysReportForBranch")]
-            public IEnumerable<Order> GenerateOrderTodaysReportForBranch()
-            {
-                return _reportService.GenerateOrderTodaysReportForBranch(branchId);
-            }
+            //[HttpGet]
+            //[ActionName("GenerateOrderTodaysReportForBranch")]
+            //public IEnumerable<Order> GenerateOrderTodaysReportForBranch()
+            //{
+            //    return _reportService.GenerateOrderTodaysReportForBranch(branchId);
+            //}
 
-            [HttpGet]
-            [ActionName("GenerateOrderCurrentWeekReportForBranch")]
-            public IEnumerable<Order> GenerateOrderCurrentWeekReportForBranch()
-            {
-                return _reportService.GenerateOrderCurrentWeekReportForBranch(branchId);
-            }
+            //[HttpGet]
+            //[ActionName("GenerateOrderCurrentWeekReportForBranch")]
+            //public IEnumerable<Order> GenerateOrderCurrentWeekReportForBranch()
+            //{
+            //    return _reportService.GenerateOrderCurrentWeekReportForBranch(branchId);
+            //}
             #endregion
 
             #region Cash      
@@ -468,7 +468,7 @@ namespace Higgs.Mbale.Branch.Controllers
             [ActionName("GetAllMachineRepairsBetweenTheSpecifiedDatesForBranch")]
             public IEnumerable<MachineRepair> GetAllMachineRepairsBetweenTheSpecifiedDatesForBranch(ReportSearch searchDates)
             {
-                return _reportService.GetAllMachineRepairsBetweenTheSpecifiedDatesForBranch(searchDates.FromDate, searchDates.ToDate, branchId);
+                return _reportService.GetAllMachineRepairsBetweenTheSpecifiedDatesForBranch(searchDates.FromDate, searchDates.ToDate, branchId, searchDates.RepairerId);
             }
 
             [HttpGet]
@@ -552,26 +552,26 @@ namespace Higgs.Mbale.Branch.Controllers
                 return _reportService.GetAllCashSalesBetweenTheSpecifiedDatesForParticularProductForBranch(searchDates.FromDate, searchDates.ToDate, branchId,searchDates.ProductId);
             }
 
-            [HttpGet]
-            [ActionName("GenerateCashSaleCurrentMonthReportForBranch")]
-            public CashSaleReportViewModel GenerateCashSaleCurrentMonthReportForBranch()
-            {
-                return _reportService.GenerateCashSaleCurrentMonthReportForBranch(branchId);
-            }
+            //[HttpGet]
+            //[ActionName("GenerateCashSaleCurrentMonthReportForBranch")]
+            //public CashSaleReportViewModel GenerateCashSaleCurrentMonthReportForBranch()
+            //{
+            //    return _reportService.GenerateCashSaleCurrentMonthReportForBranch(branchId);
+            //}
 
-            [HttpGet]
-            [ActionName("GenerateCashSaleTodaysReportForBranch")]
-            public CashSaleReportViewModel GenerateCashSaleTodaysReportForBranch()
-            {
-                return _reportService.GenerateCashSaleTodaysReportForBranch(branchId);
-            }
+            //[HttpGet]
+            //[ActionName("GenerateCashSaleTodaysReportForBranch")]
+            //public CashSaleReportViewModel GenerateCashSaleTodaysReportForBranch()
+            //{
+            //    return _reportService.GenerateCashSaleTodaysReportForBranch(branchId);
+            //}
 
-            [HttpGet]
-            [ActionName("GenerateCashSaleCurrentWeekReportForBranch")]
-            public CashSaleReportViewModel GenerateCashSaleCurrentWeekReportForBranch()
-            {
-                return _reportService.GenerateCashSaleCurrentWeekReportForBranch(branchId);
-            }
+            //[HttpGet]
+            //[ActionName("GenerateCashSaleCurrentWeekReportForBranch")]
+            //public CashSaleReportViewModel GenerateCashSaleCurrentWeekReportForBranch()
+            //{
+            //    return _reportService.GenerateCashSaleCurrentWeekReportForBranch(branchId);
+            //}
 
         [HttpPost]
         [ActionName("GetAllCashSaleTotalsBetweenTheSpecifiedDatesForParticularProduct")]

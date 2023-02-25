@@ -607,17 +607,27 @@ namespace Higgs.Mbale.DAL.Concrete
 
        #region  MachineRepair
        #region web
-       public IEnumerable<MachineRepair> GetAllMachineRepairsBetweenTheSpecifiedDates(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId)
+       public IEnumerable<MachineRepair> GetAllMachineRepairsBetweenTheSpecifiedDates(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId, string RepairerId)
        {
-           if (branchId != 0)
+           if (branchId != 0 && RepairerId == null)
            {
 
                return this.UnitOfWork.Get<MachineRepair>().AsQueryable()
                    .Where(m => m.Deleted == false && (m.CreatedOn >= lowerSpecifiedDate && m.CreatedOn <= upperSpecifiedDate) && m.BranchId == branchId);
            }
+            else if (RepairerId != null && branchId == 0)
+            {
 
+                return this.UnitOfWork.Get<MachineRepair>().AsQueryable()
+                    .Where(m => m.Deleted == false && (m.CreatedOn >= lowerSpecifiedDate && m.CreatedOn <= upperSpecifiedDate) && m.NameOfRepair == RepairerId);
+            }
+            else if (RepairerId != null && branchId != 0)
+            {
+                return this.UnitOfWork.Get<MachineRepair>().AsQueryable()
+                .Where(m => m.Deleted == false && (m.CreatedOn >= lowerSpecifiedDate && m.CreatedOn <= upperSpecifiedDate) && m.NameOfRepair == RepairerId && m.BranchId == branchId);
+            }
 
-           return this.UnitOfWork.Get<MachineRepair>().AsQueryable()
+            return this.UnitOfWork.Get<MachineRepair>().AsQueryable()
                .Where(m => m.Deleted == false && (m.CreatedOn >= lowerSpecifiedDate && m.CreatedOn <= upperSpecifiedDate));
        }
 
@@ -645,17 +655,22 @@ namespace Higgs.Mbale.DAL.Concrete
 
        #endregion
        #region branch
-       public IEnumerable<MachineRepair> GetAllMachineRepairsBetweenTheSpecifiedDatesForBranch(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId)
+       public IEnumerable<MachineRepair> GetAllMachineRepairsBetweenTheSpecifiedDatesForBranch(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId, string RepairerId)
        {
-           if (branchId != 0)
+           if (branchId != 0 && RepairerId == null)
            {
 
                return this.UnitOfWork.Get<MachineRepair>().AsQueryable()
                    .Where(m => m.Deleted == false && (m.CreatedOn >= lowerSpecifiedDate && m.CreatedOn <= upperSpecifiedDate) && m.BranchId == branchId);
            }
+           else if (RepairerId != null && branchId != 0)
+            {
+                return this.UnitOfWork.Get<MachineRepair>().AsQueryable()
+                .Where(m => m.Deleted == false && (m.CreatedOn >= lowerSpecifiedDate && m.CreatedOn <= upperSpecifiedDate) && m.NameOfRepair == RepairerId && m.BranchId == branchId);
+            }
 
 
-           return null;
+            return null;
        }
 
        public IEnumerable<MachineRepair> GenerateMachineRepairCurrentMonthReportForBranch(long branchId)
@@ -942,27 +957,27 @@ namespace Higgs.Mbale.DAL.Concrete
                .Where(m => m.Deleted == false && (m.CreatedOn >= lowerSpecifiedDate && m.CreatedOn <= upperSpecifiedDate) && m.ProductId == productId && m.Approved == true);
        }
 
-       public IEnumerable<Delivery> GenerateDeliveryCurrentMonthReport()
-       {
-           return this.UnitOfWork.Get<Delivery>().AsQueryable()
-               .Where(p => p.CreatedOn.Month == DateTime.Now.Month && p.CreatedOn.Year == DateTime.Now.Year && p.Approved == true);
-       }
+       //public IEnumerable<Delivery> GenerateDeliveryCurrentMonthReport()
+       //{
+       //    return this.UnitOfWork.Get<Delivery>().AsQueryable()
+       //        .Where(p => p.CreatedOn.Month == DateTime.Now.Month && p.CreatedOn.Year == DateTime.Now.Year && p.Approved == true);
+       //}
 
-       public IEnumerable<Delivery> GenerateDeliveryTodaysReport()
-       {
-           return this.UnitOfWork.Get<Delivery>().AsQueryable()
-               .Where(p => p.CreatedOn.Day == DateTime.Now.Day && p.CreatedOn.Month == DateTime.Now.Month && p.CreatedOn.Year == DateTime.Now.Year && p.Approved ==true);
-       }
+       //public IEnumerable<Delivery> GenerateDeliveryTodaysReport()
+       //{
+       //    return this.UnitOfWork.Get<Delivery>().AsQueryable()
+       //        .Where(p => p.CreatedOn.Day == DateTime.Now.Day && p.CreatedOn.Month == DateTime.Now.Month && p.CreatedOn.Year == DateTime.Now.Year && p.Approved ==true);
+       //}
 
-       public IEnumerable<Delivery> GenerateDeliveryCurrentWeekReport()
-       {
+       //public IEnumerable<Delivery> GenerateDeliveryCurrentWeekReport()
+       //{
 
-           DateTime startOfWeek = DateTime.Today.AddDays((int)DateTime.Today.DayOfWeek * -1);
-           DateTime endDate = DateTime.Now;
+       //    DateTime startOfWeek = DateTime.Today.AddDays((int)DateTime.Today.DayOfWeek * -1);
+       //    DateTime endDate = DateTime.Now;
 
-           return this.UnitOfWork.Get<Delivery>().AsQueryable()
-               .Where(p => p.CreatedOn >= startOfWeek && p.CreatedOn <= endDate && p.Approved == true);
-       }
+       //    return this.UnitOfWork.Get<Delivery>().AsQueryable()
+       //        .Where(p => p.CreatedOn >= startOfWeek && p.CreatedOn <= endDate && p.Approved == true);
+       //}
        #endregion
        #region branch
        public IEnumerable<Delivery> GetAllDeliveriesBetweenTheSpecifiedDatesForBranch(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId, string customerId)
@@ -1001,17 +1016,17 @@ namespace Higgs.Mbale.DAL.Concrete
                .Where(m => m.Deleted == false && (m.CreatedOn >= lowerSpecifiedDate && m.CreatedOn <= upperSpecifiedDate) && m.BranchId == branchId && m.ProductId == productId && m.Approved == true);
        }
 
-       public IEnumerable<Delivery> GenerateDeliveryCurrentMonthReportForBranch(long branchId)
-       {
-           return this.UnitOfWork.Get<Delivery>().AsQueryable()
-               .Where(p => p.CreatedOn.Month == DateTime.Now.Month && p.CreatedOn.Year == DateTime.Now.Year && p.BranchId == branchId && p.Approved == true);
-       }
+       //public IEnumerable<Delivery> GenerateDeliveryCurrentMonthReportForBranch(long branchId)
+       //{
+       //    return this.UnitOfWork.Get<Delivery>().AsQueryable()
+       //        .Where(p => p.CreatedOn.Month == DateTime.Now.Month && p.CreatedOn.Year == DateTime.Now.Year && p.BranchId == branchId && p.Approved == true);
+       //}
 
-       public IEnumerable<Delivery> GenerateDeliveryTodaysReportForBranch(long branchId)
-       {
-           return this.UnitOfWork.Get<Delivery>().AsQueryable()
-               .Where(p => p.CreatedOn.Day == DateTime.Now.Day && p.CreatedOn.Month == DateTime.Now.Month && p.CreatedOn.Year == DateTime.Now.Year && p.BranchId == branchId && p.Approved == true);
-       }
+       //public IEnumerable<Delivery> GenerateDeliveryTodaysReportForBranch(long branchId)
+       //{
+       //    return this.UnitOfWork.Get<Delivery>().AsQueryable()
+       //        .Where(p => p.CreatedOn.Day == DateTime.Now.Day && p.CreatedOn.Month == DateTime.Now.Month && p.CreatedOn.Year == DateTime.Now.Year && p.BranchId == branchId && p.Approved == true);
+       //}
 
        public IEnumerable<Delivery> GenerateDeliveryCurrentWeekReportForBranch(long branchId)
        {
@@ -1325,17 +1340,17 @@ namespace Higgs.Mbale.DAL.Concrete
                .Where(m => m.Deleted == false && (m.CreatedOn >= lowerSpecifiedDate && m.CreatedOn <= upperSpecifiedDate));
        }
 
-       public IEnumerable<Order> GenerateOrderCurrentMonthReport()
-       {
-           return this.UnitOfWork.Get<Order>().AsQueryable()
-               .Where(p => p.CreatedOn.Month == DateTime.Now.Month && p.CreatedOn.Year == DateTime.Now.Year);
-       }
+       //public IEnumerable<Order> GenerateOrderCurrentMonthReport()
+       //{
+       //    return this.UnitOfWork.Get<Order>().AsQueryable()
+       //        .Where(p => p.CreatedOn.Month == DateTime.Now.Month && p.CreatedOn.Year == DateTime.Now.Year);
+       //}
 
-       public IEnumerable<Order> GenerateOrderTodaysReport()
-       {
-           return this.UnitOfWork.Get<Order>().AsQueryable()
-               .Where(p => p.CreatedOn.Day == DateTime.Now.Day && p.CreatedOn.Month == DateTime.Now.Month && p.CreatedOn.Year == DateTime.Now.Year);
-       }
+       //public IEnumerable<Order> GenerateOrderTodaysReport()
+       //{
+       //    return this.UnitOfWork.Get<Order>().AsQueryable()
+       //        .Where(p => p.CreatedOn.Day == DateTime.Now.Day && p.CreatedOn.Month == DateTime.Now.Month && p.CreatedOn.Year == DateTime.Now.Year);
+       //}
 
        public IEnumerable<Order> GenerateOrderCurrentWeekReport()
        {
@@ -1366,17 +1381,17 @@ namespace Higgs.Mbale.DAL.Concrete
                .Where(m => m.Deleted == false && (m.CreatedOn >= lowerSpecifiedDate && m.CreatedOn <= upperSpecifiedDate) && m.BranchId == branchId);
        }
 
-       public IEnumerable<Order> GenerateOrderCurrentMonthReportForBranch(long branchId)
-       {
-           return this.UnitOfWork.Get<Order>().AsQueryable()
-               .Where(p => p.CreatedOn.Month == DateTime.Now.Month && p.CreatedOn.Year == DateTime.Now.Year && p.BranchId == branchId);
-       }
+       //public IEnumerable<Order> GenerateOrderCurrentMonthReportForBranch(long branchId)
+       //{
+       //    return this.UnitOfWork.Get<Order>().AsQueryable()
+       //        .Where(p => p.CreatedOn.Month == DateTime.Now.Month && p.CreatedOn.Year == DateTime.Now.Year && p.BranchId == branchId);
+       //}
 
-       public IEnumerable<Order> GenerateOrderTodaysReportForBranch(long branchId)
-       {
-           return this.UnitOfWork.Get<Order>().AsQueryable()
-               .Where(p => p.CreatedOn.Day == DateTime.Now.Day && p.CreatedOn.Month == DateTime.Now.Month && p.CreatedOn.Year == DateTime.Now.Year && p.BranchId == branchId);
-       }
+       //public IEnumerable<Order> GenerateOrderTodaysReportForBranch(long branchId)
+       //{
+       //    return this.UnitOfWork.Get<Order>().AsQueryable()
+       //        .Where(p => p.CreatedOn.Day == DateTime.Now.Day && p.CreatedOn.Month == DateTime.Now.Month && p.CreatedOn.Year == DateTime.Now.Year && p.BranchId == branchId);
+       //}
 
        public IEnumerable<Order> GenerateOrderCurrentWeekReportForBranch(long branchId)
        {
@@ -1459,17 +1474,17 @@ namespace Higgs.Mbale.DAL.Concrete
                .Where(m => m.Deleted == false && (m.CreatedOn >= lowerSpecifiedDate && m.CreatedOn <= upperSpecifiedDate));
        }
 
-       public IEnumerable<CashSale> GenerateCashSaleCurrentMonthReport()
-       {
-           return this.UnitOfWork.Get<CashSale>().AsQueryable()
-               .Where(p => p.CreatedOn.Month == DateTime.Now.Month && p.CreatedOn.Year == DateTime.Now.Year);
-       }
+       //public IEnumerable<CashSale> GenerateCashSaleCurrentMonthReport()
+       //{
+       //    return this.UnitOfWork.Get<CashSale>().AsQueryable()
+       //        .Where(p => p.CreatedOn.Month == DateTime.Now.Month && p.CreatedOn.Year == DateTime.Now.Year);
+       //}
 
-       public IEnumerable<CashSale> GenerateCashSaleTodaysReport()
-       {
-           return this.UnitOfWork.Get<CashSale>().AsQueryable()
-               .Where(p => p.CreatedOn.Day == DateTime.Now.Day && p.CreatedOn.Month == DateTime.Now.Month && p.CreatedOn.Year == DateTime.Now.Year);
-       }
+       //public IEnumerable<CashSale> GenerateCashSaleTodaysReport()
+       //{
+       //    return this.UnitOfWork.Get<CashSale>().AsQueryable()
+       //        .Where(p => p.CreatedOn.Day == DateTime.Now.Day && p.CreatedOn.Month == DateTime.Now.Month && p.CreatedOn.Year == DateTime.Now.Year);
+       //}
 
        public IEnumerable<CashSale> GenerateCashSaleCurrentWeekReport()
        {
@@ -1508,17 +1523,17 @@ namespace Higgs.Mbale.DAL.Concrete
        //    return null;
        //}
 
-       public IEnumerable<CashSale> GenerateCashSaleCurrentMonthReportForBranch(long branchId)
-       {
-           return this.UnitOfWork.Get<CashSale>().AsQueryable()
-               .Where(p => p.CreatedOn.Month == DateTime.Now.Month && p.CreatedOn.Year == DateTime.Now.Year && p.BranchId == branchId);
-       }
+       //public IEnumerable<CashSale> GenerateCashSaleCurrentMonthReportForBranch(long branchId)
+       //{
+       //    return this.UnitOfWork.Get<CashSale>().AsQueryable()
+       //        .Where(p => p.CreatedOn.Month == DateTime.Now.Month && p.CreatedOn.Year == DateTime.Now.Year && p.BranchId == branchId);
+       //}
 
-       public IEnumerable<CashSale> GenerateCashSaleTodaysReportForBranch(long branchId)
-       {
-           return this.UnitOfWork.Get<CashSale>().AsQueryable()
-               .Where(p => p.CreatedOn.Day == DateTime.Now.Day && p.CreatedOn.Month == DateTime.Now.Month && p.CreatedOn.Year == DateTime.Now.Year && p.BranchId == branchId);
-       }
+       //public IEnumerable<CashSale> GenerateCashSaleTodaysReportForBranch(long branchId)
+       //{
+       //    return this.UnitOfWork.Get<CashSale>().AsQueryable()
+       //        .Where(p => p.CreatedOn.Day == DateTime.Now.Day && p.CreatedOn.Month == DateTime.Now.Month && p.CreatedOn.Year == DateTime.Now.Year && p.BranchId == branchId);
+       //}
 
        public IEnumerable<CashSale> GenerateCashSaleCurrentWeekReportForBranch(long branchId)
        {

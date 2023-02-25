@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'F:\cineplex\2021\Higgs.Mbale\MIGM\Higgs.Mbale\Higgs.Mbale.EF\Models\Model.edmx'. 
+﻿// T4 code generation is enabled for model 'G:\2023\work\system\MIGM\Higgs.Mbale\Higgs.Mbale.EF\Models\Model.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

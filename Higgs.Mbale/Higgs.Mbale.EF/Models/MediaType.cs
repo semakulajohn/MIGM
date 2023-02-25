@@ -17,13 +17,13 @@ namespace Higgs.Mbale.EF.Models
         public MediaType()
         {
             this.ExtensionTypes = new HashSet<ExtensionType>();
-            this.Media = new HashSet<Media>();
+            this.Media = new HashSet<Medium>();
         }
     
         public long MediaTypeId { get; set; }
         public string MediaType1 { get; set; }
     
         public virtual ICollection<ExtensionType> ExtensionTypes { get; set; }
-        public virtual ICollection<Media> Media { get; set; }
+        public virtual ICollection<Medium> Media { get; set; }
     }
 }

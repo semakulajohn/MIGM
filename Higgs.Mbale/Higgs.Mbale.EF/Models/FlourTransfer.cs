@@ -25,6 +25,8 @@ namespace Higgs.Mbale.EF.Models
         public long BranchId { get; set; }
         public Nullable<bool> Deleted { get; set; }
         public long ToReceiverStoreId { get; set; }
+        public bool Accept { get; set; }
+        public bool Reject { get; set; }
         public long FromSupplierStoreId { get; set; }
         public double TotalQuantity { get; set; }
         public string CreatedBy { get; set; }
@@ -33,17 +35,15 @@ namespace Higgs.Mbale.EF.Models
         public System.DateTime CreatedOn { get; set; }
         public System.DateTime TimeStamp { get; set; }
         public Nullable<System.DateTime> DeletedOn { get; set; }
-        public bool Accept { get; set; }
-        public bool Reject { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual AspNetUser AspNetUser1 { get; set; }
         public virtual AspNetUser AspNetUser2 { get; set; }
+        public virtual Branch Branch { get; set; }
         public virtual ICollection<FlourTransferGradeSize> FlourTransferGradeSizes { get; set; }
         public virtual Store Store { get; set; }
         public virtual Store Store1 { get; set; }
         public virtual Store Store2 { get; set; }
         public virtual ICollection<FlourTransferBatch> FlourTransferBatches { get; set; }
-        public virtual Branch Branch { get; set; }
     }
 }

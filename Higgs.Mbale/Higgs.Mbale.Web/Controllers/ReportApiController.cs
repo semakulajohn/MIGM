@@ -192,26 +192,26 @@ namespace Higgs.Mbale.Web.Controllers
                 return _reportService.GetAllDeliveriesBetweenTheSpecifiedDates(searchDates.FromDate, searchDates.ToDate, searchDates.BranchId, searchDates.CustomerId);
             }
 
-            [HttpGet]
-            [ActionName("GenerateDeliveryCurrentMonthReport")]
-            public DeliveryReportViewModel GenerateDeliveryCurrentMonthReport()
-            {
-                return _reportService.GenerateDeliveryCurrentMonthReport();
-            }
+            //[HttpGet]
+            //[ActionName("GenerateDeliveryCurrentMonthReport")]
+            //public DeliveryReportViewModel GenerateDeliveryCurrentMonthReport()
+            //{
+            //    return _reportService.GenerateDeliveryCurrentMonthReport();
+            //}
 
-            [HttpGet]
-            [ActionName("GenerateDeliveryTodaysReport")]
-            public DeliveryReportViewModel GenerateDeliveryTodaysReport()
-            {
-                return _reportService.GenerateDeliveryTodaysReport();
-            }
+            //[HttpGet]
+            //[ActionName("GenerateDeliveryTodaysReport")]
+            //public DeliveryReportViewModel GenerateDeliveryTodaysReport()
+            //{
+            //    return _reportService.GenerateDeliveryTodaysReport();
+            //}
 
-            [HttpGet]
-            [ActionName("GenerateDeliveryCurrentWeekReport")]
-            public DeliveryReportViewModel GenerateDeliveryCurrentWeekReport()
-            {
-                return _reportService.GenerateDeliveryCurrentWeekReport();
-            }
+            //[HttpGet]
+            //[ActionName("GenerateDeliveryCurrentWeekReport")]
+            //public DeliveryReportViewModel GenerateDeliveryCurrentWeekReport()
+            //{
+            //    return _reportService.GenerateDeliveryCurrentWeekReport();
+            //}
 
             [HttpPost]
             [ActionName("GetAllDeliveriesBetweenTheSpecifiedDatesForAParticularProduct")]
@@ -266,26 +266,26 @@ namespace Higgs.Mbale.Web.Controllers
                 return _reportService.GetAllOrdersBetweenTheSpecifiedDates(searchDates.FromDate, searchDates.ToDate, searchDates.BranchId, searchDates.CustomerId);
             }
 
-            [HttpGet]
-            [ActionName("GenerateOrderCurrentMonthReport")]
-            public IEnumerable<Order> GenerateOrderCurrentMonthReport()
-            {
-                return _reportService.GenerateOrderCurrentMonthReport();
-            }
+            //[HttpGet]
+            //[ActionName("GenerateOrderCurrentMonthReport")]
+            //public IEnumerable<Order> GenerateOrderCurrentMonthReport()
+            //{
+            //    return _reportService.GenerateOrderCurrentMonthReport();
+            //}
 
-            [HttpGet]
-            [ActionName("GenerateOrderTodaysReport")]
-            public IEnumerable<Order> GenerateOrderTodaysReport()
-            {
-                return _reportService.GenerateOrderTodaysReport();
-            }
+            //[HttpGet]
+            //[ActionName("GenerateOrderTodaysReport")]
+            //public IEnumerable<Order> GenerateOrderTodaysReport()
+            //{
+            //    return _reportService.GenerateOrderTodaysReport();
+            //}
 
-            [HttpGet]
-            [ActionName("GenerateOrderCurrentWeekReport")]
-            public IEnumerable<Order> GenerateOrderCurrentWeekReport()
-            {
-                return _reportService.GenerateOrderCurrentWeekReport();
-            }
+            //[HttpGet]
+            //[ActionName("GenerateOrderCurrentWeekReport")]
+            //public IEnumerable<Order> GenerateOrderCurrentWeekReport()
+            //{
+            //    return _reportService.GenerateOrderCurrentWeekReport();
+            //}
             #endregion
 
             #region Cash
@@ -296,26 +296,26 @@ namespace Higgs.Mbale.Web.Controllers
                 return _reportService.GetAllCashBetweenTheSpecifiedDates(searchDates.FromDate, searchDates.ToDate, searchDates.BranchId);
             }
 
-            [HttpGet]
-            [ActionName("GenerateCashCurrentMonthReport")]
-            public IEnumerable<Cash> GenerateCashCurrentMonthReport()
-            {
-                return _reportService.GenerateCashCurrentMonthReport();
-            }
+            //[HttpGet]
+            //[ActionName("GenerateCashCurrentMonthReport")]
+            //public IEnumerable<Cash> GenerateCashCurrentMonthReport()
+            //{
+            //    return _reportService.GenerateCashCurrentMonthReport();
+            //}
 
-            [HttpGet]
-            [ActionName("GenerateCashTodaysReport")]
-            public IEnumerable<Cash> GenerateCashTodaysReport()
-            {
-                return _reportService.GenerateCashTodaysReport();
-            }
+            //[HttpGet]
+            //[ActionName("GenerateCashTodaysReport")]
+            //public IEnumerable<Cash> GenerateCashTodaysReport()
+            //{
+            //    return _reportService.GenerateCashTodaysReport();
+            //}
 
-            [HttpGet]
-            [ActionName("GenerateCashCurrentWeekReport")]
-            public IEnumerable<Cash> GenerateCashCurrentWeekReport()
-            {
-                return _reportService.GenerateCashCurrentWeekReport();
-            }
+            //[HttpGet]
+            //[ActionName("GenerateCashCurrentWeekReport")]
+            //public IEnumerable<Cash> GenerateCashCurrentWeekReport()
+            //{
+            //    return _reportService.GenerateCashCurrentWeekReport();
+            //}
 
             #region expenses
            
@@ -501,7 +501,7 @@ namespace Higgs.Mbale.Web.Controllers
             [ActionName("GetAllMachineRepairsBetweenTheSpecifiedDates")]
             public IEnumerable<MachineRepair> GetAllMachineRepairsBetweenTheSpecifiedDates(ReportSearch searchDates)
             {
-                return _reportService.GetAllMachineRepairsBetweenTheSpecifiedDates(searchDates.FromDate, searchDates.ToDate, searchDates.BranchId);
+                return _reportService.GetAllMachineRepairsBetweenTheSpecifiedDates(searchDates.FromDate, searchDates.ToDate, searchDates.BranchId, searchDates.RepairerId);
             }
 
             [HttpGet]
@@ -585,26 +585,26 @@ namespace Higgs.Mbale.Web.Controllers
                 return _reportService.GetAllCashSalesBetweenTheSpecifiedDates(searchDates.FromDate, searchDates.ToDate, searchDates.BranchId);
             }
 
-            [HttpGet]
-            [ActionName("GenerateCashSaleCurrentMonthReport")]
-            public CashSaleReportViewModel GenerateCashSaleCurrentMonthReport()
-            {
-                return _reportService.GenerateCashSaleCurrentMonthReport();
-            }
+            //[HttpGet]
+            //[ActionName("GenerateCashSaleCurrentMonthReport")]
+            //public CashSaleReportViewModel GenerateCashSaleCurrentMonthReport()
+            //{
+            //    return _reportService.GenerateCashSaleCurrentMonthReport();
+            //}
 
-            [HttpGet]
-            [ActionName("GenerateCashSaleTodaysReport")]
-            public CashSaleReportViewModel GenerateCashSaleTodaysReport()
-            {
-                return _reportService.GenerateCashSaleTodaysReport();
-            }
+            //[HttpGet]
+            //[ActionName("GenerateCashSaleTodaysReport")]
+            //public CashSaleReportViewModel GenerateCashSaleTodaysReport()
+            //{
+            //    return _reportService.GenerateCashSaleTodaysReport();
+            //}
 
-            [HttpGet]
-            [ActionName("GenerateCashSaleCurrentWeekReport")]
-            public CashSaleReportViewModel GenerateCashSaleCurrentWeekReport()
-            {
-                return _reportService.GenerateCashSaleCurrentWeekReport();
-            }
+            //[HttpGet]
+            //[ActionName("GenerateCashSaleCurrentWeekReport")]
+            //public CashSaleReportViewModel GenerateCashSaleCurrentWeekReport()
+            //{
+            //    return _reportService.GenerateCashSaleCurrentWeekReport();
+            //}
 
             [HttpPost]
             [ActionName("GetAllCashSalesBetweenTheSpecifiedDatesForParticularProduct")]

@@ -51,6 +51,9 @@ namespace Higgs.Mbale.EF.Models
             this.MillingCharges = new HashSet<MillingCharge>();
             this.Orders = new HashSet<Order>();
             this.OtherExpenses = new HashSet<OtherExpense>();
+            this.Requistions = new HashSet<Requistion>();
+            this.RiceInputs = new HashSet<RiceInput>();
+            this.RiceTransfers = new HashSet<RiceTransfer>();
             this.Stocks = new HashSet<Stock>();
             this.Stores = new HashSet<Store>();
             this.StoreMaizeStocks = new HashSet<StoreMaizeStock>();
@@ -60,11 +63,8 @@ namespace Higgs.Mbale.EF.Models
             this.Utilities = new HashSet<Utility>();
             this.UtilityAccounts = new HashSet<UtilityAccount>();
             this.WeightLosses = new HashSet<WeightLoss>();
-            this.WeightNoteRanges = new HashSet<WeightNoteRange>();
             this.WeightNoteNumbers = new HashSet<WeightNoteNumber>();
-            this.Requistions = new HashSet<Requistion>();
-            this.RiceInputs = new HashSet<RiceInput>();
-            this.RiceTransfers = new HashSet<RiceTransfer>();
+            this.WeightNoteRanges = new HashSet<WeightNoteRange>();
         }
     
         public long BranchId { get; set; }
@@ -119,6 +119,9 @@ namespace Higgs.Mbale.EF.Models
         public virtual ICollection<MillingCharge> MillingCharges { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<OtherExpense> OtherExpenses { get; set; }
+        public virtual ICollection<Requistion> Requistions { get; set; }
+        public virtual ICollection<RiceInput> RiceInputs { get; set; }
+        public virtual ICollection<RiceTransfer> RiceTransfers { get; set; }
         public virtual ICollection<Stock> Stocks { get; set; }
         public virtual ICollection<Store> Stores { get; set; }
         public virtual ICollection<StoreMaizeStock> StoreMaizeStocks { get; set; }
@@ -128,10 +131,7 @@ namespace Higgs.Mbale.EF.Models
         public virtual ICollection<Utility> Utilities { get; set; }
         public virtual ICollection<UtilityAccount> UtilityAccounts { get; set; }
         public virtual ICollection<WeightLoss> WeightLosses { get; set; }
-        public virtual ICollection<WeightNoteRange> WeightNoteRanges { get; set; }
         public virtual ICollection<WeightNoteNumber> WeightNoteNumbers { get; set; }
-        public virtual ICollection<Requistion> Requistions { get; set; }
-        public virtual ICollection<RiceInput> RiceInputs { get; set; }
-        public virtual ICollection<RiceTransfer> RiceTransfers { get; set; }
+        public virtual ICollection<WeightNoteRange> WeightNoteRanges { get; set; }
     }
 }

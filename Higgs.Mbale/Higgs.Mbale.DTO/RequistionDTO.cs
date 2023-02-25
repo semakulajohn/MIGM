@@ -27,6 +27,7 @@ namespace Higgs.Mbale.DTO
         public Nullable<System.DateTime> DeletedOn { get; set; }
         public string AmountInWords { get; set; }
         public string OutSourcerId { get; set; }
+        public string RepairerId { get; set; }
         public Nullable<long> CasualWorkerId { get; set; }
         public Nullable<long> BatchId { get; set; }
         public Nullable<long> SupplyId { get; set; }

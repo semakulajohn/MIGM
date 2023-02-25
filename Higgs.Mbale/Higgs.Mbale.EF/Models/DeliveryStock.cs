@@ -19,7 +19,7 @@ namespace Higgs.Mbale.EF.Models
         public System.DateTime CreatedOn { get; set; }
         public System.DateTime TimeStamp { get; set; }
     
-        public virtual Stock Stock { get; set; }
         public virtual Delivery Delivery { get; set; }
+        public virtual Stock Stock { get; set; }
     }
 }

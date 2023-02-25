@@ -29,5 +29,7 @@ namespace Higgs.Mbale.Models
         public string BranchName { get; set; }
         public string SectorName { get; set; }
         public string BatchNumber { get; set; }
+
+        public string RepairerId { get; set; }
     }
 }

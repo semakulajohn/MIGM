@@ -16,9 +16,9 @@ namespace Higgs.Mbale.EF.Models
     {
         public Activity()
         {
+            this.CasualActivities = new HashSet<CasualActivity>();
             this.ActivityBranches = new HashSet<ActivityBranch>();
             this.ActivityBatchCasuals = new HashSet<ActivityBatchCasual>();
-            this.CasualActivities = new HashSet<CasualActivity>();
             this.LabourCosts = new HashSet<LabourCost>();
             this.Requistions = new HashSet<Requistion>();
         }
@@ -34,12 +34,12 @@ namespace Higgs.Mbale.EF.Models
         public System.DateTime TimeStamp { get; set; }
         public Nullable<System.DateTime> DeletedOn { get; set; }
     
-        public virtual ICollection<ActivityBranch> ActivityBranches { get; set; }
-        public virtual ICollection<ActivityBatchCasual> ActivityBatchCasuals { get; set; }
-        public virtual ICollection<CasualActivity> CasualActivities { get; set; }
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual AspNetUser AspNetUser1 { get; set; }
         public virtual AspNetUser AspNetUser2 { get; set; }
+        public virtual ICollection<CasualActivity> CasualActivities { get; set; }
+        public virtual ICollection<ActivityBranch> ActivityBranches { get; set; }
+        public virtual ICollection<ActivityBatchCasual> ActivityBatchCasuals { get; set; }
         public virtual ICollection<LabourCost> LabourCosts { get; set; }
         public virtual ICollection<Requistion> Requistions { get; set; }
     }

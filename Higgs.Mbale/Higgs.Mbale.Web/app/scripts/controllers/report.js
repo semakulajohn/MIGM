@@ -2317,9 +2317,8 @@ angular
                         {
                             FromDate: machineRepair.FromDate,
                             ToDate: machineRepair.ToDate,
-
                             BranchId: machineRepair.BranchId,
-                            Id: machineRepair.Id
+                           Id: machineRepair.Id
 
                         });
                 promise.then(

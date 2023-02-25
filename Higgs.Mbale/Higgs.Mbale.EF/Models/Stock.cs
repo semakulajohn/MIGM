@@ -16,10 +16,10 @@ namespace Higgs.Mbale.EF.Models
     {
         public Stock()
         {
+            this.DeliveryStocks = new HashSet<DeliveryStock>();
             this.StockGradeSizes = new HashSet<StockGradeSize>();
             this.StockProducts = new HashSet<StockProduct>();
             this.StoreStocks = new HashSet<StoreStock>();
-            this.DeliveryStocks = new HashSet<DeliveryStock>();
         }
     
         public long StockId { get; set; }
@@ -38,17 +38,17 @@ namespace Higgs.Mbale.EF.Models
         public long StoreId { get; set; }
         public Nullable<bool> SoldOut { get; set; }
     
+        public virtual AspNetUser AspNetUser { get; set; }
+        public virtual AspNetUser AspNetUser1 { get; set; }
+        public virtual AspNetUser AspNetUser2 { get; set; }
+        public virtual Batch Batch { get; set; }
+        public virtual Branch Branch { get; set; }
+        public virtual ICollection<DeliveryStock> DeliveryStocks { get; set; }
         public virtual Product Product { get; set; }
         public virtual Sector Sector { get; set; }
         public virtual ICollection<StockGradeSize> StockGradeSizes { get; set; }
         public virtual ICollection<StockProduct> StockProducts { get; set; }
-        public virtual ICollection<StoreStock> StoreStocks { get; set; }
         public virtual Store Store { get; set; }
-        public virtual ICollection<DeliveryStock> DeliveryStocks { get; set; }
-        public virtual Batch Batch { get; set; }
-        public virtual AspNetUser AspNetUser { get; set; }
-        public virtual AspNetUser AspNetUser1 { get; set; }
-        public virtual AspNetUser AspNetUser2 { get; set; }
-        public virtual Branch Branch { get; set; }
+        public virtual ICollection<StoreStock> StoreStocks { get; set; }
     }
 }

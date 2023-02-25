@@ -300,7 +300,7 @@ namespace Higgs.Mbale.BAL.Concrete
                     TimeStamp = data.TimeStamp,
                     Deleted = data.Deleted,
                     CreatedBy = _userService.GetUserFullName(data.AspNetUser),
-                    CustomerName = _userService.GetUserFullName(data.AspNetUser11),
+                    CustomerName = _userService.GetUserFullName(data.AspNetUser2),
 
 
 

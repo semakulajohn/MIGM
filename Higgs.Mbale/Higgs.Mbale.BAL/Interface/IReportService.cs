@@ -89,11 +89,11 @@ namespace Higgs.Mbale.BAL.Interface
 
           #region deliveries
           #region web
-          DeliveryReportViewModel GenerateDeliveryCurrentMonthReport();
+          //DeliveryReportViewModel GenerateDeliveryCurrentMonthReport();
 
-          DeliveryReportViewModel GenerateDeliveryCurrentWeekReport();
+          //DeliveryReportViewModel GenerateDeliveryCurrentWeekReport();
 
-          DeliveryReportViewModel GenerateDeliveryTodaysReport();
+          //DeliveryReportViewModel GenerateDeliveryTodaysReport();
 
           DeliveryReportViewModel GetAllDeliveriesBetweenTheSpecifiedDates(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId, string customerId);
 
@@ -103,11 +103,11 @@ namespace Higgs.Mbale.BAL.Interface
 
         #endregion
         #region branch
-        DeliveryReportViewModel GenerateDeliveryCurrentMonthReportForBranch(long branchId);
+        //DeliveryReportViewModel GenerateDeliveryCurrentMonthReportForBranch(long branchId);
 
-          DeliveryReportViewModel GenerateDeliveryCurrentWeekReportForBranch(long branchId);
+        //  DeliveryReportViewModel GenerateDeliveryCurrentWeekReportForBranch(long branchId);
 
-          DeliveryReportViewModel GenerateDeliveryTodaysReportForBranch(long branchId);
+        //  DeliveryReportViewModel GenerateDeliveryTodaysReportForBranch(long branchId);
 
           DeliveryReportViewModel GetAllDeliveriesBetweenTheSpecifiedDatesForBranch(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId, string customerId);
 
@@ -121,11 +121,11 @@ namespace Higgs.Mbale.BAL.Interface
 
         #region cash
 
-        IEnumerable<Cash> GenerateCashCurrentMonthReport();
+        //IEnumerable<Cash> GenerateCashCurrentMonthReport();
 
-          IEnumerable<Cash> GenerateCashCurrentWeekReport();
+        //  IEnumerable<Cash> GenerateCashCurrentWeekReport();
 
-          IEnumerable<Cash> GenerateCashTodaysReport();
+        //  IEnumerable<Cash> GenerateCashTodaysReport();
 
           IEnumerable<Cash> GetAllCashBetweenTheSpecifiedDates(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId);
 
@@ -182,22 +182,22 @@ namespace Higgs.Mbale.BAL.Interface
 
           #region orders
           #region web
-          IEnumerable<Order> GenerateOrderCurrentMonthReport();
+          //IEnumerable<Order> GenerateOrderCurrentMonthReport();
 
-          IEnumerable<Order> GenerateOrderCurrentWeekReport();
+          //IEnumerable<Order> GenerateOrderCurrentWeekReport();
 
-          IEnumerable<Order> GenerateOrderTodaysReport();
+          //IEnumerable<Order> GenerateOrderTodaysReport();
 
           IEnumerable<Order> GetAllOrdersBetweenTheSpecifiedDates(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId, string customerId);
           #endregion
           #region branch
           IEnumerable<Order> GetAllOrdersBetweenTheSpecifiedDatesForBranch(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId, string customerId);
        
-            IEnumerable<Order> GenerateOrderCurrentMonthReportForBranch(long branchId);
+        //    IEnumerable<Order> GenerateOrderCurrentMonthReportForBranch(long branchId);
         
-        IEnumerable<Order> GenerateOrderTodaysReportForBranch(long branchId);
+        //IEnumerable<Order> GenerateOrderTodaysReportForBranch(long branchId);
         
-        IEnumerable<Order> GenerateOrderCurrentWeekReportForBranch(long branchId);
+        //IEnumerable<Order> GenerateOrderCurrentWeekReportForBranch(long branchId);
           #endregion
           #endregion
 
@@ -287,7 +287,7 @@ namespace Higgs.Mbale.BAL.Interface
 
           #region  MachineRepair
           #region web
-          IEnumerable<MachineRepair> GetAllMachineRepairsBetweenTheSpecifiedDates(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId);
+          IEnumerable<MachineRepair> GetAllMachineRepairsBetweenTheSpecifiedDates(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId, string RepairerId);
           
            IEnumerable<MachineRepair> GenerateMachineRepairCurrentMonthReport();
          
@@ -296,7 +296,7 @@ namespace Higgs.Mbale.BAL.Interface
            IEnumerable<MachineRepair> GenerateMachineRepairCurrentWeekReport();
           #endregion
            #region branch
-           IEnumerable<MachineRepair> GetAllMachineRepairsBetweenTheSpecifiedDatesForBranch(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId);
+           IEnumerable<MachineRepair> GetAllMachineRepairsBetweenTheSpecifiedDatesForBranch(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId, string RepairerId);
 
            IEnumerable<MachineRepair> GenerateMachineRepairCurrentMonthReportForBranch(long branchId);
 
@@ -358,12 +358,12 @@ namespace Higgs.Mbale.BAL.Interface
            #region  CashSale
            CashSaleReportViewModel GetAllCashSalesBetweenTheSpecifiedDates(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId);
 
-           CashSaleReportViewModel GenerateCashSaleCurrentMonthReport();
+           //CashSaleReportViewModel GenerateCashSaleCurrentMonthReport();
 
 
-           CashSaleReportViewModel GenerateCashSaleTodaysReport();
+           //CashSaleReportViewModel GenerateCashSaleTodaysReport();
 
-           CashSaleReportViewModel GenerateCashSaleCurrentWeekReport();
+           //CashSaleReportViewModel GenerateCashSaleCurrentWeekReport();
 
            CashSaleReportViewModel GetAllCashSalesBetweenTheSpecifiedDatesForParticularProduct(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId, long productId);
 
@@ -373,12 +373,12 @@ namespace Higgs.Mbale.BAL.Interface
         CashSaleReportViewModel GetAllCashSalesBetweenTheSpecifiedDatesForParticularProductForBranch(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId, long productId);
 
 
-           CashSaleReportViewModel GenerateCashSaleCurrentMonthReportForBranch(long branchId);
+           //CashSaleReportViewModel GenerateCashSaleCurrentMonthReportForBranch(long branchId);
 
 
-           CashSaleReportViewModel GenerateCashSaleTodaysReportForBranch(long branchId);
+           //CashSaleReportViewModel GenerateCashSaleTodaysReportForBranch(long branchId);
 
-           CashSaleReportViewModel GenerateCashSaleCurrentWeekReportForBranch(long branchId);
+           //CashSaleReportViewModel GenerateCashSaleCurrentWeekReportForBranch(long branchId);
 
            #endregion
            #endregion

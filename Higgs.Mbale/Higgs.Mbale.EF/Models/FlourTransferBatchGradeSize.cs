@@ -12,15 +12,13 @@ namespace Higgs.Mbale.EF.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class AspNetUserCode
+    public partial class FlourTransferBatchGradeSize
     {
-        public string Id { get; set; }
-        public string RoleId { get; set; }
-        public int Code { get; set; }
-        public Nullable<bool> Deleted { get; set; }
-        public Nullable<System.DateTime> CreatedOn { get; set; }
-    
-        public virtual AspNetRole AspNetRole { get; set; }
-        public virtual AspNetUser AspNetUser { get; set; }
+        public long BatchId { get; set; }
+        public long FlourTransferId { get; set; }
+        public long GradeId { get; set; }
+        public long SizeId { get; set; }
+        public double Quantity { get; set; }
+        public System.DateTime TimeStamp { get; set; }
     }
 }

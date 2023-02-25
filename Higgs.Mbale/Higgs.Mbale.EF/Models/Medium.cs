@@ -12,7 +12,7 @@ namespace Higgs.Mbale.EF.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Media
+    public partial class Medium
     {
         public long MediaId { get; set; }
         public System.Guid MediaGuid { get; set; }

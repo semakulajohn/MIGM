@@ -116,7 +116,7 @@ public    class RequistionDataService : DataServiceBase,IRequistionDataService
                     FinancialAccountId = requistionDTO.FinancialAccountId,
                     RepairerName = requistionDTO.RepairerName,
                     OutSourcerId = requistionDTO.OutSourcerId,
-
+                    RepairerId = requistionDTO.RepairerId
 
                 };
 

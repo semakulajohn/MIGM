@@ -23,7 +23,7 @@ namespace Higgs.Mbale.EF.Models
         public Nullable<double> Price { get; set; }
     
         public virtual Grade Grade { get; set; }
-        public virtual Size Size { get; set; }
         public virtual Order Order { get; set; }
+        public virtual Size Size { get; set; }
     }
 }

@@ -90,22 +90,22 @@ namespace Higgs.Mbale.DAL.Interface
            #region web
            IEnumerable<Delivery> GetAllDeliveriesBetweenTheSpecifiedDates(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId, string customerId);
            
-            IEnumerable<Delivery> GenerateDeliveryCurrentMonthReport();
+            //IEnumerable<Delivery> GenerateDeliveryCurrentMonthReport();
          
-            IEnumerable<Delivery> GenerateDeliveryTodaysReport();
+            //IEnumerable<Delivery> GenerateDeliveryTodaysReport();
           
-            IEnumerable<Delivery> GenerateDeliveryCurrentWeekReport();
+            //IEnumerable<Delivery> GenerateDeliveryCurrentWeekReport();
             IEnumerable<Delivery> GetAllDeliveriesBetweenTheSpecifiedDatesForAParticularProduct(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId, string customerId, long productId);
            #endregion
 
             #region branch
             IEnumerable<Delivery> GetAllDeliveriesBetweenTheSpecifiedDatesForBranch(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId, string customerId);
 
-            IEnumerable<Delivery> GenerateDeliveryCurrentMonthReportForBranch(long branchId);
+            //IEnumerable<Delivery> GenerateDeliveryCurrentMonthReportForBranch(long branchId);
 
-            IEnumerable<Delivery> GenerateDeliveryTodaysReportForBranch(long branchId);
+            //IEnumerable<Delivery> GenerateDeliveryTodaysReportForBranch(long branchId);
 
-            IEnumerable<Delivery> GenerateDeliveryCurrentWeekReportForBranch(long branchId);
+            //IEnumerable<Delivery> GenerateDeliveryCurrentWeekReportForBranch(long branchId);
             IEnumerable<Delivery> GetAllDeliveriesBetweenTheSpecifiedDatesForAParticularProductForBranch(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId, string customerId, long productId);
 
         #endregion
@@ -120,20 +120,20 @@ namespace Higgs.Mbale.DAL.Interface
         #region web
         IEnumerable<Order> GetAllOrdersBetweenTheSpecifiedDates(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId, string customerId);
 
-            IEnumerable<Order> GenerateOrderCurrentMonthReport();
+            //IEnumerable<Order> GenerateOrderCurrentMonthReport();
 
-            IEnumerable<Order> GenerateOrderTodaysReport();
+            //IEnumerable<Order> GenerateOrderTodaysReport();
 
-            IEnumerable<Order> GenerateOrderCurrentWeekReport();
+            //IEnumerable<Order> GenerateOrderCurrentWeekReport();
             #endregion
             #region branch
             IEnumerable<Order> GetAllOrdersBetweenTheSpecifiedDatesForBranch(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId, string customerId);
 
-            IEnumerable<Order> GenerateOrderCurrentMonthReportForBranch(long branchId);
+            //IEnumerable<Order> GenerateOrderCurrentMonthReportForBranch(long branchId);
 
-            IEnumerable<Order> GenerateOrderTodaysReportForBranch(long branchId);
+            //IEnumerable<Order> GenerateOrderTodaysReportForBranch(long branchId);
 
-            IEnumerable<Order> GenerateOrderCurrentWeekReportForBranch(long branchId);
+            //IEnumerable<Order> GenerateOrderCurrentWeekReportForBranch(long branchId);
             #endregion
 
 
@@ -233,7 +233,7 @@ namespace Higgs.Mbale.DAL.Interface
 
              #region  MachineRepair
              #region web
-             IEnumerable<MachineRepair> GetAllMachineRepairsBetweenTheSpecifiedDates(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId);
+             IEnumerable<MachineRepair> GetAllMachineRepairsBetweenTheSpecifiedDates(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId, string RepairerId);
             
              IEnumerable<MachineRepair> GenerateMachineRepairCurrentMonthReport();
            
@@ -242,7 +242,7 @@ namespace Higgs.Mbale.DAL.Interface
              IEnumerable<MachineRepair> GenerateMachineRepairCurrentWeekReport();
              #endregion
              #region branch
-             IEnumerable<MachineRepair> GetAllMachineRepairsBetweenTheSpecifiedDatesForBranch(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId);
+             IEnumerable<MachineRepair> GetAllMachineRepairsBetweenTheSpecifiedDatesForBranch(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId, string RepairerId);
 
              IEnumerable<MachineRepair> GenerateMachineRepairCurrentMonthReportForBranch(long branchId);
 
@@ -302,17 +302,17 @@ namespace Higgs.Mbale.DAL.Interface
              IEnumerable<CashSale> GetAllCashSalesBetweenTheSpecifiedDates(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId);
              IEnumerable<CashSale> GetAllCashSalesBetweenTheSpecifiedDatesForParticularProduct(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId, long productId);
        
-             IEnumerable<CashSale> GenerateCashSaleCurrentMonthReport();
-             IEnumerable<CashSale> GenerateCashSaleTodaysReport();
+             //IEnumerable<CashSale> GenerateCashSaleCurrentMonthReport();
+             //IEnumerable<CashSale> GenerateCashSaleTodaysReport();
 
-             IEnumerable<CashSale> GenerateCashSaleCurrentWeekReport();
+             //IEnumerable<CashSale> GenerateCashSaleCurrentWeekReport();
              #region branch
              
              IEnumerable<CashSale> GetAllCashSalesBetweenTheSpecifiedDatesForParticularProductForBranch(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId, long productId);
-             IEnumerable<CashSale> GenerateCashSaleCurrentMonthReportForBranch(long branchId);
-             IEnumerable<CashSale> GenerateCashSaleTodaysReportForBranch(long branchId);
+             //IEnumerable<CashSale> GenerateCashSaleCurrentMonthReportForBranch(long branchId);
+             //IEnumerable<CashSale> GenerateCashSaleTodaysReportForBranch(long branchId);
 
-             IEnumerable<CashSale> GenerateCashSaleCurrentWeekReportForBranch(long branchId);
+             //IEnumerable<CashSale> GenerateCashSaleCurrentWeekReportForBranch(long branchId);
 
              #endregion
 

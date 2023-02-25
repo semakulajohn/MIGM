@@ -156,6 +156,7 @@ namespace Higgs.Mbale.BAL.Concrete
                 Quantity = requistion.Quantity,
                 RepairDate = requistion.RepairDate,
                 RepairerName = requistion.RepairerName,
+                RepairerId = requistion.RepairerName,
                 UtilityCategoryId = requistion.UtilityCategoryId,
                 BankId = requistion.BankId,
                 OutSourcerId = requistion.OutSourcerId,
@@ -517,10 +518,13 @@ namespace Higgs.Mbale.BAL.Concrete
                             var mechanicName = "";
 
                             var aspnetUser = _userService.GetAspNetUser(requistion.RepairerName);
+                           // var aspnetUser = _userService.GetAspNetUser(requistion.RepairerId);
+                            
                             if (aspnetUser != null)
                             {
 
                                 mechanicName = aspnetUser.FirstName + " " + aspnetUser.LastName;
+                                //mechanicName = requistion.RepairerId;
 
                             }
 
@@ -532,6 +536,7 @@ namespace Higgs.Mbale.BAL.Concrete
 
                                     Amount = requistion.Amount,
                                     NameOfRepair = mechanicName,
+                                    // NameOfRepair = requistion.RepairerName,
                                     DateRepaired = requistion.RepairDate,
                                     BranchId = requistion.BranchId,
                                     BatchId = Convert.ToInt64(requistion.BatchId),
@@ -546,7 +551,7 @@ namespace Higgs.Mbale.BAL.Concrete
                                 var machineRepairId = _machineRepairService.SaveMachineRepair(machineRepairObject, userId);
                                 var accountActivityObject = new AccountTransactionActivity()
                                 {
-                                    AspNetUserId = requistion.RepairerName,
+                                    AspNetUserId = requistion.RepairerId,
                                     Amount = requistion.Amount,
                                     Notes = requistion.Description,
                                     Action = "-",
@@ -2690,7 +2695,7 @@ namespace Higgs.Mbale.BAL.Concrete
                     BranchId = data.BranchId,
                     BranchName = data.Branch != null ? data.Branch.Name : "",
                     StatusName = statusName,
-                    ApprovedByName = _userService.GetUserFullName(data.AspNetUser),
+                    ApprovedByName = _userService.GetUserFullName(data.AspNetUser5),
                     RequistionNumber = data.RequistionNumber,
                     Description = String.Concat(" ", data.Description, data.Supply != null ? data.Supply.WeightNoteNumber : " "),
                     CreatedOn = data.CreatedOn,
@@ -2710,7 +2715,8 @@ namespace Higgs.Mbale.BAL.Concrete
                      PartPayment = data.PartPayment,
                      RequistionCategoryId = data.RequistionCategoryId,
                      Quantity = data.Quantity,
-                     RepairerName = data.RepairerName,
+                     //RepairerName = data.RepairerName,
+                     RepairerName = _userService.GetUserFullName(data.AspNetUser),
                      RepairDate = data.RepairDate,
                      BankId = data.BankId,
                      UtilityCategoryId = data.UtilityCategoryId,
@@ -2724,7 +2730,8 @@ namespace Higgs.Mbale.BAL.Concrete
                      BankName = data.Bank != null ? data.Bank.Name : "",
                      UtilityCategoryName = data.UtilityCategory != null ? data.UtilityCategory.Name : "",
                      OutSourcerId = data.OutSourcerId,
-                     OutSourcerName = _userService.GetUserFullName(data.AspNetUser31),
+                     OutSourcerName = _userService.GetUserFullName(data.AspNetUser4),
+                     RepairerId = data.RepairerId,
 
                 };
                 return requistion;
@@ -2764,7 +2771,7 @@ namespace Higgs.Mbale.BAL.Concrete
                     Response = data.Response,
                    
                     StatusName = statusName,
-                    ApprovedByName = _userService.GetUserFullName(data.AspNetUser),
+                    ApprovedByName = _userService.GetUserFullName(data.AspNetUser5),
                     RequistionNumber = data.RequistionNumber,
                     Description = String.Concat(" ", data.Description, data.Supply != null ? data.Supply.WeightNoteNumber : " "),
                    

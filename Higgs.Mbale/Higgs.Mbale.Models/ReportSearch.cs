@@ -19,6 +19,7 @@ namespace Higgs.Mbale.Models
             public long TransactionSubTypeId { get; set; }
             public string Position { get; set; }
             public long RequistionCategoryId { get; set; }
+           public string RepairerId { get; set; }
 
         }
     

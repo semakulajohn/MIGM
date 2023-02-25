@@ -32,6 +32,7 @@
 	[FinancialAccountId] BIGINT NULL,
 
     [OutSourcerId] NVARCHAR(128) NULL, 
+	[RepairerId] NVARCHAR(128) NULL, 
     CONSTRAINT [PK_dbo.Requistion] PRIMARY KEY CLUSTERED 
 (
 	[RequistionId] ASC
@@ -52,5 +53,6 @@ CONSTRAINT [FK_Requistion_FinancialAccount] FOREIGN KEY ([FinancialAccountId]) R
 CONSTRAINT [FK_Requistion_UtilityCategory] FOREIGN KEY ([UtilityCategoryId]) REFERENCES [dbo].[UtilityCategory](UtilityCategoryId),
 CONSTRAINT [FK_Requistion_Supply] FOREIGN KEY ([SupplyId]) REFERENCES [dbo].[Supply](SupplyId),
 CONSTRAINT [FK_Requistion_RequistionCategory] FOREIGN KEY ([RequistionCategoryId]) REFERENCES [dbo].[RequistionCategory](RequistionCategoryId),
+CONSTRAINT [FK_Requistion_RepairerId] FOREIGN KEY (RepairerId) REFERENCES [dbo].[AspNetUsers](Id),
 )ON [PRIMARY]
 

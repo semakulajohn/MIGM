@@ -118,8 +118,11 @@
 
                                             <div class="form-group col-sm-6">
                                                 <div class="col-sm-12">
-                                                    <label>Repairer's Name</label>
-                                                    <input ng-readonly="readOnly" name="amountWords" class="form-control" ng-model="requistion.RepairerName" ng-class="{ errorinput: form.repairName.$invalid }">
+                                                    <label>Mechanic</label>
+                                                    <select style="border: none" name="RepairerName" class="form-control col-sm-12" ng-model="requistion.RepairerName" ng-class="{errorinput:form.mechanicName.$invalid}"
+                                                            data-ng-options="i.Id as i.FirstName for i in mechanics">
+                                                        <option value="">Please select</option>
+                                                    </select>
                                                 </div>
                                             </div>
 
@@ -190,7 +193,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group col-sm-6" >
+                                            <div class="form-group col-sm-6" ng-hide="requistion.RequistionCategoryId ==4">
                                                 <div class="col-sm-12">
                                                     <label>Worker</label>
                                                     <select style="border: none" name="worker" class="form-control col-sm-12" data-ng-model="requistion.CasualWorkerId" ng-class="{errorinput:form.worker.$invalid}"

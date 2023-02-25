@@ -17,8 +17,5 @@ namespace Higgs.Mbale.EF.Models
         public long WeightNoteNumberId { get; set; }
         public long SupplyId { get; set; }
         public System.DateTime CreatedOn { get; set; }
-    
-        public virtual Supply Supply { get; set; }
-        public virtual WeightNoteNumber WeightNoteNumber { get; set; }
     }
 }

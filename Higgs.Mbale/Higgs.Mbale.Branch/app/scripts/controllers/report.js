@@ -1749,7 +1749,10 @@ angular
                  });
             }
 
-
+            //geting all mechanic
+            $http.get('/webapi/MechanicApi/GetAllMechanics').success(function (data, status) {
+                $scope.mechanics = data;
+            });
 
 
             $scope.SearchMachineRepair = function (machineRepair) {
@@ -1761,6 +1764,7 @@ angular
                             ToDate: machineRepair.ToDate,
 
                             BranchId: machineRepair.BranchId,
+                            Id: machineRepair.Id
 
                         });
                 promise.then(

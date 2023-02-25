@@ -494,27 +494,28 @@ namespace Higgs.Mbale.Web.Controllers
 
 
             IEnumerable<Cash> cashList;
-            switch (reportType)
-            {
+            cashList = _cashService.GetAllCash();
+            //switch (reportType)
+            //{
 
-                case 1://all todays batches
-                    nameOfReport = "TodaysCash";
-                    cashList = _reportService.GenerateCashTodaysReport();
-                    break;
-                case 2://all this months batches
-                    nameOfReport = "CurrentMonthsCash";
-                    cashList = _reportService.GenerateCashCurrentMonthReport();
-                    break;
+            //    case 1://all todays batches
+            //        nameOfReport = "TodaysCash";
+            //        cashList = _reportService.GenerateCashTodaysReport();
+            //        break;
+            //    case 2://all this months batches
+            //        nameOfReport = "CurrentMonthsCash";
+            //        cashList = _reportService.GenerateCashCurrentMonthReport();
+            //        break;
 
-                case 3://Batches for this week
-                    nameOfReport = "CurrentWeeksCash";
-                    cashList = _reportService.GenerateCashCurrentWeekReport();
-                    break;
+            //    case 3://Batches for this week
+            //        nameOfReport = "CurrentWeeksCash";
+            //        cashList = _reportService.GenerateCashCurrentWeekReport();
+            //        break;
 
-                default://Todo:: need to decide which one is the default report data
-                    cashList = _cashService.GetAllCash();
-                    break;
-            }
+            //    default://Todo:: need to decide which one is the default report data
+            //        cashList = _cashService.GetAllCash();
+            //        break;
+            //}
             List<List<string>> cellValues = new List<List<string>>();
             foreach (var w in cashList)
             {
@@ -557,27 +558,28 @@ namespace Higgs.Mbale.Web.Controllers
 
 
             IEnumerable<Order> orderList;
-            switch (reportType)
-            {
+            orderList = _orderService.GetAllOrders();
+            //switch (reportType)
+            //{
 
-                case 1://all todays Orders
-                    nameOfReport = "TodaysOrders";
-                    orderList = _reportService.GenerateOrderTodaysReport();
-                    break;
-                case 2://all this months Orders
-                    nameOfReport = "CurrentMonthsOrders";
-                    orderList = _reportService.GenerateOrderCurrentMonthReport();
-                    break;
+            //    case 1://all todays Orders
+            //        nameOfReport = "TodaysOrders";
+            //        orderList = _reportService.GenerateOrderTodaysReport();
+            //        break;
+            //    case 2://all this months Orders
+            //        nameOfReport = "CurrentMonthsOrders";
+            //        orderList = _reportService.GenerateOrderCurrentMonthReport();
+            //        break;
 
-                case 3://Orders for this week
-                    nameOfReport = "CurrentWeeksOrders";
-                    orderList = _reportService.GenerateOrderCurrentWeekReport();
-                    break;
+            //    case 3://Orders for this week
+            //        nameOfReport = "CurrentWeeksOrders";
+            //        orderList = _reportService.GenerateOrderCurrentWeekReport();
+            //        break;
 
-                default://Todo:: need to decide which one is the default report data
-                    orderList = _orderService.GetAllOrders();
-                    break;
-            }
+            //    default://Todo:: need to decide which one is the default report data
+                   
+            //        break;
+            //}
             List<List<string>> cellValues = new List<List<string>>();
             foreach (var w in orderList)
             {

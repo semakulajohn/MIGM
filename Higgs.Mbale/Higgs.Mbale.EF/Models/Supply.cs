@@ -18,9 +18,8 @@ namespace Higgs.Mbale.EF.Models
         {
             this.BatchSupplies = new HashSet<BatchSupply>();
             this.MaizeOffloadings = new HashSet<MaizeOffloading>();
-            this.StoreMaizeStocks = new HashSet<StoreMaizeStock>();
-            this.WeightNoteSupplies = new HashSet<WeightNoteSupply>();
             this.Requistions = new HashSet<Requistion>();
+            this.StoreMaizeStocks = new HashSet<StoreMaizeStock>();
         }
     
         public long SupplyId { get; set; }
@@ -58,14 +57,13 @@ namespace Higgs.Mbale.EF.Models
         public virtual AspNetUser AspNetUser2 { get; set; }
         public virtual AspNetUser AspNetUser3 { get; set; }
         public virtual ICollection<BatchSupply> BatchSupplies { get; set; }
+        public virtual Branch Branch { get; set; }
         public virtual ICollection<MaizeOffloading> MaizeOffloadings { get; set; }
+        public virtual ICollection<Requistion> Requistions { get; set; }
         public virtual Status Status { get; set; }
         public virtual Store Store { get; set; }
         public virtual ICollection<StoreMaizeStock> StoreMaizeStocks { get; set; }
         public virtual Supply Supply1 { get; set; }
         public virtual Supply Supply2 { get; set; }
-        public virtual Branch Branch { get; set; }
-        public virtual ICollection<WeightNoteSupply> WeightNoteSupplies { get; set; }
-        public virtual ICollection<Requistion> Requistions { get; set; }
     }
 }

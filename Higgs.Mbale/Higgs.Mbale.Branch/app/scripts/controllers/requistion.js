@@ -45,6 +45,11 @@
         $http.get('/webapi/StatusApi/GetAllStatuses').success(function (data, status) {
             $scope.statuses = data;
         });
+
+        //geting all mechanic
+        $http.get('/webapi/MechanicApi/GetAllMechanics').success(function (data, status) {
+            $scope.mechanics = data;
+        });
         
         $http.get('/webapi/BatchApi/GetLatestBatchesForAParticularBranch').success(function (data, status) {
             $scope.batches = data;
@@ -128,7 +133,8 @@
                         UtilityCategoryId: b.UtilityCategoryId,
                         BankId: b.BankId,
                         BankName: b.BankName,
-                        UtilityCategoryName : b.UtilityCategoryName,
+                        UtilityCategoryName: b.UtilityCategoryName,
+                        RepairerId: b.RepairerId
 
 
                     };
@@ -230,6 +236,7 @@
                     RequistionCategoryId: requistion.RequistionCategoryId,
                     BankId: requistion.BankId,
                     UtilityCategoryId: requistion.UtilityCategoryId,
+                    RepairerId: requistion.RepairerId
 
 
                 });
@@ -401,6 +408,7 @@
                  RequistionCategoryId: requistion.RequistionCategoryId,
                  BankId: requistion.BankId,
                  UtilityCategoryId: requistion.UtilityCategoryId,
+                 RepairerId: requistion.RepairerId
 
 
 

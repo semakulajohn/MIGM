@@ -182,6 +182,7 @@
                         CreatedBy: b.CreatedBy,
                         CreatedById: b.CreatedById,
                         OutSourcerId : b.OutSourcerId,
+                        RepairerId: b.RepairerId
 
 
                     };
@@ -286,7 +287,8 @@
                     BankId: requistion.BankId,
                     UtilityCategoryId: requistion.UtilityCategoryId,
                     CreatedById: requistion.CreatedById,
-                    OutSourcerId : requistion.OutSourcerId,
+                    OutSourcerId: requistion.OutSourcerId,
+                    RepairerId : requistion.RepairerId
 
                 });
 
@@ -475,7 +477,8 @@
                  UtilityCategoryId: requistion.UtilityCategoryId,
                  BankId: requistion.BankId,
                  CreatedById: requistion.CreatedById,
-                 OutSourcerId : requistion.OutSourcerId,
+                 OutSourcerId: requistion.OutSourcerId,
+                 RepairerId : requistion.RepairerId
 
              });
 

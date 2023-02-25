@@ -18,7 +18,6 @@ namespace Higgs.Mbale.EF.Models
         {
             this.CashSaleBatches = new HashSet<CashSaleBatch>();
             this.CashSaleGradeSizes = new HashSet<CashSaleGradeSize>();
-            this.CashSaleBatchGradeSizes = new HashSet<CashSaleBatchGradeSize>();
         }
     
         public long CashSaleId { get; set; }
@@ -30,28 +29,27 @@ namespace Higgs.Mbale.EF.Models
         public long SectorId { get; set; }
         public Nullable<double> Amount { get; set; }
         public long StoreId { get; set; }
+        public Nullable<double> Quantity { get; set; }
         public Nullable<bool> Deleted { get; set; }
         public string CreatedBy { get; set; }
         public string UpdatedBy { get; set; }
         public string DeletedBy { get; set; }
-        public System.DateTime CreatedOn { get; set; }
+        public Nullable<System.DateTime> CreatedOn { get; set; }
         public System.DateTime TimeStamp { get; set; }
         public Nullable<System.DateTime> DeletedOn { get; set; }
-        public Nullable<double> Quantity { get; set; }
         public bool Cancelled { get; set; }
         public Nullable<int> ReceiptLimit { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual AspNetUser AspNetUser1 { get; set; }
         public virtual AspNetUser AspNetUser2 { get; set; }
+        public virtual Branch Branch { get; set; }
+        public virtual PaymentMode PaymentMode { get; set; }
         public virtual Product Product { get; set; }
         public virtual Sector Sector { get; set; }
         public virtual Store Store { get; set; }
         public virtual TransactionSubType TransactionSubType { get; set; }
         public virtual ICollection<CashSaleBatch> CashSaleBatches { get; set; }
         public virtual ICollection<CashSaleGradeSize> CashSaleGradeSizes { get; set; }
-        public virtual PaymentMode PaymentMode { get; set; }
-        public virtual Branch Branch { get; set; }
-        public virtual ICollection<CashSaleBatchGradeSize> CashSaleBatchGradeSizes { get; set; }
     }
 }

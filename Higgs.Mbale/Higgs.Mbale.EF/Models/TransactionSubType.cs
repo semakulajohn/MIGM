@@ -17,16 +17,16 @@ namespace Higgs.Mbale.EF.Models
         public TransactionSubType()
         {
             this.AccountTransactionActivities = new HashSet<AccountTransactionActivity>();
-            this.Transactions = new HashSet<Transaction>();
-            this.MachineRepairs = new HashSet<MachineRepair>();
+            this.BankTransactions = new HashSet<BankTransaction>();
+            this.Cashes = new HashSet<Cash>();
             this.CashSales = new HashSet<CashSale>();
             this.Deliveries = new HashSet<Delivery>();
-            this.BankTransactions = new HashSet<BankTransaction>();
-            this.MillingCharges = new HashSet<MillingCharge>();
-            this.MaizeOffloadings = new HashSet<MaizeOffloading>();
             this.Deposits = new HashSet<Deposit>();
             this.InventoryPurchases = new HashSet<InventoryPurchase>();
-            this.Cashes = new HashSet<Cash>();
+            this.MachineRepairs = new HashSet<MachineRepair>();
+            this.MaizeOffloadings = new HashSet<MaizeOffloading>();
+            this.MillingCharges = new HashSet<MillingCharge>();
+            this.Transactions = new HashSet<Transaction>();
         }
     
         public long TransactionSubTypeId { get; set; }
@@ -40,20 +40,20 @@ namespace Higgs.Mbale.EF.Models
         public System.DateTime TimeStamp { get; set; }
         public Nullable<System.DateTime> DeletedOn { get; set; }
     
-        public virtual TransactionType TransactionType { get; set; }
         public virtual ICollection<AccountTransactionActivity> AccountTransactionActivities { get; set; }
-        public virtual ICollection<Transaction> Transactions { get; set; }
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual AspNetUser AspNetUser1 { get; set; }
         public virtual AspNetUser AspNetUser2 { get; set; }
-        public virtual ICollection<MachineRepair> MachineRepairs { get; set; }
+        public virtual ICollection<BankTransaction> BankTransactions { get; set; }
+        public virtual ICollection<Cash> Cashes { get; set; }
         public virtual ICollection<CashSale> CashSales { get; set; }
         public virtual ICollection<Delivery> Deliveries { get; set; }
-        public virtual ICollection<BankTransaction> BankTransactions { get; set; }
-        public virtual ICollection<MillingCharge> MillingCharges { get; set; }
-        public virtual ICollection<MaizeOffloading> MaizeOffloadings { get; set; }
         public virtual ICollection<Deposit> Deposits { get; set; }
         public virtual ICollection<InventoryPurchase> InventoryPurchases { get; set; }
-        public virtual ICollection<Cash> Cashes { get; set; }
+        public virtual ICollection<MachineRepair> MachineRepairs { get; set; }
+        public virtual ICollection<MaizeOffloading> MaizeOffloadings { get; set; }
+        public virtual ICollection<MillingCharge> MillingCharges { get; set; }
+        public virtual ICollection<Transaction> Transactions { get; set; }
+        public virtual TransactionType TransactionType { get; set; }
     }
 }

@@ -16,34 +16,34 @@ namespace Higgs.Mbale.EF.Models
     {
         public Store()
         {
-            this.StoreStocks = new HashSet<StoreStock>();
-            this.Stocks = new HashSet<Stock>();
-            this.StoreMaizeStocks = new HashSet<StoreMaizeStock>();
-            this.StoreGradeSizes = new HashSet<StoreGradeSize>();
-            this.BuveraGradeSizes = new HashSet<BuveraGradeSize>();
-            this.StoreBuveraGradeSizes = new HashSet<StoreBuveraGradeSize>();
-            this.FlourTransferGradeSizes = new HashSet<FlourTransferGradeSize>();
             this.Buveras = new HashSet<Buvera>();
+            this.BuveraGradeSizes = new HashSet<BuveraGradeSize>();
             this.BuveraTransfers = new HashSet<BuveraTransfer>();
             this.BuveraTransfers1 = new HashSet<BuveraTransfer>();
             this.BuveraTransfers2 = new HashSet<BuveraTransfer>();
             this.BuveraTransferGradeSizes = new HashSet<BuveraTransferGradeSize>();
-            this.StoreBuveraTransferGradeSizes = new HashSet<StoreBuveraTransferGradeSize>();
-            this.StoreFlourTransferGradeSizes = new HashSet<StoreFlourTransferGradeSize>();
+            this.CashSales = new HashSet<CashSale>();
+            this.Deliveries = new HashSet<Delivery>();
             this.FlourTransfers = new HashSet<FlourTransfer>();
             this.FlourTransfers1 = new HashSet<FlourTransfer>();
             this.FlourTransfers2 = new HashSet<FlourTransfer>();
-            this.MaizeBrandStores = new HashSet<MaizeBrandStore>();
-            this.CashSales = new HashSet<CashSale>();
-            this.Deliveries = new HashSet<Delivery>();
-            this.Supplies = new HashSet<Supply>();
+            this.FlourTransferGradeSizes = new HashSet<FlourTransferGradeSize>();
             this.InventoryPurchases = new HashSet<InventoryPurchase>();
+            this.MaizeBrandStores = new HashSet<MaizeBrandStore>();
             this.OutSourcerOutPuts = new HashSet<OutSourcerOutPut>();
             this.RiceInputs = new HashSet<RiceInput>();
             this.RiceTransfers = new HashSet<RiceTransfer>();
             this.RiceTransfers1 = new HashSet<RiceTransfer>();
             this.RiceTransfers2 = new HashSet<RiceTransfer>();
             this.RiceTransferGradeSizes = new HashSet<RiceTransferGradeSize>();
+            this.Stocks = new HashSet<Stock>();
+            this.StoreBuveraGradeSizes = new HashSet<StoreBuveraGradeSize>();
+            this.StoreBuveraTransferGradeSizes = new HashSet<StoreBuveraTransferGradeSize>();
+            this.StoreFlourTransferGradeSizes = new HashSet<StoreFlourTransferGradeSize>();
+            this.StoreGradeSizes = new HashSet<StoreGradeSize>();
+            this.StoreMaizeStocks = new HashSet<StoreMaizeStock>();
+            this.StoreStocks = new HashSet<StoreStock>();
+            this.Supplies = new HashSet<Supply>();
         }
     
         public long StoreId { get; set; }
@@ -58,38 +58,38 @@ namespace Higgs.Mbale.EF.Models
         public Nullable<System.DateTime> DeletedOn { get; set; }
         public string OutSourcerId { get; set; }
     
-        public virtual ICollection<StoreStock> StoreStocks { get; set; }
-        public virtual ICollection<Stock> Stocks { get; set; }
-        public virtual ICollection<StoreMaizeStock> StoreMaizeStocks { get; set; }
-        public virtual ICollection<StoreGradeSize> StoreGradeSizes { get; set; }
-        public virtual ICollection<BuveraGradeSize> BuveraGradeSizes { get; set; }
-        public virtual ICollection<StoreBuveraGradeSize> StoreBuveraGradeSizes { get; set; }
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual AspNetUser AspNetUser1 { get; set; }
         public virtual AspNetUser AspNetUser2 { get; set; }
-        public virtual ICollection<FlourTransferGradeSize> FlourTransferGradeSizes { get; set; }
+        public virtual AspNetUser AspNetUser3 { get; set; }
+        public virtual Branch Branch { get; set; }
         public virtual ICollection<Buvera> Buveras { get; set; }
+        public virtual ICollection<BuveraGradeSize> BuveraGradeSizes { get; set; }
         public virtual ICollection<BuveraTransfer> BuveraTransfers { get; set; }
         public virtual ICollection<BuveraTransfer> BuveraTransfers1 { get; set; }
         public virtual ICollection<BuveraTransfer> BuveraTransfers2 { get; set; }
         public virtual ICollection<BuveraTransferGradeSize> BuveraTransferGradeSizes { get; set; }
-        public virtual ICollection<StoreBuveraTransferGradeSize> StoreBuveraTransferGradeSizes { get; set; }
-        public virtual ICollection<StoreFlourTransferGradeSize> StoreFlourTransferGradeSizes { get; set; }
+        public virtual ICollection<CashSale> CashSales { get; set; }
+        public virtual ICollection<Delivery> Deliveries { get; set; }
         public virtual ICollection<FlourTransfer> FlourTransfers { get; set; }
         public virtual ICollection<FlourTransfer> FlourTransfers1 { get; set; }
         public virtual ICollection<FlourTransfer> FlourTransfers2 { get; set; }
-        public virtual ICollection<MaizeBrandStore> MaizeBrandStores { get; set; }
-        public virtual ICollection<CashSale> CashSales { get; set; }
-        public virtual ICollection<Delivery> Deliveries { get; set; }
-        public virtual ICollection<Supply> Supplies { get; set; }
+        public virtual ICollection<FlourTransferGradeSize> FlourTransferGradeSizes { get; set; }
         public virtual ICollection<InventoryPurchase> InventoryPurchases { get; set; }
-        public virtual Branch Branch { get; set; }
-        public virtual AspNetUser AspNetUser21 { get; set; }
+        public virtual ICollection<MaizeBrandStore> MaizeBrandStores { get; set; }
         public virtual ICollection<OutSourcerOutPut> OutSourcerOutPuts { get; set; }
         public virtual ICollection<RiceInput> RiceInputs { get; set; }
         public virtual ICollection<RiceTransfer> RiceTransfers { get; set; }
         public virtual ICollection<RiceTransfer> RiceTransfers1 { get; set; }
         public virtual ICollection<RiceTransfer> RiceTransfers2 { get; set; }
         public virtual ICollection<RiceTransferGradeSize> RiceTransferGradeSizes { get; set; }
+        public virtual ICollection<Stock> Stocks { get; set; }
+        public virtual ICollection<StoreBuveraGradeSize> StoreBuveraGradeSizes { get; set; }
+        public virtual ICollection<StoreBuveraTransferGradeSize> StoreBuveraTransferGradeSizes { get; set; }
+        public virtual ICollection<StoreFlourTransferGradeSize> StoreFlourTransferGradeSizes { get; set; }
+        public virtual ICollection<StoreGradeSize> StoreGradeSizes { get; set; }
+        public virtual ICollection<StoreMaizeStock> StoreMaizeStocks { get; set; }
+        public virtual ICollection<StoreStock> StoreStocks { get; set; }
+        public virtual ICollection<Supply> Supplies { get; set; }
     }
 }

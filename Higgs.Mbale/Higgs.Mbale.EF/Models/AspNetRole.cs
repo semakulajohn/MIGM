@@ -17,13 +17,11 @@ namespace Higgs.Mbale.EF.Models
         public AspNetRole()
         {
             this.AspNetUsers = new HashSet<AspNetUser>();
-            this.AspNetUserCodes = new HashSet<AspNetUserCode>();
         }
     
         public string Id { get; set; }
         public string Name { get; set; }
     
         public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
-        public virtual ICollection<AspNetUserCode> AspNetUserCodes { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace Higgs.Mbale.EF.Models
         public double OutPut { get; set; }
         public System.DateTime TimeStamp { get; set; }
     
-        public virtual Product Product { get; set; }
         public virtual Batch Batch { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

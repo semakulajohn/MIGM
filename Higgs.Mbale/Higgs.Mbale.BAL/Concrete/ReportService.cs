@@ -420,33 +420,33 @@ namespace Higgs.Mbale.BAL.Concrete
 
         #region deliveries
         #region web
-        public DeliveryReportViewModel GenerateDeliveryCurrentMonthReport()
-        {
-            var results = this._dataService.GenerateDeliveryCurrentMonthReport();
-            var deliveryList = _deliveryService.MapEFToModel(results.ToList());
+        //public DeliveryReportViewModel GenerateDeliveryCurrentMonthReport()
+        //{
+        //    var results = this._dataService.GenerateDeliveryCurrentMonthReport();
+        //    var deliveryList = _deliveryService.MapEFToModel(results.ToList());
 
-            var deliveryReport = CalculateDifferentDeliverySums(deliveryList.ToList());
-            return deliveryReport;
-        }
+        //    var deliveryReport = CalculateDifferentDeliverySums(deliveryList.ToList());
+        //    return deliveryReport;
+        //}
 
-        public DeliveryReportViewModel GenerateDeliveryCurrentWeekReport()
-        {
-            var results = this._dataService.GenerateDeliveryCurrentWeekReport();
-            var deliveryList = _deliveryService.MapEFToModel(results.ToList());
+        //public DeliveryReportViewModel GenerateDeliveryCurrentWeekReport()
+        //{
+        //    var results = this._dataService.GenerateDeliveryCurrentWeekReport();
+        //    var deliveryList = _deliveryService.MapEFToModel(results.ToList());
 
-            var deliveryReport = CalculateDifferentDeliverySums(deliveryList.ToList());
-            return deliveryReport;
-        }
+        //    var deliveryReport = CalculateDifferentDeliverySums(deliveryList.ToList());
+        //    return deliveryReport;
+        //}
 
 
-        public DeliveryReportViewModel GenerateDeliveryTodaysReport()
-        {
-            var results = this._dataService.GenerateDeliveryTodaysReport();
-            var deliveryList = _deliveryService.MapEFToModel(results.ToList());
+        //public DeliveryReportViewModel GenerateDeliveryTodaysReport()
+        //{
+        //    var results = this._dataService.GenerateDeliveryTodaysReport();
+        //    var deliveryList = _deliveryService.MapEFToModel(results.ToList());
 
-            var deliveryReport = CalculateDifferentDeliverySums(deliveryList.ToList());
-            return deliveryReport;
-        }
+        //    var deliveryReport = CalculateDifferentDeliverySums(deliveryList.ToList());
+        //    return deliveryReport;
+        //}
 
         public DeliveryReportViewModel GetAllDeliveriesBetweenTheSpecifiedDates(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId, string customerId)
         {
@@ -475,32 +475,32 @@ namespace Higgs.Mbale.BAL.Concrete
         }
         #endregion
         #region branch
-        public DeliveryReportViewModel GenerateDeliveryCurrentMonthReportForBranch(long branchId)
-        {
-            var results = this._dataService.GenerateDeliveryCurrentMonthReportForBranch(branchId);
-            var deliveryList = _deliveryService.MapEFToModel(results.ToList());
+        //public DeliveryReportViewModel GenerateDeliveryCurrentMonthReportForBranch(long branchId)
+        //{
+        //    var results = this._dataService.GenerateDeliveryCurrentMonthReportForBranch(branchId);
+        //    var deliveryList = _deliveryService.MapEFToModel(results.ToList());
 
-            var deliveryReport = CalculateDifferentDeliverySums(deliveryList.ToList());
-            return deliveryReport;
-        }
+        //    var deliveryReport = CalculateDifferentDeliverySums(deliveryList.ToList());
+        //    return deliveryReport;
+        //}
 
-        public DeliveryReportViewModel GenerateDeliveryCurrentWeekReportForBranch(long branchId)
-        {
-            var results = this._dataService.GenerateDeliveryCurrentWeekReportForBranch(branchId);
-            var deliveryList = _deliveryService.MapEFToModel(results.ToList());
+        //public DeliveryReportViewModel GenerateDeliveryCurrentWeekReportForBranch(long branchId)
+        //{
+        //    var results = this._dataService.GenerateDeliveryCurrentWeekReportForBranch(branchId);
+        //    var deliveryList = _deliveryService.MapEFToModel(results.ToList());
 
-            var deliveryReport = CalculateDifferentDeliverySums(deliveryList.ToList());
-            return deliveryReport;
-        }
+        //    var deliveryReport = CalculateDifferentDeliverySums(deliveryList.ToList());
+        //    return deliveryReport;
+        //}
 
-        public DeliveryReportViewModel GenerateDeliveryTodaysReportForBranch(long branchId)
-        {
-            var results = this._dataService.GenerateDeliveryTodaysReportForBranch(branchId);
-            var deliveryList = _deliveryService.MapEFToModel(results.ToList());
+        //public DeliveryReportViewModel GenerateDeliveryTodaysReportForBranch(long branchId)
+        //{
+        //    var results = this._dataService.GenerateDeliveryTodaysReportForBranch(branchId);
+        //    var deliveryList = _deliveryService.MapEFToModel(results.ToList());
 
-            var deliveryReport = CalculateDifferentDeliverySums(deliveryList.ToList());
-            return deliveryReport;
-        }
+        //    var deliveryReport = CalculateDifferentDeliverySums(deliveryList.ToList());
+        //    return deliveryReport;
+        //}
 
         public DeliveryReportViewModel GetAllDeliveriesBetweenTheSpecifiedDatesForBranch(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId, string customerId)
         {
@@ -854,27 +854,27 @@ namespace Higgs.Mbale.BAL.Concrete
         #endregion
         #region Cash
 
-        public IEnumerable<Cash> GenerateCashCurrentMonthReport()
-        {
-            var results = this._dataService.GenerateCashCurrentMonthReport();
-            var cashList = _cashService.MapEFToModel(results.ToList());
-            return cashList;
-        }
+        //public IEnumerable<Cash> GenerateCashCurrentMonthReport()
+        //{
+        //    var results = this._dataService.GenerateCashCurrentMonthReport();
+        //    var cashList = _cashService.MapEFToModel(results.ToList());
+        //    return cashList;
+        //}
 
-        public IEnumerable<Cash> GenerateCashCurrentWeekReport()
-        {
-            var results = this._dataService.GenerateCashCurrentWeekReport();
-            var cashList = _cashService.MapEFToModel(results.ToList());
-            return cashList;
-        }
+        //public IEnumerable<Cash> GenerateCashCurrentWeekReport()
+        //{
+        //    var results = this._dataService.GenerateCashCurrentWeekReport();
+        //    var cashList = _cashService.MapEFToModel(results.ToList());
+        //    return cashList;
+        //}
 
 
-        public IEnumerable<Cash> GenerateCashTodaysReport()
-        {
-            var results = this._dataService.GenerateCashTodaysReport();
-            var cashList = _cashService.MapEFToModel(results.ToList());
-            return cashList;
-        }
+        //public IEnumerable<Cash> GenerateCashTodaysReport()
+        //{
+        //    var results = this._dataService.GenerateCashTodaysReport();
+        //    var cashList = _cashService.MapEFToModel(results.ToList());
+        //    return cashList;
+        //}
 
         public IEnumerable<Cash> GetAllCashBetweenTheSpecifiedDates(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId)
         {
@@ -1596,9 +1596,9 @@ namespace Higgs.Mbale.BAL.Concrete
 
         #region  MachineRepair
         #region web
-        public IEnumerable<MachineRepair> GetAllMachineRepairsBetweenTheSpecifiedDates(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId)
+        public IEnumerable<MachineRepair> GetAllMachineRepairsBetweenTheSpecifiedDates(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId, string RepairerId)
         {
-            var results = this._dataService.GetAllMachineRepairsBetweenTheSpecifiedDates(lowerSpecifiedDate, upperSpecifiedDate, branchId);
+            var results = this._dataService.GetAllMachineRepairsBetweenTheSpecifiedDates(lowerSpecifiedDate, upperSpecifiedDate, branchId, RepairerId);
             var machineRepairList = _machineRepairService.MapEFToModel(results.ToList());
             return machineRepairList;
         }
@@ -1626,9 +1626,9 @@ namespace Higgs.Mbale.BAL.Concrete
         }
         #endregion
         #region branch
-        public IEnumerable<MachineRepair> GetAllMachineRepairsBetweenTheSpecifiedDatesForBranch(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId)
+        public IEnumerable<MachineRepair> GetAllMachineRepairsBetweenTheSpecifiedDatesForBranch(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId, string RepairerId)
         {
-            var results = this._dataService.GetAllMachineRepairsBetweenTheSpecifiedDatesForBranch(lowerSpecifiedDate, upperSpecifiedDate, branchId);
+            var results = this._dataService.GetAllMachineRepairsBetweenTheSpecifiedDatesForBranch(lowerSpecifiedDate, upperSpecifiedDate, branchId,RepairerId);
             var machineRepairList = _machineRepairService.MapEFToModel(results.ToList());
             return machineRepairList;
         }
@@ -2062,27 +2062,27 @@ namespace Higgs.Mbale.BAL.Concrete
 
         #region orders
         #region web
-        public IEnumerable<Order> GenerateOrderCurrentMonthReport()
-        {
-            var results = this._dataService.GenerateOrderCurrentMonthReport();
-            var orderList = _orderService.MapEFToModel(results.ToList());
-            return orderList;
-        }
+        //public IEnumerable<Order> GenerateOrderCurrentMonthReport()
+        //{
+        //    var results = this._dataService.GenerateOrderCurrentMonthReport();
+        //    var orderList = _orderService.MapEFToModel(results.ToList());
+        //    return orderList;
+        //}
 
-        public IEnumerable<Order> GenerateOrderCurrentWeekReport()
-        {
-            var results = this._dataService.GenerateOrderCurrentWeekReport();
-            var orderList = _orderService.MapEFToModel(results.ToList());
-            return orderList;
-        }
+        //public IEnumerable<Order> GenerateOrderCurrentWeekReport()
+        //{
+        //    var results = this._dataService.GenerateOrderCurrentWeekReport();
+        //    var orderList = _orderService.MapEFToModel(results.ToList());
+        //    return orderList;
+        //}
 
 
-        public IEnumerable<Order> GenerateOrderTodaysReport()
-        {
-            var results = this._dataService.GenerateOrderTodaysReport();
-            var orderList = _orderService.MapEFToModel(results.ToList());
-            return orderList;
-        }
+        //public IEnumerable<Order> GenerateOrderTodaysReport()
+        //{
+        //    var results = this._dataService.GenerateOrderTodaysReport();
+        //    var orderList = _orderService.MapEFToModel(results.ToList());
+        //    return orderList;
+        //}
 
         public IEnumerable<Order> GetAllOrdersBetweenTheSpecifiedDates(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId, string customerId)
         {
@@ -2099,27 +2099,27 @@ namespace Higgs.Mbale.BAL.Concrete
             return orderList;
         }
 
-        public IEnumerable<Order> GenerateOrderCurrentMonthReportForBranch(long branchId)
-        {
-            var results = this._dataService.GenerateOrderCurrentMonthReportForBranch(branchId);
-            var orderList = _orderService.MapEFToModel(results.ToList());
-            return orderList;
-        }
+        //public IEnumerable<Order> GenerateOrderCurrentMonthReportForBranch(long branchId)
+        //{
+        //    var results = this._dataService.GenerateOrderCurrentMonthReportForBranch(branchId);
+        //    var orderList = _orderService.MapEFToModel(results.ToList());
+        //    return orderList;
+        //}
 
-        public IEnumerable<Order> GenerateOrderTodaysReportForBranch(long branchId)
-        {
-            var results = this._dataService.GenerateOrderTodaysReportForBranch(branchId);
-            var orderList = _orderService.MapEFToModel(results.ToList());
-            return orderList;
-        }
+        //public IEnumerable<Order> GenerateOrderTodaysReportForBranch(long branchId)
+        //{
+        //    var results = this._dataService.GenerateOrderTodaysReportForBranch(branchId);
+        //    var orderList = _orderService.MapEFToModel(results.ToList());
+        //    return orderList;
+        //}
 
-        public IEnumerable<Order> GenerateOrderCurrentWeekReportForBranch(long branchId)
-        {
+        //public IEnumerable<Order> GenerateOrderCurrentWeekReportForBranch(long branchId)
+        //{
 
-            var results = this._dataService.GenerateOrderCurrentWeekReportForBranch(branchId);
-            var orderList = _orderService.MapEFToModel(results.ToList());
-            return orderList;
-        }
+        //    var results = this._dataService.GenerateOrderCurrentWeekReportForBranch(branchId);
+        //    var orderList = _orderService.MapEFToModel(results.ToList());
+        //    return orderList;
+        //}
         #endregion
         #endregion
 
@@ -2155,30 +2155,30 @@ namespace Higgs.Mbale.BAL.Concrete
             return cashSaleReport;
         }
 
-        public CashSaleReportViewModel GenerateCashSaleCurrentMonthReport()
-        {
-            var results = this._dataService.GenerateCashSaleCurrentMonthReport();
-            var cashSaleList = _cashSaleService.MapEFToModel(results.ToList());
-            var cashSaleReport = CalculateDifferentCashSaleSums(cashSaleList.ToList());
-            return cashSaleReport;
-        }
+        //public CashSaleReportViewModel GenerateCashSaleCurrentMonthReport()
+        //{
+        //    var results = this._dataService.GenerateCashSaleCurrentMonthReport();
+        //    var cashSaleList = _cashSaleService.MapEFToModel(results.ToList());
+        //    var cashSaleReport = CalculateDifferentCashSaleSums(cashSaleList.ToList());
+        //    return cashSaleReport;
+        //}
 
-        public CashSaleReportViewModel GenerateCashSaleTodaysReport()
-        {
-            var results = this._dataService.GenerateCashSaleTodaysReport();
-            var cashSaleList = _cashSaleService.MapEFToModel(results.ToList());
-            var cashSaleReport = CalculateDifferentCashSaleSums(cashSaleList.ToList());
-            return cashSaleReport;
-        }
+        //public CashSaleReportViewModel GenerateCashSaleTodaysReport()
+        //{
+        //    var results = this._dataService.GenerateCashSaleTodaysReport();
+        //    var cashSaleList = _cashSaleService.MapEFToModel(results.ToList());
+        //    var cashSaleReport = CalculateDifferentCashSaleSums(cashSaleList.ToList());
+        //    return cashSaleReport;
+        //}
 
-        public CashSaleReportViewModel GenerateCashSaleCurrentWeekReport()
-        {
+        //public CashSaleReportViewModel GenerateCashSaleCurrentWeekReport()
+        //{
 
-            var results = this._dataService.GenerateCashSaleCurrentWeekReport();
-            var cashSaleList = _cashSaleService.MapEFToModel(results.ToList());
-            var cashSaleReport = CalculateDifferentCashSaleSums(cashSaleList.ToList());
-            return cashSaleReport;
-        }
+        //    var results = this._dataService.GenerateCashSaleCurrentWeekReport();
+        //    var cashSaleList = _cashSaleService.MapEFToModel(results.ToList());
+        //    var cashSaleReport = CalculateDifferentCashSaleSums(cashSaleList.ToList());
+        //    return cashSaleReport;
+        //}
 
         public CashSaleReportViewModel GetAllCashSalesBetweenTheSpecifiedDatesForParticularProduct(DateTime lowerSpecifiedDate, DateTime upperSpecifiedDate, long branchId, long productId)
         {
@@ -2207,30 +2207,30 @@ namespace Higgs.Mbale.BAL.Concrete
             return cashSaleReport;
         }
 
-        public CashSaleReportViewModel GenerateCashSaleCurrentMonthReportForBranch(long branchId)
-        {
-            var results = this._dataService.GenerateCashSaleCurrentMonthReportForBranch(branchId);
-            var cashSaleList = _cashSaleService.MapEFToModel(results.ToList());
-            var cashSaleReport = CalculateDifferentCashSaleSums(cashSaleList.ToList());
-            return cashSaleReport;
-        }
+        //public CashSaleReportViewModel GenerateCashSaleCurrentMonthReportForBranch(long branchId)
+        //{
+        //    var results = this._dataService.GenerateCashSaleCurrentMonthReportForBranch(branchId);
+        //    var cashSaleList = _cashSaleService.MapEFToModel(results.ToList());
+        //    var cashSaleReport = CalculateDifferentCashSaleSums(cashSaleList.ToList());
+        //    return cashSaleReport;
+        //}
 
-        public CashSaleReportViewModel GenerateCashSaleTodaysReportForBranch(long branchId)
-        {
-            var results = this._dataService.GenerateCashSaleTodaysReportForBranch(branchId);
-            var cashSaleList = _cashSaleService.MapEFToModel(results.ToList());
-            var cashSaleReport = CalculateDifferentCashSaleSums(cashSaleList.ToList());
-            return cashSaleReport;
-        }
+        //public CashSaleReportViewModel GenerateCashSaleTodaysReportForBranch(long branchId)
+        //{
+        //    var results = this._dataService.GenerateCashSaleTodaysReportForBranch(branchId);
+        //    var cashSaleList = _cashSaleService.MapEFToModel(results.ToList());
+        //    var cashSaleReport = CalculateDifferentCashSaleSums(cashSaleList.ToList());
+        //    return cashSaleReport;
+        //}
 
-        public CashSaleReportViewModel GenerateCashSaleCurrentWeekReportForBranch(long branchId)
-        {
+        //public CashSaleReportViewModel GenerateCashSaleCurrentWeekReportForBranch(long branchId)
+        //{
 
-            var results = this._dataService.GenerateCashSaleCurrentWeekReportForBranch(branchId);
-            var cashSaleList = _cashSaleService.MapEFToModel(results.ToList());
-            var cashSaleReport = CalculateDifferentCashSaleSums(cashSaleList.ToList());
-            return cashSaleReport;
-        }
+        //    var results = this._dataService.GenerateCashSaleCurrentWeekReportForBranch(branchId);
+        //    var cashSaleList = _cashSaleService.MapEFToModel(results.ToList());
+        //    var cashSaleReport = CalculateDifferentCashSaleSums(cashSaleList.ToList());
+        //    return cashSaleReport;
+        //}
 
         #endregion
 

@@ -74,9 +74,6 @@
     <Compile Include="Models\AspNetUserClaim.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AspNetUserCode.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\AspNetUserLogin.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -218,6 +215,9 @@
     <Compile Include="Models\FlourTransferBatch.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FlourTransferBatchGradeSize.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\FlourTransferGradeSize.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -257,10 +257,10 @@
     <Compile Include="Models\MaizeOffloading.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Media.cs">
+    <Compile Include="Models\MediaType.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\MediaType.cs">
+    <Compile Include="Models\Medium.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MillingCharge.cs">

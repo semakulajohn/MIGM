@@ -18,7 +18,7 @@ namespace Higgs.Mbale.EF.Models
         public long SectorId { get; set; }
         public System.DateTime TimeStamp { get; set; }
     
-        public virtual Sector Sector { get; set; }
         public virtual Branch Branch { get; set; }
+        public virtual Sector Sector { get; set; }
     }
 }

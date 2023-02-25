@@ -16,15 +16,15 @@ namespace Higgs.Mbale.EF.Models
     {
         public TransactionType()
         {
-            this.TransactionSubTypes = new HashSet<TransactionSubType>();
             this.Transactions = new HashSet<Transaction>();
+            this.TransactionSubTypes = new HashSet<TransactionSubType>();
         }
     
         public long TransactionTypeId { get; set; }
         public string Name { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
     
-        public virtual ICollection<TransactionSubType> TransactionSubTypes { get; set; }
         public virtual ICollection<Transaction> Transactions { get; set; }
+        public virtual ICollection<TransactionSubType> TransactionSubTypes { get; set; }
     }
 }

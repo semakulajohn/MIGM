@@ -30,10 +30,10 @@ namespace Higgs.Mbale.EF.Models
         public Nullable<double> SoldAmount { get; set; }
         public Nullable<double> Balance { get; set; }
     
+        public virtual Branch Branch { get; set; }
         public virtual Product Product { get; set; }
         public virtual Sector Sector { get; set; }
         public virtual Stock Stock { get; set; }
         public virtual Store Store { get; set; }
-        public virtual Branch Branch { get; set; }
     }
 }

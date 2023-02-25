@@ -16,15 +16,15 @@ namespace Higgs.Mbale.EF.Models
     {
         public UtilityCategory()
         {
-            this.UtilityAccounts = new HashSet<UtilityAccount>();
             this.Requistions = new HashSet<Requistion>();
+            this.UtilityAccounts = new HashSet<UtilityAccount>();
         }
     
         public long UtilityCategoryId { get; set; }
         public string Name { get; set; }
         public System.DateTime TimeStamp { get; set; }
     
-        public virtual ICollection<UtilityAccount> UtilityAccounts { get; set; }
         public virtual ICollection<Requistion> Requistions { get; set; }
+        public virtual ICollection<UtilityAccount> UtilityAccounts { get; set; }
     }
 }

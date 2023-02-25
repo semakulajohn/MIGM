@@ -34,7 +34,7 @@ namespace Higgs.Mbale.EF.Models
         public virtual AspNetUser AspNetUser1 { get; set; }
         public virtual AspNetUser AspNetUser2 { get; set; }
         public virtual AspNetUser AspNetUser3 { get; set; }
-        public virtual Delivery Delivery { get; set; }
         public virtual Branch Branch { get; set; }
+        public virtual Delivery Delivery { get; set; }
     }
 }

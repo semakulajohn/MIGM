@@ -18,9 +18,9 @@ namespace Higgs.Mbale.EF.Models
         public long GradeId { get; set; }
         public long SizeId { get; set; }
         public double Quantity { get; set; }
+        public double Amount { get; set; }
         public double Price { get; set; }
         public System.DateTime TimeStamp { get; set; }
-        public double Amount { get; set; }
     
         public virtual Grade Grade { get; set; }
         public virtual OutSourcerOutPut OutSourcerOutPut { get; set; }

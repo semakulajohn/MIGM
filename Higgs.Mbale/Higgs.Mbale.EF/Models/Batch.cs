@@ -17,25 +17,24 @@ namespace Higgs.Mbale.EF.Models
         public Batch()
         {
             this.ActivityBatchCasuals = new HashSet<ActivityBatchCasual>();
-            this.CasualActivities = new HashSet<CasualActivity>();
-            this.BatchProducts = new HashSet<BatchProduct>();
-            this.Stocks = new HashSet<Stock>();
-            this.BatchSupplies = new HashSet<BatchSupply>();
             this.BatchOutPuts = new HashSet<BatchOutPut>();
+            this.BatchProjections = new HashSet<BatchProjection>();
+            this.CashSaleBatches = new HashSet<CashSaleBatch>();
+            this.CasualActivities = new HashSet<CasualActivity>();
+            this.BatchDeliveryGradeSizes = new HashSet<BatchDeliveryGradeSize>();
+            this.BatchProducts = new HashSet<BatchProduct>();
+            this.BatchSupplies = new HashSet<BatchSupply>();
+            this.DeliveryBatches = new HashSet<DeliveryBatch>();
             this.FactoryExpenses = new HashSet<FactoryExpense>();
+            this.FlourTransferBatches = new HashSet<FlourTransferBatch>();
             this.LabourCosts = new HashSet<LabourCost>();
             this.MachineRepairs = new HashSet<MachineRepair>();
-            this.OtherExpenses = new HashSet<OtherExpense>();
-            this.Utilities = new HashSet<Utility>();
-            this.DeliveryBatches = new HashSet<DeliveryBatch>();
-            this.FlourTransferBatches = new HashSet<FlourTransferBatch>();
-            this.CashSaleBatches = new HashSet<CashSaleBatch>();
             this.MaizeBrandStores = new HashSet<MaizeBrandStore>();
-            this.BatchProjections = new HashSet<BatchProjection>();
             this.MillingCharges = new HashSet<MillingCharge>();
-            this.BatchDeliveryGradeSizes = new HashSet<BatchDeliveryGradeSize>();
-            this.CashSaleBatchGradeSizes = new HashSet<CashSaleBatchGradeSize>();
+            this.OtherExpenses = new HashSet<OtherExpense>();
             this.Requistions = new HashSet<Requistion>();
+            this.Stocks = new HashSet<Stock>();
+            this.Utilities = new HashSet<Utility>();
         }
     
         public long BatchId { get; set; }
@@ -53,28 +52,27 @@ namespace Higgs.Mbale.EF.Models
         public double BrandBalance { get; set; }
     
         public virtual ICollection<ActivityBatchCasual> ActivityBatchCasuals { get; set; }
-        public virtual Sector Sector { get; set; }
-        public virtual ICollection<CasualActivity> CasualActivities { get; set; }
-        public virtual ICollection<BatchProduct> BatchProducts { get; set; }
-        public virtual ICollection<Stock> Stocks { get; set; }
-        public virtual ICollection<BatchSupply> BatchSupplies { get; set; }
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual AspNetUser AspNetUser1 { get; set; }
+        public virtual Branch Branch { get; set; }
+        public virtual Sector Sector { get; set; }
         public virtual ICollection<BatchOutPut> BatchOutPuts { get; set; }
+        public virtual ICollection<BatchProjection> BatchProjections { get; set; }
+        public virtual ICollection<CashSaleBatch> CashSaleBatches { get; set; }
+        public virtual ICollection<CasualActivity> CasualActivities { get; set; }
+        public virtual ICollection<BatchDeliveryGradeSize> BatchDeliveryGradeSizes { get; set; }
+        public virtual ICollection<BatchProduct> BatchProducts { get; set; }
+        public virtual ICollection<BatchSupply> BatchSupplies { get; set; }
+        public virtual ICollection<DeliveryBatch> DeliveryBatches { get; set; }
         public virtual ICollection<FactoryExpense> FactoryExpenses { get; set; }
+        public virtual ICollection<FlourTransferBatch> FlourTransferBatches { get; set; }
         public virtual ICollection<LabourCost> LabourCosts { get; set; }
         public virtual ICollection<MachineRepair> MachineRepairs { get; set; }
-        public virtual ICollection<OtherExpense> OtherExpenses { get; set; }
-        public virtual ICollection<Utility> Utilities { get; set; }
-        public virtual ICollection<DeliveryBatch> DeliveryBatches { get; set; }
-        public virtual ICollection<FlourTransferBatch> FlourTransferBatches { get; set; }
-        public virtual ICollection<CashSaleBatch> CashSaleBatches { get; set; }
         public virtual ICollection<MaizeBrandStore> MaizeBrandStores { get; set; }
-        public virtual ICollection<BatchProjection> BatchProjections { get; set; }
         public virtual ICollection<MillingCharge> MillingCharges { get; set; }
-        public virtual ICollection<BatchDeliveryGradeSize> BatchDeliveryGradeSizes { get; set; }
-        public virtual Branch Branch { get; set; }
-        public virtual ICollection<CashSaleBatchGradeSize> CashSaleBatchGradeSizes { get; set; }
+        public virtual ICollection<OtherExpense> OtherExpenses { get; set; }
         public virtual ICollection<Requistion> Requistions { get; set; }
+        public virtual ICollection<Stock> Stocks { get; set; }
+        public virtual ICollection<Utility> Utilities { get; set; }
     }
 }

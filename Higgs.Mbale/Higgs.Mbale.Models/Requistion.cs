@@ -41,6 +41,7 @@ namespace Higgs.Mbale.Models
         public long RequistionCategoryId { get; set; }
         public Nullable<double> Quantity { get; set; }
         public string RepairerName { get; set; }
+        public string RepairerId { get; set; }
         public System.DateTime RepairDate { get; set; }
         public Nullable<long> BankId { get; set; }
         public Nullable<long> UtilityCategoryId { get; set; }

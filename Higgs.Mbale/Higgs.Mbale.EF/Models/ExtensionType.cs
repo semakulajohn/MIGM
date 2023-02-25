@@ -16,7 +16,7 @@ namespace Higgs.Mbale.EF.Models
     {
         public ExtensionType()
         {
-            this.Media = new HashSet<Media>();
+            this.Media = new HashSet<Medium>();
         }
     
         public long ExtensionTypeId { get; set; }
@@ -24,6 +24,6 @@ namespace Higgs.Mbale.EF.Models
         public Nullable<long> MediaTypeId { get; set; }
     
         public virtual MediaType MediaType { get; set; }
-        public virtual ICollection<Media> Media { get; set; }
+        public virtual ICollection<Medium> Media { get; set; }
     }
 }

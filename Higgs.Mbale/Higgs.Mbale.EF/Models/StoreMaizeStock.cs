@@ -25,9 +25,9 @@ namespace Higgs.Mbale.EF.Models
         public System.DateTime TimeStamp { get; set; }
         public bool InOrOut { get; set; }
     
+        public virtual Branch Branch { get; set; }
         public virtual Sector Sector { get; set; }
         public virtual Store Store { get; set; }
         public virtual Supply Supply { get; set; }
-        public virtual Branch Branch { get; set; }
     }
 }

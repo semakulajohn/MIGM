@@ -40,8 +40,8 @@ namespace Higgs.Mbale.EF.Models
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual AspNetUser AspNetUser1 { get; set; }
         public virtual AspNetUser AspNetUser2 { get; set; }
-        public virtual DocumentCategory DocumentCategory { get; set; }
-        public virtual ICollection<DocumentGradeSize> DocumentGradeSizes { get; set; }
         public virtual Branch Branch { get; set; }
+        public virtual ICollection<DocumentGradeSize> DocumentGradeSizes { get; set; }
+        public virtual DocumentCategory DocumentCategory { get; set; }
     }
 }

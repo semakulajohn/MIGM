@@ -14,11 +14,6 @@ namespace Higgs.Mbale.EF.Models
     
     public partial class WeightNoteNumber
     {
-        public WeightNoteNumber()
-        {
-            this.WeightNoteSupplies = new HashSet<WeightNoteSupply>();
-        }
-    
         public long WeightNoteNumberId { get; set; }
         public double WeightNoteValue { get; set; }
         public long WeightNoteRangeId { get; set; }
@@ -38,7 +33,6 @@ namespace Higgs.Mbale.EF.Models
         public virtual AspNetUser AspNetUser1 { get; set; }
         public virtual AspNetUser AspNetUser2 { get; set; }
         public virtual Branch Branch { get; set; }
-        public virtual ICollection<WeightNoteSupply> WeightNoteSupplies { get; set; }
         public virtual WeightNoteRange WeightNoteRange { get; set; }
     }
 }
